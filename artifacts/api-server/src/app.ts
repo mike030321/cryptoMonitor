@@ -30,8 +30,11 @@ const corsAllowedOrigins: (string | RegExp)[] = [
   /\.replit\.dev$/,
   /\.replit\.app$/,
   /\.repl\.co$/,
-  /^http:\/\/localhost(:\d+)?$/,
+  /^https?:\/\/localhost(:\d+)?$/,
   /^http:\/\/127\.0\.0\.1(:\d+)?$/,
+  /^https?:\/\/.*\.onrender\.com$/,
+  "https://nexusultrix.com",
+  "http://nexusultrix.com",
 ];
 app.use(
   cors({
