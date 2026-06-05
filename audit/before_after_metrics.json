@@ -1,0 +1,752 @@
+{
+  "task": 365,
+  "method": "Direct LightGBM 80/20 chronological holdout on the latest labelled parquet per timeframe, using the post-#365 FEATURE_COLUMNS contract. Production training still uses train_one_slice (Optuna + isotonic calibration + multi-fold CV); this is the fast audit verification that the new feature set trains and yields a usable directional model.",
+  "feature_columns_after": [
+    "ret1",
+    "ret5",
+    "ret10",
+    "momentum",
+    "realizedVol",
+    "rsi14",
+    "macdLine",
+    "macdSignal",
+    "macdHist",
+    "atr14",
+    "atrPct",
+    "ema9",
+    "ema21",
+    "emaSpreadPct",
+    "distFromEma9Pct",
+    "distFromEma21Pct",
+    "bbUpper",
+    "bbMiddle",
+    "bbLower",
+    "bbWidth",
+    "bbPctB",
+    "bbWidthPct",
+    "funding_rate",
+    "open_interest_z",
+    "liquidations_1h_usd",
+    "bid_ask_spread_bps",
+    "btc_lead_ret_5m",
+    "eth_lead_ret_5m",
+    "btc_liquidations_1h_usd",
+    "eth_liquidations_1h_usd",
+    "sol_liquidations_1h_usd",
+    "session_asia",
+    "session_eu",
+    "session_us",
+    "hour_of_day_sin",
+    "hour_of_day_cos",
+    "coin_idx"
+  ],
+  "forbidden_prefixes": [
+    "news_",
+    "llm_",
+    "gpt_",
+    "sentiment_",
+    "ai_"
+  ],
+  "n_features_after": 37,
+  "slots": [
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "1d",
+      "parquet": "1d_20260423T102226Z.parquet",
+      "before": {
+        "version": "20260423T102344Z",
+        "model_kind": "lightgbm",
+        "n_features_with_news": 49,
+        "metrics": {
+          "auc": 0.490810479830195,
+          "log_loss": 3.554499580152034,
+          "brier": 0.3273222898988389,
+          "directional_accuracy": 0.38545454545454544
+        },
+        "directional_call_share": null
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 330,
+        "n_train": 264,
+        "n_test": 66,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.4728860294117647,
+          "brier": 0.2897969114173256,
+          "log_loss": 0.786671604106105
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.01792,
+        "log_loss": -2.76783,
+        "brier": -0.03753
+      }
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "1d",
+      "parquet": "1d_20260423T102226Z.parquet",
+      "n_rows_for_coin": 330,
+      "before": {
+        "version": "20260423T102304Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.490810479830195,
+          "log_loss": 3.554499580152034,
+          "brier": 0.3273222898988389,
+          "directional_accuracy": 0.38545454545454544
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 330,
+        "n_train": 264,
+        "n_test": 66,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.4728860294117647,
+          "brier": 0.2897969114173256,
+          "log_loss": 0.786671604106105
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.01792,
+        "log_loss": -2.76783,
+        "brier": -0.03753
+      }
+    },
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "6h",
+      "parquet": "6h_20260423T101351Z.parquet",
+      "before": {
+        "version": "20260423T101817Z",
+        "model_kind": "lightgbm",
+        "n_features_with_news": 49,
+        "metrics": {
+          "auc": 0.5095239318552766,
+          "log_loss": 3.5287802272890216,
+          "brier": 0.35188336435943146,
+          "directional_accuracy": 0.40084388185654013
+        },
+        "directional_call_share": null
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 1424,
+        "n_train": 1139,
+        "n_test": 285,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.49645424997537674,
+          "brier": 0.26777674938953,
+          "log_loss": 0.7347858263846548
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.01307,
+        "log_loss": -2.79399,
+        "brier": -0.08411
+      }
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "6h",
+      "parquet": "6h_20260423T101351Z.parquet",
+      "n_rows_for_coin": 1424,
+      "before": {
+        "version": "20260423T101613Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5095239318552766,
+          "log_loss": 3.5287802272890216,
+          "brier": 0.35188336435943146,
+          "directional_accuracy": 0.40084388185654013
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 1424,
+        "n_train": 1139,
+        "n_test": 285,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.49645424997537674,
+          "brier": 0.26777674938953,
+          "log_loss": 0.7347858263846548
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.01307,
+        "log_loss": -2.79399,
+        "brier": -0.08411
+      }
+    },
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "2h",
+      "parquet": "2h_20260423T095820Z.parquet",
+      "before": {
+        "version": "20260423T100600Z",
+        "model_kind": "lightgbm",
+        "n_features_with_news": 49,
+        "metrics": {
+          "auc": 0.5183886036447378,
+          "log_loss": 2.2370661219834287,
+          "brier": 0.31074554759090095,
+          "directional_accuracy": 0.3988950276243094
+        },
+        "directional_call_share": null
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 4345,
+        "n_train": 3476,
+        "n_test": 869,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5174382108544617,
+          "brier": 0.2517163574361837,
+          "log_loss": 0.6968258826071348
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.00095,
+        "log_loss": -1.54024,
+        "brier": -0.05903
+      }
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "2h",
+      "parquet": "2h_20260423T095820Z.parquet",
+      "n_rows_for_coin": 4345,
+      "before": {
+        "version": "20260423T100203Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5183886036447378,
+          "log_loss": 2.2370661219834287,
+          "brier": 0.31074554759090095,
+          "directional_accuracy": 0.3988950276243094
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 4345,
+        "n_train": 3476,
+        "n_test": 869,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5174382108544617,
+          "brier": 0.2517163574361837,
+          "log_loss": 0.6968258826071348
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.00095,
+        "log_loss": -1.54024,
+        "brier": -0.05903
+      }
+    },
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "1h",
+      "parquet": "1h_20260423T103514Z.parquet",
+      "before": {
+        "version": "20260423T104732Z",
+        "model_kind": "lightgbm",
+        "n_features_with_news": 49,
+        "metrics": {
+          "auc": 0.5144289230931042,
+          "log_loss": 2.2320083064782033,
+          "brier": 0.30853969348386223,
+          "directional_accuracy": 0.3927097661623109
+        },
+        "directional_call_share": null
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 8723,
+        "n_train": 6978,
+        "n_test": 1745,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.49410654792919967,
+          "brier": 0.25757055012189756,
+          "log_loss": 0.708712487772242
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.02032,
+        "log_loss": -1.5233,
+        "brier": -0.05097
+      }
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "1h",
+      "parquet": "1h_20260423T103514Z.parquet",
+      "n_rows_for_coin": 8723,
+      "before": {
+        "version": "20260423T104152Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5144289230931042,
+          "log_loss": 2.2320083064782033,
+          "brier": 0.30853969348386223,
+          "directional_accuracy": 0.3927097661623109
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 8723,
+        "n_train": 6978,
+        "n_test": 1745,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.49410654792919967,
+          "brier": 0.25757055012189756,
+          "log_loss": 0.708712487772242
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": -0.02032,
+        "log_loss": -1.5233,
+        "brier": -0.05097
+      }
+    },
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "before": {
+        "version": "20260422T235006Z",
+        "model_kind": "lightgbm",
+        "n_features_with_news": 49,
+        "metrics": {
+          "auc": 0.5196904031404286,
+          "log_loss": 1.7827376083981612,
+          "brier": 0.23944065837033293,
+          "directional_accuracy": 0.48189741870600067
+        },
+        "directional_call_share": null
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 23793,
+        "n_train": 19034,
+        "n_test": 4759,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5817776790906012,
+          "brier": 0.245343812041498,
+          "log_loss": 0.6838402818431882
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.06209,
+        "log_loss": -1.0989,
+        "brier": 0.0059
+      }
+    },
+    {
+      "coin_id": "injective-protocol",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2332,
+      "before": {
+        "version": "20260422T231412Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5432453933634748,
+          "log_loss": 2.6380291177823687,
+          "brier": 0.25590794739799066,
+          "directional_accuracy": 0.5168654173764906
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2332,
+        "n_train": 1865,
+        "n_test": 467,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5911887928777168,
+          "brier": 0.24386619584211014,
+          "log_loss": 0.68198824218311
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.04794,
+        "log_loss": -1.95604,
+        "brier": -0.01204
+      }
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2332,
+      "before": {
+        "version": "20260422T230453Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5409004897268933,
+          "log_loss": 2.956098697145006,
+          "brier": 0.3059291743430278,
+          "directional_accuracy": 0.4735945485519591
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2332,
+        "n_train": 1865,
+        "n_test": 467,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5697952598197396,
+          "brier": 0.26792797355676023,
+          "log_loss": 0.7364655141073047
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.02889,
+        "log_loss": -2.21963,
+        "brier": -0.038
+      }
+    },
+    {
+      "coin_id": "worldcoin-wld",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2332,
+      "before": {
+        "version": "20260422T233735Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5380056472425944,
+          "log_loss": 2.9806630844133037,
+          "brier": 0.27879466481772786,
+          "directional_accuracy": 0.49812606473594545
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2332,
+        "n_train": 1865,
+        "n_test": 467,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5629518961192268,
+          "brier": 0.2551630374172724,
+          "log_loss": 0.7055174853459004
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.02495,
+        "log_loss": -2.27515,
+        "brier": -0.02363
+      }
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2565,
+      "before": {
+        "version": "20260423T084003Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5376510474562194,
+          "log_loss": 2.787263647824397,
+          "brier": 0.3068948196772992,
+          "directional_accuracy": 0.45297297297297295
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2565,
+        "n_train": 2052,
+        "n_test": 513,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.6078627492899246,
+          "brier": 0.24478911900831424,
+          "log_loss": 0.6822969593541399
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.07021,
+        "log_loss": -2.10497,
+        "brier": -0.06211
+      }
+    },
+    {
+      "coin_id": "floki-inu",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2315,
+      "before": {
+        "version": "20260422T230912Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5285805452352704,
+          "log_loss": 2.5677436617372598,
+          "brier": 0.27461768724892677,
+          "directional_accuracy": 0.49301533219761495
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2315,
+        "n_train": 1852,
+        "n_test": 463,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5765460030165912,
+          "brier": 0.24903092964542928,
+          "log_loss": 0.6945703166348572
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.04797,
+        "log_loss": -1.87317,
+        "brier": -0.02559
+      }
+    },
+    {
+      "coin_id": "sei-network",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2398,
+      "before": {
+        "version": "20260422T233249Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5241847719737031,
+          "log_loss": 4.768435979880321,
+          "brier": 0.3541948430614513,
+          "directional_accuracy": 0.41448140900195696
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2398,
+        "n_train": 1918,
+        "n_test": 480,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5437375570394123,
+          "brier": 0.2552668300024726,
+          "log_loss": 0.7051523400121982
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.01955,
+        "log_loss": -4.06328,
+        "brier": -0.09893
+      }
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2332,
+      "before": {
+        "version": "20260422T230028Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5169018074440007,
+          "log_loss": 2.6945794826994955,
+          "brier": 0.26907337711485796,
+          "directional_accuracy": 0.5298126064735944
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2332,
+        "n_train": 1865,
+        "n_test": 467,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.6257066813509544,
+          "brier": 0.23752162736628107,
+          "log_loss": 0.6672650043700514
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.1088,
+        "log_loss": -2.02731,
+        "brier": -0.03155
+      }
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2332,
+      "before": {
+        "version": "20260422T231812Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.507132744161055,
+          "log_loss": 2.963414683054361,
+          "brier": 0.2806490264796363,
+          "directional_accuracy": 0.4971039182282794
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2332,
+        "n_train": 1865,
+        "n_test": 467,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.6169712985392352,
+          "brier": 0.24190186641016712,
+          "log_loss": 0.6770452874881668
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.10984,
+        "log_loss": -2.28637,
+        "brier": -0.03875
+      }
+    },
+    {
+      "coin_id": "pepe",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2523,
+      "before": {
+        "version": "20260422T232304Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5047667633513329,
+          "log_loss": 2.50675631944304,
+          "brier": 0.2883064516007229,
+          "directional_accuracy": 0.47774480712166173
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2523,
+        "n_train": 2018,
+        "n_test": 505,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.6318391562294001,
+          "brier": 0.23908281562099373,
+          "log_loss": 0.6705207113801465
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.12707,
+        "log_loss": -1.83624,
+        "brier": -0.04922
+      }
+    },
+    {
+      "coin_id": "render-token",
+      "timeframe": "1m",
+      "parquet": "1m_20260423T142823Z.parquet",
+      "n_rows_for_coin": 2332,
+      "before": {
+        "version": "20260422T232735Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.4988859376010021,
+          "log_loss": 2.8882461557494565,
+          "brier": 0.27175656459042347,
+          "directional_accuracy": 0.49540034071550254
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 2332,
+        "n_train": 1865,
+        "n_test": 467,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5775487270181644,
+          "brier": 0.2530267842149745,
+          "log_loss": 0.7018527064634281
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.07866,
+        "log_loss": -2.18639,
+        "brier": -0.01873
+      }
+    },
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "5m",
+      "parquet": "5m_20260423T084538Z.parquet",
+      "before": {
+        "version": "20260423T090050Z",
+        "model_kind": "lightgbm",
+        "n_features_with_news": 49,
+        "metrics": {
+          "auc": 0.5180339318493624,
+          "log_loss": 1.917524866154109,
+          "brier": 0.2941030538210704,
+          "directional_accuracy": 0.38720889815780335
+        },
+        "directional_call_share": null
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 17265,
+        "n_train": 13812,
+        "n_test": 3453,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5195908677013328,
+          "brier": 0.251075858833423,
+          "log_loss": 0.6954618140033266
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.00156,
+        "log_loss": -1.22206,
+        "brier": -0.04303
+      }
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "5m",
+      "parquet": "5m_20260423T084538Z.parquet",
+      "n_rows_for_coin": 17265,
+      "before": {
+        "version": "20260423T085321Z",
+        "model_kind": "lightgbm",
+        "metrics": {
+          "auc": 0.5180339318493624,
+          "log_loss": 1.917524866154109,
+          "brier": 0.2941030538210704,
+          "directional_accuracy": 0.38720889815780335
+        }
+      },
+      "after": {
+        "status": "ok",
+        "n_rows": 17265,
+        "n_train": 13812,
+        "n_test": 3453,
+        "n_features_used": 37,
+        "metrics": {
+          "auc": 0.5195908677013328,
+          "brier": 0.251075858833423,
+          "log_loss": 0.6954618140033266
+        }
+      },
+      "delta_after_minus_before": {
+        "auc": 0.00156,
+        "log_loss": -1.22206,
+        "brier": -0.04303
+      }
+    }
+  ]
+}

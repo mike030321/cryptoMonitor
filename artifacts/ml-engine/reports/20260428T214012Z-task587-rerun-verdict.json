@@ -1,0 +1,1102 @@
+{
+  "task": 587,
+  "captured_at": "20260428T214012Z",
+  "round_trip_cost_pct": 0.3,
+  "timeframes_subset": [
+    "6h",
+    "1d"
+  ],
+  "admitted_names": [
+    "atr_pct_zscore_60",
+    "bb_pctb_extreme",
+    "drawdown_30",
+    "ema_spread_per_atr",
+    "macd_signal_cross_strength",
+    "realizedVol_log",
+    "ret1_squared",
+    "ret1_x_volZ60",
+    "ret5_minus_ret10",
+    "rsi14_centered_squared",
+    "vol_of_vol_30"
+  ],
+  "off": {
+    "per_slice": [
+      {
+        "coin": "bonk",
+        "timeframe": "1d",
+        "n_rows": 807,
+        "baseline": {
+          "directional_accuracy": 0.5021008403361344,
+          "n_trades": 592,
+          "trade_share": 0.9817578772802653,
+          "post_fee_pnl_pct_total": -65.63034061125657,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603
+        },
+        "augmented": {
+          "directional_accuracy": 0.5042016806722689,
+          "n_trades": 590,
+          "trade_share": 0.978441127694859,
+          "post_fee_pnl_pct_total": 113.50778436881251,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603
+        },
+        "da_lift": 0.0021008403361344463,
+        "pnl_delta_pct_total": 179.13812498006908,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.5
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "1d",
+        "n_rows": 875,
+        "baseline": {
+          "directional_accuracy": 0.4745098039215686,
+          "n_trades": 628,
+          "trade_share": 0.9602446483180428,
+          "post_fee_pnl_pct_total": -250.62291198750034,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654
+        },
+        "augmented": {
+          "directional_accuracy": 0.42549019607843136,
+          "n_trades": 597,
+          "trade_share": 0.9128440366972477,
+          "post_fee_pnl_pct_total": -321.4072146242791,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654
+        },
+        "da_lift": -0.04901960784313725,
+        "pnl_delta_pct_total": -70.78430263677876,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.64
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "1d",
+        "n_rows": 709,
+        "baseline": {
+          "directional_accuracy": 0.41262135922330095,
+          "n_trades": 509,
+          "trade_share": 0.9585687382297552,
+          "post_fee_pnl_pct_total": -466.4040610400976,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531
+        },
+        "augmented": {
+          "directional_accuracy": 0.42475728155339804,
+          "n_trades": 517,
+          "trade_share": 0.9736346516007532,
+          "post_fee_pnl_pct_total": -334.4145864243495,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531
+        },
+        "da_lift": 0.012135922330097082,
+        "pnl_delta_pct_total": 131.98947461574807,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.33
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "1d",
+        "n_rows": 1065,
+        "baseline": {
+          "directional_accuracy": 0.45695364238410596,
+          "n_trades": 689,
+          "trade_share": 0.8634085213032582,
+          "post_fee_pnl_pct_total": -317.76680807447894,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798
+        },
+        "augmented": {
+          "directional_accuracy": 0.43874172185430466,
+          "n_trades": 667,
+          "trade_share": 0.8358395989974937,
+          "post_fee_pnl_pct_total": -163.91488835214176,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798
+        },
+        "da_lift": -0.018211920529801306,
+        "pnl_delta_pct_total": 153.8519197223372,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.48
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "1d",
+        "n_rows": 846,
+        "baseline": {
+          "directional_accuracy": 0.4518201284796574,
+          "n_trades": 579,
+          "trade_share": 0.9146919431279621,
+          "post_fee_pnl_pct_total": -231.5290793320151,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633
+        },
+        "augmented": {
+          "directional_accuracy": 0.43254817987152033,
+          "n_trades": 588,
+          "trade_share": 0.9289099526066351,
+          "post_fee_pnl_pct_total": -288.77945420727275,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633
+        },
+        "da_lift": -0.01927194860813708,
+        "pnl_delta_pct_total": -57.25037487525765,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.24
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1d",
+        "n_rows": 784,
+        "baseline": {
+          "directional_accuracy": 0.44370860927152317,
+          "n_trades": 547,
+          "trade_share": 0.9302721088435374,
+          "post_fee_pnl_pct_total": -184.15653096778306,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588
+        },
+        "augmented": {
+          "directional_accuracy": 0.44370860927152317,
+          "n_trades": 549,
+          "trade_share": 0.9336734693877551,
+          "post_fee_pnl_pct_total": -229.18798194269544,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588
+        },
+        "da_lift": 0.0,
+        "pnl_delta_pct_total": -45.03145097491239,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.55
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "1d",
+        "n_rows": 1059,
+        "baseline": {
+          "directional_accuracy": 0.4570063694267516,
+          "n_trades": 699,
+          "trade_share": 0.8825757575757576,
+          "post_fee_pnl_pct_total": -389.837169781112,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792
+        },
+        "augmented": {
+          "directional_accuracy": 0.4410828025477707,
+          "n_trades": 671,
+          "trade_share": 0.8472222222222222,
+          "post_fee_pnl_pct_total": -312.52788322328195,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792
+        },
+        "da_lift": -0.015923566878980888,
+        "pnl_delta_pct_total": 77.30928655783003,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.45
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "1d",
+        "n_rows": 618,
+        "baseline": {
+          "directional_accuracy": 0.43768115942028984,
+          "n_trades": 405,
+          "trade_share": 0.8766233766233766,
+          "post_fee_pnl_pct_total": -159.13790918511083,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462
+        },
+        "augmented": {
+          "directional_accuracy": 0.45217391304347826,
+          "n_trades": 421,
+          "trade_share": 0.9112554112554112,
+          "post_fee_pnl_pct_total": -196.480421471544,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462
+        },
+        "da_lift": 0.014492753623188415,
+        "pnl_delta_pct_total": -37.34251228643316,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.4
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "1d",
+        "n_rows": 126,
+        "skipped_reason": "fewer than 200 rows",
+        "gate_pass": false
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "1d",
+        "n_rows": 975,
+        "baseline": {
+          "directional_accuracy": 0.4629294755877034,
+          "n_trades": 671,
+          "trade_share": 0.9204389574759945,
+          "post_fee_pnl_pct_total": -169.31130572502167,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729
+        },
+        "augmented": {
+          "directional_accuracy": 0.4394213381555154,
+          "n_trades": 647,
+          "trade_share": 0.887517146776406,
+          "post_fee_pnl_pct_total": -191.51300174270062,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729
+        },
+        "da_lift": -0.023508137432188048,
+        "pnl_delta_pct_total": -22.201696017678955,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.42
+      },
+      {
+        "coin": "bonk",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.45280898876404496,
+          "n_trades": 1046,
+          "trade_share": 0.9961904761904762,
+          "post_fee_pnl_pct_total": -307.0323322982466,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4617977528089887,
+          "n_trades": 1043,
+          "trade_share": 0.9933333333333333,
+          "post_fee_pnl_pct_total": -332.113066184667,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.008988764044943753,
+        "pnl_delta_pct_total": -25.080733886420376,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.77
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.40558659217877097,
+          "n_trades": 913,
+          "trade_share": 0.8695238095238095,
+          "post_fee_pnl_pct_total": -214.95921714940556,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4223463687150838,
+          "n_trades": 971,
+          "trade_share": 0.9247619047619048,
+          "post_fee_pnl_pct_total": -196.3822992166127,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.01675977653631283,
+        "pnl_delta_pct_total": 18.576917932792867,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 8.21
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4634420697412823,
+          "n_trades": 1046,
+          "trade_share": 0.9961904761904762,
+          "post_fee_pnl_pct_total": -269.47148594837364,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.46569178852643417,
+          "n_trades": 1050,
+          "trade_share": 1.0,
+          "post_fee_pnl_pct_total": -304.96448348200227,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.002249718785151844,
+        "pnl_delta_pct_total": -35.492997533628625,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.88
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4531791907514451,
+          "n_trades": 1024,
+          "trade_share": 0.9752380952380952,
+          "post_fee_pnl_pct_total": -208.1043322313741,
+          "n_dir_truth_rows": 865,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4300578034682081,
+          "n_trades": 989,
+          "trade_share": 0.9419047619047619,
+          "post_fee_pnl_pct_total": -256.55539986789245,
+          "n_dir_truth_rows": 865,
+          "n_test_rows": 1050
+        },
+        "da_lift": -0.023121387283236983,
+        "pnl_delta_pct_total": -48.45106763651836,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.94
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4552661381653454,
+          "n_trades": 1028,
+          "trade_share": 0.979047619047619,
+          "post_fee_pnl_pct_total": -414.42729011647225,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.46885617214043035,
+          "n_trades": 1039,
+          "trade_share": 0.9895238095238095,
+          "post_fee_pnl_pct_total": -288.6147054262102,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.013590033975084959,
+        "pnl_delta_pct_total": 125.81258469026204,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.89
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4385150812064965,
+          "n_trades": 968,
+          "trade_share": 0.9219047619047619,
+          "post_fee_pnl_pct_total": -278.70316844443187,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.43039443155452434,
+          "n_trades": 1002,
+          "trade_share": 0.9542857142857143,
+          "post_fee_pnl_pct_total": -363.6810017890541,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050
+        },
+        "da_lift": -0.008120649651972178,
+        "pnl_delta_pct_total": -84.97783334462224,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.93
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.45714285714285713,
+          "n_trades": 989,
+          "trade_share": 0.9419047619047619,
+          "post_fee_pnl_pct_total": -303.59193685851903,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4605714285714286,
+          "n_trades": 1019,
+          "trade_share": 0.9704761904761905,
+          "post_fee_pnl_pct_total": -322.1683658719936,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.0034285714285714475,
+        "pnl_delta_pct_total": -18.57642901347458,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.94
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4954648526077097,
+          "n_trades": 1006,
+          "trade_share": 0.9580952380952381,
+          "post_fee_pnl_pct_total": -314.7484450526245,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.5022675736961452,
+          "n_trades": 1013,
+          "trade_share": 0.9647619047619047,
+          "post_fee_pnl_pct_total": -215.96608738964318,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.006802721088435437,
+        "pnl_delta_pct_total": 98.78235766298133,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.95
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "6h",
+        "n_rows": 603,
+        "baseline": {
+          "directional_accuracy": 0.5230352303523035,
+          "n_trades": 423,
+          "trade_share": 0.94,
+          "post_fee_pnl_pct_total": -126.26802201127676,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450
+        },
+        "augmented": {
+          "directional_accuracy": 0.47696476964769646,
+          "n_trades": 403,
+          "trade_share": 0.8955555555555555,
+          "post_fee_pnl_pct_total": -116.04200069176052,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450
+        },
+        "da_lift": -0.04607046070460702,
+        "pnl_delta_pct_total": 10.226021319516235,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.46
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.40656851642129105,
+          "n_trades": 873,
+          "trade_share": 0.8314285714285714,
+          "post_fee_pnl_pct_total": -251.25227936150816,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4292185730464326,
+          "n_trades": 943,
+          "trade_share": 0.8980952380952381,
+          "post_fee_pnl_pct_total": -337.7427225730678,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.02265005662514158,
+        "pnl_delta_pct_total": -86.49044321155964,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "elapsed_sec": 7.88
+      }
+    ],
+    "any_slice_passes_gate": false,
+    "passing_slices": [],
+    "calibration_enabled": false,
+    "admitted_names": [
+      "atr_pct_zscore_60",
+      "bb_pctb_extreme",
+      "drawdown_30",
+      "ema_spread_per_atr",
+      "macd_signal_cross_strength",
+      "realizedVol_log",
+      "ret1_squared",
+      "ret1_x_volZ60",
+      "ret5_minus_ret10",
+      "rsi14_centered_squared",
+      "vol_of_vol_30"
+    ]
+  },
+  "on": {
+    "per_slice": [
+      {
+        "coin": "bonk",
+        "timeframe": "1d",
+        "n_rows": 807,
+        "baseline": {
+          "directional_accuracy": 0.3592436974789916,
+          "n_trades": 428,
+          "trade_share": 0.7097844112769486,
+          "post_fee_pnl_pct_total": 93.56825470682273,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603
+        },
+        "augmented": {
+          "directional_accuracy": 0.36134453781512604,
+          "n_trades": 420,
+          "trade_share": 0.6965174129353234,
+          "post_fee_pnl_pct_total": 70.15928523325763,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603
+        },
+        "da_lift": 0.0021008403361344463,
+        "pnl_delta_pct_total": -23.408969473565094,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.2399458460928441,
+        "elapsed_sec": 14.5
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "1d",
+        "n_rows": 875,
+        "baseline": {
+          "directional_accuracy": 0.396078431372549,
+          "n_trades": 539,
+          "trade_share": 0.8241590214067278,
+          "post_fee_pnl_pct_total": -233.1256301309689,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654
+        },
+        "augmented": {
+          "directional_accuracy": 0.37254901960784315,
+          "n_trades": 511,
+          "trade_share": 0.7813455657492355,
+          "post_fee_pnl_pct_total": -226.54878430180395,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654
+        },
+        "da_lift": -0.023529411764705854,
+        "pnl_delta_pct_total": 6.576845829164938,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.20858924314450453,
+        "elapsed_sec": 14.49
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "1d",
+        "n_rows": 709,
+        "baseline": {
+          "directional_accuracy": 0.33980582524271846,
+          "n_trades": 424,
+          "trade_share": 0.7984934086629002,
+          "post_fee_pnl_pct_total": -356.030066776425,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531
+        },
+        "augmented": {
+          "directional_accuracy": 0.3276699029126214,
+          "n_trades": 409,
+          "trade_share": 0.7702448210922788,
+          "post_fee_pnl_pct_total": -417.3595543607921,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531
+        },
+        "da_lift": -0.012135922330097082,
+        "pnl_delta_pct_total": -61.32948758436714,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.2611012135221706,
+        "mean_neutral_band_delta_aug": 0.21970965482952223,
+        "elapsed_sec": 14.43
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "1d",
+        "n_rows": 1065,
+        "baseline": {
+          "directional_accuracy": 0.33112582781456956,
+          "n_trades": 520,
+          "trade_share": 0.6516290726817042,
+          "post_fee_pnl_pct_total": -238.89504069335203,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798
+        },
+        "augmented": {
+          "directional_accuracy": 0.3658940397350993,
+          "n_trades": 570,
+          "trade_share": 0.7142857142857143,
+          "post_fee_pnl_pct_total": -39.1854859676233,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798
+        },
+        "da_lift": 0.03476821192052976,
+        "pnl_delta_pct_total": 199.70955472572874,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.058471703857392344,
+        "elapsed_sec": 15.3
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "1d",
+        "n_rows": 846,
+        "baseline": {
+          "directional_accuracy": 0.33832976445396146,
+          "n_trades": 450,
+          "trade_share": 0.7109004739336493,
+          "post_fee_pnl_pct_total": -204.07867796885714,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633
+        },
+        "augmented": {
+          "directional_accuracy": 0.3683083511777302,
+          "n_trades": 477,
+          "trade_share": 0.7535545023696683,
+          "post_fee_pnl_pct_total": -184.46448624853804,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633
+        },
+        "da_lift": 0.02997858672376874,
+        "pnl_delta_pct_total": 19.6141917203191,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.17926133227170285,
+        "elapsed_sec": 14.5
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1d",
+        "n_rows": 784,
+        "baseline": {
+          "directional_accuracy": 0.3973509933774834,
+          "n_trades": 487,
+          "trade_share": 0.8282312925170068,
+          "post_fee_pnl_pct_total": -121.04032017123936,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588
+        },
+        "augmented": {
+          "directional_accuracy": 0.3730684326710817,
+          "n_trades": 471,
+          "trade_share": 0.8010204081632653,
+          "post_fee_pnl_pct_total": -176.44273724783255,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588
+        },
+        "da_lift": -0.024282560706401723,
+        "pnl_delta_pct_total": -55.402417076593196,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.14744817514272154,
+        "elapsed_sec": 14.25
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "1d",
+        "n_rows": 1059,
+        "baseline": {
+          "directional_accuracy": 0.37738853503184716,
+          "n_trades": 550,
+          "trade_share": 0.6944444444444444,
+          "post_fee_pnl_pct_total": -339.65362798100864,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792
+        },
+        "augmented": {
+          "directional_accuracy": 0.30254777070063693,
+          "n_trades": 470,
+          "trade_share": 0.5934343434343434,
+          "post_fee_pnl_pct_total": -219.26781166159066,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792
+        },
+        "da_lift": -0.07484076433121023,
+        "pnl_delta_pct_total": 120.38581631941798,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.2771651692221451,
+        "mean_neutral_band_delta_aug": 0.1302464596594699,
+        "elapsed_sec": 15.5
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "1d",
+        "n_rows": 618,
+        "baseline": {
+          "directional_accuracy": 0.336231884057971,
+          "n_trades": 296,
+          "trade_share": 0.6406926406926406,
+          "post_fee_pnl_pct_total": 2.852580291936235,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462
+        },
+        "augmented": {
+          "directional_accuracy": 0.2753623188405797,
+          "n_trades": 262,
+          "trade_share": 0.5670995670995671,
+          "post_fee_pnl_pct_total": -99.72703754149558,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462
+        },
+        "da_lift": -0.060869565217391286,
+        "pnl_delta_pct_total": -102.57961783343181,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.24253597072397234,
+        "elapsed_sec": 13.83
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "1d",
+        "n_rows": 126,
+        "skipped_reason": "fewer than 200 rows",
+        "gate_pass": false
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "1d",
+        "n_rows": 975,
+        "baseline": {
+          "directional_accuracy": 0.31464737793851716,
+          "n_trades": 466,
+          "trade_share": 0.6392318244170097,
+          "post_fee_pnl_pct_total": -276.3844646539852,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729
+        },
+        "augmented": {
+          "directional_accuracy": 0.3074141048824593,
+          "n_trades": 493,
+          "trade_share": 0.6762688614540466,
+          "post_fee_pnl_pct_total": -390.65663823454037,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729
+        },
+        "da_lift": -0.007233273056057865,
+        "pnl_delta_pct_total": -114.27217358055515,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.1058771005523114,
+        "elapsed_sec": 14.71
+      },
+      {
+        "coin": "bonk",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.24943820224719102,
+          "n_trades": 592,
+          "trade_share": 0.5638095238095238,
+          "post_fee_pnl_pct_total": -129.2723443704419,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.2550561797752809,
+          "n_trades": 609,
+          "trade_share": 0.58,
+          "post_fee_pnl_pct_total": -190.42645885654534,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.005617977528089874,
+        "pnl_delta_pct_total": -61.154114486103424,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.2656628206489038,
+        "elapsed_sec": 16.0
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.3027932960893855,
+          "n_trades": 722,
+          "trade_share": 0.6876190476190476,
+          "post_fee_pnl_pct_total": -270.8986254304574,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.3016759776536313,
+          "n_trades": 713,
+          "trade_share": 0.679047619047619,
+          "post_fee_pnl_pct_total": -365.6434067251697,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050
+        },
+        "da_lift": -0.0011173184357541888,
+        "pnl_delta_pct_total": -94.74478129471231,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.254986364160591,
+        "mean_neutral_band_delta_aug": 0.24636936991173627,
+        "elapsed_sec": 16.17
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.35095613048368957,
+          "n_trades": 817,
+          "trade_share": 0.7780952380952381,
+          "post_fee_pnl_pct_total": -250.7453303592243,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.35095613048368957,
+          "n_trades": 821,
+          "trade_share": 0.7819047619047619,
+          "post_fee_pnl_pct_total": -224.08078958745256,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.0,
+        "pnl_delta_pct_total": 26.664540771771755,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.2832530342985174,
+        "elapsed_sec": 16.47
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.31445086705202313,
+          "n_trades": 690,
+          "trade_share": 0.6571428571428571,
+          "post_fee_pnl_pct_total": -202.81957451370533,
+          "n_dir_truth_rows": 865,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.27630057803468205,
+          "n_trades": 578,
+          "trade_share": 0.5504761904761905,
+          "post_fee_pnl_pct_total": -134.8350301840108,
+          "n_dir_truth_rows": 865,
+          "n_test_rows": 1050
+        },
+        "da_lift": -0.03815028901734108,
+        "pnl_delta_pct_total": 67.98454432969453,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25107096771417914,
+        "mean_neutral_band_delta_aug": 0.2685190027612203,
+        "elapsed_sec": 16.36
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.32842582106455265,
+          "n_trades": 745,
+          "trade_share": 0.7095238095238096,
+          "post_fee_pnl_pct_total": -282.41720041688234,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.3578708946772367,
+          "n_trades": 810,
+          "trade_share": 0.7714285714285715,
+          "post_fee_pnl_pct_total": -293.9904296746586,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.02944507361268406,
+        "pnl_delta_pct_total": -11.57322925777629,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.35373959872448424,
+        "elapsed_sec": 16.35
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.33410672853828305,
+          "n_trades": 739,
+          "trade_share": 0.7038095238095238,
+          "post_fee_pnl_pct_total": -149.44793649991266,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.3642691415313225,
+          "n_trades": 776,
+          "trade_share": 0.7390476190476191,
+          "post_fee_pnl_pct_total": -165.91016177835755,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.030162412993039456,
+        "pnl_delta_pct_total": -16.46222527844489,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.19737373606361222,
+        "elapsed_sec": 16.31
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.3737142857142857,
+          "n_trades": 835,
+          "trade_share": 0.7952380952380952,
+          "post_fee_pnl_pct_total": -261.1394155562584,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.40114285714285713,
+          "n_trades": 900,
+          "trade_share": 0.8571428571428571,
+          "post_fee_pnl_pct_total": -262.80539917512203,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.027428571428571413,
+        "pnl_delta_pct_total": -1.6659836188636064,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.2751854372330795,
+        "elapsed_sec": 16.32
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.30272108843537415,
+          "n_trades": 672,
+          "trade_share": 0.64,
+          "post_fee_pnl_pct_total": -208.33220265280292,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.30385487528344673,
+          "n_trades": 635,
+          "trade_share": 0.6047619047619047,
+          "post_fee_pnl_pct_total": -147.56202916867733,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.0011337868480725821,
+        "pnl_delta_pct_total": 60.77017348412559,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.27260295307404664,
+        "mean_neutral_band_delta_aug": 0.20604300074139226,
+        "elapsed_sec": 16.2
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "6h",
+        "n_rows": 603,
+        "baseline": {
+          "directional_accuracy": 0.27100271002710025,
+          "n_trades": 241,
+          "trade_share": 0.5355555555555556,
+          "post_fee_pnl_pct_total": -88.4018653680848,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450
+        },
+        "augmented": {
+          "directional_accuracy": 0.23848238482384823,
+          "n_trades": 235,
+          "trade_share": 0.5222222222222223,
+          "post_fee_pnl_pct_total": -90.35814593877126,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450
+        },
+        "da_lift": -0.032520325203252015,
+        "pnl_delta_pct_total": -1.9562805706864594,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.17727890004160507,
+        "elapsed_sec": 14.58
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.23442808607021517,
+          "n_trades": 541,
+          "trade_share": 0.5152380952380953,
+          "post_fee_pnl_pct_total": -211.29203929668327,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.31370328425821065,
+          "n_trades": 709,
+          "trade_share": 0.6752380952380952,
+          "post_fee_pnl_pct_total": -174.27376724025993,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.07927519818799547,
+        "pnl_delta_pct_total": 37.01827205642334,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.2196785461825723,
+        "elapsed_sec": 16.21
+      }
+    ],
+    "any_slice_passes_gate": false,
+    "passing_slices": [],
+    "calibration_enabled": true,
+    "admitted_names": [
+      "atr_pct_zscore_60",
+      "bb_pctb_extreme",
+      "drawdown_30",
+      "ema_spread_per_atr",
+      "macd_signal_cross_strength",
+      "realizedVol_log",
+      "ret1_squared",
+      "ret1_x_volZ60",
+      "ret5_minus_ret10",
+      "rsi14_centered_squared",
+      "vol_of_vol_30"
+    ]
+  }
+}

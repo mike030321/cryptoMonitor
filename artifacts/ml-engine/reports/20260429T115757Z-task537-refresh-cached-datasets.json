@@ -1,0 +1,336 @@
+{
+  "task": 537,
+  "generated_at": "20260429T115757Z",
+  "version_stamp": "20260429T115753Z",
+  "timeframes": [
+    "6h",
+    "1d"
+  ],
+  "coin_ids": [
+    "pepe",
+    "bonk",
+    "floki-inu",
+    "dogwifcoin",
+    "render-token",
+    "injective-protocol",
+    "celestia",
+    "worldcoin-wld",
+    "jupiter-exchange-solana",
+    "sei-network"
+  ],
+  "results": [
+    {
+      "timeframe": "6h",
+      "status": "ok",
+      "elapsed_s": 2.01,
+      "lookback_days": 365,
+      "coin_ids_requested": [
+        "pepe",
+        "bonk",
+        "floki-inu",
+        "dogwifcoin",
+        "render-token",
+        "injective-protocol",
+        "celestia",
+        "worldcoin-wld",
+        "jupiter-exchange-solana",
+        "sei-network"
+      ],
+      "coins_emitted": [
+        "bonk",
+        "celestia",
+        "dogwifcoin",
+        "floki-inu",
+        "injective-protocol",
+        "jupiter-exchange-solana",
+        "pepe",
+        "render-token",
+        "sei-network",
+        "worldcoin-wld"
+      ],
+      "n_rows": 13176,
+      "n_columns": 62,
+      "has_volZScore60": true,
+      "output_path": "models/datasets/6h_20260429T115753Z.parquet",
+      "provenance": {
+        "pepe": {
+          "rows_real": 14978,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "bonk": {
+          "rows_real": 14978,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "floki-inu": {
+          "rows_real": 13958,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "dogwifcoin": {
+          "rows_real": 14253,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "render-token": {
+          "rows_real": 14253,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "injective-protocol": {
+          "rows_real": 14253,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "celestia": {
+          "rows_real": 14252,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "worldcoin-wld": {
+          "rows_real": 14252,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "jupiter-exchange-solana": {
+          "rows_real": 14252,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1397
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "sei-network": {
+          "rows_real": 13815,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 603
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        }
+      }
+    },
+    {
+      "timeframe": "1d",
+      "status": "ok",
+      "elapsed_s": 1.5,
+      "lookback_days": 1100,
+      "coin_ids_requested": [
+        "pepe",
+        "bonk",
+        "floki-inu",
+        "dogwifcoin",
+        "render-token",
+        "injective-protocol",
+        "celestia",
+        "worldcoin-wld",
+        "jupiter-exchange-solana",
+        "sei-network"
+      ],
+      "coins_emitted": [
+        "bonk",
+        "celestia",
+        "dogwifcoin",
+        "floki-inu",
+        "injective-protocol",
+        "jupiter-exchange-solana",
+        "pepe",
+        "render-token",
+        "sei-network",
+        "worldcoin-wld"
+      ],
+      "n_rows": 7872,
+      "n_columns": 62,
+      "has_volZScore60": true,
+      "output_path": "models/datasets/1d_20260429T115753Z.parquet",
+      "provenance": {
+        "pepe": {
+          "rows_real": 15067,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 1060
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "bonk": {
+          "rows_real": 15067,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 808
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "floki-inu": {
+          "rows_real": 14047,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 1065
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "dogwifcoin": {
+          "rows_real": 14342,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 710
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "render-token": {
+          "rows_real": 14342,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 619
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "injective-protocol": {
+          "rows_real": 14342,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 847
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "celestia": {
+          "rows_real": 14341,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 876
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "worldcoin-wld": {
+          "rows_real": 14341,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 976
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "jupiter-exchange-solana": {
+          "rows_real": 14341,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 785
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "sei-network": {
+          "rows_real": 13822,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 86400000,
+          "bars_by_native_cadence": {
+            "candles:86400000ms": 126
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        }
+      }
+    }
+  ],
+  "elapsed_s_total": 4.4
+}

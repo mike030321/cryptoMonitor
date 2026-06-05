@@ -1,0 +1,212 @@
+I want a full-system audit and correction pass of this entire app. Treat this as a deep technical investigation and cleanup, not a quick code review.
+
+Primary goal:
+Find, prove, and fix everything that can break correctness, reliability, training quality, quant logic, agent behavior, dashboard truthfulness, API behavior, data integrity, and deployment safety. I strongly suspect old files, stale code paths, deprecated engines, duplicate logic, and orphaned modules still exist from previous versions. I want those identified and either removed, quarantined, or explicitly marked as legacy.
+
+Rules:
+1. Do not give me a superficial summary.
+2. Do not stop at lint/test pass.
+3. Do not only audit “new” code — audit the whole repo and all active code paths.
+4. Do not preserve dead code just because it might be useful later. Flag it clearly and recommend deletion/quarantine.
+5. Do not assume old files are harmless. Prove whether they are used, unused, shadowing imports, or causing drift.
+6. For every issue found, classify:
+   - severity
+   - impact
+   - evidence
+   - exact file(s)
+   - exact fix
+   - regression risk
+7. Fix what is safe to fix immediately.
+8. For risky changes, prepare a patch plan with dependency order and rollback notes.
+9. Produce a final audit report and a cleanup report.
+10. Prefer truth over optimism. If something is broken, say it clearly.
+
+Scope:
+Audit every layer of the app:
+
+A. Repository / architecture audit
+- Map the full repo structure.
+- Identify active apps, services, packages, workers, scripts, cron jobs, background processes, admin utilities, dashboards, and training flows.
+- Detect duplicate implementations of the same concept.
+- Detect abandoned versions of engines, training code, API routes, data schemas, UI pages, scripts, feature flags, and legacy experiments.
+- Detect stale files that are no longer referenced but still present.
+- Detect shadowed imports, duplicate helpers, duplicate constants, and version drift between modules.
+- Build a dependency map showing what is actually used in runtime vs what is legacy.
+- Identify dead files and dead directories with proof.
+
+B. Data layer audit
+- Audit all storage tables, schemas, migrations, ORM/query code, and ingestion writers.
+- Prove that each timeframe reads from the intended source:
+  - 1m -> price_history
+  - 5m/1h/2h/6h/1d -> price_candles
+- Check for gaps, duplicates, mixed cadence contamination, fallback behavior, stale resampler logic, bad source stamps, wrong timestamps, timezone issues, and invalid upserts.
+- Verify idempotency of backfills and candle writers.
+- Check ON CONFLICT behavior carefully.
+- Confirm all active coins are covered correctly.
+- Detect any old tables or old ingestion code still being used accidentally.
+- Verify all dashboards/training/backtests use the same canonical data sources.
+
+C. Quant / ML training audit
+- Audit the entire training pipeline end-to-end.
+- Confirm how datasets are built, filtered, labeled, split, weighted, calibrated, saved, and evaluated.
+- Audit label generation logic across all timeframes and per-coin variants.
+- Check for leakage, train/holdout contamination, lookahead bias, wrong feature windows, target leakage, broken calibration, unstable thresholds, class imbalance issues, prediction collapse, and stale manifests.
+- Verify walk-forward logic and whether validation truly matches crypto regime dynamics.
+- Audit pooled models vs per-coin models vs specialist models.
+- Audit feature generation, feature selection, feature stability, and feature drift handling.
+- Verify report.json generation, manifest saving, verification_history writing, failure-analysis generation, and model registry correctness.
+- Investigate any silent crash or incomplete write path.
+- Confirm that one full retrain completes successfully and writes all expected artifacts.
+- Verify that per-coin retrain really trains only the requested slices.
+- Check for excessive memory use, process death, missing logs, swallowed exceptions, and silent native crashes.
+
+D. Quant decision logic audit
+- Audit the full decision path from model output to trade/no-trade.
+- Prove whether live inference and backtest use the exact same logic.
+- Compare:
+  - expected return logic
+  - directional logic
+  - stable/up/down handling
+  - confidence logic
+  - abstain logic
+  - threshold logic
+  - fee/slippage logic
+  - TP/SL logic
+  - risk gating
+  - anomaly handling
+- Identify any parity mismatch between live engine, backtest, watchdog, verification, dashboard summaries, and report generation.
+- Verify post-fee PnL logic is consistent everywhere.
+- Audit whether “good” metrics actually translate to tradeable edge.
+
+E. Trading / execution audit
+- Audit sizing, entry, exit, stop loss, take profit, anomaly cancel, refund logic, balance accounting, fee accounting, and portfolio constraints.
+- Check if cancelled or invalid trades leave phantom losses or phantom profits.
+- Verify daily limits, drawdown limits, consecutive loss logic, regime gates, and disable gates.
+- Audit exposure controls, coin selection logic, and capital allocation logic.
+- Confirm no accounting bugs exist between gross, fees, and net.
+
+F. Agent / workflow / automation audit
+- Audit all agent workflows, background jobs, training triggers, admin buttons, cron flows, queue consumers, and orchestration code.
+- Detect race conditions between retrains, backfills, writes, report generation, dashboard refreshes, and verification jobs.
+- Check if multiple workflows can mutate the same outputs.
+- Verify no hidden automation is retraining, overwriting manifests, or mixing artifacts unexpectedly.
+- Audit retry logic, timeout logic, cancellation behavior, and lock/guard mechanisms.
+
+G. API / backend audit
+- Audit all routes, controllers, handlers, proxy routes, admin endpoints, and internal service calls.
+- Identify legacy routes, hidden endpoints, broken routes, duplicate routes, stale proxy behavior, weak validation, and inconsistent response shapes.
+- Verify the dashboard-facing routes match the underlying ml-engine outputs exactly.
+- Confirm per-coin retrain, verification-history, failure-analysis, diagnostics, and report routes are all correct and stable.
+- Check auth assumptions and unintended unauthenticated surfaces.
+- Flag anything unsafe or misleading.
+
+H. Frontend / dashboard audit
+- Audit the whole UI for truthfulness, stale state, wrong sorting, wrong columns, broken cards, wrong labels, old components still mounted, and mismatched metric definitions.
+- Verify diagnostics page values exactly match backend/report outputs.
+- Check:
+  - per-class accuracy
+  - post-fee PnL
+  - collapse chip
+  - verification history
+  - failure analysis
+  - calibration views
+  - training contract card
+  - any quant/brain summary cards
+- Detect obsolete components from older versions.
+- Confirm empty/error states are correct and non-misleading.
+- Confirm the UI does not display stale or mixed artifacts.
+
+I. Legacy engine / stale file audit
+This is a major priority.
+I strongly suspect old engines, duplicate training code, old files, and stale modules still exist.
+Do a hard audit for:
+- unused engine versions
+- old training scripts
+- obsolete backtest logic
+- duplicate data pipelines
+- dead manifest readers
+- old report generators
+- stale dashboard components
+- orphaned tests
+- duplicate constants/config
+- abandoned experimental folders
+- outdated routes still importable
+- files no longer referenced but still present
+For every suspected legacy file:
+- prove whether it is used or unused
+- show import/reference chain
+- recommend: keep / quarantine / delete
+- if deleting is risky, move to explicit legacy/ archive with documentation
+
+J. Config / environment audit
+- Audit all env vars, config files, feature flags, JSON configs, package scripts, and deployment config.
+- Detect unused config, conflicting config, missing defaults, stale flags, and runtime mismatch between environments.
+- Verify that quant settings, friction settings, thresholds, monitored coin lists, and cadence settings are all canonical and not duplicated.
+- Flag config drift immediately.
+
+K. Tests / correctness audit
+- Audit existing test coverage.
+- Find missing tests for critical paths.
+- Identify tests that are shallow, stale, misleading, or testing old code.
+- Add or propose high-value tests for:
+  - decision parity
+  - candle source correctness
+  - per-coin retrain correctness
+  - report generation correctness
+  - failure-analysis generation
+  - anomaly refund logic
+  - backtest/live parity
+  - dashboard metric mapping
+  - idempotent candle insert
+  - stale file detection where practical
+- Run the relevant tests and add focused new tests where gaps are dangerous.
+
+L. Performance / stability audit
+- Audit slow paths, memory-heavy paths, redundant full-repo scans, repeated JSON loads, repeated DB fetches, and training bottlenecks.
+- Find where 4–5 hour retrains can be reduced safely.
+- Identify any synchronous blocking steps that should be separated.
+- Audit logs for missing timing, missing status boundaries, or swallowed failure states.
+- Propose stability fixes before performance hacks.
+
+M. Security / safety / ops audit
+- Audit admin endpoints, internal-only routes, exposed diagnostics, secrets handling, logging of sensitive values, and write paths.
+- Check for unsafe defaults, accidental public routes, weak input validation, and insufficient operational guardrails.
+- Flag anything that could corrupt models, corrupt data, or expose internal admin actions.
+
+Deliverables required:
+1. Full audit report in Markdown.
+2. Repo map with active vs legacy modules.
+3. Issue list with:
+   - title
+   - severity
+   - layer
+   - evidence
+   - affected files
+   - recommended fix
+4. Dead/stale file report.
+5. Safe immediate fixes applied.
+6. Risky fixes proposed with ordered plan.
+7. Regression test list added or proposed.
+8. Final “system truth” summary:
+   - what is correct
+   - what is broken
+   - what is misleading
+   - what is legacy
+   - what should be deleted
+   - what should be trained only after fixes
+9. If you find old engines or stale modules still present, do not ignore them. Call them out explicitly and recommend removal/quarantine.
+
+Execution order:
+Phase 1: discovery + repo map + active/legacy separation
+Phase 2: data + training + decision parity audit
+Phase 3: API + dashboard + agent/workflow audit
+Phase 4: safe corrections
+Phase 5: risky corrections plan
+Phase 6: final report
+
+Important:
+- Do not start a major full retrain until the audit confirms the system is trustworthy enough.
+- If you find backtest/live mismatch, stale engine usage, mixed data sources, or dead code shadowing active code, prioritize fixing that before more training.
+- If you find duplicate old files from previous engines, surface them clearly and recommend deletion/quarantine.
+- Be aggressive about identifying truth vs legacy.
+- I prefer a brutally honest audit over a polite incomplete one.

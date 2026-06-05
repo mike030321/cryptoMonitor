@@ -1,0 +1,492 @@
+{
+  "generated_at": "2026-04-30T02:16:44.240990+00:00",
+  "source_report_generated_at": "2026-04-30T01:13:57.654936+00:00",
+  "gate_constants": {
+    "MIN_HOLDOUT_ROWS": 200,
+    "MIN_DIRECTIONAL_ACCURACY": 0.5,
+    "MIN_DIRECTIONAL_ACCURACY_PER_TF": {
+      "1d": 0.53
+    },
+    "DIRECTIONAL_SHARE_TRADEABLE_TIMEFRAMES": [
+      "1d",
+      "1h",
+      "2h",
+      "5m",
+      "6h"
+    ],
+    "CALIBRATION_BROKEN_RELIABILITY_DEV": 0.1,
+    "PREDICTION_COLLAPSE_GAP": 0.15,
+    "PREDICTION_COLLAPSE_TOP_SHARE": 0.85
+  },
+  "bucket_counts": {
+    "promoted": 0,
+    "promoted_baseline_served": 0,
+    "salvageable_with_schema_fix": 0,
+    "insufficient_sample": 7,
+    "structurally_noisy_retire": 2,
+    "salvageable_with_better_features_or_labels": 1,
+    "unknown": 0
+  },
+  "slices": [
+    {
+      "coin_id": "bonk",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "holdout 162 < MIN_HOLDOUT_ROWS=200",
+      "n_holdout": 162,
+      "directional_accuracy": 0.4313432835820895,
+      "baseline_directional_accuracy": 0.41044776119402987,
+      "brier": 0.3145708582401356,
+      "baseline_brier": 0.2186646503113982,
+      "collapse_gap": 0.2963,
+      "predicted_top_class_share": 0.7222,
+      "label_top_class_share": 0.4259,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.651,
+        "STABLE": 0.1965,
+        "UP": 0.4977
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 69,
+          "accuracy": 0.2754
+        },
+        "STABLE": {
+          "n": 42,
+          "accuracy": 0.0238
+        },
+        "UP": {
+          "n": 51,
+          "accuracy": 0.7647
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 143,
+        "net_pct_mean": -0.0796,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.4615
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0185
+      }
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "holdout 176 < MIN_HOLDOUT_ROWS=200",
+      "n_holdout": 176,
+      "directional_accuracy": 0.3876712328767123,
+      "baseline_directional_accuracy": 0.4013698630136986,
+      "brier": 0.34552165225749737,
+      "baseline_brier": 0.2321436322951424,
+      "collapse_gap": 0.375,
+      "predicted_top_class_share": 0.8182,
+      "label_top_class_share": 0.4432,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.1589,
+        "STABLE": 0.0998,
+        "UP": 0.6599
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 78,
+          "accuracy": 0.8333
+        },
+        "STABLE": {
+          "n": 40,
+          "accuracy": 0.05
+        },
+        "UP": {
+          "n": 58,
+          "accuracy": 0.1724
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 152,
+        "net_pct_mean": 0.3691,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.5329
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.017
+      }
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "holdout 142 < MIN_HOLDOUT_ROWS=200",
+      "n_holdout": 142,
+      "directional_accuracy": 0.3627118644067796,
+      "baseline_directional_accuracy": 0.3508474576271186,
+      "brier": 0.3536188309370246,
+      "baseline_brier": 0.24157139083968246,
+      "collapse_gap": 0.2605,
+      "predicted_top_class_share": 0.6901,
+      "label_top_class_share": 0.4296,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.1851,
+        "STABLE": 0.3435,
+        "UP": 0.4043
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 61,
+          "accuracy": 0.1803
+        },
+        "STABLE": {
+          "n": 43,
+          "accuracy": 0.1163
+        },
+        "UP": {
+          "n": 38,
+          "accuracy": 0.6053
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 104,
+        "net_pct_mean": -0.2583,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.4038
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.007
+      }
+    },
+    {
+      "coin_id": "floki-inu",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "structurally_noisy_retire",
+      "bucket_reason": "calibration_broken=True (max reliability deviation 0.625 >= 0.1); prediction_collapse=True (collapse_gap=0.1596, predicted_top_class_share=0.5587)",
+      "n_holdout": 213,
+      "directional_accuracy": 0.35141242937853107,
+      "baseline_directional_accuracy": 0.37966101694915255,
+      "brier": 0.34659493181776035,
+      "baseline_brier": 0.22054174526482723,
+      "collapse_gap": 0.1596,
+      "predicted_top_class_share": 0.5587,
+      "label_top_class_share": 0.3991,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.2009,
+        "STABLE": 0.6255,
+        "UP": 0.293
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 85,
+          "accuracy": 0.3059
+        },
+        "STABLE": {
+          "n": 64,
+          "accuracy": 0.1094
+        },
+        "UP": {
+          "n": 64,
+          "accuracy": 0.5625
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 155,
+        "net_pct_mean": -0.1819,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.471
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0047
+      }
+    },
+    {
+      "coin_id": "injective-protocol",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "holdout 170 < MIN_HOLDOUT_ROWS=200",
+      "n_holdout": 170,
+      "directional_accuracy": 0.34326241134751767,
+      "baseline_directional_accuracy": 0.3588652482269503,
+      "brier": 0.3634670433106042,
+      "baseline_brier": 0.24444182351263938,
+      "collapse_gap": 0.1235,
+      "predicted_top_class_share": 0.5059,
+      "label_top_class_share": 0.3824,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.3611,
+        "STABLE": 0.5259,
+        "UP": 0.8198
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 65,
+          "accuracy": 0.0769
+        },
+        "STABLE": {
+          "n": 49,
+          "accuracy": 0.3265
+        },
+        "UP": {
+          "n": 56,
+          "accuracy": 0.5
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 101,
+        "net_pct_mean": -0.52,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.495
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0059
+      }
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "holdout 157 < MIN_HOLDOUT_ROWS=200",
+      "n_holdout": 157,
+      "directional_accuracy": 0.34045801526717556,
+      "baseline_directional_accuracy": 0.3618320610687023,
+      "brier": 0.3575777724230927,
+      "baseline_brier": 0.23064974626278095,
+      "collapse_gap": 0.2038,
+      "predicted_top_class_share": 0.6051,
+      "label_top_class_share": 0.4013,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.8412,
+        "STABLE": 0.3585,
+        "UP": 0.1021
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 63,
+          "accuracy": 0.5873
+        },
+        "STABLE": {
+          "n": 41,
+          "accuracy": 0.2439
+        },
+        "UP": {
+          "n": 53,
+          "accuracy": 0.2264
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 109,
+        "net_pct_mean": 0.0772,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.5138
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0127
+      }
+    },
+    {
+      "coin_id": "pepe",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "structurally_noisy_retire",
+      "bucket_reason": "calibration_broken=True (max reliability deviation 0.399 >= 0.1); prediction_collapse=True (collapse_gap=0.2123, predicted_top_class_share=0.6274)",
+      "n_holdout": 212,
+      "directional_accuracy": 0.37386363636363634,
+      "baseline_directional_accuracy": 0.40681818181818186,
+      "brier": 0.33532382606257116,
+      "baseline_brier": 0.2225172254464205,
+      "collapse_gap": 0.2123,
+      "predicted_top_class_share": 0.6274,
+      "label_top_class_share": 0.4151,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.2328,
+        "STABLE": 0.3418,
+        "UP": 0.3994
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 88,
+          "accuracy": 0.1591
+        },
+        "STABLE": {
+          "n": 51,
+          "accuracy": 0.1961
+        },
+        "UP": {
+          "n": 73,
+          "accuracy": 0.6027
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 154,
+        "net_pct_mean": -0.0121,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.4675
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0142
+      }
+    },
+    {
+      "coin_id": "render-token",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "holdout 124 < MIN_HOLDOUT_ROWS=200",
+      "n_holdout": 124,
+      "directional_accuracy": 0.3320388349514563,
+      "baseline_directional_accuracy": 0.3592233009708738,
+      "brier": 0.37396785107173575,
+      "baseline_brier": 0.25057121206154054,
+      "collapse_gap": 0.258,
+      "predicted_top_class_share": 0.6532,
+      "label_top_class_share": 0.3952,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.5463,
+        "STABLE": 0.7087,
+        "UP": 0.1311
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 49,
+          "accuracy": 0.6735
+        },
+        "STABLE": {
+          "n": 30,
+          "accuracy": 0.1333
+        },
+        "UP": {
+          "n": 45,
+          "accuracy": 0.1778
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 92,
+        "net_pct_mean": -0.0812,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.5761
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0403
+      }
+    },
+    {
+      "coin_id": "worldcoin-wld",
+      "timeframe": "1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "holdout 196 < MIN_HOLDOUT_ROWS=200",
+      "n_holdout": 196,
+      "directional_accuracy": 0.3333333333333333,
+      "baseline_directional_accuracy": 0.37283950617283956,
+      "brier": 0.3677455770096307,
+      "baseline_brier": 0.24072328277049476,
+      "collapse_gap": 0.3928,
+      "predicted_top_class_share": 0.8112,
+      "label_top_class_share": 0.4184,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.1894,
+        "STABLE": 0.6079,
+        "UP": 0.8132
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 82,
+          "accuracy": 0.0732
+        },
+        "STABLE": {
+          "n": 54,
+          "accuracy": 0.1111
+        },
+        "UP": {
+          "n": 60,
+          "accuracy": 0.8667
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 165,
+        "net_pct_mean": -0.4772,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.4061
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0
+      }
+    },
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "1d",
+      "kind": "pooled",
+      "status": "trained",
+      "bucket": "salvageable_with_better_features_or_labels",
+      "bucket_reason": "red gate but signal remaining \u2014 calibration_broken=True, prediction_collapse=False; rebalance labels and/or extend feature set",
+      "n_holdout": 1549,
+      "directional_accuracy": 0.37257939581719596,
+      "baseline_directional_accuracy": 0.38543764523625096,
+      "brier": 0.2926251152503581,
+      "baseline_brier": 0.22058617214163956,
+      "collapse_gap": 0.0329,
+      "predicted_top_class_share": 0.4461,
+      "label_top_class_share": 0.4132,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.2327,
+        "STABLE": 0.2061,
+        "UP": 0.4377
+      },
+      "per_class_accuracy": {
+        "DOWN": {
+          "n": 640,
+          "accuracy": 0.4688
+        },
+        "STABLE": {
+          "n": 426,
+          "accuracy": 0.1995
+        },
+        "UP": {
+          "n": 483,
+          "accuracy": 0.3706
+        }
+      },
+      "pnl_after_fees": {
+        "n_trades": 1081,
+        "net_pct_mean": 0.098,
+        "round_trip_cost_pct": 0.3,
+        "win_rate": 0.5097
+      },
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": 0.0232
+      }
+    }
+  ]
+}

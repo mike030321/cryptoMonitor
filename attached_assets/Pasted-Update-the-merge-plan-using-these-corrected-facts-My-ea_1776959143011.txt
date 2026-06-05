@@ -1,0 +1,216 @@
+Update the merge plan using these corrected facts. My earlier plan had some wrong assumptions.
+
+## Correct package facts
+
+### Runtime / hosting
+
+* The brain is a **pure Python package using stdlib only**
+* The correct host is the existing **ml-engine FastAPI service**
+* Do **not** build this as a new Node module
+* Do **not** host it separately unless absolutely required
+
+### Evaluation semantics
+
+* The public method is:
+
+  * `service.evaluate(batch)`
+* It takes **all slices across all coins in one batch per tick**
+* It returns **per-family directives**, not per-slice directives
+
+This means the insertion point is:
+
+* call the brain **once per monitor tick**
+* do it **before the coin loop writes trades**
+* do **not** call the brain separately for each coin
+
+### Output shape
+
+My previous assumptions were wrong.
+
+The output includes:
+
+* `trust_multiplier: dict[str, float]` keyed by `strategy_family`
+* `allocation_weight: dict[str, float]` keyed by `strategy_family`
+* `caution_level: float`
+* `exploration_budget: float`
+* `suppress_signal: bool`
+* `defensive_mode: "off" | "soft" | "hard"`
+* `suppressed_families: list[str]`
+* `paused_slices`
+* `meta_state`
+* `reason_codes`
+
+Do not treat `trust_multiplier` or `allocation_weight` as scalars.
+Do not treat `defensive_mode` as a bool.
+
+### Learning loop
+
+The package also exposes:
+
+* `service.record_outcome(directive, outcome, timestamp)`
+
+This is a second public method and must be integrated.
+
+It should be called:
+
+* when trades close
+* or when the relevant realized outcome window is available
+* with bounded learning only
+
+My previous plan missed this, so include it now.
+
+### Telemetry
+
+The real batch input expects:
+
+* **19 fields per slice**
+* **9 portfolio fields**
+
+Beyond the previously identified missing fields, also currently missing in quant:
+
+* `turnover`
+* `slippage_bps`
+* `active_risk_budget`
+* `kill_switch_distance`
+
+### Bridge already exists
+
+The package already ships:
+
+* `QuantBridge.from_payload(dict)`
+
+It parses a JSON contract matching:
+
+* `examples/merge_contract.json`
+
+So:
+
+* do **not** build a redundant JSON adapter
+* reuse the shipped bridge
+* only build missing payload assembly on the quant side
+
+## What I want you to do now
+
+### 1. Revise integration architecture
+
+Update the plan so the brain runs inside the Python ml-engine / FastAPI service.
+
+I want:
+
+* exact file(s) where the Python package will be mounted
+* exact API or internal service call path from the existing system into ml-engine
+* exact place where `evaluate(batch)` is called once per monitor tick
+* exact place where `record_outcome(...)` is called on trade close
+
+### 2. Insert evaluation at the correct seam
+
+Find the monitor tick flow and insert the brain call:
+
+* once per tick
+* after batch telemetry is available
+* before trades are finalized / written
+
+Then map the returned **per-family** directives onto the existing coin/timeframe decisions.
+
+Be explicit about how family-level directives will affect:
+
+* size multiplier
+* suppression
+* defensive behavior
+* caution
+
+### 3. Add outcome recording path
+
+Find the trade close / resolution path and wire:
+
+* realized pnl
+* realized drawdown
+* realized stability if derivable
+* turnover cost
+* churn if derivable
+* suppression/defense correctness if derivable
+* missed edge cost if derivable
+
+If some outcome components are not yet available:
+
+* pass what is real
+* mark missing parts explicitly
+* do not fake them
+
+### 4. Build the payload using the shipped bridge contract
+
+Since `QuantBridge.from_payload(dict)` already exists:
+
+* assemble the payload dict to match `examples/merge_contract.json`
+* validate it against the bridge
+* do not write redundant parsing code unless absolutely necessary
+
+### 5. Handle missing telemetry honestly
+
+Current missing or partial fields include:
+
+* `strategy_family`
+* `risk_score`
+* `prediction_error`
+* `turnover`
+* `slippage_bps`
+* `active_risk_budget`
+* `kill_switch_distance`
+
+For each:
+
+* map from a real existing field if possible
+* derive cleanly if possible
+* otherwise mark TODO and keep integration honest
+
+Do not fabricate production-quality values.
+
+### 6. Keep behavior safe
+
+If the brain fails, times out, or returns invalid output:
+
+* default to neutral family trust
+* neutral allocation shaping
+* `defensive_mode = "off"`
+* no suppression unless existing risk logic already suppresses
+* log fallback activation
+
+## Output I want from you
+
+### A. Corrected integration map
+
+Show:
+
+* where ml-engine hosts the package
+* where `evaluate(batch)` is called
+* where `record_outcome(...)` is called
+* where family directives are applied
+
+### B. Changed files
+
+List all files changed.
+
+### C. Payload coverage table
+
+For every required field in the bridge payload, mark:
+
+* EXISTS
+* DERIVED
+* TODO / MISSING
+
+### D. Family application logic
+
+Explain exactly how per-family directives are applied to coin-level decisions.
+
+### E. Gaps remaining
+
+Tell me what still cannot be completed cleanly because telemetry is missing.
+
+## Important rules
+
+* Do not revert to per-coin brain calls
+* Do not build a Node wrapper for the brain
+* Do not collapse dict outputs into scalars
+* Do not ignore `record_outcome(...)`
+* Do not build a redundant JSON adapter if the shipped bridge already handles parsing
+* Keep the merge practical and minimal

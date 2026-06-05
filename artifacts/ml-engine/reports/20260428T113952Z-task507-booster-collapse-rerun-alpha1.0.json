@@ -1,0 +1,57 @@
+{
+  "task": 507,
+  "generated_at": "20260428T113952Z",
+  "class_weight_alpha": 1.0,
+  "stuck_slices": [
+    [
+      "bonk",
+      "1d"
+    ],
+    [
+      "celestia",
+      "1d"
+    ],
+    [
+      "dogwifcoin",
+      "1d"
+    ],
+    [
+      "celestia",
+      "6h"
+    ]
+  ],
+  "rows": [
+    {
+      "coin_id": "bonk",
+      "timeframe": "1d",
+      "status": "error",
+      "error": "\"['volZScore60'] not in index\"",
+      "bucket": "error",
+      "elapsed_s": 0.01
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "1d",
+      "status": "error",
+      "error": "\"['volZScore60'] not in index\"",
+      "bucket": "error",
+      "elapsed_s": 0.0
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "timeframe": "1d",
+      "status": "error",
+      "error": "\"['volZScore60'] not in index\"",
+      "bucket": "error",
+      "elapsed_s": 0.0
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "6h",
+      "status": "error",
+      "error": "\"['volZScore60'] not in index\"",
+      "bucket": "error",
+      "elapsed_s": 0.0
+    }
+  ]
+}

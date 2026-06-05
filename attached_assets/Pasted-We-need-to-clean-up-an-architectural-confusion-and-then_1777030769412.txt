@@ -1,0 +1,278 @@
+We need to clean up an architectural confusion and then implement the right thing with proof.
+
+## First: correct the terminology
+
+Do **not** treat these as the same thing.
+
+### A. Quant Brain
+
+This is the per-slice market predictor:
+
+* per-(coin, timeframe) LightGBM specialists
+* regime routing
+* calibrated probabilities
+* expected return
+* live prediction path
+
+This is the only component that predicts market movement directly. 
+
+### B. Meta-model / stacking head
+
+This is the learned combiner over slice outputs.
+
+This is the component that may consume:
+
+* per-slice calibrated probabilities
+* per-slice confidence / recent accuracy
+* pooled-fallback flags
+* regime
+* friction / fee / spread context
+* cross-coin context
+
+And output something like:
+
+* buy / hold / abstain
+* or sizing / confidence / abstain
+
+This is what the recent proposal is actually describing.
+
+### C. Meta-Brain
+
+This is the already-shipped governance layer:
+
+* trust by family
+* defensive mode
+* suppression / caution
+* episodic / regime memory
+* outcome-driven learning
+* benchmark-aware governance
+
+This is broader than a single LightGBM vote-combiner. It is already documented in the app architecture as a separate system under the vendored `market_meta_brain` package and its host wiring. 
+
+## Goal of this task
+
+I want you to decide, explicitly and with evidence, what should happen next:
+
+### Option 1
+
+Implement a **Meta-model / stacking head** over per-slice outputs.
+
+### Option 2
+
+Do **not** build a new meta-model yet, and instead continue using:
+
+* Quant Brain for prediction
+* Meta-Brain for governance
+
+### Option 3
+
+Implement a narrow version of the meta-model, but keep it clearly separated from the Meta-Brain.
+
+## Important rule
+
+Do **not** blur these roles together.
+
+Do not call a LightGBM vote-combiner “the Meta-Brain” if it is really a meta-model over slice outputs.
+
+I want clean naming, clean ownership, and clean boundaries.
+
+## What I want you to do
+
+### 1. Inspect current code and map reality
+
+I want an evidence-based architecture map of the current live system.
+
+Specifically identify:
+
+#### Quant Brain files / endpoints
+
+* exact files/classes/functions
+* exact request/response shape
+* exact place where price prediction happens
+
+#### Existing meta-model / abstain / sizing head, if any
+
+The architecture already shows `/ml/meta/predict`. Determine:
+
+* what it actually is
+* whether it is currently active
+* whether it already behaves like a stacking head
+* what its training target is
+* whether it overlaps with the newly proposed “meta brain” idea
+
+#### Existing Meta-Brain governance layer
+
+Map:
+
+* exact files
+* exact service entry points
+* exact runtime inputs
+* exact directive outputs
+* what it learns from
+* what it does **not** do
+
+I want exact references, not general statements. 
+
+### 2. Decide the correct architecture
+
+Based on the actual codebase, tell me which architecture is right:
+
+#### Architecture A
+
+Quant Brain → Meta-model / stacking head → Meta-Brain → execution
+
+#### Architecture B
+
+Quant Brain → Meta-Brain only (no new meta-model yet)
+
+#### Architecture C
+
+Keep `/ml/meta/predict` as the meta-model and improve that instead of creating another layer
+
+I want you to recommend one of these and justify it.
+
+## 3. If a meta-model is justified, scope it properly
+
+If you conclude a meta-model should exist, define it precisely.
+
+### Inputs it may use
+
+Allowed:
+
+* per-slice calibrated probabilities
+* per-slice confidence
+* rolling slice performance
+* pooled fallback flags
+* regime labels derived from price
+* spread / fee / slippage context
+* cross-coin market context
+* benchmark-relative metrics only if governance-safe and leakage-safe
+
+Forbidden:
+
+* LLM
+* news
+* sentiment
+* social
+* benchmark data leaking directly into raw predictor logic
+* anything that violates the quant-only boundary
+
+### Target / label choice
+
+Compare:
+
+* binary directional label
+* cost-aware trade-outcome label
+
+I expect cost-aware trade-outcome to be the likely recommendation, but prove it against the current architecture and live trading logic.
+
+### Output
+
+Define exactly what the meta-model would emit:
+
+* abstain probability?
+* execution confidence?
+* size multiplier?
+* class probabilities?
+* expected post-cost utility?
+
+Be specific.
+
+## 4. Prove there is no circularity
+
+This is critical.
+
+If you propose using:
+
+* Strategy Lab outputs
+* AI fleet equity
+* realized bot performance
+
+then you must prove whether that belongs in:
+
+* quant predictor
+* meta-model
+* meta-brain
+* or nowhere
+
+I want a clear anti-leakage argument.
+
+The current documented position is:
+
+* Strategy Lab is valid as read-only governance telemetry for the Meta-Brain
+* not valid as direct quant predictor input
+
+Test that reasoning against the actual codebase and training flow. 
+
+## 5. Ask for evidence, not theory
+
+Do not answer this as a design essay.
+
+I want evidence-backed conclusions:
+
+* exact files
+* exact routes
+* exact current payloads
+* exact training artifacts if present
+* exact overlaps / duplicate responsibilities
+* exact gaps
+
+If you claim a component exists, show where.
+If you claim it overlaps another component, show how.
+If you claim a new layer is needed, show what problem it solves that the existing Meta-Brain or `/ml/meta/predict` does not already solve.
+
+## 6. Deliverables
+
+Return one concise but concrete report with:
+
+### A. Current reality
+
+What the app currently has:
+
+* Quant Brain
+* existing meta-model if any
+* Meta-Brain governance
+* Strategy Lab role
+
+### B. Boundary clarification
+
+One paragraph clearly defining the difference between:
+
+* predictor
+* meta-model
+* meta-brain
+
+### C. Recommendation
+
+Choose one:
+
+* build a new meta-model
+* improve `/ml/meta/predict`
+* do not add a meta-model yet
+
+### D. Evidence
+
+For every major claim, provide exact code references and runtime/training evidence.
+
+### E. If build is recommended
+
+Give the exact next task spec:
+
+* inputs
+* labels
+* outputs
+* endpoints
+* tests
+* proof required before rollout
+
+## 7. Hard rules
+
+* do not redesign the whole app
+* do not hand-wave
+* do not rename things lazily
+* do not let “Meta-Brain” become a vague catch-all word
+* do not propose a new learned layer unless you can prove it fills a real gap
+* do not treat passing tests as proof of architectural correctness
+
+The result I want is simple:
+**Tell me what this system already is, what it is not, and what should actually be built next — with evidence.**

@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+artifacts/crypto-monitor/dist/
+artifacts/api-server/dist/
+artifacts/ml-engine/__pycache__/
+artifacts/ml-engine/**/*.pyc
+artifacts/ml-engine/**/__pycache__/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# PHP logs (generated at runtime)
+phpServices/*.txt
+phpServices/full_post_debug.txt
+phpServices/keitaro_postback_log.txt
+phpServices/fb_capi_log.txt
+phpServices/crm_api_log.txt
+
+# DB dumps & exports (too large for GitHub)
+backup/database_dump.sql
+backup/mssql_out/
+exports/
+
+# ML model binaries & large files (>10MB, GitHub limit is 100MB)
+artifacts/ml-engine/models/**/*.pkl
+artifacts/ml-engine/models/**/*.joblib
+artifacts/ml-engine/models/**/*.parquet
+artifacts/ml-engine/models/**/*.txt
+artifacts/ml-engine/models/datasets/
+artifacts/ml-engine/models/meta_brain_state/
+artifacts/ml-engine/models/progress_updates.jsonl
+artifacts/ml-engine/models/training_run_*/
+
+# Logs
+*.log
+*.log.*
+/tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# pnpm lock (optional — remove if you want reproducible installs)
+# pnpm-lock.yaml
+
+# Cache
+.cache/
+.turbo/

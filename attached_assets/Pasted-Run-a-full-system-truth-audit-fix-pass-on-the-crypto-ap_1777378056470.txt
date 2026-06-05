@@ -1,0 +1,468 @@
+Run a **full-system truth audit + fix pass** on the crypto app.
+
+This is not feature work.
+This is not “make the UI nicer.”
+This is not “tests pass, ship it.”
+
+## Mission
+
+Find and fix every inconsistency between:
+
+* what the app claims
+* what the backend is actually doing
+* what the database says
+* what the runtime is really executing
+* what the dashboard is showing
+
+I want the platform brought into a state where I can trust that:
+
+1. **quant is either truly trading or truthfully disabled**
+2. **meta-brain is either truly learning or truthfully inactive**
+3. **the 4 deterministic executor families are the live fleet**
+4. **legacy agents do not pollute live metrics**
+5. **dashboard numbers match runtime and DB truth**
+6. **paper PnL reflects real decisions, real costs, real gains/losses**
+7. **if anything is failing, the system says so clearly instead of mixing contradictory states**
+
+## Use one master task with multiple subagents
+
+Use internal parallel workstreams, but produce **one integrated final report**.
+
+Suggested workstreams:
+
+* runtime / service truth
+* quant brain truth
+* meta-model truth
+* meta-brain truth
+* executor-family / agent truth
+* dashboard truth
+* paper trading / PnL truth
+* DB truth / state integrity
+* benchmark / Strategy Lab truth
+
+## What is visibly wrong already
+
+Use this dashboard state as a starting clue, not the final truth:
+
+* header says `0 executor · 10 baseline`
+* page shows 4 executor family cards
+* `BRAIN OFFLINE — kill-switch is OFF`
+* `quant_brain_enabled is false`
+* `105 quant_disabled in last 30m`
+* `last successful decision 5d ago`
+* but cycle is live and “Live Bot Predictions” still render
+* executor family cards show `0 trades` and `Abstain 0%`
+* fleet says `0 / 4 in profit`
+* benchmarks show 10 baseline at header but only 3 benchmark cards
+* “What the bots agree on right now” may still be using stale / invalid logic
+* old and new agent systems may still be mixed
+
+Do not assume the screenshot is the whole truth. Prove what is actually happening.
+
+## Global rule
+
+A fix is NOT done because:
+
+* tests passed
+* typecheck passed
+* endpoint returns 200
+* page loads
+
+A fix is done only when you provide:
+
+* code diff
+* runtime evidence
+* DB/API proof
+* before/after comparison
+* proof that the intended contract now holds
+
+---
+
+# Phase 0 — Build the contradiction map first
+
+Before changing code, inspect the current runtime and write a contradiction map.
+
+For every visible inconsistency, answer:
+
+* what the UI says
+* what backend/API says
+* what DB says
+* what runtime logs say
+* what should be the source of truth
+
+Write this to:
+`.local/truth-audit/00-contradiction-map.md`
+
+At minimum include:
+
+1. executor count mismatch
+2. baseline count mismatch
+3. brain offline wording mismatch
+4. quant disabled vs live predictions mismatch
+5. abstain rate mismatch
+6. last decision / last trade / live cycle mismatch
+7. family cards vs actual agent rows mismatch
+8. benchmark panel vs header mismatch
+9. fleet PnL / profit denominator mismatch
+10. “bots agree right now” source truth mismatch
+
+Do not start patching until this map exists.
+
+---
+
+# Phase 1 — Runtime truth
+
+Prove what is actually live right now.
+
+I want you to determine:
+
+### Quant Brain
+
+* Is `/ml/predict` healthy right now?
+* Is quant producing real predictions?
+* Is `quant_brain_enabled` false by DB, env, auto-revert, or fallback?
+* Is the quant path alive but gated off, or dead?
+* Are prediction_journal rows being written?
+* Are any real quant decisions being made?
+
+### Meta-model
+
+* Is `/ml/meta/predict` active?
+* Is it being used in the live decision path?
+* Is it receiving real slice inputs?
+* Is it returning real action/size outputs?
+* Or is it bypassed because quant is disabled?
+
+### Meta-Brain
+
+* Is `META_BRAIN_ENABLED` set?
+* Is the evaluate path actually being called?
+* Is it caching directives?
+* Is `record_outcome(...)` actually receiving outcomes?
+* Is the trust state changing over time or flat?
+
+### Runtime proof required
+
+Capture:
+
+* service health
+* env flags
+* log excerpts
+* API payloads
+* DB rows
+* timestamps
+
+I want proof, not guesses.
+
+---
+
+# Phase 2 — Agent / fleet truth
+
+I want you to prove what the live fleet actually is.
+
+Questions to answer:
+
+1. How many executor families actually exist right now?
+2. How many baseline/reference rows actually exist right now?
+3. Are the 4 deterministic executor families seeded and active correctly?
+4. Are legacy personality agents still contaminating any live query, count, or leaderboard?
+5. Is the header computing `0 executor · 10 baseline` from the wrong source?
+6. Are family cards being rendered from a different source than the header?
+7. Is “Bots in profit 0 / 4” using the correct denominator?
+8. Are baselines correctly separated from executors?
+
+Required output:
+
+* exact DB query results
+* exact API payloads
+* exact UI data source mapping
+* exact file/function references for each summary count
+
+Then fix:
+
+* executor count truth
+* baseline count truth
+* denominator truth
+* archived-vs-live filtering
+* any mixed old/new agent logic
+
+---
+
+# Phase 3 — Dashboard truth
+
+Audit the dashboard as an operating surface.
+
+I want you to prove or fix all of these:
+
+### A. Main status banner truth
+
+“BRAIN OFFLINE — kill-switch is OFF” must become unambiguous.
+
+The banner should tell the truth clearly, for example:
+
+* quant disabled
+* meta-brain disabled
+* predictor unavailable
+* no trade authority
+* stale decision feed
+* etc.
+
+No contradictory phrasing.
+
+### B. Activity truth
+
+Add or fix the top-of-dashboard activity banner so it truthfully answers:
+
+* are trades happening?
+* are decisions happening?
+* are predictions happening?
+* when was the last valid quant decision?
+* when was the last executed trade?
+* how many new trades in the last hour?
+
+### C. Live Bot Predictions truth
+
+If quant is disabled, this section must not pretend live predictions are active in the normal sense.
+Either:
+
+* hide it,
+* relabel it,
+* or show clearly that these are stale / diagnostic / non-executing predictions.
+
+No misleading live-trading implication.
+
+### D. “What the bots agree on right now”
+
+Prove exactly what powers this card.
+If quant is disabled or no valid decisions exist, this card must say so truthfully instead of rendering misleading consensus text.
+
+### E. Family card truth
+
+Each family card must show metrics derived from real live executor-family data only.
+
+Fix:
+
+* abstain rate
+* trade count
+* trust
+* status pill
+* open count
+* equity/pnl
+* drawdown
+* recent accuracy / CADA if shown
+
+If any metric cannot be truthfully computed now, show unknown / n/a — not fake zeros.
+
+### F. Benchmark panel truth
+
+Benchmarks must be clearly labeled:
+
+* non-executing
+* read-only
+* do not influence live trades directly
+
+And counts must match the actual baseline rows.
+
+Required proof:
+
+* screenshots
+* API payloads
+* DB query outputs
+* before/after comparison
+
+---
+
+# Phase 4 — Paper trading / PnL truth
+
+This is critical.
+
+I want a fresh bottom-up check that the currently displayed family/fleet numbers are real.
+
+For the currently displayed executor fleet:
+
+* reconstruct equity from raw trades/positions
+* recompute realized PnL
+* recompute unrealized PnL
+* recompute total equity change
+* compare to dashboard/API values
+
+Also prove:
+
+* which family each open/closed trade belongs to
+* whether family aggregation is correct
+* whether legacy agents are excluded correctly
+* whether baselines are excluded from executor fleet PnL
+
+If anything diverges, fix it and document it.
+
+---
+
+# Phase 5 — Quant + trade-authority truth
+
+I want one clear answer to this:
+
+## Is the app actually capable of trading right now?
+
+Answer with evidence:
+
+* yes and why
+* no and why
+* gated off and why
+* partially alive but not promotable and why
+
+Then fix the dashboard/system wording so a human can understand the state immediately.
+
+Examples of acceptable final truth states:
+
+* “Quant runtime healthy, but kill-switch held OFF because no promoted slice.”
+* “Predictor unavailable; live trade authority absent.”
+* “Trade authority active; last executed trade X minutes ago.”
+* “Meta-brain healthy but non-influential because quant authority unavailable.”
+
+Do not allow vague states like “brain offline” if the actual issue is “quant disabled.”
+
+---
+
+# Phase 6 — Meta-Brain learning truth
+
+I want a hard answer to:
+
+## Is the meta-brain actually learning right now?
+
+Prove:
+
+* evaluate(batch) called or not
+* record_outcome called or not
+* trust state changed or not
+* directives produced or not
+* whether it is running on the 4 new families only
+* whether old agents can still influence family mapping
+* whether benchmark telemetry is being consumed cleanly
+
+If it is not learning, say why.
+If it cannot learn because quant is off and no trades are flowing, say that explicitly.
+
+Then make the dashboard/diagnostics reflect that truth.
+
+---
+
+# Phase 7 — Fix every contradiction
+
+After diagnosis, fix all issues found.
+
+Examples of expected fixes may include:
+
+* wrong header counts
+* mixed agent queries
+* stale personality-era leaderboard logic
+* baseline count source mismatch
+* ambiguous brain/quant status wording
+* stale live-predictions widget logic
+* incorrect family aggregation
+* fake zero metrics where truth is unknown
+* archived agents leaking into live math
+* meta-brain diagnostics not matching real runtime state
+* last-successful-decision source mismatch
+* activity banner missing real operational truth
+
+Do not just patch the UI.
+Fix backend/API/query/state sources too.
+
+---
+
+# Phase 8 — Required proof pack
+
+Before closing, produce a proof pack under:
+`.local/truth-audit/final/`
+
+Include:
+
+1. `runtime_state.txt`
+
+* quant enabled/disabled source
+* meta-brain enabled/disabled source
+* service health
+* last prediction timestamp
+* last decision timestamp
+* last trade timestamp
+
+2. `executor_counts.csv`
+
+* actual live executor rows
+* actual baseline rows
+* actual archived rows
+
+3. `family_metrics.csv`
+
+* one row per family with truthful current metrics
+
+4. `dashboard_payloads/`
+
+* captures for every relevant API endpoint
+
+5. `pnl_reconcile.csv`
+
+* bottom-up PnL reconciliation for fleet and family rows
+
+6. `meta_brain_learning_state.json`
+
+* whether evaluate/record_outcome/trust changes are occurring
+
+7. `before_after_screens/`
+
+* dashboard before
+* dashboard after
+* archived agents page
+* family drill-down if applicable
+
+---
+
+# Final report required
+
+Write:
+`docs/audits/<date>-runtime-truth-and-dashboard-repair.md`
+
+Sections:
+
+### A. Proven correct now
+
+### B. Proven broken and fixed
+
+### C. Still broken
+
+### D. Runtime truth summary
+
+### E. PnL truth summary
+
+### F. Agent/family truth summary
+
+### G. Meta-brain truth summary
+
+### H. Exact changed files
+
+### I. Follow-up tasks
+
+---
+
+# Hard rules
+
+* no fake zeros for unknown operational metrics
+* no deletion of legacy history
+* no dashboard cards that imply live activity when none exists
+* no mixing benchmark rows into executor math
+* no calling the brain “offline” if the actual issue is quant disabled
+* no closing the task without runtime proof
+* no “looks good now” language without artifacts
+
+## Most important success condition
+
+When I open the dashboard after this task, I should be able to tell immediately and truthfully:
+
+* are the 4 new executor families the live fleet?
+* is quant actually trading?
+* is meta-brain actually learning?
+* are benchmarks separate?
+* are the shown gains/losses real?
+* are old personality agents only historical?
+
+Start with the contradiction map, then fix in order, then give the proof pack.

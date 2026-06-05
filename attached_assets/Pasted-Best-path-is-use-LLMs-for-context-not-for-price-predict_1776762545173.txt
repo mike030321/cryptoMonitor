@@ -1,0 +1,234 @@
+Best path is:
+
+use LLMs for context, not for price prediction.
+
+For trading, the strongest setup is usually a hybrid stack:
+
+Better architecture
+1) Numeric models for the actual signal
+
+Use models that predict things like:
+
+next-return distribution
+probability of upward move
+probability of downward move
+expected move size
+volatility
+regime class
+
+Good starting choices:
+
+gradient boosted trees on tabular features
+logistic / linear models as simple baselines
+random forest only as a benchmark, not main choice
+later, maybe temporal deep learning if you have a lot of clean data
+
+For most solo projects, the best first real path is:
+
+XGBoost / LightGBM / CatBoost + strong feature engineering + walk-forward testing
+
+That is much more realistic than GPT-style forecasting.
+
+2) Regime model separately
+
+Do not ask one model to do everything.
+
+Build a separate regime layer:
+
+trending
+mean-reverting
+high-volatility
+low-volatility
+panic/crash
+chop/whipsaw
+
+Then either:
+
+enable only certain strategies in certain regimes
+or use regime as a feature in the main model
+
+This matters a lot because most strategies fail by trading the right logic in the wrong environment.
+
+3) Expected value model, not “up/down only”
+
+Direction alone is weak.
+
+You want something like:
+
+probability win
+expected upside
+expected downside
+expected holding-period volatility
+expected value after fees/slippage
+
+Then trade only if:
+
+EV > costs + safety margin
+
+That is the right target.
+
+4) Portfolio / execution layer
+
+Separate forecasting from execution.
+
+Execution layer should decide:
+
+whether to trade at all
+long / short / flat
+size
+stop
+take profit
+max exposure
+correlation caps
+daily loss halt
+
+That layer should be deterministic and testable.
+
+5) LLM only for soft information
+
+LLM can still help with:
+
+summarizing news
+extracting event sentiment
+classifying headlines
+labeling macro narratives
+explaining model decisions in UI
+
+But it should not be the thing deciding:
+
+“BTC up 1h with 73% confidence”
+
+That is the wrong job for it.
+
+Best practical path for you
+
+If you want the highest chance of building something real:
+
+Phase 1 — build a baseline quant engine
+
+Start with:
+
+OHLCV data
+features:
+returns
+momentum
+RSI
+MACD
+ATR
+rolling volatility
+trend strength
+distance from moving averages
+market breadth / BTC dominance / total market context if available
+target:
+future return over horizon
+and maybe separate binary up/down label
+
+Models:
+
+logistic regression baseline
+LightGBM or XGBoost main model
+
+This gives you something measurable.
+
+Phase 2 — validate properly
+
+Use:
+
+walk-forward testing
+out-of-sample periods
+regime-by-regime metrics
+fee/slippage simulation
+Monte Carlo trade-order reshuffling
+symbol-level robustness checks
+
+If it only works in one slice, it is not real.
+
+Phase 3 — add regime filter
+
+Example:
+
+trend strategy in trending regime
+mean reversion in sideways regime
+no-trade in unstable regime
+
+This usually improves more than adding a fancier model.
+
+Phase 4 — add alternative data carefully
+
+Only after price/volume baseline works:
+
+funding rates
+open interest
+perp basis
+liquidation clusters
+on-chain flows
+macro calendar
+news sentiment
+
+Not everything at once.
+
+Phase 5 — use LLM as auxiliary layer
+
+Examples:
+
+summarize recent coin-specific news into structured labels
+classify headlines as bullish / bearish / irrelevant
+detect whether a news burst is exchange-related, regulatory, security-related, ETF-related, etc.
+
+Then feed those labels into the quant model.
+
+That is a good use of LLM.
+
+What is probably best for your case
+
+Because your current app is already app-heavy and multi-agent, I would do this:
+
+Replace the brain with:
+Python research/training service
+LightGBM/XGBoost models
+feature store
+walk-forward evaluator
+probability calibration
+EV-based trade filter
+Keep from your current system:
+dashboard
+paper trading
+risk controls
+portfolio UI
+logs
+monitoring
+
+So the frontend and orchestration can stay, but the signal engine changes completely.
+
+Best model choices by stage
+Best simple baseline
+logistic regression
+ridge regression
+
+These are boring but very important because they tell you whether your fancy model is actually adding value.
+
+Best practical main model
+LightGBM
+XGBoost
+CatBoost
+
+For market tabular features, these are often the best place to start.
+
+Best advanced path later
+temporal transformer / TFT
+LSTM/GRU
+N-BEATS / deep time-series models
+reinforcement learning only much later, and only after you already have a good simulator and execution framework
+
+For your case, RL is not the next step. Too easy to overfit.
+
+What not to do
+
+Avoid these mistakes:
+
+asking an LLM to predict candles directly
+optimizing for accuracy instead of P&L expectancy
+training on synthetic price paths as if they were real
+mixing signal generation and execution logic together
+evolving strategies based on tiny recent samples
+trading every market condition instead of allowing flat/no-trade

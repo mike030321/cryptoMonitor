@@ -1,0 +1,49 @@
+This is the part where Replit’s description becomes too optimistic.
+
+First, the architecture is still LLM-first. The pipeline still builds giant prompts for many agents, sends them to GPT and Gemini, merges outputs, calibrates them, then trades. That may be cleaner than before, but it is still fundamentally using language models as the core forecasters for short-horizon crypto direction. That is still fragile.
+
+Second, the writeup claims “realistic fee drag ~0.25%,” but the current constants imply about 0.30% round trip because they define taker fee 0.10%, maker fee 0.10%, and slippage 0.05%, then compute round-trip cost as 2 * (taker + slippage). So the description and the code are not perfectly aligned. The code is stricter than the document, which is good for safety, but it means the narrative is not fully trustworthy.
+
+Third, there is a strategic asymmetry hardcoded into execution: longs require higher confidence because the fleet historically performed badly on buys. That may reduce damage, but it is not a real predictive fix. It is a patch over directional weakness. Under stress, that means the system can become biased toward shorting or toward not taking longs even when regime changes.
+
+Fourth, the auto-loosening gate language is dangerous. The comments say thresholds can be loosened when bots are starving for trades. That is exactly the kind of mechanism that often looks good operationally and bad statistically, because it can push the system to trade when the environment is poor instead of accepting low activity.
+
+Fifth, I still do not see proof in the snippets that the confidence calibrator bug itself was corrected mathematically. The older writeup describes what the calibrator is supposed to do, but I do not have the actual calibrator implementation in the pasted code excerpt, so I cannot verify that the sign bug is really gone. On that point, the evidence is incomplete.
+
+Stress-test judgment
+
+If I stress the logic conceptually, here is how it behaves now:
+
+In a crash regime, it is much safer than before. Shorts are allowed, stable is allowed, data-stale exits are blocked, synthetic-candle leakage is reduced, and fee-aware EV filters reject weak setups. So in a crash, it is less likely to suicide-trade.
+
+In a whipsaw/chop regime, it is still vulnerable. Even with abstain support, the system still relies on LLM interpretations of RSI/MACD/BB/EMA context. In chop, those indicators conflict constantly, and prompt-driven consensus systems tend to hallucinate conviction. The new stable option helps, but I would still expect overtrading unless the stable rate is very high.
+
+In a strong bull reversal after prolonged weakness, the hardcoded higher confidence requirement for longs may make it late to flip bullish. That reduces false longs, but it can also miss the best early reversal trades.
+
+In a high-volatility spread event, the ATR-based stop/target structure is better than before, but the engine still depends on model confidence times TP distance as an EV proxy. That is not the same as a proper probabilistic expectancy model. It is a decent gate, but still heuristic.
+
+My honest conclusion
+
+So, is Replit “true”?
+
+Partly true.
+The code changes are not fake. The biggest mechanical problems really do seem improved:
+
+fee math is more consistent
+outcome thresholds are now above cost
+abstain support is real
+resampled real candles are real
+paper-trader risk controls are stronger
+
+But no, I would not say the logic is fully fixed or stress-proof.
+
+The biggest remaining issue is that it is still a prompt-driven multi-agent crypto prediction engine, not a quantitatively validated forecasting engine. The improvements reduce obvious self-sabotage, but they do not prove durable edge.
+
+My practical verdict:
+
+mechanical integrity: much better
+risk containment: better
+predictive reliability under stress: still questionable
+ready for real money: not yet
+
+If you want, I can do the next pass as a red-team audit and give you a ranked list of the remaining failure points with exact code-level fixes.

@@ -1,0 +1,263 @@
+Run a multi-agent remediation task to fix the issues proven by the full-system audit.
+
+Mission
+
+Restore the platform to a truthful, operational quant state.
+
+This is not feature work.
+This is not architecture redesign.
+This is a fix-and-verify recovery task driven by the audit findings.
+
+Critical rule
+
+Do not mark anything done because:
+
+tests passed
+typecheck passed
+service booted
+endpoint returned 200
+
+A fix is only done when you provide:
+
+code diff
+direct runtime proof
+log or query evidence
+before/after behavior
+confirmation that the intended contract now holds
+
+The audit proved the current reality includes:
+
+/ml/predict 500 on every probe
+quant brain non-operational in production
+100% abstain because quant flag is effectively off
+forbidden news_* features still emitted by training manifests
+LLM fallback still stamping directional rows
+zero promoted slices
+Strategy Lab Buy & Hold benchmark lying at fixed $1000
+pooled fallback effectively trained on Jupiter only
+several dashboard/runtime truth mismatches
+some accounting issues on auto-deploy fee paths
+
+Your job is to fix all proven issues in a controlled order.
+
+Execution model
+
+Use one master task with multiple internal agents/workstreams.
+
+Required workstreams:
+
+quant runtime recovery
+training / manifest / promotion recovery
+strategy lab truth repair
+PnL/accounting corrections
+dashboard / observability truth repair
+env / boot / deploy hygiene
+regression tests + runtime proof collection
+
+All work rolls into one integrated final report.
+
+Fix order (must follow)
+Phase 0 — Preserve evidence and create fix plan
+
+Before changing code:
+
+restate each proven-broken audit item
+map it to exact files/functions
+assign it to a workstream
+define proof required for closure
+
+Do not start patching randomly.
+
+Phase 1 — Restore the quant brain runtime path (P0 cluster)
+
+This is top priority.
+
+Fix:
+/ml/predict HTTP 500 on every coin/timeframe
+patch the fast path in _pick so _cached_load(...) failure cannot escape uncaught
+if latest pointer load fails, continue to descending walk and pooled fallback
+pooled fallback must actually be reachable
+Trainer emitting forbidden news_* columns
+strip forbidden prefixes from training feature columns:
+news_
+llm_
+gpt_
+sentiment_
+ai_
+and any other audit-proven forbidden prefixes
+ensure manifests written after retrain no longer include forbidden features
+LLM fallback authoring direction
+remove or neutralize any path where LLM fallback can stamp a directional decision
+if quant is unavailable, it must:
+abstain
+or write stable / non-trade-safe output
+it must not author a directional trade intent
+quant_brain_enabled operational recovery
+once at least one real quant slice is valid and live-predictable, restore correct enabled state
+do not turn it on while /ml/predict is still broken
+Required proof:
+/ml/predict returns HTTP 200 for representative live slices
+live prediction journal shows fresh QUANT rows with non-null expected fields
+no new brain='LLM' directional-author rows appear
+abstain rate drops for the correct reason, not by bypassing safeguards
+exact before/after logs and sample payloads
+Phase 2 — Repair training / promotion / fallback truth (remaining P0 + P1)
+Fix:
+Zero promoted slices / promotion collapse
+investigate and repair the immediate cause if tied to the broken manifests/calibration path
+do not weaken standards silently
+prove promotion gate now works on at least one valid slice or clearly isolate why not
+Directional-call-share collapse
+address the all-call / near-1.0 directional-call behavior
+add a regression guard so this cannot ship unnoticed again
+Pooled fallback trained on Jupiter only
+retrain pooled with a real multi-coin vocabulary
+add verification/assertion that pooled must have len(coin_vocab) > 1
+fail verification loudly otherwise
+Feature-hash reproducibility gap
+eliminate null feature_hash for QUANT journal rows going forward
+add guard so future rows cannot silently omit it
+Required proof:
+at least one live-promoted or validly loaded quant slice
+pooled model metadata proves multiple coins in vocab
+fresh QUANT journal rows have non-null feature_hash
+directional call share no longer pathological on validation samples
+exact artifact paths and metric outputs
+Phase 3 — Repair Strategy Lab truth (P1)
+Fix:
+Buy & Hold benchmark stuck at $1000
+repair initial deploy / benchmark state for agent 18
+ensure positions and trade rows actually exist where expected
+verify benchmark equity now moves with market reality
+Trend Filter proxy dependence on broken Buy & Hold
+if necessary, patch proxy logic so Trend Filter does not depend on a broken baseline source
+keep logic truthful and documented
+Required proof:
+Strategy Lab snapshot row before/after
+Buy & Hold now has real holdings / trade evidence
+benchmark telemetry reaching meta-brain changes accordingly
+trend filter exit/entry logic verified against repaired baseline data
+Phase 4 — Repair accounting / PnL-side correctness (P1)
+Fix:
+Auto-deploy basket buys missing entry_fee
+add entryFee to insert path
+debit cash correctly on that path
+ensure turnover cost reaching meta-brain is truthful
+Production-replica stale equity drift
+fix or add resync mechanism / runbook step
+ensure portfolio totals can be recomputed from truth sources
+Required proof:
+new basket buy rows include entry_fee
+cash balance reflects fee debit
+recomputed sample matches stored values
+stale equity repair process documented and verified on sample agents
+Phase 5 — Repair dashboard / observability / truthfulness (P2)
+Fix:
+Empty calibration-history card
+either wire it to a real data source
+or remove/disable the decorative lie
+no silent empty-truth card
+Headline averages hiding severe degradation
+add or expose truthful 24h directional accuracy and/or live abstain state
+ensure dashboard cannot present healthy-looking summary while quant is effectively dead
+Runtime no-LLM-fields / benchmark leakage suite broken under Node 24
+fix the test harness regression
+restore the runtime guard, not just the static guard
+Required proof:
+dashboard/API response before/after
+runtime test suite actually executes under current Node version
+no silent skips
+truthful card output shown from real data
+Phase 6 — Boot / env / deployment hygiene (P3)
+Fix:
+training-contract-notifier boot race
+add proper retry/backoff or health wait
+Env fragility
+normalize ML_ENGINE_URL
+ensure no double /ml ambiguity
+populate/document required admin and data-source keys
+make misconfiguration fail loud where appropriate
+Required proof:
+boot logs before/after
+no initial notifier failure race
+env contract documented
+service-to-service path proven stable
+Required test and proof suite
+
+You must add or restore tests where needed, but tests alone are not enough.
+
+For each major fix area, provide:
+
+unit/integration test if appropriate
+live or replay runtime proof
+log excerpt
+DB/API evidence
+exact changed files
+
+At minimum include:
+
+/ml/predict regression coverage for forbidden-feature manifest fallback
+runtime proof that LLM cannot author directional trades
+pooled vocab verification
+feature_hash not-null behavior
+Strategy Lab Buy & Hold truth regression
+auto-deploy fee accounting regression
+Node-24 runtime guard suite restored
+dashboard truthful output checks where feasible
+Deliverables
+
+Return one integrated remediation report with these sections:
+
+A. Fixed and proven
+
+For each issue:
+
+audit ID
+root cause
+files changed
+proof it now works
+B. Still broken
+
+Anything not fixed yet, with exact blocker.
+
+C. Risk left
+
+What remains risky even after this pass.
+
+D. Runtime proof pack
+
+Include:
+
+/ml/predict success captures
+fresh QUANT journal rows
+no-LLM-direction proof
+Strategy Lab repaired snapshots
+PnL/accounting samples
+dashboard/API truth captures
+E. Exact changed files
+
+Full list.
+
+F. Follow-up tasks
+
+Only real leftovers, not things that should have been fixed here.
+
+Important constraints
+Do not redesign the architecture.
+Do not add new product features unrelated to the audit.
+Do not weaken safety gates to make metrics look better.
+Do not mark the system healthy if quant is still abstaining for hidden reasons.
+Do not hide unresolved issues behind green tests.
+Do not ship “trust me” explanations.
+
+Most important success condition:
+
+The system must be operationally truthful again:
+live quant path works,
+forbidden-feature contract holds,
+LLM cannot author trades,
+baseline scoreboard is real,
+accounting remains true,
+dashboard stops hiding degradation.
+
+Begin with the Phase 0 fix plan, then execute in order.

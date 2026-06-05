@@ -1,0 +1,140 @@
+Verdict: it is not working as intended if the intent is “make good predictions and trade profitably.”
+What you have is a partially real system with decent engineering around features/tests/backtesting, but the actual trading readiness is not there yet.
+
+What I found:
+
+1. The system’s own gate says do not deploy
+
+In artifacts/ml-engine/models/backtest_report.json, the summary is:
+deploy: false
+n_runs: 5
+For the only timeframe with a dataset (5m), the report shows:
+n_trades: 0
+final_pnl_usd: 0.0
+failure reasons:
+insufficient trades: 0 < 30
+sharpe_per_trade 0.0 < 0.5
+no regime passes
+
+That alone means the quant side has not proven profitability even by its own offline standard.
+
+2. Most tradeable timeframes are missing model coverage
+From shared/trading-frictions.json, tradeable timeframes are:
+
+5m, 1h, 2h, 6h, 1d
+
+But the backtest report shows:
+
+5m: ok but 0 trades
+1h: no_dataset
+2h: no_dataset
+6h: no_dataset
+1d: no_dataset
+
+So on the timeframes the system says it wants to trade, 4 out of 5 have no dataset snapshot at all, and the remaining one still produces no valid deployable result.
+
+3. The quant brain is off by default
+In shared/trading-frictions.json:
+
+quant_brain.enabled: false
+
+So unless something external flips that flag, the app is not primarily running the quant model path. It will fall back to the LLM/orchestrator path instead.
+
+That means if you expected a real model-driven trading engine to be live by default, it currently is not.
+
+4. The training state is thin
+In artifacts/ml-engine/models/report.json, the most recent training report shows only 5m trained in that report, and:
+
+pooled model: trained
+every per-coin slice: insufficient_data_per_coin
+each coin had only 59 rows
+
+So even where training exists, it is mostly pooled fallback, not strong per-coin models.
+
+That usually means the model is learning from too little coin-specific history to make robust symbol-level decisions.
+
+5. There is architecture drift / inconsistency
+The Python ML app comment in artifacts/ml-engine/app/main.py says:
+
+“Trading path is still untouched: no production Node code calls /ml/predict yet.”
+
+But the Node side clearly contains:
+
+quant-brain.ts
+prediction-orchestrator.ts
+shadow-recorder.ts
+ml-availability.ts
+monitor logic that references /ml/predict
+
+So the codebase has comment/document drift. That is not the biggest bug, but it is a sign the project evolved faster than its contracts/docs.
+
+6. Clean-environment reliability is not good yet
+The Python ML test suite did not run cleanly at first. I had to install missing dependencies:
+
+optuna
+pyarrow
+asyncpg
+
+That means the repo, as packed, is not self-contained enough for a cold run. For something that is supposed to be production-grade, that is a packaging/runtime weakness.
+
+What I was able to run:
+
+Python tests that passed
+Inside artifacts/ml-engine I ran and confirmed:
+
+tests/test_app.py → passed
+tests/test_backtest.py → passed
+tests/test_features.py → passed
+tests/test_news_tag_vocab_parity.py → passed
+
+So the ML side is not fake UI-only code. There is real logic there, and a fair amount of it is working.
+
+What that means:
+
+feature generation exists
+backtest framework exists
+parity tests exist
+endpoint-level behavior exists
+
+But “code exists and some tests pass” is very different from “this can predict and trade profitably.”
+
+7. The trader is heavily gated, which explains low/no execution
+The TypeScript trader has many filters:
+
+confidence thresholds
+asymmetric long threshold
+EV-vs-cost gate
+TP-distance gate
+regime filters
+portfolio/risk caps
+recent-loss blocking
+fleet brake logic
+
+That is generally safer than overtrading, but in your current state it likely causes trade starvation:
+
+model coverage is sparse
+per-coin data is thin
+quant is often unavailable or fallback-only
+gates are strict
+result: 0 trades in backtest for 5m
+
+So the app is not “losing because it trades badly” in this snapshot. It is also failing because it often doesn’t have enough validated signal to trade at all.
+
+My conclusion:
+
+As a software project: promising, fairly serious, and much more real than a toy demo.
+As a prediction/trading system: not ready, not validated, and not currently proving edge.
+
+The main reasons it fails its intended goal:
+
+insufficient trained-data coverage on the actual tradeable horizons
+pooled fallback instead of strong per-coin models
+no deploy-pass on backtest
+zero executed trades on the only tested tradeable timeframe
+quant path disabled by default
+environment/setup fragility
+
+What I could not fully verify:
+
+I could not run the Node/PNPM side end-to-end because pnpm was not available in the container and could not be fetched from the network here.
+So my executable validation is strongest on the Python ML side and on the artifacts already saved in the repo.

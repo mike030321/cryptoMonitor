@@ -1,0 +1,1108 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: crypto
+    description: Crypto monitoring operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /crypto/coins:
+    get:
+      operationId: listCoins
+      tags: [crypto]
+      summary: List monitored coins with current prices
+      responses:
+        "200":
+          description: List of monitored coins
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Coin"
+  /crypto/coins/{coinId}:
+    get:
+      operationId: getCoinDetail
+      tags: [crypto]
+      summary: Get a single coin with recent predictions, agent agreement, and skip events
+      parameters:
+        - name: coinId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: hours
+          in: query
+          description: Window in hours used for recent predictions and skip events
+          schema:
+            type: integer
+            default: 24
+      responses:
+        "200":
+          description: Coin detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CoinDetail"
+        "404":
+          description: Coin not found
+  /crypto/agents:
+    get:
+      operationId: listAgents
+      tags: [crypto]
+      summary: List AI agents with scores
+      responses:
+        "200":
+          description: List of AI agents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Agent"
+  /crypto/agents/{id}:
+    get:
+      operationId: getAgent
+      tags: [crypto]
+      summary: Get agent details with performance history
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentDetail"
+        "404":
+          description: Agent not found
+  /crypto/predictions:
+    get:
+      operationId: listPredictions
+      tags: [crypto]
+      summary: List recent predictions
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+        - name: agentId
+          in: query
+          schema:
+            type: integer
+        - name: coinId
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of predictions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Prediction"
+  /crypto/dashboard:
+    get:
+      operationId: getDashboard
+      tags: [crypto]
+      summary: Dashboard summary with overall stats
+      responses:
+        "200":
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dashboard"
+  /crypto/trigger-analysis:
+    post:
+      operationId: triggerAnalysis
+      tags: [crypto]
+      summary: Manually trigger an analysis cycle
+      responses:
+        "200":
+          description: Analysis triggered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnalysisResult"
+  /crypto/agent-performance:
+    get:
+      operationId: getAgentPerformance
+      tags: [crypto]
+      summary: Get agent performance over time
+      parameters:
+        - name: hours
+          in: query
+          schema:
+            type: integer
+            default: 24
+      responses:
+        "200":
+          description: Performance data over time
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PerformancePoint"
+  /crypto/price-history/{coinId}:
+    get:
+      operationId: getPriceHistory
+      tags: [crypto]
+      summary: Get price history for a coin
+      parameters:
+        - name: coinId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: hours
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        "200":
+          description: Price history data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PricePoint"
+  /crypto/monitoring-status:
+    get:
+      operationId: getMonitoringStatus
+      tags: [crypto]
+      summary: Get current monitoring status and cycle info
+      responses:
+        "200":
+          description: Monitoring status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MonitoringStatus"
+  /diagnostic-sandbox/status:
+    get:
+      operationId: getDiagnosticSandboxStatus
+      tags: [diagnostic-sandbox]
+      summary: Read-only status snapshot for the BTC/5m diagnostic paper sandbox
+      responses:
+        "200":
+          description: Diagnostic-sandbox status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiagnosticSandboxStatus"
+  /diagnostic-sandbox/health:
+    get:
+      operationId: getDiagnosticSandboxHealth
+      tags: [diagnostic-sandbox]
+      summary: |
+        Trailing-window drawdown probe for the active BTC/5m champion. Returns
+        the peak-to-trough drawdown over the most recent N closed DS trades,
+        the headroom remaining vs the configured floor, and a `needs_refit`
+        flag that flips before the auto-disable evaluator trips so operators
+        can stage a re-fit proactively (Task #670).
+      responses:
+        "200":
+          description: Diagnostic-sandbox health probe
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiagnosticSandboxHealth"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    Coin:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+        currentPrice:
+          type: number
+        priceChange24h:
+          type: number
+        volume24h:
+          type: number
+        marketCap:
+          type: number
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - symbol
+        - currentPrice
+        - priceChange24h
+        - volume24h
+        - marketCap
+        - lastUpdated
+    Agent:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        personality:
+          type: string
+        score:
+          type: number
+        totalPredictions:
+          type: integer
+        correctPredictions:
+          type: integer
+        wrongPredictions:
+          type: integer
+        accuracy:
+          type: number
+        streak:
+          type: integer
+        streakType:
+          type: string
+          enum: [win, loss, none]
+        status:
+          type: string
+          enum: [active, resting, degraded, quarantine_review, disabled]
+        generation:
+          type: integer
+        parentIds:
+          type: ["string", "null"]
+        evolutionMethod:
+          type: string
+        isActive:
+          type: boolean
+        systemPrompt:
+          type: ["string", "null"]
+        temperature:
+          type: ["number", "null"]
+        preferredTimeframes:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+        # Task #468 — strategy-profile registry surface for the
+        # dashboard. Joined inline on /crypto/agents (no new endpoint
+        # was added; the spec forbids it). Null only for agents whose
+        # numeric id is not yet in the boot-loaded cache (which the
+        # dashboard renders as a "needs review" badge). The shape
+        # mirrors the AgentProfile type in
+        # artifacts/api-server/src/lib/agents-registry/schema.ts —
+        # values pinned by the Task #468 contract tests.
+        registryProfile:
+          type: ["object", "null"]
+          properties:
+            agent_id:
+              type: string
+            display_name:
+              type: string
+            thesis:
+              type: string
+            strategy_family:
+              type: string
+              enum:
+                - momentum
+                - mean_reversion
+                - breakout
+                - volatility_forecaster
+                - baseline
+            preferred_regimes:
+              # Either the literal string "all" or a string[] of
+              # regime labels.
+              oneOf:
+                - type: string
+                  enum: [all]
+                - type: array
+                  items:
+                    type: string
+            blocked_regimes:
+              type: array
+              items:
+                type: string
+            min_confidence:
+              type: ["number", "null"]
+            min_expected_edge_after_costs:
+              type: ["number", "null"]
+            abstain_bias:
+              type: ["number", "null"]
+            size_bias:
+              type: ["number", "null"]
+            pooled_fallback_penalty:
+              type: ["number", "null"]
+            drawdown_sensitivity:
+              type: ["number", "null"]
+            benchmark_sensitivity:
+              type: ["number", "null"]
+            status:
+              type: string
+              enum:
+                - active
+                - baseline
+                - quarantine_review
+                - disabled
+                - legacy_archived
+            executes:
+              type: boolean
+            retirement_rule:
+              type: object
+              additionalProperties: true
+            created_at:
+              type: string
+            notes:
+              type: string
+          required:
+            - agent_id
+            - display_name
+            - thesis
+            - strategy_family
+            - preferred_regimes
+            - blocked_regimes
+            - min_confidence
+            - min_expected_edge_after_costs
+            - abstain_bias
+            - size_bias
+            - pooled_fallback_penalty
+            - drawdown_sensitivity
+            - benchmark_sensitivity
+            - status
+            - executes
+            - retirement_rule
+            - created_at
+        # Task #468 — Strategy-Lab variant tag retained as metadata
+        # (spec lines 39-41: "with sub-id retained as
+        # baseline_buy_hold / baseline_dca_cb / baseline_trend_filter").
+        # Surfaced from `mapLegacyNameToSubId(agent.name)` so the
+        # dashboard can show "Baseline Reference / baseline_buy_hold"
+        # without the variant string ever becoming a registry profile
+        # id. Null for every non-baseline-variant agent.
+        profileSubId:
+          type: ["string", "null"]
+        # Task #468 — live retirement-rule metric values for the
+        # dashboard's per-agent "needs review" surfacing. Sourced
+        # from the latest nightly retirement snapshot
+        # (`getRetirementSnapshot()`); null if the snapshot has not
+        # produced a candidate row for this agent yet (e.g. boot just
+        # happened or the agent's `retirement_rule.kind === "never"`).
+        # Shape mirrors the RetirementCandidate type in
+        # artifacts/api-server/src/lib/agents-registry/retirement.ts —
+        # the dashboard renders "DA 0.42 < 0.50" / "Sharpe -0.31 < 0"
+        # / "5 closed trades / 90d threshold 5" inline next to status.
+        retirementMetric:
+          type: ["object", "null"]
+          properties:
+            ruleKind:
+              type: string
+              enum:
+                - 30d_cost_aware_threshold
+                - 90d_activation_count
+            closedTrades:
+              type: number
+            directionalAccuracy:
+              type: ["number", "null"]
+            costAwareSharpe:
+              type: ["number", "null"]
+            daThreshold:
+              type: ["number", "null"]
+            sharpeThreshold:
+              type: ["number", "null"]
+            activationThreshold:
+              type: ["number", "null"]
+            triggeredBy:
+              type: array
+              items:
+                type: string
+            autoFlipped:
+              type: boolean
+            evaluatedAt:
+              type: string
+              format: date-time
+          required:
+            - ruleKind
+            - closedTrades
+            - directionalAccuracy
+            - costAwareSharpe
+            - daThreshold
+            - sharpeThreshold
+            - activationThreshold
+            - triggeredBy
+            - autoFlipped
+            - evaluatedAt
+      required:
+        - id
+        - name
+        - personality
+        - score
+        - totalPredictions
+        - correctPredictions
+        - wrongPredictions
+        - accuracy
+        - streak
+        - streakType
+        - status
+        - createdAt
+    AgentPaperPortfolio:
+      type: object
+      properties:
+        cashBalance:
+          type: number
+        totalValue:
+          type: number
+        startingCapital:
+          type: number
+          description: |
+            Per-bot starting capital (Task #362). The dashboard derives
+            net P&L as `totalValue - startingCapital` so the displayed
+            number agrees with the equity tile next to it. The legacy
+            realized-only `totalPnl` / `totalPnlPercent` fields were
+            removed in Task #370 — derive net P&L from this seed.
+        totalTrades:
+          type: integer
+        winningTrades:
+          type: integer
+        losingTrades:
+          type: integer
+        winRate:
+          type: number
+        openPositions:
+          type: array
+          items:
+            type: object
+            properties:
+              coinId:
+                type: string
+              coinName:
+                type: string
+              direction:
+                type: string
+              entryPrice:
+                type: number
+              positionSize:
+                type: number
+              unrealizedPnl:
+                type: number
+              timeframe:
+                type: string
+              expiresAt:
+                type: string
+                format: date-time
+            required:
+              - coinId
+              - coinName
+              - direction
+              - entryPrice
+              - positionSize
+              - unrealizedPnl
+              - timeframe
+              - expiresAt
+        recentTrades:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: |
+                  paper_trades.id — durable join key for
+                  paper_position_marks (Task #491). Surfaced as of
+                  Task #505 so dashboards can deep-link a row to its
+                  per-tick mark stream.
+              coinId:
+                type: string
+              coinName:
+                type: string
+              action:
+                type: string
+              entryPrice:
+                type: number
+              exitPrice:
+                type: ["number", "null"]
+              pnl:
+                type: ["number", "null"]
+              pnlPercent:
+                type: ["number", "null"]
+              status:
+                type: string
+              timeframe:
+                type: string
+              createdAt:
+                type: string
+                format: date-time
+              maePct:
+                type: ["number", "null"]
+                description: |
+                  Task #505 — true intra-trade max-adverse-excursion as
+                  a fraction of entry price (e.g. 0.012 = 1.2%
+                  drawdown). Computed from `paper_position_marks`
+                  joined on `trade_id`, mirroring
+                  `replay_meta_brain.py:_mae_from_marks`. Null when
+                  the trade has no marks (predates Task #491).
+              stability:
+                type: ["number", "null"]
+                description: |
+                  Task #505 — bounded stability score in [0, 1] derived
+                  from the population stdev of consecutive mark-to-mark
+                  returns (`1 / (1 + 5*sigma)`). Higher means a
+                  smoother hold. Null when fewer than two usable
+                  returns exist.
+            required:
+              - id
+              - coinId
+              - coinName
+              - action
+              - entryPrice
+              - status
+              - timeframe
+              - createdAt
+              - maePct
+              - stability
+      required:
+        - cashBalance
+        - totalValue
+        - startingCapital
+        - totalTrades
+        - winningTrades
+        - losingTrades
+        - winRate
+        - openPositions
+        - recentTrades
+    AgentDetail:
+      type: object
+      properties:
+        agent:
+          $ref: "#/components/schemas/Agent"
+        recentPredictions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Prediction"
+        accuracyHistory:
+          type: array
+          items:
+            $ref: "#/components/schemas/AccuracyPoint"
+        paperPortfolio:
+          oneOf:
+            - $ref: "#/components/schemas/AgentPaperPortfolio"
+            - type: "null"
+      required:
+        - agent
+        - recentPredictions
+        - accuracyHistory
+    Prediction:
+      type: object
+      properties:
+        id:
+          type: integer
+        agentId:
+          type: integer
+        agentName:
+          type: string
+        coinId:
+          type: string
+        coinName:
+          type: string
+        direction:
+          type: string
+          enum: [up, down, stable]
+        confidence:
+          type: number
+        reasoning:
+          type: string
+        priceAtPrediction:
+          type: number
+        predictedPrice:
+          type: number
+        actualPrice:
+          type: ["number", "null"]
+        outcome:
+          type: ["string", "null"]
+          enum: [correct, wrong, pending, neutral, null]
+        scoreChange:
+          type: ["number", "null"]
+        timeframe:
+          type: string
+          enum: ["1m", "5m", "1h", "2h", "6h", "1d"]
+        resolvesAt:
+          type: ["string", "null"]
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        resolvedAt:
+          type: ["string", "null"]
+          format: date-time
+      required:
+        - id
+        - agentId
+        - agentName
+        - coinId
+        - coinName
+        - direction
+        - confidence
+        - reasoning
+        - priceAtPrediction
+        - predictedPrice
+        - outcome
+        - scoreChange
+        - createdAt
+    Dashboard:
+      type: object
+      properties:
+        totalPredictions:
+          type: integer
+        directional24h:
+          type: object
+          description: |
+            Trailing 24h directional accuracy (B-AVG-HIDES + Task #444).
+            The all-time `overallAccuracy` field was removed from this
+            payload because it folded together legacy personality/LLM-era
+            picks and `quant_disabled` stable rows, producing a misleading
+            ~70% headline. The 24h figure with the coin-flip floor is the
+            only honest reading.
+          properties:
+            resolved:
+              type: integer
+            correct:
+              type: integer
+            accuracyPct:
+              type: number
+              nullable: true
+            coinFlipFloorPct:
+              type: number
+          required:
+            - resolved
+            - correct
+            - accuracyPct
+            - coinFlipFloorPct
+        bestAgent:
+          oneOf:
+            - $ref: "#/components/schemas/Agent"
+            - type: "null"
+          description: "Top-ranked agent by 24h directional accuracy. Null when no agent has enough resolved predictions in the window (insufficient signal)."
+        worstAgent:
+          oneOf:
+            - $ref: "#/components/schemas/Agent"
+            - type: "null"
+          description: "Bottom-ranked agent by 24h directional accuracy. Null when no agent has enough resolved predictions in the window (insufficient signal)."
+        signal:
+          type: string
+          enum: ["ok", "insufficient_signal"]
+          description: "Whether the dashboard has real ranking signal (Task #532). When 'insufficient_signal', bestAgent/worstAgent are null and the UI should hide the leaderboard rather than render an N/A placeholder."
+        recentPredictions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Prediction"
+        agentRankings:
+          type: array
+          items:
+            $ref: "#/components/schemas/Agent"
+        predictionsByOutcome:
+          type: object
+          properties:
+            correct:
+              type: integer
+            wrong:
+              type: integer
+            pending:
+              type: integer
+          required:
+            - correct
+            - wrong
+            - pending
+        activeCoinCount:
+          type: integer
+        monitoringCycles:
+          type: integer
+      required:
+        - totalPredictions
+        - bestAgent
+        - worstAgent
+        - recentPredictions
+        - agentRankings
+        - predictionsByOutcome
+        - activeCoinCount
+        - monitoringCycles
+    CoinDetail:
+      type: object
+      properties:
+        coin:
+          $ref: "#/components/schemas/Coin"
+        recentPredictions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Prediction"
+        agentAgreement:
+          type: object
+          properties:
+            up:
+              type: integer
+            down:
+              type: integer
+            stable:
+              type: integer
+            total:
+              type: integer
+            dominant:
+              type: string
+              enum: [up, down, stable, none]
+            avgConfidence:
+              type: number
+          required:
+            - up
+            - down
+            - stable
+            - total
+            - dominant
+            - avgConfidence
+        recentSkipEvents:
+          type: array
+          items:
+            $ref: "#/components/schemas/CoinSkipEvent"
+        windowHours:
+          type: integer
+      required:
+        - coin
+        - recentPredictions
+        - agentAgreement
+        - recentSkipEvents
+        - windowHours
+    CoinSkipEvent:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+        reason:
+          type: string
+        reasonLabel:
+          type: string
+        agentName:
+          type: string
+        message:
+          type: string
+      required:
+        - ts
+        - reason
+        - reasonLabel
+        - agentName
+        - message
+    AnalysisResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        predictionsCreated:
+          type: integer
+        cycleNumber:
+          type: integer
+      required:
+        - success
+        - message
+        - predictionsCreated
+        - cycleNumber
+    PerformancePoint:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        agentId:
+          type: integer
+        agentName:
+          type: string
+        accuracy:
+          type: number
+        score:
+          type: number
+      required:
+        - timestamp
+        - agentId
+        - agentName
+        - accuracy
+        - score
+    PricePoint:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        price:
+          type: number
+        coinId:
+          type: string
+      required:
+        - timestamp
+        - price
+        - coinId
+    AccuracyPoint:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        accuracy:
+          type: number
+        cumulativeScore:
+          type: number
+      required:
+        - timestamp
+        - accuracy
+        - cumulativeScore
+    MonitoringStatus:
+      type: object
+      properties:
+        isRunning:
+          type: boolean
+        cycleCount:
+          type: integer
+        lastCycleAt:
+          type: ["string", "null"]
+          format: date-time
+        nextCycleAt:
+          type: ["string", "null"]
+          format: date-time
+        activeAgents:
+          type: integer
+        monitoredCoins:
+          type: integer
+      required:
+        - isRunning
+        - cycleCount
+        - lastCycleAt
+        - nextCycleAt
+        - activeAgents
+        - monitoredCoins
+    DiagnosticSandboxAutoDisableStatus:
+      type: object
+      description: |
+        Strict auto-disable verdict shape. `disabled=false` when the lane
+        is healthy; otherwise `reason` is one of the strict reason codes
+        and `disabled_at` carries the ISO-8601 trip timestamp. Field
+        names are snake_case to match the rest of the operator-facing
+        DS contract.
+      properties:
+        disabled:
+          type: boolean
+        reason:
+          type: ["string", "null"]
+          enum:
+            - null
+            - consecutive_losses
+            - n10_post_fee
+            - manual
+            - diagnostic_drawdown_exceeded
+            - diagnostic_negative_pnl_at_review
+            - diagnostic_universe_drift_detected
+            - diagnostic_scope_drift_detected
+            - diagnostic_unauthorized_under_confident_serving
+        detail:
+          type: ["string", "null"]
+        disabled_at:
+          type: ["string", "null"]
+          format: date-time
+      required:
+        - disabled
+        - reason
+        - detail
+        - disabled_at
+    DiagnosticSandboxStatus:
+      type: object
+      description: |
+        Read-only snapshot of the BTC/5m diagnostic paper sandbox lane.
+        Field naming uses snake_case as required by the operator-facing
+        contract; the Express handler maps the internal MTTM camelCase
+        config onto this shape.
+      properties:
+        label:
+          type: string
+        mode:
+          type: string
+          enum: [default, diagnostic_sandbox]
+        enabled:
+          type: boolean
+        ready:
+          type: boolean
+        universe:
+          type: array
+          items:
+            type: object
+            properties:
+              coin_id:
+                type: string
+              timeframe:
+                type: string
+              version:
+                type: ["string", "null"]
+            required: [coin_id, timeframe]
+        fixed_position_pct:
+          type: number
+        btc_version:
+          type: ["string", "null"]
+        meta_shadow:
+          type: boolean
+        drawdown_floor_pct:
+          type: number
+        n_neg_pnl_threshold:
+          type: integer
+        since:
+          type: ["string", "null"]
+          format: date-time
+        hours_since:
+          type: ["number", "null"]
+        closed_trades_since:
+          type: integer
+        current_drawdown_pct:
+          type: number
+        net_pnl_pct:
+          type: number
+        reviews_remaining:
+          type: integer
+        auto_disable_status:
+          $ref: "#/components/schemas/DiagnosticSandboxAutoDisableStatus"
+      required:
+        - label
+        - mode
+        - enabled
+        - ready
+        - universe
+        - fixed_position_pct
+        - btc_version
+        - meta_shadow
+        - drawdown_floor_pct
+        - n_neg_pnl_threshold
+        - since
+        - hours_since
+        - closed_trades_since
+        - current_drawdown_pct
+        - net_pnl_pct
+        - reviews_remaining
+        - auto_disable_status
+    DiagnosticSandboxHealth:
+      type: object
+      description: |
+        Trailing-window drawdown probe for the BTC/5m diagnostic paper
+        sandbox (Task #670). Computed over the most recent N closed DS
+        trades — same trade stream the auto-disable evaluator already
+        watches, but sliced to the trailing window so a slow drift can be
+        spotted before it eats through the floor. Field naming is
+        snake_case to match the rest of the operator-facing DS contract.
+      properties:
+        evaluable:
+          type: boolean
+          description: |
+            False when DS mode is not active, the lane has never been
+            enabled, or no DS trades have closed yet. The remaining fields
+            are still populated with safe defaults so the dashboard can
+            render the policy preview.
+        label:
+          type: string
+        coin_id:
+          type: string
+        timeframe:
+          type: string
+        btc_version:
+          type: ["string", "null"]
+        window_trades:
+          type: integer
+          description: Configured trailing window size (most-recent N closed trades).
+        n_trades_observed:
+          type: integer
+          description: |
+            Number of trades actually counted in the trailing window. May
+            be < `window_trades` early in the lane's life.
+        trailing_drawdown_pct:
+          type: number
+          description: |
+            Peak-to-trough drawdown of the equity curve over the trailing
+            window, account-weighted by the DS fixed-position pin (≤ 0).
+        trailing_pnl_pct:
+          type: number
+          description: Cumulative account-weighted PnL over the trailing window.
+        drawdown_floor_pct:
+          type: number
+          description: Configured drawdown floor (negative, e.g. -0.05).
+        warn_threshold_pct:
+          type: number
+          description: |
+            Warning trip line: `floor * warn_fraction` (negative, less
+            negative than the floor — e.g. -0.04 when floor is -0.05).
+        warn_fraction:
+          type: number
+          description: |
+            Fraction of |floor| at which the trailing drawdown is
+            considered to be eating into the headroom and a refit
+            should be staged (default 0.8).
+        headroom_pct:
+          type: number
+          description: |
+            Distance from the trailing drawdown to the floor:
+            `trailing_drawdown_pct - drawdown_floor_pct`. Positive ⇒
+            headroom remaining; ≤ 0 ⇒ floor is at or past breach.
+        needs_refit:
+          type: boolean
+          description: |
+            True when the trailing drawdown has eaten through
+            `warn_threshold_pct`. Operators should stage a re-fit before
+            the auto-disable evaluator trips.
+        floor_breached:
+          type: boolean
+          description: True when the trailing drawdown is at or past the floor.
+        computed_at:
+          type: string
+          format: date-time
+      required:
+        - evaluable
+        - label
+        - coin_id
+        - timeframe
+        - btc_version
+        - window_trades
+        - n_trades_observed
+        - trailing_drawdown_pct
+        - trailing_pnl_pct
+        - drawdown_floor_pct
+        - warn_threshold_pct
+        - warn_fraction
+        - headroom_pct
+        - needs_refit
+        - floor_breached
+        - computed_at

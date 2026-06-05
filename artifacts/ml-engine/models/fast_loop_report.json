@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-06-04T13:01:35.909247+00:00",
+  "loop": {
+    "kind": "fast",
+    "reason": "meta_only",
+    "min_new_rows": 100
+  },
+  "meta_models": {
+    "1m": {
+      "status": "heuristic",
+      "version": "20260604T125952Z",
+      "n_rows": 0,
+      "class_counts": {}
+    },
+    "5m": {
+      "status": "trained",
+      "version": "20260604T130012Z",
+      "n_rows": 3392,
+      "metrics": {
+        "action_accuracy_holdout": 0.9484536082474226,
+        "edge_mae_holdout_pct": 0.20172828489271524,
+        "n_train": 2713,
+        "n_holdout": 679,
+        "class_counts": {
+          "no_trade": 3146,
+          "long": 101,
+          "short": 145
+        }
+      }
+    },
+    "1h": {
+      "status": "trained",
+      "version": "20260604T130032Z",
+      "n_rows": 4019,
+      "metrics": {
+        "action_accuracy_holdout": 0.3072139303482587,
+        "edge_mae_holdout_pct": 0.5574582362288962,
+        "n_train": 3215,
+        "n_holdout": 804,
+        "class_counts": {
+          "no_trade": 1234,
+          "long": 1379,
+          "short": 1406
+        }
+      }
+    },
+    "2h": {
+      "status": "trained",
+      "version": "20260604T130053Z",
+      "n_rows": 2300,
+      "metrics": {
+        "action_accuracy_holdout": 0.6152173913043478,
+        "edge_mae_holdout_pct": 0.6223630483654181,
+        "n_train": 1840,
+        "n_holdout": 460,
+        "class_counts": {
+          "no_trade": 566,
+          "long": 830,
+          "short": 904
+        }
+      }
+    },
+    "6h": {
+      "status": "trained",
+      "version": "20260604T130118Z",
+      "n_rows": 629,
+      "metrics": {
+        "action_accuracy_holdout": 0.5793650793650794,
+        "edge_mae_holdout_pct": 1.3163137015896027,
+        "n_train": 503,
+        "n_holdout": 126,
+        "class_counts": {
+          "no_trade": 218,
+          "long": 206,
+          "short": 205
+        }
+      }
+    },
+    "1d": {
+      "status": "heuristic",
+      "version": "20260604T130135Z",
+      "n_rows": 144,
+      "class_counts": {
+        "no_trade": 36,
+        "long": 105,
+        "short": 3
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "skipped": false,
+  "this_run_mode": "1",
+  "flipped_mode": "0",
+  "subset_coins": [
+    "pepe",
+    "bonk",
+    "floki-inu"
+  ],
+  "subset_tfs": [
+    "1d"
+  ],
+  "per_slice_diff": {
+    "pepe/1d": {
+      "a_mode": "1",
+      "a_post_fee_pct_total": -59.1553,
+      "b_mode": "0",
+      "b_post_fee_pct_total": -59.1553,
+      "delta_b_minus_a": 0.0
+    },
+    "bonk/1d": {
+      "a_mode": "1",
+      "a_post_fee_pct_total": -115.6358,
+      "b_mode": "0",
+      "b_post_fee_pct_total": -115.6358,
+      "delta_b_minus_a": 0.0
+    },
+    "floki-inu/1d": {
+      "a_mode": "1",
+      "a_post_fee_pct_total": -119.995,
+      "b_mode": "0",
+      "b_post_fee_pct_total": -119.995,
+      "delta_b_minus_a": 0.0
+    }
+  },
+  "summary": {
+    "elapsed_sec": 243.9,
+    "n_slices_compared": 3,
+    "n_materially_different_gt_0_5pp": 0,
+    "materially_different_slices": [],
+    "verdict": "recency_weighting_does_not_change_outcomes_in_this_subset"
+  }
+}

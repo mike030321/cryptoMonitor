@@ -1,0 +1,176 @@
+I want a serious full-training run for the quant system using real historical market data from the past 1 year for the monitored coins. I have a CoinMarketCap API available for these coins, and I want you to use it where appropriate as an approved real-data source or cross-validation source. I do not care how long the training takes. Optimize for correctness, completeness, and proof of improvement, not speed.
+
+Primary objective
+Train the quant system as fully as possible on 1 year of real data across all supported coins, timeframes, and model variants, with strict integrity rules and periodic proof that training is improving the quant rather than just consuming compute.
+
+Hard requirements
+1. Real data only
+- Use only real historical market data.
+- No synthetic price rows.
+- No mock candles.
+- No fake fallback labels.
+- No advisory/LLM-derived features in live-trade or training features.
+- Approved sources are exchange-native data already in the system and CoinMarketCap where it is valid to use for historical market coverage or cross-checking.
+- If CoinMarketCap data conflicts with the canonical exchange source, do not silently merge. Log, compare, and choose the canonical source explicitly.
+
+2. Full 1-year history
+- Build or refresh a full 1-year dataset for every monitored coin and supported timeframe.
+- Audit completeness before training:
+  - row counts
+  - gaps
+  - duplicates
+  - cadence correctness
+  - source stamps
+  - timezone correctness
+  - mixed-cadence contamination
+- Do not start full training until the data audit passes.
+
+3. Train the quant deeply, not superficially
+I want the quant trained across all meaningful available dimensions, including where applicable:
+- per-coin models
+- pooled models
+- specialist models
+- all supported timeframes
+- walk-forward validation
+- recency weighting experiments
+- threshold variants if still relevant
+- calibration
+- feature-importance stability
+- regime-bucketed evaluation
+- post-fee PnL evaluation
+- prediction collapse detection
+- reliability / Brier / confidence diagnostics
+- challenger comparisons if supported
+- any existing quant-side measurements already built into the codebase
+
+Do not waste time on fake breadth. If some dimensions are legacy, broken, or no longer relevant, say so clearly and skip them. But I want the maximum serious quant training coverage that the current architecture can honestly support.
+
+4. Quant-only rule must stay enforced
+- No LLM/news-tag/successProbability/legacy heuristic may influence training labels, training features, live prediction, or trade authority.
+- Before the training run begins, verify that quant-only and real-data-only rules are still enforced.
+- If violated, stop and fix before training.
+
+5. Fail-fast, no silent fallback
+- No silent fallbacks for contracts, thresholds, friction config, or training config.
+- If any required config is missing, malformed, or stale, fail loudly and stop.
+- Do not quietly reuse stale thresholds or stale manifests.
+
+6. Proof of improvement is mandatory
+I do not just want “training completed.”
+I want repeated, concrete evidence during and after training that the quant is improving or not improving.
+
+During training, provide periodic proof updates with:
+- completed coins / timeframes / slices
+- current watchdog / verification status
+- number of promoted vs demoted slices
+- best and worst slices so far
+- current net post-fee PnL leaders
+- class balance / collapse warnings
+- whether calibration is improving or worsening
+- whether regime mismatch is still the dominant failure mode
+- whether per-coin models are beating pooled models anywhere
+- whether training is converging, stalling, or regressing
+
+I want these updates periodically while the run is in progress, not just at the end.
+
+7. Proof must be based on meaningful metrics
+Do not use only directional accuracy.
+Report and rank by:
+- post-fee net PnL
+- expectancy
+- trade count
+- win rate
+- Brier / calibration
+- max drawdown if available
+- per-class accuracy
+- regime-bucketed DA / PnL if available
+- prediction collapse
+- feature stability
+- baseline comparisons
+- walk-forward holdout performance
+
+8. Final answer must include a hard verdict
+At the end, tell me clearly:
+- did the quant improve from this training run or not
+- which coins improved
+- which timeframes improved
+- which slices are still broken
+- which slices should be retired
+- which slices are promising
+- whether pooled or per-coin is stronger
+- whether the model is still regime-mismatched
+- whether another retrain is justified
+- whether the system is closer to real deployable edge after this run
+
+9. Keep artifacts
+Persist and expose:
+- updated manifests
+- report.json
+- verification history
+- failure-analysis report
+- any model comparison report
+- a final training summary report for this run
+
+10. No “looks better” language without proof
+Every claim of improvement must be tied to metrics and artifacts.
+If the quant did not improve, say it directly.
+
+Execution plan
+Phase 1 — preflight audit
+- verify quant-only and real-data-only enforcement
+- verify config integrity
+- verify data completeness/integrity for the full 1-year window
+- verify cadence guards and source correctness
+- verify no stale legacy path contaminates training
+
+Phase 2 — data build
+- backfill/refresh 1-year real historical data for all monitored coins and supported timeframes
+- use CoinMarketCap only where appropriate and clearly documented
+- generate a data-audit report before training starts
+
+Phase 3 — full training
+- run the deepest honest quant training coverage the current stack supports
+- include per-coin / pooled / specialists where applicable
+- include walk-forward evaluation and calibration
+- include all meaningful existing diagnostics
+
+Phase 4 — periodic progress proofs
+- post structured proof updates during training
+- do not just say “still running”
+- show metrics-based progress
+
+Phase 5 — final evaluation
+- compare before vs after
+- summarize improvements and regressions
+- identify strongest slices
+- identify dead slices
+- write final artifacts and summary
+
+Specific things I want checked during this run
+- Are per-coin models now beating pooled for any coins?
+- Does worldcoin-wld remain one of the strongest improvement candidates?
+- Are 5m slices still failing due to regime mismatch?
+- Does recency weighting materially help?
+- Are there any profitable post-fee slices after training?
+- Are any slices collapsing to one class?
+- Are any dashboards still showing stale/truthless numbers after this training cycle?
+
+Required deliverables
+1. preflight audit summary
+2. 1-year data integrity summary
+3. periodic progress updates during training
+4. final training summary
+5. proof of whether the quant improved
+6. ranked top slices by post-fee quality
+7. ranked worst slices with likely root causes
+8. final go/no-go recommendation for more retraining vs further architecture fixes
+
+Important
+I do not care how long this takes.
+I care that it is:
+- real-data based
+- quant-only
+- fully audited
+- deeply trained
+- truthfully evaluated
+- backed by periodic proof

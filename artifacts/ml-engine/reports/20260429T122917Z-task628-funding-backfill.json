@@ -1,0 +1,85 @@
+{
+  "task": 628,
+  "generated_at": "20260429T122917Z",
+  "coin_ids": [
+    "bonk",
+    "celestia",
+    "dogwifcoin",
+    "floki-inu",
+    "injective-protocol",
+    "jupiter-exchange-solana",
+    "pepe",
+    "render-token"
+  ],
+  "lookback_days": 95,
+  "page_limit": 100,
+  "gap_fill_only": true,
+  "gap_threshold_rows": 800,
+  "results": [
+    {
+      "coin_id": "bonk",
+      "instId": "BONK-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    },
+    {
+      "coin_id": "celestia",
+      "instId": "TIA-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "instId": "WIF-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    },
+    {
+      "coin_id": "floki-inu",
+      "instId": "FLOKI-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    },
+    {
+      "coin_id": "injective-protocol",
+      "instId": "INJ-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "instId": "JUP-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    },
+    {
+      "coin_id": "pepe",
+      "instId": "PEPE-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    },
+    {
+      "coin_id": "render-token",
+      "instId": "RENDER-USDT-SWAP",
+      "status": "skipped_gap_fill",
+      "existing_funding_rows": 4787,
+      "fetched_rows": 0,
+      "inserted_rows": 0
+    }
+  ],
+  "elapsed_s_total": 8.7
+}

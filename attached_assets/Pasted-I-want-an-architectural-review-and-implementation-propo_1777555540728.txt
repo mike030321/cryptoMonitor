@@ -1,0 +1,365 @@
+I want an architectural review and implementation proposal for replacing the current quant engine.
+
+Do **not** implement immediately.
+
+First, review the evidence from the repo and tell me whether you agree that the best fix is to replace the current broad 3-class directional engine with a narrow **Sparse Post-Cost Opportunity Engine**.
+
+## Current problem
+
+The current app has a large working infrastructure, but no proven trading engine:
+
+* all active `model_registry` rows are shadow
+* zero champion models
+* quant brain outputs `stable`, `confidence=0`
+* Core families cannot trade because no served model exists
+* meta-brain cannot learn because no real executor outcomes exist
+* the old LightGBM 3-class `{UP, STABLE, DOWN}` directional architecture failed under:
+
+  * feature search
+  * full-quality retraining
+  * maximum-history expanded-universe retraining
+* Task #640 reached Outcome B: data depth is not the binding constraint
+* Task #643/B/B2 found the only promising path so far:
+
+  * BTC/5m C showed promising forward holdout economics
+  * ETH/5m C was rejected
+  * BTC/5m C is still only PARTIAL because calibration/probability trust is not clean enough for dynamic sizing
+
+The current full “brain + 4 families + meta-brain” architecture is too large for the evidence. We need the smallest engine that can prove one real post-fee trading loop.
+
+## Proposed replacement engine
+
+Replace the broad directional engine with:
+
+# Sparse Post-Cost Opportunity Engine
+
+Core idea:
+
+The model should not try to predict every candle as UP/DOWN/STABLE.
+
+It should ask:
+
+> “Is this a rare setup where a trade is worth taking after fees, slippage, spread, and risk?”
+
+Start with the smallest possible scope:
+
+* coin: `bitcoin`
+* timeframe: `5m`
+* mode: `paper only`
+* execution: fixed-size only
+* meta-brain: shadow only
+* no dynamic sizing
+* no global quant enablement
+* no other coins
+* no other timeframes
+* no legacy agents
+
+## Review question
+
+Before implementation, answer honestly:
+
+Is this the best next architecture based on the evidence?
+
+Choose one:
+
+1. Agree — replace current trade engine with BTC/5m sparse post-cost engine as the first minimal proof loop.
+2. Partially agree — propose changes.
+3. Disagree — explain what better architecture is supported by the repo evidence.
+
+Do not agree automatically. Use evidence.
+
+---
+
+# Proposed engine design
+
+## 1. Scope
+
+Initial engine:
+
+```json
+{
+  "engine": "sparse_post_cost_v1",
+  "coin": "bitcoin",
+  "timeframe": "5m",
+  "mode": "paper_only",
+  "executor_family": "volatility_defensive_or_sparse_opportunity_core",
+  "other_families": "observe_only"
+}
+```
+
+Only one execution profile should be allowed at first.
+
+Do not let all 4 families trade the same signal.
+
+If you think a new internal profile like `sparse_opportunity_core` is cleaner than reusing `volatility_defensive`, say so.
+
+## 2. Label design
+
+Replace the old `{UP, STABLE, DOWN}` objective with opportunity labels:
+
+```text
+LONG_OPPORTUNITY
+SHORT_OPPORTUNITY
+NO_TRADE
+```
+
+For BTC/5m, use:
+
+```json
+{
+  "horizon_candles": 12,
+  "horizon_minutes": 60,
+  "round_trip_cost_pct": 0.30,
+  "required_net_edge_pct": 0.45,
+  "gross_move_required_pct": 0.75,
+  "max_adverse_move_pct": 0.45
+}
+```
+
+Definition:
+
+* `LONG_OPPORTUNITY` only if future upside move over the horizon beats round-trip cost + required net edge, without violating max adverse excursion first.
+* `SHORT_OPPORTUNITY` only if future downside move beats round-trip cost + required net edge, without violating max adverse excursion first.
+* otherwise `NO_TRADE`.
+
+If you disagree with these parameters, propose better ones based on actual BTC/5m distribution in the repo.
+
+## 3. Model design
+
+Use two heads:
+
+### Classifier
+
+Predicts:
+
+```text
+LONG_OPPORTUNITY / SHORT_OPPORTUNITY / NO_TRADE
+```
+
+### Regressor
+
+Predicts:
+
+```text
+expected_net_return_after_costs
+```
+
+A trade is allowed only if both agree:
+
+```text
+classifier says opportunity
+AND regressor expected_net_return_after_costs exceeds threshold
+```
+
+Do not rely on direction classifier alone.
+
+## 4. Calibration design
+
+Calibration should not be ignored, but should be interpreted correctly.
+
+Rules:
+
+* overconfidence blocks trading
+* underconfidence blocks dynamic sizing but may allow fixed-size paper diagnostic
+* dynamic sizing disabled until calibration is trustworthy
+
+Suggested config:
+
+```json
+{
+  "cal_dev_ceiling_dynamic_sizing": 0.20,
+  "cal_dev_ceiling_fixed_size_paper": 0.55,
+  "overconfidence_block": true,
+  "underconfidence_fixed_size_allowed": true,
+  "dynamic_sizing_allowed": false
+}
+```
+
+Review this carefully.
+
+If the model is underconfident but financially profitable, fixed-size paper may be allowed.
+If it is overconfident, block.
+
+## 5. Trade gate
+
+Suggested initial BTC/5m gate:
+
+```json
+{
+  "min_opportunity_prob": 0.65,
+  "min_expected_net_return_pct": 0.45,
+  "min_prob_gap": 0.20,
+  "max_no_trade_prob": 0.40,
+  "max_spread_bps": 8,
+  "max_trade_rate": 0.025
+}
+```
+
+If actual BTC/5m candidate evidence suggests different values, propose calculated alternatives.
+
+## 6. Financial truth gate
+
+For a candidate to enter diagnostic paper mode:
+
+```json
+{
+  "min_forward_holdout_trades": 50,
+  "min_net_pnl_pct": 0.0,
+  "min_profit_factor": 1.20,
+  "max_drawdown_pct": 8.0,
+  "min_win_rate_pct": 50.0
+}
+```
+
+These are safety gates for paper diagnostic, not dynamic live sizing.
+
+## 7. Paper execution
+
+For the first proof run:
+
+```json
+{
+  "position_size_pct": 0.5,
+  "max_open_positions": 1,
+  "daily_loss_stop_pct": 1.5,
+  "total_drawdown_stop_pct": 5.0,
+  "review_after_hours": 72,
+  "review_after_closed_trades": 50,
+  "auto_disable_if_negative_after_closed_trades": 50
+}
+```
+
+This is paper only.
+
+No real wallet.
+No global quant.
+
+## 8. Meta-brain
+
+Meta-brain remains shadow:
+
+```json
+{
+  "mode": "shadow",
+  "can_change_size": false,
+  "can_suppress": false,
+  "can_record_outcomes": true,
+  "can_display_advice": true
+}
+```
+
+Meta-brain may observe outcomes, but cannot control the engine yet.
+
+## 9. Runtime behavior
+
+The new engine must be isolated.
+
+Required behavior:
+
+* only BTC/5m can emit executable paper signals
+* only the selected execution profile can place paper trades
+* all other coins/timeframes remain blocked or observe-only
+* 1h/2h/6h/1d remain context-only
+* legacy agents remain archived
+* no model that failed truth gate is discoverable by production registry
+* research candidates stay quarantined until explicitly approved
+
+## 10. Dashboard behavior
+
+Dashboard must clearly show:
+
+```text
+Diagnostic paper engine: BTC/5m only
+Not global quant
+Not real money
+Meta-brain shadow only
+Dynamic sizing disabled
+```
+
+Show:
+
+* last BTC/5m decision
+* last BTC/5m trade
+* current open position
+* realized PnL
+* unrealized PnL
+* fees
+* drawdown
+* trade count
+* stopped / active status
+* stop reason if disabled
+
+Do not show this as the full quant brain being live.
+
+## 11. Required proof before implementation approval
+
+Before writing production code, return a design report:
+
+### A. Agree / disagree
+
+Do you agree this is the best next engine?
+
+### B. Evidence
+
+Use repo evidence:
+
+* #640 verdict
+* #643/B/B2 verdicts
+* model_registry state
+* BTC/5m candidate metrics
+* ETH rejection
+* current quant/family/meta-brain state
+
+### C. Parameter review
+
+For each proposed parameter:
+
+* accept it,
+* adjust it,
+* or reject it with evidence.
+
+### D. Implementation map
+
+Exact files to touch:
+
+* ML labels
+* model training
+* registry/quarantine
+* runtime orchestrator
+* paper trader
+* dashboard/API
+* tests
+
+### E. Risk analysis
+
+What could still go wrong?
+
+### F. Decision
+
+Choose:
+
+1. implement BTC/5m sparse post-cost engine
+2. implement with changes
+3. freeze/rebuild smaller
+4. reject and propose better design
+
+---
+
+# Hard rules
+
+* no production code change in review step
+* no global quant enablement
+* no manual champion promotion
+* no gate weakening
+* no fee edits
+* no synthetic data
+* no forbidden features
+* no legacy agent resurrection
+* no real money
+* no dynamic sizing
+* no meta-brain authority
+* no expanding beyond BTC/5m without separate approval
+
+The goal is not to make the whole app trade.
+
+The goal is to prove whether one tiny engine can make one real post-fee paper-trading loop work.

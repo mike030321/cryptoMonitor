@@ -1,0 +1,162 @@
+Yes — I dug through the app package and stress-tested it as far as this environment allows.
+
+Bottom line: the quant side does not currently work as a live tradable system in the artifact you uploaded. The codebase has thoughtful safeguards, but the packaged evidence points to a quant engine that is either inactive, abstaining, or not trained on the main tradeable horizons.
+
+What I was able to verify:
+
+unpacked the monorepo
+inspected the core API/trader/quant code paths
+checked the packaged ML manifests and backtest outputs
+syntax-checked the Python backtest modules
+
+What I could not fully do here:
+
+I could not run the full TypeScript app end-to-end because the container has no pnpm installed and no network access to fetch it, so I could not install workspace deps and boot the whole stack.
+Main verdict
+
+If your intent is:
+
+“quant model makes real directional predictions and the app trades them profitably across market regimes”
+
+then the answer is no, not in its current packaged state.
+
+The strongest reasons are:
+
+Quant brain is disabled by default
+In shared/trading-frictions.json, quant_brain.enabled is false, and trading-constants.ts exports that setting directly. So the quant path is not the default active brain.
+
+Backtest says the 5m quant model produced 0 trades
+In artifacts/ml-engine/models/backtest_report.json, the only tradeable timeframe with a dataset (5m) shows:
+
+n_oos_rows: 250
+n_skips: 250
+n_trades: 0
+deploy verdict: false
+
+That is the clearest signal in the package: the model is not passing its own tradability filter.
+
+Most tradeable timeframes have no dataset snapshot
+The same backtest report marks:
+
+1h: no_dataset
+2h: no_dataset
+6h: no_dataset
+1d: no_dataset
+
+So even before judging quality, most of the tradeable horizon coverage is simply missing.
+
+The pooled 5m model underperforms its own baseline
+In artifacts/ml-engine/models/__pooled__/5m/20260421T131802Z/manifest.json, the model’s metrics are worse than the baseline on the important probability-quality metrics:
+
+model auc: ~0.412 vs baseline ~0.620
+model log_loss: ~0.467 vs baseline ~0.253
+model brier: ~0.0241 vs baseline ~0.0228
+
+So even where a model exists, the evidence in the artifact does not show a better-than-baseline predictive model.
+
+Specific bugs / logic problems I found
+1) Cancelled anomaly trades appear to lose the entry fee permanently
+
+In paper-trader.ts, when a position is cancelled for an anomalous price move, the code refunds pos.positionSize to cash, but not the entry fee that was deducted at open.
+
+That means a trade marked as a feed glitch / anomaly still leaks money. If anomaly cancellation is supposed to mean “ignore bad data,” then this is a real accounting bug.
+
+2) Daily loss reset uses UTC date, not exchange/session/local trading day
+
+checkRiskLimits() uses:
+
+new Date().toISOString().slice(0, 10)
+
+That resets day-based controls at UTC midnight, not at a configurable trading session boundary. For crypto, maybe that is acceptable if intentional — but if the dashboard/user expects local-day behavior, the daily loss limit will reset at the “wrong” time.
+
+3) Quant system is over-gated relative to what the model can emit
+
+The stack has multiple gates:
+
+directional probability threshold
+directional edge threshold
+expected return must exceed minimum
+confidence gate
+TP-distance floor
+EV-vs-cost gate
+counter-trend gate
+fleet brake
+consecutive-loss block
+
+Individually these are sane. Combined with the current model quality, they effectively collapse to no trades. The backtest result confirms that.
+
+So the bug is not one broken if statement — it is a system-level deadlock:
+
+model outputs weak/stable-biased signals
+gates reject everything
+result: quant “exists,” but does not function as a trading engine
+4) Some model metrics look suspiciously too perfect
+
+Several 1m per-coin manifests show near-perfect or perfect results, for example worldcoin-wld/1m/.../manifest.json reports:
+
+directional_accuracy: 1.0
+almost zero log loss
+same baseline also essentially perfect
+
+That is not automatically proof of leakage, but it is a strong red flag for one of:
+
+trivial label structure
+extremely imbalanced or degenerate target
+duplicated information between features and target
+too-small / too-easy test folds
+
+Since 1m is not even in the tradeable timeframes, these results also do not help the live trading case.
+
+Overall logic assessment
+What is good
+
+There is real engineering effort here:
+
+shared frictions contract between TS trader and Python backtester
+slippage/fee-aware logic
+drawdown and daily loss controls
+ATR-based SL/TP geometry
+fallback from quant to LLM when no model exists
+backtest deploy gate
+shadow / cutover thinking
+
+That part is better than a lot of “AI trading bot” projects.
+
+What is not working
+
+The actual quant edge is not demonstrated.
+
+Right now the system looks like this:
+
+architecture says “quant”
+safety rails are present
+model packaging exists
+but packaged evidence shows no tradable edge
+and on most main timeframes, no trained snapshot exists
+
+So the product is closer to an experimental trading research framework than a working quant trader.
+
+Stress-test conclusion
+
+If I had to give it a hard rating:
+
+Architecture quality: 7/10
+Safety/risk plumbing: 7/10
+Actual quant readiness: 2/10
+Chance it currently works “as intended” as a profitable quant app: low
+
+What I would fix first
+Make the quant engine prove it can trade:
+get nonzero trades in 5m backtest
+then positive expectancy after costs
+then extend to 1h/2h/6h/1d
+Fix anomaly cancellation accounting:
+refund the full open cash impact if you truly treat it as invalid data
+Remove or relax gates only after measuring skip reasons:
+right now the system is probably over-filtering weak signals into zero output
+Investigate the suspiciously perfect 1m manifests:
+verify no leakage
+inspect class balance
+compare against dumb baselines like “always stable”
+Stop treating directional accuracy as proof of profitability:
+the package already hints this, but the live system still feels too accuracy-centric

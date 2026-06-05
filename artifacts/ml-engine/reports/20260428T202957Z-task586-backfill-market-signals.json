@@ -1,0 +1,77 @@
+{
+  "anti_leak_check": {
+    "future_ts_count": 0,
+    "now_ms_at_check": 1777408197455
+  },
+  "coins": [
+    "pepe"
+  ],
+  "dry_run": true,
+  "finished_at": "2026-04-28T20:29:57.455891+00:00",
+  "lookback_days": 5,
+  "now_ms": 1777408182210,
+  "per_coin": {
+    "btc": {
+      "fetched": {
+        "mid": {
+          "earliest_ms": 1776976200000,
+          "elapsed_s": 4.63,
+          "latest_ms": 1777407900000,
+          "rows": 1440
+        }
+      },
+      "inst_id": "BTC-USDT-SWAP",
+      "written": {}
+    },
+    "eth": {
+      "fetched": {
+        "mid": {
+          "earliest_ms": 1776976200000,
+          "elapsed_s": 4.63,
+          "latest_ms": 1777407900000,
+          "rows": 1440
+        }
+      },
+      "inst_id": "ETH-USDT-SWAP",
+      "written": {}
+    },
+    "pepe": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1776988800000,
+          "elapsed_s": 0.39,
+          "latest_ms": 1777392000000,
+          "rows": 15
+        },
+        "oi": {
+          "earliest_ms": 1776978000000,
+          "elapsed_s": 0.56,
+          "latest_ms": 1777406400000,
+          "rows": 120
+        }
+      },
+      "inst_id": "PEPE-USDT-SWAP",
+      "written": {}
+    },
+    "sol": {
+      "fetched": {
+        "mid": {
+          "earliest_ms": 1776976200000,
+          "elapsed_s": 4.66,
+          "latest_ms": 1777407900000,
+          "rows": 1440
+        }
+      },
+      "inst_id": "SOL-USDT-SWAP",
+      "written": {}
+    }
+  },
+  "since_ms": 1776976182210,
+  "started_at": "2026-04-28T20:29:42.210646+00:00",
+  "streams": [
+    "funding",
+    "mid",
+    "oi"
+  ],
+  "task": 586
+}

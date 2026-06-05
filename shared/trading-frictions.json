@@ -1,0 +1,211 @@
+{
+  "_doc": "Single source of truth for paper-trader fees, slippage, gates, and risk rules. Both the TypeScript live trader (artifacts/api-server/src/lib/trading-constants.ts) and the Python backtester (artifacts/ml-engine/app/backtest/contract.py) import this file. Drift between the two is a correctness bug.",
+  "fees": {
+    "maker_fee_pct": 0.001,
+    "taker_fee_pct": 0.001,
+    "slippage_pct": 0.0005
+  },
+  "outcome_thresholds_percent": {
+    "1m": 0.35,
+    "5m": 0.35,
+    "1h": 0.45,
+    "2h": 0.55,
+    "6h": 0.85,
+    "1d": 1.50,
+    "_default": 0.30
+  },
+  "label_thresholds_percent": {
+    "_doc": "Training-only label band. Strictly LESS THAN outcome_thresholds_percent so the model learns directional structure on the bulk of moves; adjudication still uses outcome_thresholds_percent so a 'correct' UP must still clear the round-trip cost. Tuned 2026-04-21 (task #95) so the up/down classes carry meaningful expected-return mass — previously 88% of bars were labeled 'stable' and the model never learned direction.",
+    "1m": 0.03,
+    "5m": 0.10,
+    "1h": 0.20,
+    "2h": 0.28,
+    "6h": 0.45,
+    "1d": 0.80,
+    "_default": 0.05
+  },
+  "label_thresholds_percent_per_coin": {
+    "_doc": "Per-coin overrides on top of label_thresholds_percent. Each override MUST stay strictly less than outcome_thresholds_percent for the same timeframe (test_per_coin_label_thresholds_below_outcome_thresholds enforces this) so a model trade still has to clear the round-trip cost to count as 'correct'. Overrides may be tighter OR wider than the timeframe default depending on the coin's realized vol. History: tuned 2026-04-22 (task #120) to a single TIGHTER 0.04% band so 10 quiet coins crossed the bar on enough holdout rows to learn direction. Re-tuned 2026-04-23 (task #318) for the 5 coins closest to clearing the verification gate: realized 5m vol on the training window was ~0.85-0.97% MAD per coin, so the 0.04% band was orders of magnitude below typical move size — the bulk of training rows were UP/DOWN with the modal class barely above 0.50, leaving the multinomial-logistic baseline parked near coin-flip and the booster with no consolidation to lift. The new per-coin 5m thresholds are derived as `0.25 × MAD(forward 5m return, training 80%)` clipped to [0.10%, 0.30%] — wide enough to consolidate the modal class share above 0.50 on the holdout while still leaving 30-40%% of training rows in the directional buckets. The full methodology / outcome are in artifacts/ml-engine/reports/20260423T010000Z-task318-per-coin-thresholds.md. Values are coin_id -> {timeframe -> percent}.",
+    "bonk":                    { "5m": 0.22 },
+    "celestia":                { "5m": 0.21 },
+    "dogwifcoin":              { "5m": 0.24 },
+    "floki-inu":               { "5m": 0.04 },
+    "injective-protocol":      { "5m": 0.04 },
+    "jupiter-exchange-solana": { "5m": 0.04 },
+    "pepe":                    { "5m": 0.20 },
+    "render-token":            { "5m": 0.04 },
+    "sei-network":             { "5m": 0.04 },
+    "worldcoin-wld":           { "5m": 0.24 }
+  },
+  "risk": {
+    "initial_balance_usd": 1000,
+    "max_open_positions_per_agent": 4,
+    "max_portfolio_at_risk": 0.75,
+    "daily_loss_limit_pct": 0.10,
+    "drawdown_halt_pct": 0.20,
+    "max_position_pct": 0.30,
+    "default_position_pct": 0.05,
+    "kelly_min_trades": 100,
+    "kelly_ramp_end": 150,
+    "kelly_fraction": 0.35,
+    "asymmetric_long_min_confidence": 0.55
+  },
+  "tiered_position_pct": [
+    { "min_confidence": 0.65, "pct": 0.22 },
+    { "min_confidence": 0.55, "pct": 0.14 },
+    { "min_confidence": 0.45, "pct": 0.09 },
+    { "min_confidence": 0.0,  "pct": 0.05 }
+  ],
+  "fleet_brake": {
+    "min_open_positions": 6,
+    "same_side_dominance_share": 0.6
+  },
+  "recent_loss_block": {
+    "consecutive_losses": 3
+  },
+  "quant_brain": {
+    "_doc": "Phase 5 cutover. enabled is the persisted-default for the brain feature flag (the runtime flag in app_settings.quant_brain_enabled overrides this; QUANT_BRAIN_FORCE_OFF=1 env var beats both). auto_revert defines the configurable safety guard that disables the quant brain when the quant model drifts low vs the offline backtest baseline on the majority of evaluable coins for a sustained window. With the brain disabled, the live model-authored path abstains; there is no LLM fallback.",
+    "enabled": false,
+    "auto_revert": {
+      "consecutive_drift_cycles": 3,
+      "drift_share_threshold": 0.5,
+      "min_evaluable_coins": 4
+    },
+    "decision_thresholds": {
+      "_doc": "Live quant-brain emission gate (artifacts/api-server/src/lib/quant-brain.ts). The Python backtester (artifacts/ml-engine/app/backtest/simulator.py) reads the SAME values so offline reports are a faithful prediction of live behaviour. min_expected_return_pct_factor multiplies round_trip_cost_pct*100 to derive the |expRet| floor — this keeps the brain in lock-step with the paper-trader EV gate (gates_baseline.MIN_EV_VS_COST.value × ROUND_TRIP_COST_PCT × 100 by construction). policy_version is stamped on backtest_report.json so a stale report against an old policy is loud. Calibrated 2026-04-22 (task #130): on the 5m walk-forward OOS slice (880 rows) the regression head's |expRet| distribution caps at ~0.19% (median 0.033%, p95 0.108%), while the previous factor=3.0 (=0.9% required) blocked 100% of signals — so the backtester emitted 0 trades regardless of any other tuning and the deploy verdict was vacuous. The new factor=0.5 (=0.15% required, half of the 0.30% round-trip cost) emits 12 directional signals on the same slice and lets the simulator actually exercise the downstream MIN_CONFIDENCE_TO_TRADE / fee_gate / counter_trend gates so the report reflects what the live system would have done. min_directional_edge raised 0.02→0.05: median observed |p_up-p_down| is 0.17, so 0.05 keeps coin-flip edges out without touching the meaningful mass. min_directional_prob held at 0.08 (median dir_prob=0.36, well above). The study does NOT call this a deploy candidate — only 2 trades survived all live gates and both were losses; the verdict remains do-not-deploy until the model produces real edge.",
+      "min_directional_prob": 0.08,
+      "min_directional_edge": 0.05,
+      "min_expected_return_pct_factor": 0.5,
+      "policy_version": "v3-calibrated-2026-04-22"
+    }
+  },
+  "tradeable_timeframes": ["5m", "1h", "2h", "6h", "1d"],
+  "timeframe_ms": {
+    "1m": 60000,
+    "5m": 300000,
+    "1h": 3600000,
+    "2h": 7200000,
+    "6h": 21600000,
+    "1d": 86400000
+  },
+  "tf_sl_multiplier": {
+    "5m": 1.8, "1h": 2.0, "2h": 2.0, "6h": 2.0, "1d": 1.8,
+    "_default": 1.8
+  },
+  "tf_tp_multiplier": {
+    "5m": 2.7, "1h": 3.0, "2h": 3.0, "6h": 3.5, "1d": 3.5,
+    "_default": 3.0
+  },
+  "tf_atr_floor_pct": {
+    "5m": 0.004, "1h": 0.008, "2h": 0.01, "6h": 0.015, "1d": 0.02,
+    "_default": 0.008
+  },
+  "trailing_stop": {
+    "_doc": "expiry_extension_ms MUST match the inline trailingExtensionMs map in artifacts/api-server/src/lib/paper-trader.ts. Drift is a parity bug.",
+    "min_peak_pnl_pct_to_trail": 0.005,
+    "trail_giveback_fraction": 0.3,
+    "expiry_extension_ms": {
+      "5m":   120000,
+      "1h":   600000,
+      "2h":   900000,
+      "6h":  1800000,
+      "1d":  3600000,
+      "_default": 300000
+    }
+  },
+  "gates_baseline": {
+    "MIN_CONFIDENCE_TO_TRADE":      { "value": 0.50,  "floor": 0.40 },
+    "COUNTER_TREND_MIN_CONFIDENCE": { "value": 0.65,  "floor": 0.46 },
+    "MIN_TP_DISTANCE_PCT":          { "value": 0.006, "floor": 0.0042 },
+    "MIN_EV_VS_COST":               { "value": 3.0,   "floor": 2.1 }
+  },
+  "regime_classifier": {
+    "_doc": "Price-only subset of artifacts/api-server/src/lib/regime-detector.ts:classifyRegime. Backtester does not have historical fearGreed / btcDominance feeds, so those signals are dropped — both classifiers must agree on the price-only branch.",
+    "volatile_cross_coin_vol_min": 6.0,
+    "volatile_avg_vol_min": 5.0,
+    "bull_avg_change_min": 2.0,
+    "bull_bullish_ratio_min": 0.6,
+    "bear_avg_change_max": -2.0,
+    "bear_bullish_ratio_max": 0.4,
+    "bullish_change_threshold": 1.0,
+    "trend_bias": {
+      "bullish_strong_avg_change": 2.0, "bullish_strong_ratio": 0.55,
+      "bullish_weak_avg_change":   1.0, "bullish_weak_ratio":   0.50,
+      "bearish_strong_avg_change": -2.0, "bearish_strong_ratio": 0.45,
+      "bearish_weak_avg_change":   -1.0, "bearish_weak_ratio":   0.50
+    },
+    "regime_adjustments": {
+      "volatile": { "sl_mult": 1.4, "tp_mult": 1.3, "confidence_modifier": -0.05 },
+      "bull":     { "sl_mult": 1.0, "tp_mult": 1.2, "confidence_modifier":  0.03 },
+      "bear":     { "sl_mult": 1.1, "tp_mult": 0.9, "confidence_modifier": -0.03 },
+      "sideways": { "sl_mult": 0.9, "tp_mult": 0.8, "confidence_modifier":  0.0  }
+    }
+  },
+  "shadow_cutover_gate": {
+    "_doc": "Phase 4 → Phase 5 promotion rule. The Quant Shadow panel surfaces a 'ready to evaluate cutover' badge once these are all met on resolved shadow predictions per timeframe.",
+    "min_resolved_per_timeframe": 200,
+    "min_directional_accuracy_lift_over_llm": 0.03,
+    "max_brier_score": 0.26
+  },
+  "backtest_deploy_gate": {
+    "_doc": "If backtest results clear all of these, the model is approved for shadow-mode (Phase 4). Failing any line means: do NOT promote.",
+    "expectancy_usd_min": 0.0,
+    "sharpe_min": 0.5,
+    "min_total_trades": 30,
+    "require_at_least_one_passing_regime": true,
+    "max_monte_carlo_p05_drawdown_pct": 25.0
+  },
+  "champion_challenger": {
+    "_doc": "Phase 5 — model registry lifecycle gates. A challenger may be PROMOTED to champion only when ALL of these hold over its shadow window. Rollback is unconditional. min_shadow_samples is the floor on resolved shadow predictions; min_net_edge_lift_vs_champion is the percentage-point lift in net edge (after fees) the challenger must show over the current champion; max_drawdown_pct caps realized worst-window equity drawdown on the same shadow stream; min_passing_regimes_share requires the challenger to clear net-positive net edge in at least this fraction of the regimes it has samples in (so a model that only works in one regime cannot be promoted on aggregate average alone).",
+    "min_shadow_samples": 200,
+    "min_net_edge_lift_vs_champion": 0.5,
+    "max_drawdown_pct": 20.0,
+    "min_passing_regimes_share": 0.5
+  },
+  "portfolio_constraints": {
+    "_doc": "Phase 5 — fleet-level constraints applied by the unified decision engine BEFORE a position opens. Mirrors the per-position gates in `risk` but acts across the whole open book. max_correlated_exposure_pct caps total notional in coins from the same sector. max_sector_exposure_pct caps notional per sector. max_beta_to_btc bounds the equally-weighted beta (vs BTC) of the open book; new positions that would push the book above this limit are skipped. regime_budget_pct caps the share of total notional that can be open in any single regime label, so a single regime call cannot dominate the portfolio. enabled is a kill switch — when false, all portfolio gates pass through.",
+    "enabled": true,
+    "max_sector_exposure_pct": 0.50,
+    "max_correlated_exposure_pct": 0.60,
+    "max_beta_to_btc": 1.50,
+    "regime_budget_pct": 0.70,
+    "sector_map": {
+      "bitcoin": "majors",
+      "ethereum": "majors",
+      "solana": "L1",
+      "cardano": "L1",
+      "avalanche-2": "L1",
+      "polkadot": "L1",
+      "near": "L1",
+      "sui": "L1",
+      "aptos": "L1",
+      "celestia": "L1",
+      "sei-network": "L1",
+      "injective-protocol": "L1",
+      "chainlink": "infra",
+      "the-graph": "infra",
+      "render-token": "infra",
+      "filecoin": "infra",
+      "matic-network": "L2",
+      "arbitrum": "L2",
+      "optimism": "L2",
+      "uniswap": "defi",
+      "aave": "defi",
+      "maker": "defi",
+      "jupiter-exchange-solana": "defi",
+      "lido-dao": "defi",
+      "dogecoin": "memes",
+      "shiba-inu": "memes",
+      "pepe": "memes",
+      "bonk": "memes",
+      "dogwifcoin": "memes",
+      "floki-inu": "memes",
+      "worldcoin-wld": "ai",
+      "fetch-ai": "ai",
+      "ripple": "payments",
+      "stellar": "payments",
+      "litecoin": "payments",
+      "_default": "other"
+    }
+  }
+}

@@ -1,0 +1,194 @@
+Reality-Adjusted P&L
+Beating buy & hold
+Made +$468.67 more than passively holding the basket
+
+Costs modeled: 0.20% fee + 0.10% slip per side · 0.60% round-trip
+Benchmark: Equal-weight buy & hold of monitored basket (24h proxy)
+Bots made / lost
+-$8.683
+-0.067% on $13000.00 capital
+Buy & hold would've made
+-$477.35
+-3.67% · same $13000.00
+Edge vs buy & hold
++$468.67
++3.61% · 11/13 beating
+Costs paid
+$146.20
+On $25271.63 turnover · 261 closed
+Best agent (net)
+Breakout Bella
+67 trades · $34.56 costs
++$137.38
++13.738% · α +17.41%
+Worst agent (net)
+Hybrid-2-3
+67 trades · $35.60 costs
+-$54.44
+-5.444% · α -1.77%
+Total Predictions
+3957
+1907
+1346
+421
+Overall Accuracy
+58.62%
+Top Agent
+Divergence Alpha III
+Score: 200.0 | 59.49% acc
+Status
+10 agents
+|
+10 coins
+169 cycles completed
+AI Budget
+DUAL
+GPT
+1145/100000
+Gemini
+1275/14000
+Coin Signals — What to Buy / Sell / Hold
+Pepe
+$0.000004
+↓ SELL
+100% strength
+24h: -3.0%
+Floki
+$0.000031
+↓ SELL
+100% strength
+24h: -3.6%
+Bonk
+$0.000006
+↓ SELL
+100% strength
+24h: -4.1%
+dogwifhat
+$0.206714
+↓ SELL
+100% strength
+24h: -3.9%
+Injective
+$3.28
+↓ SELL
+100% strength
+24h: -3.3%
+Sei
+$0.056533
+↓ SELL
+100% strength
+24h: -3.7%
+Jupiter
+$0.180482
+↓ SELL
+100% strength
+24h: -2.2%
+Worldcoin
+$0.276324
+↓ SELL
+100% strength
+24h: -10.1%
+Render
+$1.81
+— HOLD
+0% strength
+24h: -3.5%
+Celestia
+$0.402125
+— HOLD
+0% strength
+24h: +0.8%
+Contagion Alerts — Cross-Coin Ripple Effects
+Celestia -2.6% → Jupiter
+112m ago
+41% follow prob (17 events) | Expected: -1.1% within 2h
+Celestia -2.6% → Worldcoin
+112m ago
+71% follow prob (17 events) | Expected: -1.2% within 1.6h
+Celestia -2.6% → Pepe
+112m ago
+59% follow prob (17 events) | Expected: -1.1% within 2.5h
+Celestia -2.6% → Injective
+112m ago
+41% follow prob (17 events) | Expected: -1.1% within 2h
+Celestia -2.6% → Sei
+112m ago
+53% follow prob (17 events) | Expected: -1.1% within 2.2h
+Paper Trading — $10000 Total Invested
+Portfolio
+$10163.70
+Net P&L
++163.70 (+1.64%)
+Trades
+261 (43% win)
+Breakout Bella
+$1172.13
+-9.64 (-1.0%)
+66 trades | 35% win rate
+1 open position
+↓ Celestia
++0.0198
+Pattern Pete
+$1014.30
++17.38 (+1.7%)
+32 trades | 66% win rate
+4 open positions
+↓ Jupiter
+-0.0944
+↓ Celestia
++0.7939
+Whale Watcher Wendy
+$1009.26
++6.88 (+0.7%)
+27 trades | 52% win rate
+4 open positions
+↓ Worldcoin
++2.3123
+↓ Floki
++2.7702
+Scalper Steve
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Momentum Max
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Dan
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Contrarian Clara
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Refined III
+$992.86
+-7.47 (-0.7%)
+30 trades | 50% win rate
+4 open positions
+↓ Injective
++0.5042
+↓ Floki
++1.0104
+Divergence Alpha III
+$989.46
+-5.63 (-0.6%)
+43 trades | 30% win rate
+3 open positions
+↓ Injective
++1.5005
+↑ Jupiter
+-1.7535
+Hybrid-2-3
+$985.68
+-10.13 (-1.0%)
+63 trades | 43% win rate
+4 open positions
+↓ Worldcoin
+-0.4649
+↓ dogwifhat

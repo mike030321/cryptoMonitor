@@ -1,0 +1,649 @@
+{
+  "task": 449,
+  "generated_at": "2026-04-24T12:11:22.692603+00:00",
+  "endpoint": "POST http://localhost:8000/ml/predict",
+  "description": "Acceptance evidence for task #449. Two probe runs against the live ml-engine after the offline rebuild script restored the per-coin manifests to the quant-only contract. Acceptance gates: lightgbm_share > 0.95 AND every per-coin probe lands on its own per-coin model (modelCoinId == coinId). 409 \"insufficient candles\" responses are honest fail-closed abstains and are not treated as prior-fallback emissions.",
+  "acceptance_gate_passes": {
+    "post_restart_lightgbm_share_pass": true,
+    "post_restart_per_coin_match_pass": true,
+    "followup_lightgbm_share_pass_among_successful": true,
+    "followup_per_coin_match_pass_among_successful": true,
+    "zero_prior_fallback_emissions_either_run": true
+  },
+  "probe_runs": [
+    {
+      "probe_run_id": "post_restart_batch",
+      "description": "Probe issued seconds after the artifacts/ml-engine workflow was restarted with the freshly-rebuilt manifests. Captured directly from the ml-engine workflow log (predict_lgb entries grouped by (coinId, timeframe, source)).",
+      "log_file": "/tmp/logs/artifactsml-engine_ML_Engine_20260424_115307_625.log",
+      "log_window_start_utc": "2026-04-24T11:52:55Z",
+      "log_window_end_utc": "2026-04-24T11:52:58Z",
+      "totals": {
+        "total_probes": 60,
+        "predict_lgb_count": 60,
+        "http_409_count": 0,
+        "lightgbm_share": 1.0,
+        "per_coin_match_share": 1.0
+      }
+    },
+    {
+      "probe_run_id": "post_restart_followup",
+      "description": "Repeat probe several minutes after restart. The OKX historical 1m candle endpoint had downgraded to ~29 candles per symbol (the engine needs \u226535), so the 10 (coin \u00d7 1m) calls fail-closed with HTTP 409 \"insufficient candles\" \u2014 the correct quant-only abstain path. None of the 50 successful probes fell back to `source: \"prior\"`; every successful probe served the per-coin lightgbm model. The earlier post-restart batch in this same file recorded 60/60 lightgbm when 1m candles were available, so the model state itself is unaffected by the data-fetch flake.",
+      "totals": {
+        "total_probes": 60,
+        "http_errors": 10,
+        "source_breakdown": {
+          "lightgbm": 50
+        },
+        "lightgbm_share": 1.0,
+        "per_coin_match_count": 50,
+        "per_coin_match_share": 1.0,
+        "elapsed_seconds": 5.0
+      },
+      "probes": [
+        {
+          "coinId": "bonk",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114434Z",
+          "modelCoinId": "bonk",
+          "probUp": 0.256,
+          "probDown": 0.5188,
+          "probStable": 0.2252,
+          "expectedReturnPct": -0.0949
+        },
+        {
+          "coinId": "bonk",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114502Z",
+          "modelCoinId": "bonk",
+          "probUp": 0.1598,
+          "probDown": 0.5888,
+          "probStable": 0.2514,
+          "expectedReturnPct": -0.4573
+        },
+        {
+          "coinId": "bonk",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114837Z",
+          "modelCoinId": "bonk",
+          "probUp": 0.2492,
+          "probDown": 0.5396,
+          "probStable": 0.2112,
+          "expectedReturnPct": -0.4255
+        },
+        {
+          "coinId": "bonk",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115048Z",
+          "modelCoinId": "bonk",
+          "probUp": 0.0913,
+          "probDown": 0.8563,
+          "probStable": 0.0523,
+          "expectedReturnPct": -1.7989
+        },
+        {
+          "coinId": "bonk",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115111Z",
+          "modelCoinId": "bonk",
+          "probUp": 0.3448,
+          "probDown": 0.6286,
+          "probStable": 0.0267,
+          "expectedReturnPct": -1.1182
+        },
+        {
+          "coinId": "celestia",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114435Z",
+          "modelCoinId": "celestia",
+          "probUp": 0.2787,
+          "probDown": 0.6981,
+          "probStable": 0.0233,
+          "expectedReturnPct": -0.5587
+        },
+        {
+          "coinId": "celestia",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114504Z",
+          "modelCoinId": "celestia",
+          "probUp": 0.2295,
+          "probDown": 0.6045,
+          "probStable": 0.166,
+          "expectedReturnPct": -0.6098
+        },
+        {
+          "coinId": "celestia",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114839Z",
+          "modelCoinId": "celestia",
+          "probUp": 0.3094,
+          "probDown": 0.5271,
+          "probStable": 0.1635,
+          "expectedReturnPct": -0.4114
+        },
+        {
+          "coinId": "celestia",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115050Z",
+          "modelCoinId": "celestia",
+          "probUp": 0.2131,
+          "probDown": 0.655,
+          "probStable": 0.132,
+          "expectedReturnPct": -0.975
+        },
+        {
+          "coinId": "celestia",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115112Z",
+          "modelCoinId": "celestia",
+          "probUp": 0.236,
+          "probDown": 0.2428,
+          "probStable": 0.5212,
+          "expectedReturnPct": 0.063
+        },
+        {
+          "coinId": "dogwifcoin",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114437Z",
+          "modelCoinId": "dogwifcoin",
+          "probUp": 0.1839,
+          "probDown": 0.6886,
+          "probStable": 0.1275,
+          "expectedReturnPct": -0.7518
+        },
+        {
+          "coinId": "dogwifcoin",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114506Z",
+          "modelCoinId": "dogwifcoin",
+          "probUp": 0.2655,
+          "probDown": 0.5543,
+          "probStable": 0.1802,
+          "expectedReturnPct": -0.541
+        },
+        {
+          "coinId": "dogwifcoin",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114840Z",
+          "modelCoinId": "dogwifcoin",
+          "probUp": 0.1223,
+          "probDown": 0.8164,
+          "probStable": 0.0613,
+          "expectedReturnPct": -1.5316
+        },
+        {
+          "coinId": "dogwifcoin",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115052Z",
+          "modelCoinId": "dogwifcoin",
+          "probUp": 0.3778,
+          "probDown": 0.5603,
+          "probStable": 0.0618,
+          "expectedReturnPct": -0.4545
+        },
+        {
+          "coinId": "dogwifcoin",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115113Z",
+          "modelCoinId": "dogwifcoin",
+          "probUp": 0.0937,
+          "probDown": 0.8769,
+          "probStable": 0.0294,
+          "expectedReturnPct": -4.1439
+        },
+        {
+          "coinId": "floki-inu",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114439Z",
+          "modelCoinId": "floki-inu",
+          "probUp": 0.2953,
+          "probDown": 0.6838,
+          "probStable": 0.0209,
+          "expectedReturnPct": -0.5069
+        },
+        {
+          "coinId": "floki-inu",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114509Z",
+          "modelCoinId": "floki-inu",
+          "probUp": 0.278,
+          "probDown": 0.2488,
+          "probStable": 0.4732,
+          "expectedReturnPct": 0.0713
+        },
+        {
+          "coinId": "floki-inu",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115029Z",
+          "modelCoinId": "floki-inu",
+          "probUp": 0.2602,
+          "probDown": 0.5123,
+          "probStable": 0.2275,
+          "expectedReturnPct": -0.4295
+        },
+        {
+          "coinId": "floki-inu",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115053Z",
+          "modelCoinId": "floki-inu",
+          "probUp": 0.4012,
+          "probDown": 0.4688,
+          "probStable": 0.1301,
+          "expectedReturnPct": -0.0742
+        },
+        {
+          "coinId": "floki-inu",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115114Z",
+          "modelCoinId": "floki-inu",
+          "probUp": 0.1263,
+          "probDown": 0.7669,
+          "probStable": 0.1068,
+          "expectedReturnPct": -2.8881
+        },
+        {
+          "coinId": "injective-protocol",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114440Z",
+          "modelCoinId": "injective-protocol",
+          "probUp": 0.4113,
+          "probDown": 0.5294,
+          "probStable": 0.0592,
+          "expectedReturnPct": -0.1468
+        },
+        {
+          "coinId": "injective-protocol",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114511Z",
+          "modelCoinId": "injective-protocol",
+          "probUp": 0.3328,
+          "probDown": 0.608,
+          "probStable": 0.0592,
+          "expectedReturnPct": -0.427
+        },
+        {
+          "coinId": "injective-protocol",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115030Z",
+          "modelCoinId": "injective-protocol",
+          "probUp": 0.4477,
+          "probDown": 0.4004,
+          "probStable": 0.1519,
+          "expectedReturnPct": 0.1086
+        },
+        {
+          "coinId": "injective-protocol",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115055Z",
+          "modelCoinId": "injective-protocol",
+          "probUp": 0.0743,
+          "probDown": 0.377,
+          "probStable": 0.5487,
+          "expectedReturnPct": -0.6621
+        },
+        {
+          "coinId": "injective-protocol",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115115Z",
+          "modelCoinId": "injective-protocol",
+          "probUp": 0.2669,
+          "probDown": 0.5364,
+          "probStable": 0.1967,
+          "expectedReturnPct": -1.2547
+        },
+        {
+          "coinId": "jupiter-exchange-solana",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114442Z",
+          "modelCoinId": "jupiter-exchange-solana",
+          "probUp": 0.3247,
+          "probDown": 0.6735,
+          "probStable": 0.0018,
+          "expectedReturnPct": -0.4582
+        },
+        {
+          "coinId": "jupiter-exchange-solana",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114516Z",
+          "modelCoinId": "jupiter-exchange-solana",
+          "probUp": 0.2581,
+          "probDown": 0.5114,
+          "probStable": 0.2305,
+          "expectedReturnPct": -0.26
+        },
+        {
+          "coinId": "jupiter-exchange-solana",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115032Z",
+          "modelCoinId": "jupiter-exchange-solana",
+          "probUp": 0.1237,
+          "probDown": 0.5722,
+          "probStable": 0.3041,
+          "expectedReturnPct": -0.8616
+        },
+        {
+          "coinId": "jupiter-exchange-solana",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115056Z",
+          "modelCoinId": "jupiter-exchange-solana",
+          "probUp": 0.8068,
+          "probDown": 0.1091,
+          "probStable": 0.0841,
+          "expectedReturnPct": 1.4897
+        },
+        {
+          "coinId": "jupiter-exchange-solana",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115116Z",
+          "modelCoinId": "jupiter-exchange-solana",
+          "probUp": 0.3751,
+          "probDown": 0.5473,
+          "probStable": 0.0776,
+          "expectedReturnPct": -0.9861
+        },
+        {
+          "coinId": "pepe",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114444Z",
+          "modelCoinId": "pepe",
+          "probUp": 0.4033,
+          "probDown": 0.5574,
+          "probStable": 0.0394,
+          "expectedReturnPct": -0.1765
+        },
+        {
+          "coinId": "pepe",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114518Z",
+          "modelCoinId": "pepe",
+          "probUp": 0.2708,
+          "probDown": 0.4062,
+          "probStable": 0.3229,
+          "expectedReturnPct": -0.1968
+        },
+        {
+          "coinId": "pepe",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115034Z",
+          "modelCoinId": "pepe",
+          "probUp": 0.4473,
+          "probDown": 0.4055,
+          "probStable": 0.1472,
+          "expectedReturnPct": 0.1216
+        },
+        {
+          "coinId": "pepe",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115058Z",
+          "modelCoinId": "pepe",
+          "probUp": 0.422,
+          "probDown": 0.467,
+          "probStable": 0.1109,
+          "expectedReturnPct": -0.0548
+        },
+        {
+          "coinId": "pepe",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115123Z",
+          "modelCoinId": "pepe",
+          "probUp": 0.2616,
+          "probDown": 0.5675,
+          "probStable": 0.171,
+          "expectedReturnPct": -1.2682
+        },
+        {
+          "coinId": "render-token",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114445Z",
+          "modelCoinId": "render-token",
+          "probUp": 0.4652,
+          "probDown": 0.5309,
+          "probStable": 0.0039,
+          "expectedReturnPct": -0.0931
+        },
+        {
+          "coinId": "render-token",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114520Z",
+          "modelCoinId": "render-token",
+          "probUp": 0.3028,
+          "probDown": 0.6213,
+          "probStable": 0.0759,
+          "expectedReturnPct": -0.5241
+        },
+        {
+          "coinId": "render-token",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115036Z",
+          "modelCoinId": "render-token",
+          "probUp": 0.6247,
+          "probDown": 0.2695,
+          "probStable": 0.1058,
+          "expectedReturnPct": 0.691
+        },
+        {
+          "coinId": "render-token",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115100Z",
+          "modelCoinId": "render-token",
+          "probUp": 0.3389,
+          "probDown": 0.3445,
+          "probStable": 0.3166,
+          "expectedReturnPct": -0.027
+        },
+        {
+          "coinId": "render-token",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115131Z",
+          "modelCoinId": "render-token",
+          "probUp": 0.0955,
+          "probDown": 0.658,
+          "probStable": 0.2464,
+          "expectedReturnPct": -2.5513
+        },
+        {
+          "coinId": "sei-network",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114447Z",
+          "modelCoinId": "sei-network",
+          "probUp": 0.4115,
+          "probDown": 0.4455,
+          "probStable": 0.143,
+          "expectedReturnPct": -0.0348
+        },
+        {
+          "coinId": "sei-network",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114523Z",
+          "modelCoinId": "sei-network",
+          "probUp": 0.1191,
+          "probDown": 0.1752,
+          "probStable": 0.7057,
+          "expectedReturnPct": -0.0859
+        },
+        {
+          "coinId": "sei-network",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115037Z",
+          "modelCoinId": "sei-network",
+          "probUp": 0.2333,
+          "probDown": 0.1989,
+          "probStable": 0.5679,
+          "expectedReturnPct": 0.0732
+        },
+        {
+          "coinId": "sei-network",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115101Z",
+          "modelCoinId": "sei-network",
+          "probUp": 0.5622,
+          "probDown": 0.3068,
+          "probStable": 0.1311,
+          "expectedReturnPct": 0.6724
+        },
+        {
+          "coinId": "sei-network",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115136Z",
+          "modelCoinId": "sei-network",
+          "probUp": 0.3013,
+          "probDown": 0.5174,
+          "probStable": 0.1813,
+          "expectedReturnPct": -0.7245
+        },
+        {
+          "coinId": "worldcoin-wld",
+          "timeframe": "5m",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114448Z",
+          "modelCoinId": "worldcoin-wld",
+          "probUp": 0.5339,
+          "probDown": 0.4249,
+          "probStable": 0.0412,
+          "expectedReturnPct": 0.1691
+        },
+        {
+          "coinId": "worldcoin-wld",
+          "timeframe": "1h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T114525Z",
+          "modelCoinId": "worldcoin-wld",
+          "probUp": 0.1095,
+          "probDown": 0.7424,
+          "probStable": 0.1481,
+          "expectedReturnPct": -1.022
+        },
+        {
+          "coinId": "worldcoin-wld",
+          "timeframe": "2h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115039Z",
+          "modelCoinId": "worldcoin-wld",
+          "probUp": 0.406,
+          "probDown": 0.3417,
+          "probStable": 0.2523,
+          "expectedReturnPct": 0.1848
+        },
+        {
+          "coinId": "worldcoin-wld",
+          "timeframe": "6h",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115103Z",
+          "modelCoinId": "worldcoin-wld",
+          "probUp": 0.5116,
+          "probDown": 0.2905,
+          "probStable": 0.1979,
+          "expectedReturnPct": 0.5676
+        },
+        {
+          "coinId": "worldcoin-wld",
+          "timeframe": "1d",
+          "source": "lightgbm",
+          "modelVersion": "20260424T115137Z",
+          "modelCoinId": "worldcoin-wld",
+          "probUp": 0.1188,
+          "probDown": 0.7983,
+          "probStable": 0.0829,
+          "expectedReturnPct": -3.0863
+        }
+      ],
+      "errors": [
+        {
+          "coinId": "bonk",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "celestia",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "dogwifcoin",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "floki-inu",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "injective-protocol",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "jupiter-exchange-solana",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "pepe",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "render-token",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "sei-network",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        },
+        {
+          "coinId": "worldcoin-wld",
+          "timeframe": "1m",
+          "error": "HTTP Error 409: Conflict"
+        }
+      ],
+      "http_409_treatment": "HTTP 409 from /ml/predict means \"feature window too short to produce a prediction\" \u2014 the engine refuses to invent a fallback. These responses do NOT emit `source: \"prior\"` or any other sentinel; they leave the decision layer to abstain. They are therefore counted separately from the source-breakdown ratio."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "promoted": true,
+  "reason": "lift_baseline_served",
+  "directional_accuracy": 0.5872611464968153,
+  "baseline_directional_accuracy": 0.5872611464968153,
+  "lift": 0.0,
+  "holdout_rows": 306150,
+  "min_directional_accuracy_applied": 0.5,
+  "served_predictor_kind": "baseline",
+  "coin": "__pooled__",
+  "timeframe": "5m",
+  "kind": "pooled"
+}

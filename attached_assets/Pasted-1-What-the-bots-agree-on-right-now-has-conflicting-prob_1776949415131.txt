@@ -1,0 +1,34 @@
+1. “What the bots agree on right now” has conflicting probabilities.
+The card says “BUY Sei … with 77% probability”, but a few lines below it shows “Model prob. 35%.” Those cannot both describe the same signal at the same time. It looks like one number is coming from a different field or stale formatter than the other.
+
+2. Several bot leaderboard rows have equity that does not match their displayed P&L.
+Examples:
+
+Hybrid-3-1 shows $998.64 but also +$3.48. From a $1,000 start, $998.64 should be about -$1.36, not +$3.48.
+Trend Tracker Tom shows $998.16 and +$0.37. $998.16 implies about -$1.84.
+Sentiment Sarah shows $995.46 and +$0.51. $995.46 implies about -$4.54.
+Pattern Alpha V shows $995.09 and +$0.19. $995.09 implies about -$4.91.
+Pattern Refined V shows $994.32 and +$0.18. $994.32 implies about -$5.68.
+Hybrid-4-3 shows $990.03 and -$5.24. $990.03 implies about -$9.97.
+Pattern Pete shows $987.26 and -$7.91. $987.26 implies about -$12.74.
+
+That strongly suggests the leaderboard is mixing equity with a different P&L basis, likely realized-only, stale cached P&L, or P&L excluding open positions/fees.
+
+3. “Bots in Profit: 12 / 15” does not match the visible bot equities.
+From the leaderboard, only the first 7 bots are above $1,000. The other 8 shown are below $1,000. So if “in profit” means current equity above starting capital, 12 / 15 looks wrong. It may be using a different definition, like realized P&L only, but the page wording does not say that.
+
+4. The consensus wording is misleading even if it is not strictly wrong.
+It says “consensus across 1 timeframes.” That is odd, because “consensus” usually implies multiple timeframes agreeing. If only one timeframe is involved, the card is overstating certainty.
+
+What looks consistent:
+
+Fleet Equity $14,959.83 versus -$40.17 vs $15,000 start is consistent.
+Realized -$134.52 plus Unrealized +$94.36 is about -$40.16, which matches the fleet total within rounding.
+
+So the likely broken areas are:
+
+the signal summary card probability fields
+the bot leaderboard P&L calculation/display
+the “bots in profit” count definition or query
+
+The strongest single bug is the leaderboard: it is almost certainly combining numbers from different accounting bases.

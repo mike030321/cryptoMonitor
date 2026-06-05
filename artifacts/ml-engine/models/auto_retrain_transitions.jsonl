@@ -1,0 +1,4 @@
+{"timeframe": "1h", "from_kind": "prior", "to_kind": "lightgbm", "version": "20260422T085521Z", "promoted_at": "2026-04-22T08:58:20.762518644+00:00", "trigger": "auto_retrain"}
+{"timeframe": "2h", "from_kind": "prior", "to_kind": "lightgbm", "version": "20260422T085735Z", "promoted_at": "2026-04-22T08:58:20.762518644+00:00", "trigger": "auto_retrain"}
+{"timeframe": "6h", "from_kind": "prior", "to_kind": "lightgbm", "version": "20260422T085820Z", "promoted_at": "2026-04-22T08:58:20.762518644+00:00", "trigger": "auto_retrain"}
+{"timeframe": "1d", "from_kind": "prior", "to_kind": "lightgbm", "version": "20260423T044628Z", "promoted_at": "2026-04-23T04:54:48.298128128+00:00", "trigger": "auto_retrain"}

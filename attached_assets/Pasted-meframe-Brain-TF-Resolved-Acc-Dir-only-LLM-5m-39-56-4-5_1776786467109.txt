@@ -1,0 +1,145 @@
+meframe
+Brain	TF	Resolved	Acc	Dir-only	↑ / ↓ / =
+LLM	5m	39	56.4%	50% (3/6)	6 / 2 / 38
+LLM	1h	69	63.8%	11.1% (1/9)	14 / 10 / 96
+LLM	2h	3	100%	—	16 / 7 / 57
+LLM	6h	0	—	—	2 / 2 / 27
+LLM	1d	0	—	—	0 / 0 / 2
+Quant trend — last 0 hourly buckets
+No resolved quant predictions in this window yet.
+0%
+solid = directional buckets · faint = stable-only
+100%
+Fleet Value
+$10451.92
+starting $10,000
+Net P&L
++$451.92
++4.52%
+Trades
+134
+57% win rate
+Bots in Profit
+5 / 10
+active bots
+What the bots agree on right now
+BUY Celestia
+LLM
+TIA @ $0.3772
+What
+BUY TIA: LLM brain consensus 70% over 1 Hour (aligned across 1 timeframes).
+
+Why
+Consider buying Celestia (TIA) at $0.377, as it shows a success rate of 70% with bullish indicators on the 1-hour timeframe. The Hybrid-5-1 is up 38%, while Divergence Refined V remains stable at 26%, supporting this action. Hold for 1 hour, given the market's neutral stance and total monitored volume of $822M across 10 altcoins.
+
+Confidence
+70%
+Hold for
+1 Hour (aligned across 1 timeframes)
+Expected
++0.10%
+EV after fees
+-0.20%
+Bots Leaderboard
+#1
+0 trades
+Contrarian Refined VIII
+$1733.84
++$0.00 (+0.0%)
+no trades yet
+1 open
+↑ Sei
++0.59
+#2
+9 trades
+Divergence Alpha V
+$1430.14
+$-6.88 (-0.7%)
+56% win
+2 open
+↑ Pepe
+-4.00
+↑ Sei
++1.07
+#3
+4 trades
+Hybrid-6-3
+$1003.16
++$11.29 (+1.1%)
+100% win
+1 open
+↑ Injective
+-8.06
+#4
+3 trades
+Contrarian Refined VII
+$999.88
++$8.57 (+0.9%)
+100% win
+2 open
+↑ Injective
+-4.16
+↑ Pepe
+-4.42
+#5
+3 trades
+Contrarian Alpha VII
+$997.45
++$8.50 (+0.8%)
+100% win
+2 open
+↑ Injective
+-6.46
+↑ Pepe
+-4.56
+#6
+4 trades
+Hybrid-5-1
+$996.04
++$3.97 (+0.4%)
+100% win
+1 open
+↑ Pepe
+-7.81
+#7
+0 trades
+Contrarian Alpha VIII
+$996.00
++$0.00 (+0.0%)
+no trades yet
+3 open
+↑ Bonk
+-1.60
+↑ Sei
+-0.37
+#8
+15 trades
+Contrarian Clara
+$989.48
+$-8.00 (-0.8%)
+40% win
+3 open
+↑ Sei
+-0.58
+↑ Render
+-1.11
+#9
+16 trades
+Momentum Alpha IV
+$667.22
+$-8.00 (-0.8%)
+44% win
+2 open
+↑ Render
+-0.37
+↑ Bonk
+-0.35
+#10
+80 trades
+Pattern Pete
+$638.72
++$18.70 (+1.9%)
+55% win
+1 open
+↑ Sei
+-2.51

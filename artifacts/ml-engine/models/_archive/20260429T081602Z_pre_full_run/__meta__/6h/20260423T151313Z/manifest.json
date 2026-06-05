@@ -1,0 +1,153 @@
+{
+  "coin_id": "__meta__",
+  "timeframe": "6h",
+  "version": "20260423T151313Z",
+  "model_kind": "meta",
+  "meta_kind": "lightgbm",
+  "feature_names": [
+    "base_prob_up",
+    "base_prob_down",
+    "base_prob_stable",
+    "base_expected_return_pct",
+    "base_raw_confidence",
+    "base_prediction_std_pct",
+    "spec_momentum_prob_up",
+    "spec_momentum_prob_down",
+    "spec_momentum_exp_ret",
+    "spec_momentum_applicable",
+    "spec_mean_reversion_prob_up",
+    "spec_mean_reversion_prob_down",
+    "spec_mean_reversion_exp_ret",
+    "spec_mean_reversion_applicable",
+    "spec_breakout_prob_up",
+    "spec_breakout_prob_down",
+    "spec_breakout_exp_ret",
+    "spec_breakout_applicable",
+    "spec_vol_forecaster_exp_ret",
+    "spec_vol_forecaster_applicable",
+    "regime_trending_up",
+    "regime_trending_down",
+    "regime_range_chop",
+    "regime_high_vol_breakout",
+    "regime_low_vol_compression",
+    "regime_panic_liquidation",
+    "specialist_dir_agreement",
+    "specialist_count_applicable",
+    "reliability_coin_winrate_30d",
+    "reliability_regime_winrate_30d",
+    "reliability_coin_n_30d",
+    "reliability_regime_n_30d"
+  ],
+  "n_train_rows": 393,
+  "metrics": {
+    "action_accuracy_holdout": 0.3670886075949367,
+    "edge_mae_holdout_pct": 2.391576373202244,
+    "n_train": 314,
+    "n_holdout": 79,
+    "class_counts": {
+      "no_trade": 118,
+      "long": 110,
+      "short": 165
+    }
+  },
+  "calibration_buckets": [
+    {
+      "bucket": 0,
+      "edge_lo_pct": 1.3486355543136597,
+      "edge_hi_pct": 1.5942654609680176,
+      "n": 33,
+      "mean_predicted_edge_pct": 0.42552212874094647,
+      "mean_realized_edge_after_costs_pct": -0.9961521941265372,
+      "hit_rate": 0.030303030303030304
+    },
+    {
+      "bucket": 1,
+      "edge_lo_pct": 1.5942654609680176,
+      "edge_hi_pct": 1.8459455966949463,
+      "n": 32,
+      "mean_predicted_edge_pct": -1.708175741136074,
+      "mean_realized_edge_after_costs_pct": -0.38699178211390967,
+      "hit_rate": 0.65625
+    },
+    {
+      "bucket": 2,
+      "edge_lo_pct": 1.8459455966949463,
+      "edge_hi_pct": 1.9845484495162964,
+      "n": 44,
+      "mean_predicted_edge_pct": -0.665831061926755,
+      "mean_realized_edge_after_costs_pct": -0.5616483529267663,
+      "hit_rate": 0.5681818181818182
+    },
+    {
+      "bucket": 3,
+      "edge_lo_pct": 1.9845484495162964,
+      "edge_hi_pct": 2.1384165287017822,
+      "n": 44,
+      "mean_predicted_edge_pct": -2.047210395336151,
+      "mean_realized_edge_after_costs_pct": 0.36502301747148674,
+      "hit_rate": 0.25
+    },
+    {
+      "bucket": 4,
+      "edge_lo_pct": 2.1384165287017822,
+      "edge_hi_pct": 2.1799941062927246,
+      "n": 32,
+      "mean_predicted_edge_pct": -0.6684765219688416,
+      "mean_realized_edge_after_costs_pct": -0.2752423561178148,
+      "hit_rate": 0.0
+    },
+    {
+      "bucket": 5,
+      "edge_lo_pct": 2.1799941062927246,
+      "edge_hi_pct": 2.227112054824829,
+      "n": 37,
+      "mean_predicted_edge_pct": -2.183860102215329,
+      "mean_realized_edge_after_costs_pct": -0.7947769432454497,
+      "hit_rate": 0.40540540540540543
+    },
+    {
+      "bucket": 6,
+      "edge_lo_pct": 2.227112054824829,
+      "edge_hi_pct": 2.2686314582824707,
+      "n": 33,
+      "mean_predicted_edge_pct": -1.0124205820488208,
+      "mean_realized_edge_after_costs_pct": 0.011165432135264088,
+      "hit_rate": 0.18181818181818182
+    },
+    {
+      "bucket": 7,
+      "edge_lo_pct": 2.2686314582824707,
+      "edge_hi_pct": 2.419701099395752,
+      "n": 48,
+      "mean_predicted_edge_pct": -0.0050258636474609375,
+      "mean_realized_edge_after_costs_pct": -1.1291138015687465,
+      "hit_rate": 0.4583333333333333
+    },
+    {
+      "bucket": 8,
+      "edge_lo_pct": 2.419701099395752,
+      "edge_hi_pct": 2.4253122806549072,
+      "n": 33,
+      "mean_predicted_edge_pct": 0.8064544995625814,
+      "mean_realized_edge_after_costs_pct": -2.1484167921497965,
+      "hit_rate": 0.06060606060606061
+    },
+    {
+      "bucket": 9,
+      "edge_lo_pct": 2.4253122806549072,
+      "edge_hi_pct": 2.876955032348633,
+      "n": 57,
+      "mean_predicted_edge_pct": -2.571561579118695,
+      "mean_realized_edge_after_costs_pct": -0.8684416915763891,
+      "hit_rate": 0.7192982456140351
+    }
+  ],
+  "action_labels": [
+    "no_trade",
+    "long",
+    "short"
+  ],
+  "round_trip_cost_pct": 0.003,
+  "generated_at": "2026-04-23T15:13:16.713133+00:00",
+  "note": "trained on 393 resolved QUANT rows"
+}

@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "directional_call_regression",
+  "directional_accuracy": 0.42042553191489357,
+  "baseline_directional_accuracy": 0.41617021276595745,
+  "lift": 0.004255319148936121,
+  "holdout_rows": 1175,
+  "directional_call_share": 0.9964664310954063,
+  "min_directional_accuracy_applied": 0.5,
+  "coin": "celestia",
+  "timeframe": "6h",
+  "kind": "per_coin"
+}

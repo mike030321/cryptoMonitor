@@ -1,0 +1,115 @@
+Yes — write the 5m historical backfill plan.
+
+Do not lower `COVERAGE_BAR_DAYS['5m']`.
+
+The dashboard card is correctly showing:
+
+* top-up is working
+* recent 5m candles are fresh
+* but historical 5m coverage is only ~65.5 days
+* the required gate is ~305 days
+* therefore 5m remains disabled by data
+
+## Goal
+
+Create a real historical backfill plan for 5m candles.
+
+This is separate from the daily/periodic 5m top-up job.
+
+## Requirements
+
+### 1. Keep the current gate
+
+Do not lower:
+
+* `COVERAGE_BAR_DAYS['5m']`
+* 305-day training coverage requirement
+* 310-day alert threshold
+
+The fix should be more real data, not a weaker gate.
+
+### 2. Backfill missing history
+
+Plan how to fetch approximately the missing 240 days of 5m candles for each affected coin.
+
+Affected coins:
+
+* bonk
+* celestia
+* dogwifcoin
+* floki-inu
+* injective-protocol
+* jupiter-exchange-solana
+* pepe
+* render-token
+* worldcoin-wld
+
+### 3. Use only real market data
+
+No synthetic candles.
+No generated candles.
+No gap filling with fake OHLCV.
+No generic approximations.
+
+If upstream data is unavailable for a coin/time range, mark it unavailable.
+
+### 4. Be idempotent
+
+The backfill must be safe to resume and rerun.
+
+It should:
+
+* write only missing candles
+* avoid duplicates
+* preserve existing real candles
+* use conflict-safe inserts
+* log gaps explicitly
+
+### 5. Respect API limits
+
+Estimate:
+
+* candles needed per coin
+* API calls required
+* expected runtime
+* provider rate limits
+* retry/backoff behavior
+
+### 6. Produce proof
+
+After backfill, generate a report showing:
+
+* before contiguous days per coin
+* after contiguous days per coin
+* rows inserted per coin
+* remaining gaps
+* whether each coin now passes the 305-day hard gate
+* whether the 310-day alert clears
+
+### 7. Do not enable 5m automatically
+
+Even after backfill:
+
+* do not flip 5m to trade
+* do not enable quant globally
+* do not promote slices automatically outside the existing training/verification path
+
+After backfill, the correct next step is:
+
+* rebuild 5m datasets
+* run training campaign
+* let verification gate decide
+
+## Deliverable
+
+Return a plan with:
+
+1. exact data source to use
+2. affected tables
+3. estimated API calls/runtime
+4. script/job design
+5. safety/idempotency behavior
+6. proof report format
+7. follow-up training step after backfill
+
+Then wait for approval before running a large backfill.

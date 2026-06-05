@@ -1,0 +1,109 @@
+Pause new architecture work.
+
+We need a simplification checkpoint.
+
+The recent work has exposed too many moving parts:
+
+* dashboard truth
+* old agents
+* horizon roles
+* 5m data coverage
+* training gates
+* meta-brain replay
+* watchdog halts
+* promoted vs non-promoted slices
+
+I do not want more architecture right now.
+
+## Goal
+
+Define and run the smallest truthful paper-trading mode that can prove whether this system has any usable edge.
+
+Call it:
+
+**Minimum Truthful Trading Mode**
+
+## Scope
+
+Use only:
+
+* real market data
+* promoted slices only
+* deterministic 4 executor families
+* paper trading only
+* strict post-fee gates
+* real PnL reconciliation
+* Strategy Lab baselines
+* dashboard truth
+
+Do not include:
+
+* non-promoted higher timeframes as trade authority
+* old personality agents
+* LLM/news/sentiment
+* real money
+* relaxed gates
+* new model architecture
+* new agent architecture
+
+## Decide the smallest eligible universe
+
+Inspect current artifacts and choose the narrowest safe set:
+
+* timeframe: likely 1m, or 5m only if valid promoted slices exist
+* coins: only promoted and data-valid coins
+* execution mode: paper only
+* meta-brain: shadow/replay only, not authority
+* higher timeframes: context only, no trading
+
+## Required output before enabling
+
+Return a plan with:
+
+1. exact coins/timeframes eligible
+2. exact promoted model versions
+3. exact gates they passed
+4. expected round-trip cost
+5. max paper position size
+6. daily loss stop
+7. auto-disable condition
+8. dashboard wording
+9. PnL reconciliation method
+10. baseline comparison method
+
+## If no eligible safe universe exists
+
+Say so plainly.
+
+Do not force trading.
+
+## If eligible universe exists
+
+Implement paper-only enablement for that narrow scope.
+
+Do not enable global quant.
+
+Do not enable higher timeframes.
+
+Do not let meta-brain override decisions yet.
+
+## Success criteria
+
+After 24–72 hours, report:
+
+* number of decisions
+* number of trades
+* realized PnL
+* unrealized PnL
+* fees paid
+* slippage estimate
+* win rate
+* cost-aware directional accuracy
+* comparison to Buy & Hold / DCA / Trend Filter
+* whether the system should continue, stop, or expand
+
+## Hard rule
+
+The goal is not to make the whole app impressive.
+
+The goal is to prove one clean, narrow trading loop with real data and real paper PnL.

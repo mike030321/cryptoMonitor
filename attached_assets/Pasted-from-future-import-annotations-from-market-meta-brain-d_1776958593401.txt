@@ -1,0 +1,96 @@
+from __future__ import annotations
+
+from market_meta_brain.domain.types import MarketMetaState, PortfolioTelemetry, FamilyState
+from market_meta_brain.utils.math_utils import clamp, safe_div
+
+
+class MetaStateMapper:
+    """Maps quant and portfolio telemetry into a finance-native latent state."""
+
+    def map(
+        self,
+        family_states: dict[str, FamilyState],
+        portfolio: PortfolioTelemetry,
+        dominant_regime: str,
+    ) -> MarketMetaState:
+        n = max(1, len(family_states))
+        avg_disagreement = safe_div(sum(f.avg_disagreement for f in family_states.values()), n)
+        avg_edge = safe_div(sum(f.avg_edge for f in family_states.values()), n)
+        avg_cal_conf = safe_div(sum(f.avg_calibrated_confidence for f in family_states.values()), n)
+        avg_accuracy = safe_div(sum(f.avg_accuracy for f in family_states.values()), n)
+        avg_drawdown = safe_div(sum(f.avg_drawdown_state for f in family_states.values()), n)
+        avg_pred_error = safe_div(sum(f.avg_prediction_error for f in family_states.values()), n)
+        avg_turnover = safe_div(sum(f.total_turnover for f in family_states.values()), n)
+        avg_anomalies = safe_div(sum(f.anomaly_count for f in family_states.values()), n)
+
+        stress = clamp(
+            0.28 * portfolio.total_drawdown
+            + 0.16 * portfolio.realized_vol
+            + 0.16 * avg_disagreement
+            + 0.14 * portfolio.liquidity_stress
+            + 0.10 * portfolio.correlation_shift
+            + 0.08 * avg_pred_error
+            + 0.08 * avg_anomalies,
+            0.0,
+            1.0,
+        )
+        risk_pressure = clamp(
+            0.34 * portfolio.total_drawdown
+            + 0.20 * portfolio.leverage
+            + 0.16 * portfolio.liquidity_stress
+            + 0.15 * portfolio.concentration
+            + 0.15 * (1.0 - portfolio.kill_switch_distance),
+            0.0,
+            1.0,
+        )
+        fatigue = clamp(
+            0.36 * avg_turnover
+            + 0.24 * avg_drawdown
+            + 0.20 * portfolio.concentration
+            + 0.20 * max(0.0, avg_disagreement - 0.35),
+            0.0,
+            1.0,
+        )
+        coherence = clamp(
+            1.0 - (0.45 * avg_disagreement + 0.25 * avg_pred_error + 0.15 * portfolio.correlation_shift + 0.15 * avg_anomalies),
+            0.0,
+            1.0,
+        )
+        surprise = clamp(
+            0.40 * avg_pred_error
+            + 0.25 * portfolio.correlation_shift
+            + 0.20 * avg_disagreement
+            + 0.15 * (1.0 if portfolio.anomaly_flags else 0.0),
+            0.0,
+            1.0,
+        )
+        opportunity_strength = clamp(
+            (0.55 * max(0.0, avg_edge) + 0.25 * avg_cal_conf + 0.20 * max(0.0, avg_accuracy - 0.5)),
+            0.0,
+            1.0,
+        )
+        regime_certainty = clamp(0.55 * avg_cal_conf + 0.45 * coherence, 0.0, 1.0)
+        safety = clamp(1.0 - 0.55 * stress - 0.45 * risk_pressure, 0.0, 1.0)
+        capital_safety = clamp(
+            1.0 - (0.35 * portfolio.total_drawdown + 0.25 * portfolio.leverage + 0.20 * portfolio.liquidity_stress + 0.20 * (1.0 - portfolio.kill_switch_distance)),
+            0.0,
+            1.0,
+        )
+        model_health = clamp(0.40 * avg_accuracy + 0.35 * avg_cal_conf + 0.25 * coherence, 0.0, 1.0)
+        curiosity = clamp(safety * opportunity_strength * (1.0 - fatigue) * 0.85, 0.0, 1.0)
+
+        return MarketMetaState(
+            stress=stress,
+            safety=safety,
+            fatigue=fatigue,
+            coherence=coherence,
+            surprise=surprise,
+            curiosity=curiosity,
+            regime_certainty=regime_certainty,
+            opportunity_strength=opportunity_strength,
+            capital_safety=capital_safety,
+            model_health=model_health,
+            risk_pressure=risk_pressure,
+            family_states=family_states,
+            dominant_regime=dominant_regime,
+        )

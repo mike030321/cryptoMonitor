@@ -1,0 +1,37 @@
+{
+  "anti_leak_check": {
+    "future_ts_count": 0,
+    "now_ms_at_check": 1777494481087
+  },
+  "coins": [
+    "btc"
+  ],
+  "dry_run": false,
+  "end_days_ago": 210,
+  "end_ms": 1759350372066,
+  "finished_at": "2026-04-29T20:28:01.087417+00:00",
+  "lookback_days": 155,
+  "now_ms": 1777494372066,
+  "per_coin": {
+    "btc": {
+      "fetched": {
+        "mid": {
+          "earliest_ms": 1745958600000,
+          "elapsed_s": 107.8,
+          "latest_ms": 1759350300000,
+          "rows": 44640
+        }
+      },
+      "inst_id": "BTC-USDT-SWAP",
+      "written": {
+        "mid": 44640
+      }
+    }
+  },
+  "since_ms": 1745958372066,
+  "started_at": "2026-04-29T20:26:12.086098+00:00",
+  "streams": [
+    "mid"
+  ],
+  "task": 586
+}

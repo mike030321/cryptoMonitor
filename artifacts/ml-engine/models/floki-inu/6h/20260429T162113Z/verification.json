@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "directional_call_regression",
+  "directional_accuracy": 0.39224137931034486,
+  "baseline_directional_accuracy": 0.45172413793103444,
+  "lift": -0.05948275862068958,
+  "holdout_rows": 1160,
+  "directional_call_share": 0.9892857142857143,
+  "min_directional_accuracy_applied": 0.5,
+  "coin": "floki-inu",
+  "timeframe": "6h",
+  "kind": "per_coin"
+}

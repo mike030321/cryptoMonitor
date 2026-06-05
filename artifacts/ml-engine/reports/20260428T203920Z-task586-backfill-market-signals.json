@@ -1,0 +1,241 @@
+{
+  "anti_leak_check": {
+    "future_ts_count": 0,
+    "now_ms_at_check": 1777408760944
+  },
+  "coins": [
+    "pepe",
+    "floki-inu",
+    "bonk",
+    "dogwifcoin",
+    "render-token",
+    "injective-protocol",
+    "sei-network",
+    "celestia",
+    "jupiter-exchange-solana",
+    "worldcoin-wld"
+  ],
+  "dry_run": false,
+  "finished_at": "2026-04-28T20:39:20.944247+00:00",
+  "lookback_days": 365,
+  "now_ms": 1777408687892,
+  "per_coin": {
+    "bonk": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769616000000,
+          "elapsed_s": 1.06,
+          "latest_ms": 1777392000000,
+          "rows": 271
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 6.23,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "BONK-USDT-SWAP",
+      "written": {
+        "funding": 271,
+        "oi": 1444
+      }
+    },
+    "celestia": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769601600000,
+          "elapsed_s": 2.02,
+          "latest_ms": 1777406400000,
+          "rows": 543
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 5.39,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "TIA-USDT-SWAP",
+      "written": {
+        "funding": 543,
+        "oi": 1444
+      }
+    },
+    "dogwifcoin": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769601600000,
+          "elapsed_s": 1.95,
+          "latest_ms": 1777406400000,
+          "rows": 543
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 5.61,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "WIF-USDT-SWAP",
+      "written": {
+        "funding": 543,
+        "oi": 1444
+      }
+    },
+    "floki-inu": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769616000000,
+          "elapsed_s": 1.05,
+          "latest_ms": 1777392000000,
+          "rows": 271
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 4.74,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "FLOKI-USDT-SWAP",
+      "written": {
+        "funding": 271,
+        "oi": 1444
+      }
+    },
+    "injective-protocol": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769616000000,
+          "elapsed_s": 1.07,
+          "latest_ms": 1777392000000,
+          "rows": 271
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 5.92,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "INJ-USDT-SWAP",
+      "written": {
+        "funding": 271,
+        "oi": 1444
+      }
+    },
+    "jupiter-exchange-solana": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769601600000,
+          "elapsed_s": 1.96,
+          "latest_ms": 1777406400000,
+          "rows": 543
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 6.89,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "JUP-USDT-SWAP",
+      "written": {
+        "funding": 543,
+        "oi": 1444
+      }
+    },
+    "pepe": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769616000000,
+          "elapsed_s": 1.1,
+          "latest_ms": 1777392000000,
+          "rows": 271
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 7.14,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "PEPE-USDT-SWAP",
+      "written": {
+        "funding": 271,
+        "oi": 1444
+      }
+    },
+    "render-token": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769601600000,
+          "elapsed_s": 2.0,
+          "latest_ms": 1777406400000,
+          "rows": 543
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 5.04,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "RENDER-USDT-SWAP",
+      "written": {
+        "funding": 543,
+        "oi": 1444
+      }
+    },
+    "sei-network": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769601600000,
+          "elapsed_s": 1.95,
+          "latest_ms": 1777406400000,
+          "rows": 543
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 5.04,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "SEI-USDT-SWAP",
+      "written": {
+        "funding": 543,
+        "oi": 1444
+      }
+    },
+    "worldcoin-wld": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769616000000,
+          "elapsed_s": 1.06,
+          "latest_ms": 1777392000000,
+          "rows": 271
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 4.67,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "WLD-USDT-SWAP",
+      "written": {
+        "funding": 271,
+        "oi": 1444
+      }
+    }
+  },
+  "since_ms": 1745872687892,
+  "started_at": "2026-04-28T20:38:07.924291+00:00",
+  "streams": [
+    "funding",
+    "oi"
+  ],
+  "task": 586
+}

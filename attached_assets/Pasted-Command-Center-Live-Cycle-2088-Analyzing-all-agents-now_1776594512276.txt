@@ -1,0 +1,532 @@
+Command Center
+Live
+Cycle #2088
+•
+Analyzing all agents now…
+
+Reset Bots
+Force Analysis
+Top Consensus Pick
+MEDIUM RISK
+sell Celestia
+TIA @ $0.393899
+Success Rate
+85%
+Expected Move
+-0.956%
+Hold Timeframe
+2 Hours (aligned across 3 timeframes)
+Recommendation: Sell Celestia (TIA) at $0.3939, as it shows a strong bearish trend across all monitored timeframes (5m, 1h, 2h). The high success rate of 85% combined with negative sentiment indicators suggests a continued decline, making this a timely exit with potential risks observed in the overall altcoin market.
+Timeframe Alignment
+5m ↓ 56%
+1h ↓ 57%
+2h ↓ 36%
+Agent Votes
+Sentiment
+59%
+Breakout
+65%
+Scalper
+47%
+Breakout
+56%
+Hybrid-2-5
+59%
+Sentiment
+30%
+Trend
+30%
+Pattern
+30%
+Whale
+30%
+Reality-Adjusted P&L
+Losing to buy & hold
+Lost $6.432 vs simply holding the basket
+
+Costs modeled: 0.20% fee + 0.10% slip per side · 0.60% round-trip
+Benchmark: Equal-weight buy & hold of monitored basket (24h proxy)
+Bots made / lost
+-$682.86
+-4.268% on $16000.00 capital
+Buy & hold would've made
+-$676.42
+-4.23% · same $16000.00
+Edge vs buy & hold
+-$6.432
+-0.04% · 7/16 beating
+Costs paid
+$601.04
+On $102744.85 turnover · 838 closed
+Best agent (net)
+Contrarian Clara
+0 trades · $0.000 costs
+$0.000
++0.000% · α +4.23%
+Worst agent (net)
+Pattern Pete
+69 trades · $51.14 costs
+-$66.43
+-6.643% · α -2.42%
+Total Predictions
+7415
+3986
+2344
+391
+Overall Accuracy
+62.97%
+Top Agent
+Hybrid-3-1
+Score: 200.0 | 61.64% acc
+Status
+15 agents
+|
+10 coins
+2088 cycles completed
+AI Budget
+GPT-PRIMARY
+GPT
+2924/100000
+Gemini
+41/14000
+Coin Signals — What to Buy / Sell / Hold
+Pepe
+$0.000004
+↑ BUY
+100% strength
+24h: -3.9%
+Bonk
+$0.000006
+↓ SELL
+100% strength
+24h: -4.6%
+dogwifhat
+$0.199617
+↓ SELL
+100% strength
+24h: -4.7%
+Injective
+$3.22
+↓ SELL
+100% strength
+24h: -2.2%
+Sei
+$0.054971
+↓ SELL
+100% strength
+24h: -3.5%
+Celestia
+$0.393921
+↓ SELL
+100% strength
+24h: -4.0%
+Jupiter
+$0.174681
+↓ SELL
+100% strength
+24h: -5.5%
+Worldcoin
+$0.261486
+↓ SELL
+100% strength
+24h: -6.5%
+Render
+$1.76
+↓ SELL
+79% strength
+24h: -3.6%
+Floki
+$0.00003
+↓ SELL
+75% strength
+24h: -3.7%
+Paper Trading — $15000 Total Invested
+Portfolio
+$14960.25
+Net P&L
+-39.75 (-0.27%)
+Trades
+838 (50% win)
+Sentiment Sarah
+$1007.71
++12.20 (+1.2%)
+51 trades | 51% win rate
+4 open positions
+↓ Celestia
++0.8328
+↓ Bonk
++0.1941
+Breakout Enhanced III
+$1007.42
++13.64 (+1.4%)
+59 trades | 58% win rate
+4 open positions
+↓ Celestia
++1.3654
+↓ Floki
++0.1950
+Whale Watcher Wendy
+$1006.83
++9.78 (+1.0%)
+39 trades | 67% win rate
+4 open positions
+↓ Jupiter
++0.6581
+↓ Worldcoin
+-0.0828
+Volume Victor
+$1003.96
++8.49 (+0.8%)
+48 trades | 54% win rate
+4 open positions
+↓ Pepe
++0.7925
+↓ Worldcoin
+-0.1655
+Trend Tracker Tom
+$1003.95
++5.65 (+0.6%)
+32 trades | 63% win rate
+4 open positions
+↓ Sei
++0.2607
+↓ dogwifhat
++0.0807
+Hybrid-3-1
+$1003.65
++6.84 (+0.7%)
+45 trades | 51% win rate
+4 open positions
+↓ Bonk
+-0.0006
+↓ Worldcoin
+-0.2506
+Momentum Max
+$1000.67
++4.18 (+0.4%)
+52 trades | 52% win rate
+4 open positions
+↓ Jupiter
++1.1782
+↓ Pepe
++0.4127
+Breakout Prime III
+$996.56
++3.06 (+0.3%)
+60 trades | 53% win rate
+4 open positions
+↓ Floki
++0.4874
+↓ Jupiter
++1.2715
+Hybrid-2-5
+$996.46
++3.79 (+0.4%)
+62 trades | 52% win rate
+3 open positions
+↓ Sei
+-0.0175
+↓ Floki
++0.4872
+Sentiment Alpha III
+$992.71
++2.34 (+0.2%)
+69 trades | 52% win rate
+4 open positions
+↓ Worldcoin
+-0.2714
+↓ Injective
+-0.2576
+Divergence Dan
+$989.52
+-2.38 (-0.2%)
+59 trades | 56% win rate
+4 open positions
+↓ Render
+-0.7575
+↓ Worldcoin
++0.2851
+Breakout Bella
+$988.65
+-2.54 (-0.3%)
+81 trades | 33% win rate
+1 open position
+↓ Pepe
++0.1333
+Sentiment Advanced III
+$987.82
+-6.22 (-0.6%)
+59 trades | 39% win rate
+4 open positions
+↓ Sei
++0.1535
+↓ Celestia
++0.9788
+Pattern Pete
+$987.31
+-5.17 (-0.5%)
+67 trades | 54% win rate
+2 open positions
+↓ Celestia
++0.9801
+↓ Pepe
++0.1330
+Scalper Steve
+$987.03
+-7.70 (-0.8%)
+55 trades | 27% win rate
+0 open positions
+Agent Evolution
+G3
+Generation
+0h 0m
+Next Evolution
+710/100
+Trades Trigger
+Trade-based trigger
+100%
+Fitness Rankings
+#1
+Whale Watcher Wendy
+OG
+0.770
+#2
+Breakout Enhanced III
+EVO
+0.745
+#3
+Sentiment Sarah
+OG
+0.680
+#4
+Volume Victor
+OG
+0.615
+#5
+Trend Tracker Tom
+OG
+0.605
+#6
+Hybrid-3-1
+HYB
+0.556
+#7
+Hybrid-2-5
+HYB
+0.550
+#8
+Pattern Pete
+OG
+0.526
+Lineage
+Hybrid-2-5 from Sentiment Sarah, Breakout Bella
+Breakout Enhanced III from Breakout Bella
+Breakout Prime III from Breakout Bella
+Sentiment Advanced III from Sentiment Sarah
+Sentiment Alpha III from Sentiment Sarah
+Recent Evolutions
+G3 (scheduled)
+2d ago
+14 survived, 1 purged, 1 created | volatile
+G2 (threshold)
+3d ago
+5 survived, 5 purged, 5 created
+Live Prediction Feed
+Sentiment Alpha III
+Worldcoin
+$0.261486 → $0.2601791h5s ago
+56%
+pending
+Breakout Bella
+Render
+$1.76 → $1.765m7s ago
+55%
+pending
+Sentiment Advanced III
+Floki
+$0.00003 → $0.000031h9s ago
+58%
+pending
+Breakout Prime III
+Bonk
+$0.000006 → $0.0000061h21s ago
+57%
+pending
+Scalper Steve
+dogwifhat
+$0.199468 → $0.1991465m11m ago
+30%
+wrong
+Momentum Max
+Floki
+$0.00003 → $0.000031h1h ago
+50%
+correct
+Breakout Enhanced III
+Jupiter
+$0.177323 → $0.1764371h1h ago
+65%
+correct
+Breakout Enhanced III
+Floki
+$0.00003 → $0.000032h2h ago
+30%
+correct
+Breakout Prime III
+Jupiter
+$0.177567 → $0.1759742h2h ago
+50%
+correct
+Sentiment Alpha III
+Celestia
+$0.399198 → $0.3955752h2h ago
+30%
+correct
+Agent Rankings
+#1
+Hybrid-3-1
+G3
+HYB
+391 predictions
+200.0
+61.64%
+Specialties:
+Jupiter 59.5
+Worldcoin 56.8
+Bonk 53.8
+#2
+Whale Watcher Wendy
+352 predictions
+200.0
+63.64%
+Specialties:
+Bonk 58.2
+Jupiter 58
+Worldcoin 56.8
+#3
+Pattern Pete
+371 predictions
+200.0
+67.39%
+Specialties:
+Bonk 59.6
+Pepe 57.5
+Sei 56.7
+#4
+Hybrid-2-5
+G2
+HYB
+313 predictions
+200.0
+62.94%
+Specialties:
+Worldcoin 60.4
+dogwifhat 55.3
+Render 55
+#5
+Momentum Max
+361 predictions
+200.0
+60.94%
+Specialties:
+dogwifhat 57.8
+Worldcoin 55.7
+Bonk 53.7
+#6
+Breakout Prime III
+G2
+MUT
+311 predictions
+200.0
+60.77%
+Specialties:
+Bonk 55.6
+Jupiter 54.6
+Sei 53.4
+#7
+Breakout Enhanced III
+G2
+EVO
+323 predictions
+200.0
+63.78%
+Specialties:
+Worldcoin 57.9
+dogwifhat 56
+Celestia 55.9
+#8
+Trend Tracker Tom
+166 predictions
+200.0
+62.05%
+Specialties:
+Worldcoin 70.6
+dogwifhat 67.5
+Jupiter 60.5
+#9
+Divergence Dan
+366 predictions
+200.0
+61.75%
+Specialties:
+Celestia 56.9
+Render 55.8
+dogwifhat 55.2
+#10
+Sentiment Sarah
+360 predictions
+200.0
+63.33%
+Specialties:
+Bonk 60.2
+Worldcoin 58.6
+Celestia 57.2
+#11
+Sentiment Advanced III
+G2
+EVO
+325 predictions
+200.0
+62.15%
+Specialties:
+dogwifhat 59.8
+Jupiter 56.9
+Worldcoin 55.7
+#12
+Breakout Bella
+1056 predictions
+200.0
+64.30%
+Specialties:
+Jupiter 52.8
+Render 52.4
+Worldcoin 50.8
+#13
+Sentiment Alpha III
+G2
+MUT
+328 predictions
+200.0
+61.89%
+Specialties:
+dogwifhat 59.3
+Celestia 58
+Sei 55.3
+#14
+Scalper Steve
+946 predictions
+199.1
+62.26%
+Specialties:
+Bonk 54
+Pepe 52
+Worldcoin 51.8
+#15
+Volume Victor
+361 predictions
+198.6
+63.43%
+Specialties:
+Worldcoin 56.4
+dogwifhat 56.3
+Floki 55.3

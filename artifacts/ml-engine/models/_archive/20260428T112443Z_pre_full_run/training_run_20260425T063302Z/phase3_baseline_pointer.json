@@ -1,0 +1,10 @@
+{
+  "archive_dir": "models/_archive/20260425T072408Z_pre_full_run",
+  "files_copied": [
+    "report.json",
+    "backtest_report.json",
+    "verification_history.jsonl"
+  ],
+  "per_coin_files_copied": 3302,
+  "baseline_slice_count": 2
+}

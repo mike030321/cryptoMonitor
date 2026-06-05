@@ -1,0 +1,292 @@
+Build this as a real adaptive crypto prediction system, not just a retraining LightGBM loop.
+
+Goal
+
+Create a machine that improves prediction and trading quality over time by learning from:
+
+prediction errors
+actual trade outcomes
+changing market regimes
+model performance decay
+feature usefulness over time
+
+The system must optimize for net pnl after fees/slippage, not just classification accuracy.
+
+Core design requirements
+1) Replace simple UP / DOWN / STABLE classification with trade-aware targets
+
+Implement targets for:
+
+expected forward return over each horizon
+probability that move exceeds trading costs
+probability TP hits before SL
+max adverse excursion and max favorable excursion
+risk-adjusted opportunity score
+
+Keep optional directional labels, but do not make them the main target.
+
+2) Add regime detection
+
+Create a regime model that classifies market state such as:
+
+trending up
+trending down
+range / chop
+high volatility breakout
+low volatility compression
+panic / liquidation regime
+
+All prediction models must be conditioned on regime or routed by regime.
+
+3) Build an ensemble, not one model
+
+Create separate specialist models for:
+
+momentum / trend continuation
+mean reversion
+breakout expansion
+volatility prediction
+coin-specific behavior
+market-wide risk regime
+
+Then add a meta-model that decides:
+
+which model to trust
+which timeframe to trade
+whether to abstain
+how much size to use
+4) Learn from trade outcomes, not only candle labels
+
+Store every trade and every prediction with:
+
+features at decision time
+predicted probabilities / score
+regime
+chosen model
+entry / exit
+realized pnl
+fees
+slippage
+max drawdown during trade
+whether TP or SL hit first
+whether abstaining would have been better
+
+Use this as a feedback dataset for a second-layer model that learns:
+
+when the base model is reliable
+when signals should be filtered
+when size should be reduced
+when to disable a model
+5) Add model confidence calibration and reliability tracking
+
+For every model and timeframe:
+
+track calibration
+track rolling precision by signal bucket
+track expected vs realized return by confidence decile
+track pnl by regime
+track false positive concentration
+
+Do not let raw model probability be trusted without calibration and reliability monitoring.
+
+6) Add feature evolution
+
+Build a feature research pipeline that can test and keep or reject new features automatically.
+
+Candidate feature families:
+
+momentum at multiple horizons
+volatility clustering
+ATR and range expansion
+volume imbalance
+order-book imbalance if available
+liquidation / funding / open interest features
+BTC and ETH leadership features
+correlation / beta to majors
+dominance / sector rotation
+session and time-of-day effects
+trend exhaustion and mean reversion features
+cross-timeframe agreement features
+
+Every new feature must be tested with walk-forward validation and ablation reports.
+
+7) Make the objective pnl-aware
+
+All model selection and deployment decisions must prioritize:
+
+expected pnl after fees
+Sharpe / Sortino
+drawdown
+stability across regimes
+trade frequency quality
+calibration of expected edge
+
+Do not deploy or promote models based mainly on accuracy.
+
+8) Add abstain logic as a first-class capability
+
+The system must be able to output:
+
+long
+short
+no trade
+
+“No trade” should be considered a success when edge is weak.
+
+9) Build online evaluation and champion-challenger infrastructure
+
+At all times support:
+
+current live champion model
+one or more challenger models
+shadow evaluation without trading
+automatic promotion only after passing thresholds
+
+Promotion must require:
+
+enough samples
+positive net edge after costs
+acceptable drawdown
+better performance than current champion
+robustness across recent regimes
+10) Fix offline/live consistency
+
+The backtester and live engine must use the exact same:
+
+feature generation
+signal thresholds
+execution assumptions
+cost model
+sizing logic
+risk rules
+abstain logic
+
+No separate decision logic in backtest vs live.
+
+11) Add portfolio-level intelligence
+
+Do not predict each coin independently only.
+
+Add portfolio logic for:
+
+correlated exposure control
+sector concentration limits
+market beta control
+dynamic capital allocation
+risk budget by regime
+coin ranking by expected edge
+12) Add continuous diagnostics
+
+Build dashboards and logs for:
+
+skip reasons
+feature drift
+label balance drift
+prediction distribution drift
+calibration drift
+regime distribution drift
+pnl by model / coin / regime / timeframe
+false positive clusters
+degradation alerts
+
+If a model outputs mostly STABLE or nearly identical probabilities, detect it automatically and quarantine it.
+
+Preferred architecture
+Layer 1: data
+
+Ingest and store:
+
+OHLCV
+market breadth
+funding, OI, liquidations if available
+cross-coin and cross-market features
+execution and trade logs
+Layer 2: feature engine
+
+Single shared feature pipeline used by:
+
+training
+backtesting
+live inference
+Layer 3: base predictors
+
+Train multiple models:
+
+LightGBM / XGBoost baseline
+temporal neural model for sequence patterns
+optional coin-specific specialists
+volatility and regime models
+Layer 4: meta layer
+
+Train a meta-model that decides:
+
+whether a base signal is tradable
+which model to trust
+what size to allocate
+whether to abstain
+Layer 5: execution / risk
+
+Execution engine handles:
+
+slippage-aware entries
+TP / SL logic
+size control
+exposure caps
+portfolio heat
+anomaly handling
+Layer 6: learning loop
+
+On every retrain cycle:
+
+update datasets
+retrain challengers
+evaluate with walk-forward
+compare to champion
+run shadow mode
+promote only if thresholds are passed
+Non-negotiable implementation rules
+
+Tell Replit these are mandatory:
+
+Optimize for net pnl after costs
+Use walk-forward validation only
+No random split for time series
+Backtest and live logic must match exactly
+Every prediction must be logged and later resolved
+Every model must be measured by regime
+Every feature family must have ablation tests
+Every deployment must be reversible
+System must support no-trade output
+System must detect and disable probability collapse or stale models
+Concrete deliverables
+
+Ask Replit to build:
+
+A new training pipeline with:
+regime labels
+trade-aware labels
+ensemble models
+meta-model
+calibration
+walk-forward evaluation
+A unified backtester/live signal engine with shared code paths
+A prediction journal + trade journal database schema
+A model registry with:
+champion / challenger states
+promotion rules
+rollback rules
+per-regime performance reports
+A diagnostics dashboard showing:
+pnl by regime
+pnl by model
+confidence calibration
+skip reasons
+signal quality by bucket
+drift alerts
+A feature lab that can test new features automatically and produce comparison reports
+Very important instruction to Replit
+
+Tell it this exactly:
+
+Do not just tune thresholds or increase retraining frequency.
+Redesign the system so it learns which predictions are worth trading, under which market regime, with which model, and with what size.

@@ -1,0 +1,428 @@
+{
+  "coin_id": "bitcoin",
+  "timeframe": "5m",
+  "rows_total": 109326,
+  "rows_valid": 109314,
+  "n_folds": 3,
+  "fold_layout": [
+    {
+      "fold": 1,
+      "train_start": 0,
+      "train_end_exclusive": 43725,
+      "holdout_start": 43725,
+      "holdout_end_exclusive": 65587,
+      "n_train": 43725,
+      "n_holdout": 21862
+    },
+    {
+      "fold": 2,
+      "train_start": 0,
+      "train_end_exclusive": 65587,
+      "holdout_start": 65587,
+      "holdout_end_exclusive": 87449,
+      "n_train": 65587,
+      "n_holdout": 21862
+    },
+    {
+      "fold": 3,
+      "train_start": 0,
+      "train_end_exclusive": 87449,
+      "holdout_start": 87449,
+      "holdout_end_exclusive": 109311,
+      "n_train": 87449,
+      "n_holdout": 21862
+    }
+  ],
+  "n_train_total": 196761,
+  "n_holdout_total": 65586,
+  "bars_source": "candles",
+  "self_leak_columns_dropped": [
+    "btc_lead_ret_5m",
+    "btc_liquidations_1h_usd"
+  ],
+  "horizon_bars": 12,
+  "feature_count": 50,
+  "round_trip_cost_pct": 0.3,
+  "ingestion_quality": {
+    "row_count": 109326,
+    "span_days": 379.847,
+    "bar_gap_rate": 2.7e-05,
+    "feature_nan_share": 0.159413,
+    "core_feature_nan_share": 0.020347
+  },
+  "families": {
+    "baseline_3class": {
+      "family": "baseline_3class",
+      "n_train": 196761,
+      "n_holdout": 65586,
+      "n_classes_present_in_train": 3,
+      "label_rule": "3-class threshold=0.100% (production source for bitcoin/5m)",
+      "abstain_threshold": null,
+      "metrics": {
+        "n_total_holdout": 65586,
+        "n_trades": 54027,
+        "abstain_rate": 0.1762418808892141,
+        "directional_call_share": 0.8237581191107859,
+        "precision": 0.7056841949395672,
+        "directional_accuracy_on_trades": 0.7056841949395672,
+        "avg_return_per_trade_pct": 0.21245604942186105,
+        "net_pnl_pct_per_trade": -0.08754395057813893,
+        "net_pnl_pct_total": -4729.737017885114,
+        "max_drawdown_pct": -4729.737017885104,
+        "calibration_max_dev": 0.16702186231323224,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 4832,
+            "mean_predicted": 0.3786677088414856,
+            "empirical_correct_rate": 0.5260761589403974,
+            "abs_dev": 0.1474084500989118
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 16884,
+            "mean_predicted": 0.4501896989281797,
+            "empirical_correct_rate": 0.617211561241412,
+            "abs_dev": 0.16702186231323224
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 10931,
+            "mean_predicted": 0.5472783559819575,
+            "empirical_correct_rate": 0.6963681273442502,
+            "abs_dev": 0.14908977136229273
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 8966,
+            "mean_predicted": 0.6471400267053569,
+            "empirical_correct_rate": 0.7675663618112871,
+            "abs_dev": 0.12042633510593026
+          },
+          {
+            "bin_lo": 0.7000000000000001,
+            "bin_hi": 0.8,
+            "n": 8610,
+            "mean_predicted": 0.7528223062299342,
+            "empirical_correct_rate": 0.8427409988385598,
+            "abs_dev": 0.08991869260862562
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 3761,
+            "mean_predicted": 0.8427041301366307,
+            "empirical_correct_rate": 0.8963041744216964,
+            "abs_dev": 0.05360004428506571
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 43,
+            "mean_predicted": 0.902820738944078,
+            "empirical_correct_rate": 0.9767441860465116,
+            "abs_dev": 0.07392344710243359
+          }
+        ],
+        "share_long": 0.5230347789068429,
+        "share_short": 0.47696522109315714
+      },
+      "notes": []
+    },
+    "A_quintile": {
+      "family": "A_quintile",
+      "n_train": 196761,
+      "n_holdout": 65586,
+      "n_classes_present_in_train": 5,
+      "label_rule": "Q1<-0.2082% Q5>=0.2250% (quintile edges fit per-fold on train; 5-class multinomial)",
+      "abstain_threshold": null,
+      "metrics": {
+        "n_total_holdout": 65586,
+        "n_trades": 44188,
+        "abstain_rate": 0.32625865276126,
+        "directional_call_share": 0.67374134723874,
+        "precision": 0.7158051959808093,
+        "directional_accuracy_on_trades": 0.7158051959808093,
+        "avg_return_per_trade_pct": 0.2413300369267719,
+        "net_pnl_pct_per_trade": -0.05866996307322811,
+        "net_pnl_pct_total": -2592.5083282798028,
+        "max_drawdown_pct": -2593.679307402508,
+        "calibration_max_dev": 0.3008673484035325,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 7710,
+            "mean_predicted": 0.26670723006598757,
+            "empirical_correct_rate": 0.5675745784695201,
+            "abs_dev": 0.3008673484035325
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 12399,
+            "mean_predicted": 0.34773735010073015,
+            "empirical_correct_rate": 0.6464230986369869,
+            "abs_dev": 0.29868574853625673
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 9804,
+            "mean_predicted": 0.44806622248473377,
+            "empirical_correct_rate": 0.7352101183190535,
+            "abs_dev": 0.2871438958343197
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 5069,
+            "mean_predicted": 0.5462985537610059,
+            "empirical_correct_rate": 0.7910830538567765,
+            "abs_dev": 0.24478450009577057
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 4494,
+            "mean_predicted": 0.648505382307602,
+            "empirical_correct_rate": 0.842456608811749,
+            "abs_dev": 0.19395122650414698
+          },
+          {
+            "bin_lo": 0.7000000000000001,
+            "bin_hi": 0.8,
+            "n": 3810,
+            "mean_predicted": 0.7438796501133047,
+            "empirical_correct_rate": 0.9002624671916011,
+            "abs_dev": 0.15638281707829638
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 892,
+            "mean_predicted": 0.8351883233388686,
+            "empirical_correct_rate": 0.8923766816143498,
+            "abs_dev": 0.05718835827548119
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 10,
+            "mean_predicted": 0.9146263713133868,
+            "empirical_correct_rate": 0.9,
+            "abs_dev": 0.014626371313386732
+          }
+        ],
+        "share_long": 0.481465556259618,
+        "share_short": 0.518534443740382
+      },
+      "notes": []
+    },
+    "B_sparse": {
+      "family": "B_sparse",
+      "n_train": 196761,
+      "n_holdout": 65586,
+      "n_classes_present_in_train": 2,
+      "label_rule": "|fwd_ret| >= 0.5267% (top-decile train-set cutoff fit per-fold; dual binary heads, abstain \u03c4 calibrated on val split \u2014 chronological 80/20 of train, heads fit on train_inner only, \u03c4 = (1 \u2212 base_rate_inner) quantile of val max(p_long,p_short))",
+      "abstain_threshold": 0.38874181215291786,
+      "metrics": {
+        "n_total_holdout": 65586,
+        "n_trades": 10531,
+        "abstain_rate": 0.8394321958954655,
+        "directional_call_share": 0.16056780410453453,
+        "precision": 0.7217738106542588,
+        "directional_accuracy_on_trades": 0.7217738106542588,
+        "avg_return_per_trade_pct": 0.3549976801126558,
+        "net_pnl_pct_per_trade": 0.05499768011265581,
+        "net_pnl_pct_total": 579.1805692663783,
+        "max_drawdown_pct": -769.362655462049,
+        "calibration_max_dev": 0.6015551902243043,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 2497,
+            "mean_predicted": 0.15335069684017308,
+            "empirical_correct_rate": 0.7549058870644774,
+            "abs_dev": 0.6015551902243043
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 1718,
+            "mean_predicted": 0.24957812413337768,
+            "empirical_correct_rate": 0.8242142025611175,
+            "abs_dev": 0.5746360784277399
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 1549,
+            "mean_predicted": 0.3461247765445408,
+            "empirical_correct_rate": 0.8592640413169786,
+            "abs_dev": 0.5131392647724378
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 677,
+            "mean_predicted": 0.44121015684003045,
+            "empirical_correct_rate": 0.896602658788774,
+            "abs_dev": 0.45539250194874353
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 388,
+            "mean_predicted": 0.5336905422146743,
+            "empirical_correct_rate": 0.9381443298969072,
+            "abs_dev": 0.40445378768223295
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 160,
+            "mean_predicted": 0.6422964726507839,
+            "empirical_correct_rate": 0.8875,
+            "abs_dev": 0.24520352734921602
+          },
+          {
+            "bin_lo": 0.7000000000000001,
+            "bin_hi": 0.8,
+            "n": 900,
+            "mean_predicted": 0.7715965729775325,
+            "empirical_correct_rate": 0.5188888888888888,
+            "abs_dev": 0.25270768408864364
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 1678,
+            "mean_predicted": 0.8506914719468099,
+            "empirical_correct_rate": 0.5303933253873659,
+            "abs_dev": 0.320298146559444
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 964,
+            "mean_predicted": 0.933446330859884,
+            "empirical_correct_rate": 0.5176348547717843,
+            "abs_dev": 0.41581147608809976
+          }
+        ],
+        "share_long": 0.6531193618839617,
+        "share_short": 0.34688063811603836
+      },
+      "notes": [
+        "fold1:val_calibration_split n_train_inner=34980 n_val=8745",
+        "fold1:tau_from_val quantile=0.8949 tau=0.1196 base_rate_inner=0.1051",
+        "fold2:val_calibration_split n_train_inner=52470 n_val=13117",
+        "fold2:tau_from_val quantile=0.9216 tau=0.7458 base_rate_inner=0.0784",
+        "fold3:val_calibration_split n_train_inner=69959 n_val=17490",
+        "fold3:tau_from_val quantile=0.9107 tau=0.3008 base_rate_inner=0.0893"
+      ]
+    },
+    "C_post_cost": {
+      "family": "C_post_cost",
+      "n_train": 196761,
+      "n_holdout": 65586,
+      "n_classes_present_in_train": 2,
+      "label_rule": "|fwd_ret| > 0.400% (round-trip cost 0.30% + margin 0.10%; dual binary heads, abstain \u03c4 calibrated on val split \u2014 chronological 80/20 of train, heads fit on train_inner only, \u03c4 = (1 \u2212 base_rate_inner) quantile of val max(p_long,p_short))",
+      "abstain_threshold": 0.3245407272250917,
+      "metrics": {
+        "n_total_holdout": 65586,
+        "n_trades": 17034,
+        "abstain_rate": 0.7402799377916018,
+        "directional_call_share": 0.25972006220839816,
+        "precision": 0.7919455207232594,
+        "directional_accuracy_on_trades": 0.7919455207232594,
+        "avg_return_per_trade_pct": 0.4148651904548446,
+        "net_pnl_pct_per_trade": 0.11486519045484463,
+        "net_pnl_pct_total": 1956.6136542078225,
+        "max_drawdown_pct": -51.53185399743161,
+        "calibration_max_dev": 0.4740343258258417,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 253,
+            "mean_predicted": 0.1979024330674389,
+            "empirical_correct_rate": 0.6719367588932806,
+            "abs_dev": 0.4740343258258417
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 3561,
+            "mean_predicted": 0.24443593789489998,
+            "empirical_correct_rate": 0.7031732659365347,
+            "abs_dev": 0.45873732804163475
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 3171,
+            "mean_predicted": 0.3536956155391008,
+            "empirical_correct_rate": 0.7795648060548723,
+            "abs_dev": 0.42586919051577155
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 3770,
+            "mean_predicted": 0.451983744357271,
+            "empirical_correct_rate": 0.7740053050397878,
+            "abs_dev": 0.3220215606825168
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 2390,
+            "mean_predicted": 0.5462160790453144,
+            "empirical_correct_rate": 0.8146443514644351,
+            "abs_dev": 0.2684282724191207
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 2229,
+            "mean_predicted": 0.6465319981922819,
+            "empirical_correct_rate": 0.8847016599371915,
+            "abs_dev": 0.2381696617449096
+          },
+          {
+            "bin_lo": 0.7000000000000001,
+            "bin_hi": 0.8,
+            "n": 1656,
+            "mean_predicted": 0.7298102046404937,
+            "empirical_correct_rate": 0.9082125603864735,
+            "abs_dev": 0.17840235574597973
+          }
+        ],
+        "share_long": 0.5714453446049078,
+        "share_short": 0.4285546553950922
+      },
+      "notes": [
+        "fold1:val_calibration_split n_train_inner=34980 n_val=8745",
+        "fold1:tau_from_val quantile=0.8215 tau=0.1956 base_rate_inner=0.1785",
+        "fold2:val_calibration_split n_train_inner=52470 n_val=13117",
+        "fold2:tau_from_val quantile=0.8301 tau=0.4356 base_rate_inner=0.1699",
+        "fold3:val_calibration_split n_train_inner=69959 n_val=17490",
+        "fold3:tau_from_val quantile=0.7963 tau=0.3424 base_rate_inner=0.2037"
+      ]
+    }
+  },
+  "ingestion_gate": {
+    "passed": true,
+    "reasons": [],
+    "min_span_days_required": 365.0,
+    "max_gap_rate": 0.02,
+    "max_feature_nan_share": 0.05
+  }
+}

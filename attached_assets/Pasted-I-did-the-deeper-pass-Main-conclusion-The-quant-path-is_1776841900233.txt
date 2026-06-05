@@ -1,0 +1,264 @@
+I did the deeper pass.
+
+Main conclusion
+
+The quant path is failing for two separate reasons:
+
+1. The packaged backtest is stale / logically mismatched with the live quant brain.
+2. Even the current pooled 5m model is basically collapsed into “stable” on almost every row.
+
+So the app is not just “over-gated.” The bigger issue is that the model output is nearly unusable, and the backtest is no longer faithfully measuring the live decision logic.
+
+The most important finding
+
+The offline backtester and the live quant brain are not using the same decision rule anymore.
+
+Backtester logic
+
+In artifacts/ml-engine/app/backtest/simulator.py:
+
+decide_direction() picks the 3-class argmax
+if argmax is stable, it skips immediately
+
+That means the backtest path is effectively:
+
+choose max of {p_down, p_stable, p_up}
+if stable wins, no trade
+Live quant brain logic
+
+In artifacts/api-server/src/lib/quant-brain.ts:
+
+it does not use pure 3-class argmax anymore
+it compares only probUp vs probDown
+it emits a directional signal only if:
+directional prob ≥ 0.08
+directional edge ≥ 0.02
+|expectedReturnPct| clears the minimum
+expected-return sign agrees with direction
+
+That is a major architectural divergence.
+
+So the packaged result of 250 skips / 0 trades is coming from a backtest engine that no longer mirrors the live quant decision path. That makes the current backtest_report.json not trustworthy as a cutover decision tool.
+
+What I reproduced on the current 5m pooled model
+
+I loaded the latest pooled 5m model and scored the latest 5m dataset snapshot directly.
+
+Results on 590 rows:
+
+pure argmax:
+stable: 581
+up: 5
+down: 4
+live quant-brain directional emission:
+stable: 590
+up: 0
+down: 0
+
+So even with the newer directional logic, the model still emits zero usable directional signals on the packaged 5m dataset.
+
+That is the core failure.
+
+Why the live quant brain still emits zero signals
+
+From quant-brain.ts, the live signal requires all of these:
+
+dirProb >= 0.08
+dirEdge >= 0.02
+abs(expectedReturnPct) >= minExpRetPct
+expected-return sign matches side
+
+On the current pooled 5m model, none of the rows pass that signal test.
+
+What the actual model probabilities look like
+
+The latest pooled 5m model is overwhelmingly stable-biased:
+
+Raw booster mean probabilities across the dataset were roughly:
+
+p_down: 0.0051
+p_stable: 0.9864
+p_up: 0.0085
+
+After calibration:
+
+p_down: 0.0350
+p_stable: 0.9597
+p_up: 0.0054
+
+So this is not a case of “signals exist but gates are too strict.”
+The model is mostly saying:
+
+“stable with near certainty”
+
+The strongest root cause I found
+The calibrator/model combo has effectively collapsed the 5m pooled model into stable
+
+The latest pooled model manifest at:
+
+artifacts/ml-engine/models/__pooled__/5m/20260421T131802Z/manifest.json
+
+already hinted something was wrong:
+
+AUC worse than baseline
+log loss worse than baseline
+Brier worse than baseline
+
+When I scored the model directly, that suspicion became concrete:
+
+almost every row gets probStable ≈ 1
+directional probabilities are tiny
+therefore no live directional calls survive
+
+This is the single biggest practical failure in the quant stack.
+
+Second major issue: the backtest is measuring the wrong thing
+
+This is the most serious logic bug in the whole quant evaluation pipeline.
+
+Offline simulator
+
+artifacts/ml-engine/app/backtest/simulator.py
+
+uses decide_direction() based on argmax
+skips immediately when stable wins
+Live decision engine
+
+artifacts/api-server/src/lib/quant-brain.ts
+
+uses directional preference logic
+uses probUp, probDown, directional edge, expected return
+no longer relies on stable argmax to decide trading direction
+
+So the backtest report is currently testing an older quant entry logic, not the one your live app would actually use.
+
+That means:
+
+deploy gate can reject or approve based on outdated logic
+live-vs-backtest drift comparisons become misleading
+the “0 trades” conclusion is directionally true, but the reasoning path is wrong
+Third major issue: anomaly cancellation accounting bug is real
+
+In artifacts/api-server/src/lib/paper-trader.ts, anomaly-cancel logic does this:
+
+deletes the position
+marks trade as cancelled
+refunds pos.positionSize to cash
+
+But at entry, cash had already been reduced by:
+
+positionSize
+plus entry fee
+
+So anomaly cancellation refunds the size but not the entry fee.
+
+That means a trade cancelled as bad market data still causes a small real loss.
+
+If anomaly means “invalidate the trade,” the entry fee should also be reversed.
+
+Fourth issue: confidence semantics changed, but the backtest didn’t follow
+
+Live quant brain now does something good:
+
+In quant-brain.ts:
+
+for up, confidence = probUp
+for down, confidence = probDown
+for stable, confidence = probStable
+raw max class confidence is only debug info
+
+That is correct.
+
+But the backtester in simulator.py still uses the old-style max-prob approach through decide_direction() and then confidence from argmax winner. That is another reason it is out of sync with live logic.
+
+Fifth issue: the model’s expected return is tiny and unhelpful
+
+In the pooled 5m manifest:
+
+class return means are about:
+down: -0.561%
+stable: -0.00175%
+up: +0.460%
+
+Those are not terrible by themselves.
+
+But because the model puts almost all mass on stable, the weighted expectedReturnPct stays near zero and often slightly negative. That prevents live directional emission and later EV gating.
+
+So again:
+
+not enough directional mass
+not enough edge
+no signal
+Why this is happening structurally
+
+The code comments already say it:
+
+In quant-brain.ts, there is a note that the early-stage model is heavily stable-biased because very few candles exceed the outcome threshold.
+
+That lines up with what I found.
+
+Likely causes:
+
+threshold too hard relative to short-horizon noise
+class imbalance toward stable
+pooled model across very different meme/alt coins
+calibration amplifying the stable collapse
+5m horizon with too little predictive structure in current feature set
+What to fix first
+1) Fix the backtester so it mirrors live quant-brain exactly
+
+Highest priority.
+
+artifacts/ml-engine/app/backtest/simulator.py should not use pure argmax anymore.
+
+It should replicate the live logic from quant-brain.ts:
+
+directional side from probUp vs probDown
+directional prob threshold
+directional edge threshold
+expected return sign agreement
+minimum expected return threshold
+
+Until that is fixed, your backtest report is not a reliable deployment artifact.
+
+2) Investigate why the pooled 5m model collapses to stable
+
+Second highest priority.
+
+I would test these in order:
+
+lower 5m outcome threshold
+inspect 3-class label balance in the 5m dataset
+compare calibrated vs uncalibrated predictions
+temporarily disable calibrator to see if collapse is caused by isotonic mapping
+train per-coin instead of pooled where possible
+evaluate binary directional heads instead of 3-class stable/up/down
+3) Fix anomaly cancellation accounting
+
+In paper-trader.ts, anomaly-cancel should reverse the full entry cash impact, including entry fee.
+
+4) Stop using current backtest report as a cutover signal
+
+Right now it is stale relative to the live decision path.
+
+Hard verdict after the second pass
+
+The quant system currently fails in this order:
+
+Model quality / output collapse
+The 5m model mostly predicts stable.
+Offline/live logic mismatch
+Backtest is no longer measuring the same decision policy the app uses live.
+Minor but real accounting bug
+Anomaly-cancel leaks entry fees.
+
+So the main blocker is not just thresholds.
+It is:
+
+the 5m quant model is not generating actionable directional probability mass, and the backtest framework is not faithfully evaluating the live quant logic anymore.
+
+If you want, I can do the next pass as a concrete repair plan: exact code changes for
+
+simulator.py
+paper-trader.ts
+and the quickest way to diagnose whether the calibrator is causing the stable-collapse.

@@ -1,0 +1,346 @@
+{
+  "data_as_of": "2026-04-22T07:56:14.512948+00:00",
+  "input_fingerprint": "6ae277b4e55ec580",
+  "quant_policy_version": "v3-calibrated-2026-04-22",
+  "runs": [
+    {
+      "metrics": {
+        "avg_hold_ms": 300000.0,
+        "avg_loser_usd": -0.730370021895091,
+        "avg_winner_usd": 0.0,
+        "expectancy_usd": -0.730370021895091,
+        "final_pnl_usd": -1.4607400437901106,
+        "max_drawdown_pct": 0.14607400437901105,
+        "n_trades": 2,
+        "profit_factor": 0.0,
+        "sharpe_per_trade": -3.3430461362416297,
+        "time_in_market_pct": 22.22222222222222,
+        "win_rate": 0.0
+      },
+      "monte_carlo": {
+        "equity_band_p05": [
+          1000.0,
+          999.1151452434617,
+          998.5392599562098
+        ],
+        "equity_band_p50": [
+          1000.0,
+          999.4241147127482,
+          998.5392599562098
+        ],
+        "equity_band_p95": [
+          1000.0,
+          999.4241147127482,
+          998.5392599562098
+        ],
+        "final_pnl_p05": -1.4607400437902243,
+        "final_pnl_p50": -1.4607400437902243,
+        "final_pnl_p95": -1.4607400437902243,
+        "max_drawdown_p05": 0.14607400437902243,
+        "max_drawdown_p50": 0.14607400437902243,
+        "max_drawdown_p95": 0.14607400437902243,
+        "n_runs": 2000
+      },
+      "n_oos_rows": 880,
+      "n_skips": 878,
+      "per_coin": {
+        "bonk": {
+          "metrics": {
+            "avg_hold_ms": 300000.0,
+            "avg_loser_usd": -0.5758852872518543,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": -0.5758852872518543,
+            "final_pnl_usd": -0.5758852872518219,
+            "max_drawdown_pct": 0.057588528725182185,
+            "n_trades": 1,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 100.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 88,
+          "n_skips": 87
+        },
+        "celestia": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 89,
+          "n_skips": 89
+        },
+        "dogwifcoin": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 87,
+          "n_skips": 87
+        },
+        "floki-inu": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 89,
+          "n_skips": 89
+        },
+        "injective-protocol": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 87,
+          "n_skips": 87
+        },
+        "jupiter-exchange-solana": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 87,
+          "n_skips": 87
+        },
+        "pepe": {
+          "metrics": {
+            "avg_hold_ms": 300000.0,
+            "avg_loser_usd": -0.8848547565383278,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": -0.8848547565383278,
+            "final_pnl_usd": -0.8848547565382887,
+            "max_drawdown_pct": 0.08848547565382887,
+            "n_trades": 1,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 100.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 88,
+          "n_skips": 87
+        },
+        "render-token": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 88,
+          "n_skips": 88
+        },
+        "sei-network": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 88,
+          "n_skips": 88
+        },
+        "worldcoin-wld": {
+          "metrics": {
+            "avg_hold_ms": 0.0,
+            "avg_loser_usd": 0.0,
+            "avg_winner_usd": 0.0,
+            "expectancy_usd": 0.0,
+            "final_pnl_usd": 0.0,
+            "max_drawdown_pct": 0.0,
+            "n_trades": 0,
+            "profit_factor": 0.0,
+            "sharpe_per_trade": 0.0,
+            "time_in_market_pct": 0.0,
+            "win_rate": 0.0
+          },
+          "n_oos_rows": 89,
+          "n_skips": 89
+        }
+      },
+      "regime_breakdown": {
+        "bear": {
+          "avg_hold_ms": 0.0,
+          "avg_loser_usd": 0.0,
+          "avg_winner_usd": 0.0,
+          "expectancy_usd": 0.0,
+          "final_pnl_usd": 0.0,
+          "max_drawdown_pct": 0.0,
+          "n_trades": 0,
+          "profit_factor": 0.0,
+          "sharpe_per_trade": 0.0,
+          "time_in_market_pct": 0.0,
+          "win_rate": 0.0
+        },
+        "bull": {
+          "avg_hold_ms": 0.0,
+          "avg_loser_usd": 0.0,
+          "avg_winner_usd": 0.0,
+          "expectancy_usd": 0.0,
+          "final_pnl_usd": 0.0,
+          "max_drawdown_pct": 0.0,
+          "n_trades": 0,
+          "profit_factor": 0.0,
+          "sharpe_per_trade": 0.0,
+          "time_in_market_pct": 0.0,
+          "win_rate": 0.0
+        },
+        "sideways": {
+          "avg_hold_ms": 300000.0,
+          "avg_loser_usd": -0.730370021895091,
+          "avg_winner_usd": 0.0,
+          "expectancy_usd": -0.730370021895091,
+          "final_pnl_usd": -1.4607400437901106,
+          "max_drawdown_pct": 0.14607400437901105,
+          "n_trades": 2,
+          "profit_factor": 0.0,
+          "sharpe_per_trade": -3.3430461362416297,
+          "time_in_market_pct": 22.22222222222222,
+          "win_rate": 0.0
+        },
+        "volatile": {
+          "avg_hold_ms": 0.0,
+          "avg_loser_usd": 0.0,
+          "avg_winner_usd": 0.0,
+          "expectancy_usd": 0.0,
+          "final_pnl_usd": 0.0,
+          "max_drawdown_pct": 0.0,
+          "n_trades": 0,
+          "profit_factor": 0.0,
+          "sharpe_per_trade": 0.0,
+          "time_in_market_pct": 0.0,
+          "win_rate": 0.0
+        }
+      },
+      "status": "ok",
+      "timeframe": "5m",
+      "verdict": {
+        "deploy": false,
+        "passing_regimes": [],
+        "reasons": [
+          "insufficient trades: 2 < 30",
+          "expectancy_usd -0.730370021895091 < 0.0",
+          "sharpe_per_trade -3.3430461362416297 < 0.5",
+          "no regime passes (need \u22651 regime with positive expectancy)"
+        ]
+      }
+    },
+    {
+      "metrics": {},
+      "monte_carlo": {},
+      "regime_breakdown": {},
+      "status": "no_dataset",
+      "timeframe": "1h",
+      "verdict": {
+        "deploy": false,
+        "passing_regimes": [],
+        "reasons": [
+          "no dataset snapshot"
+        ]
+      }
+    },
+    {
+      "metrics": {},
+      "monte_carlo": {},
+      "regime_breakdown": {},
+      "status": "no_dataset",
+      "timeframe": "2h",
+      "verdict": {
+        "deploy": false,
+        "passing_regimes": [],
+        "reasons": [
+          "no dataset snapshot"
+        ]
+      }
+    },
+    {
+      "metrics": {},
+      "monte_carlo": {},
+      "regime_breakdown": {},
+      "status": "no_dataset",
+      "timeframe": "6h",
+      "verdict": {
+        "deploy": false,
+        "passing_regimes": [],
+        "reasons": [
+          "no dataset snapshot"
+        ]
+      }
+    },
+    {
+      "metrics": {},
+      "monte_carlo": {},
+      "regime_breakdown": {},
+      "status": "no_dataset",
+      "timeframe": "1d",
+      "verdict": {
+        "deploy": false,
+        "passing_regimes": [],
+        "reasons": [
+          "no dataset snapshot"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "deploy": false,
+    "n_runs": 5
+  }
+}

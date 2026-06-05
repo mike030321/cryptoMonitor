@@ -1,0 +1,140 @@
+Accept the diagnosis.
+
+Do not flip flags.
+Do not unarchive legacy agents.
+Do not weaken gates.
+Do not force trades.
+
+The current bottleneck is now proven to be:
+
+**No LightGBM model has earned champion promotion.**
+
+The 4 Core agents are producing prediction attempts, but every output is stable/confidence=0 because all model rows remain shadow. The trader is correctly abstaining.
+
+## New goal
+
+Stop trying to make the current model trade.
+
+Start a focused edge-discovery phase.
+
+Task name:
+
+**Find First Real Champion Model**
+
+## Scope
+
+We need to produce one real champion candidate that clears the gate honestly.
+
+The task should compare possible paths:
+
+1. Feature engineering
+2. Label re-engineering
+3. Universe change
+4. Horizon redesign
+5. Paper-only diagnostic relaxation, only if explicitly marked as diagnostic
+
+## Preferred first approach
+
+Prioritize feature + label research.
+
+Do not weaken gates first.
+
+## What I want investigated
+
+### A. Feature engineering candidates
+
+Evaluate whether the current feature set is missing usable signal.
+
+Test candidates such as:
+
+* BTC/ETH/SOL lead-lag features
+* sector-relative returns
+* volatility regime features
+* funding-rate change
+* open-interest change
+* liquidation imbalance
+* spread/liquidity pressure
+* cross-timeframe trend alignment
+* realized-volatility shock features
+
+Only use real data already available or fetchable from real sources.
+
+### B. Label alternatives
+
+Evaluate whether `UP/DOWN/STABLE` directional labels are the wrong objective.
+
+Test labels such as:
+
+* post-cost profitable trade event
+* exceed-round-trip-cost event
+* top-decile opportunity label
+* breakout continuation label
+* mean-reversion snapback label
+* trade/no-trade label
+* asymmetric labels based on expected friction
+
+### C. Universe segmentation
+
+Check whether some coins are structurally untrainable under current features.
+
+Segment by:
+
+* major coins vs meme coins
+* liquidity
+* spread
+* volatility
+* data coverage
+* market-signal completeness
+
+Do not train one generic assumption across all coins if behavior differs.
+
+### D. Horizon role
+
+Confirm whether 1h/6h/1d should stay context-only unless a new label/feature design proves trade edge.
+
+## Deliverables
+
+### 1. Edge-discovery report
+
+For each tested path:
+
+* exact dataset used
+* feature/label change
+* before/after DA
+* baseline DA
+* Brier/calibration
+* post-fee PnL
+* directional_call_share
+* sample size
+* promoted or not
+
+### 2. One concrete candidate
+
+Pick the most promising candidate and run it through the same verification gate.
+
+### 3. Honest verdict
+
+Choose one:
+
+* champion found and promoted
+* candidate improved but still fails
+* no edge found under tested paths
+
+### 4. Runtime rule
+
+Until a champion exists:
+
+* quant remains disabled
+* Core agents remain non-trading
+* dashboard must say no served champion model
+
+## Hard rules
+
+* no synthetic data
+* no gate weakening unless explicitly approved as diagnostic-only
+* no real-money path
+* no meta-brain authority without predictor authority
+* no pretending shadow models are live champions
+
+The goal is not to produce trades.
+The goal is to produce the first model that deserves to trade.

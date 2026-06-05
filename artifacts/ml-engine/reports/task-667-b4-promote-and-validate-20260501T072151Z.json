@@ -1,0 +1,161 @@
+{
+  "task": "task-667-b4-promote-and-validate",
+  "started_utc": "20260501T072151Z",
+  "version": "20260501T072142Z",
+  "coin": "bitcoin",
+  "timeframe": "5m",
+  "model_id": "lightgbm",
+  "base_url": "http://localhost:80/api",
+  "admin_key_present": true,
+  "manifest_check": {
+    "version": "20260501T072142Z",
+    "served_predictor_kind": "dual_binary_head",
+    "calibration_method": "platt",
+    "calibration_status": "trustworthy",
+    "scope_constraint": {
+      "coin_id": "bitcoin",
+      "timeframe": "5m",
+      "candidate": "C_post_cost",
+      "label_family": "C_post_cost",
+      "allowed_universe": [
+        "bitcoin:5m"
+      ]
+    },
+    "abstain_tau": 0.7889671952682393,
+    "friction_threshold_pct": 0.8,
+    "label_family": "C_post_cost"
+  },
+  "shadow_row_id": 264,
+  "promotion": {
+    "promoted_id": 264,
+    "previous_champion_id": 263,
+    "promoted_by": "task-667-b4",
+    "scope_constraint": {
+      "coin_id": "bitcoin",
+      "timeframe": "5m",
+      "candidate": "C_post_cost",
+      "label_family": "C_post_cost",
+      "allowed_universe": [
+        "bitcoin:5m"
+      ]
+    }
+  },
+  "http": {
+    "btc_version": {
+      "status": 200,
+      "body": {
+        "btcVersion": "20260501T072142Z",
+        "ready": true
+      }
+    },
+    "mode": {
+      "status": 200,
+      "body": {
+        "mode": "diagnostic_sandbox",
+        "universe": [
+          {
+            "coinId": "bitcoin",
+            "timeframe": "5m",
+            "version": "20260501T072142Z"
+          }
+        ],
+        "maxPositionPct": 0.005,
+        "ready": true
+      }
+    },
+    "evaluates": [
+      {
+        "i": 1,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 2,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 3,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 4,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 5,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 6,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 7,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 8,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 9,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      },
+      {
+        "i": 10,
+        "status": 200,
+        "body": {
+          "tripped": false,
+          "reason": null,
+          "kind": null
+        }
+      }
+    ],
+    "any_tripped": false,
+    "all_clean": true
+  }
+}

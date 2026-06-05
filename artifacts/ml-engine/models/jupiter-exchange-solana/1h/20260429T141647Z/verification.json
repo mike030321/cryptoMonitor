@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "directional_call_regression",
+  "directional_accuracy": 0.37536738978306505,
+  "baseline_directional_accuracy": 0.4012596221133659,
+  "lift": -0.025892232330300857,
+  "holdout_rows": 7145,
+  "directional_call_share": 0.9842565597667638,
+  "min_directional_accuracy_applied": 0.5,
+  "coin": "jupiter-exchange-solana",
+  "timeframe": "1h",
+  "kind": "per_coin"
+}

@@ -1,0 +1,4 @@
+[27-Sep-2023 22:39:02 UTC] PHP Fatal error:  Uncaught Error: Interface "PHPMailer\PHPMailer\OAuthTokenProvider" not found in /home/aproinve/public_html/phpmailer/OAuth.php:36
+Stack trace:
+#0 {main}
+  thrown in /home/aproinve/public_html/phpmailer/OAuth.php on line 36

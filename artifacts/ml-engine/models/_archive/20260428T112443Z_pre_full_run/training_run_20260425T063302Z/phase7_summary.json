@@ -1,0 +1,270 @@
+{
+  "phase6_diagnostic_answers": {
+    "a_per_coin_beats_pooled_post_fee": {
+      "answer": true,
+      "slices": [
+        "bonk/1d",
+        "floki-inu/1d",
+        "pepe/1d"
+      ]
+    },
+    "b_worldcoin_wld_strongest_candidate": {
+      "answer": false,
+      "wld_best_delta": null,
+      "other_best_delta": -1000000000.0
+    },
+    "c_regime_mismatch_dominant_failure": {
+      "answer": false,
+      "top_bucket": "structurally_noisy_retire",
+      "five_m_slices_in_regime_bucket": 0
+    },
+    "d_recency_weighting_ab": {
+      "this_run_mode": "1",
+      "note": "Phase 4b paired evaluation ran with ML_RECENCY_WEIGHTED=0 on 3 coin(s) \u00d7 ['1d']. Verdict: recency_weighting_does_not_change_outcomes_in_this_subset. Full per-slice diff is in `phase4b_recency_ab.json` (threshold is \u00b10.5pp post-fee net_pct_total)."
+    },
+    "e_post_fee_profitable_slices": {
+      "answer": false,
+      "slices": []
+    },
+    "f_class_collapsed_slices": {
+      "answer": false,
+      "slices": []
+    },
+    "g_dashboard_accounting_contradictions": {
+      "answer": false,
+      "contradictions": []
+    }
+  },
+  "phase": "final_summary",
+  "generated_at": "2026-04-25T10:44:10.051002+00:00",
+  "verification_passed": false,
+  "watchdog_verdict": "stalled",
+  "best_slices": [
+    {
+      "slice": "pepe/1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -59.1553,
+      "post_fee_pnl_pct_mean": -0.3459,
+      "gross_pnl_pct_mean": -0.0459,
+      "n_trades": 171,
+      "win_rate": 0.4327,
+      "trade_share": 0.8066,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.524205879450429,
+      "baseline_auc": 0.525415625892616,
+      "lift_auc": -0.0012097464421870763,
+      "directional_accuracy": 0.3772727272727273,
+      "baseline_directional_accuracy": 0.425,
+      "n_rows": 1056
+    },
+    {
+      "slice": "bonk/1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -115.6358,
+      "post_fee_pnl_pct_mean": -0.7558,
+      "gross_pnl_pct_mean": -0.4558,
+      "n_trades": 153,
+      "win_rate": 0.4444,
+      "trade_share": 0.9503,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.5340973862399696,
+      "baseline_auc": 0.5026363012770252,
+      "lift_auc": 0.03146108496294442,
+      "directional_accuracy": 0.43134328358208956,
+      "baseline_directional_accuracy": 0.3925373134328359,
+      "n_rows": 804
+    },
+    {
+      "slice": "floki-inu/1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -119.995,
+      "post_fee_pnl_pct_mean": -0.7362,
+      "gross_pnl_pct_mean": -0.4362,
+      "n_trades": 163,
+      "win_rate": 0.4233,
+      "trade_share": 0.7653,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.5045666777009191,
+      "baseline_auc": 0.5324820667705231,
+      "lift_auc": -0.027915389069604002,
+      "directional_accuracy": 0.36497175141242943,
+      "baseline_directional_accuracy": 0.3751412429378531,
+      "n_rows": 1065
+    },
+    {
+      "slice": "__pooled__/1d",
+      "kind": "pooled",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -150.7441,
+      "post_fee_pnl_pct_mean": -0.3522,
+      "gross_pnl_pct_mean": -0.0522,
+      "n_trades": 428,
+      "win_rate": 0.4322,
+      "trade_share": 0.7316,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.5023706084933649,
+      "baseline_auc": 0.5249646641278539,
+      "lift_auc": -0.02259405563448902,
+      "directional_accuracy": 0.3798767967145791,
+      "baseline_directional_accuracy": 0.40780287474332655,
+      "n_rows": 2925
+    }
+  ],
+  "worst_slices": [
+    {
+      "slice": "__pooled__/1d",
+      "kind": "pooled",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -150.7441,
+      "post_fee_pnl_pct_mean": -0.3522,
+      "gross_pnl_pct_mean": -0.0522,
+      "n_trades": 428,
+      "win_rate": 0.4322,
+      "trade_share": 0.7316,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.5023706084933649,
+      "baseline_auc": 0.5249646641278539,
+      "lift_auc": -0.02259405563448902,
+      "directional_accuracy": 0.3798767967145791,
+      "baseline_directional_accuracy": 0.40780287474332655,
+      "n_rows": 2925
+    },
+    {
+      "slice": "floki-inu/1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -119.995,
+      "post_fee_pnl_pct_mean": -0.7362,
+      "gross_pnl_pct_mean": -0.4362,
+      "n_trades": 163,
+      "win_rate": 0.4233,
+      "trade_share": 0.7653,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.5045666777009191,
+      "baseline_auc": 0.5324820667705231,
+      "lift_auc": -0.027915389069604002,
+      "directional_accuracy": 0.36497175141242943,
+      "baseline_directional_accuracy": 0.3751412429378531,
+      "n_rows": 1065
+    },
+    {
+      "slice": "bonk/1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -115.6358,
+      "post_fee_pnl_pct_mean": -0.7558,
+      "gross_pnl_pct_mean": -0.4558,
+      "n_trades": 153,
+      "win_rate": 0.4444,
+      "trade_share": 0.9503,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.5340973862399696,
+      "baseline_auc": 0.5026363012770252,
+      "lift_auc": 0.03146108496294442,
+      "directional_accuracy": 0.43134328358208956,
+      "baseline_directional_accuracy": 0.3925373134328359,
+      "n_rows": 804
+    },
+    {
+      "slice": "pepe/1d",
+      "kind": "per_coin",
+      "status": "trained",
+      "post_fee_pnl_pct_total": -59.1553,
+      "post_fee_pnl_pct_mean": -0.3459,
+      "gross_pnl_pct_mean": -0.0459,
+      "n_trades": 171,
+      "win_rate": 0.4327,
+      "trade_share": 0.8066,
+      "round_trip_cost_pct": 0.3,
+      "auc": 0.524205879450429,
+      "baseline_auc": 0.525415625892616,
+      "lift_auc": -0.0012097464421870763,
+      "directional_accuracy": 0.3772727272727273,
+      "baseline_directional_accuracy": 0.425,
+      "n_rows": 1056
+    }
+  ],
+  "before_after_diff": {
+    "bonk/1d": {
+      "old_post_fee_pct_total": null,
+      "new_post_fee_pct_total": -115.6358,
+      "delta_post_fee_pct_total": null,
+      "vs_internal_baseline_auc_lift": 0.03146108496294442,
+      "vs_internal_baseline_da_lift": 0.03880597014925369,
+      "old_status": null,
+      "new_status": "trained"
+    },
+    "floki-inu/1d": {
+      "old_post_fee_pct_total": null,
+      "new_post_fee_pct_total": -119.995,
+      "delta_post_fee_pct_total": null,
+      "vs_internal_baseline_auc_lift": -0.027915389069604002,
+      "vs_internal_baseline_da_lift": -0.01016949152542368,
+      "old_status": null,
+      "new_status": "trained"
+    },
+    "pepe/1d": {
+      "old_post_fee_pct_total": null,
+      "new_post_fee_pct_total": -59.1553,
+      "delta_post_fee_pct_total": null,
+      "vs_internal_baseline_auc_lift": -0.0012097464421870763,
+      "vs_internal_baseline_da_lift": -0.047727272727272674,
+      "old_status": null,
+      "new_status": "trained"
+    }
+  },
+  "per_coin_vs_pooled": {
+    "bonk/1d": {
+      "per_coin_pct_total": -115.6358,
+      "pooled_pct_total": -150.7441,
+      "per_coin_da": 0.43134328358208956,
+      "pooled_da": 0.3798767967145791,
+      "per_coin_beats_pooled_pnl": true,
+      "per_coin_beats_pooled_da": true
+    },
+    "floki-inu/1d": {
+      "per_coin_pct_total": -119.995,
+      "pooled_pct_total": -150.7441,
+      "per_coin_da": 0.36497175141242943,
+      "pooled_da": 0.3798767967145791,
+      "per_coin_beats_pooled_pnl": true,
+      "per_coin_beats_pooled_da": false
+    },
+    "pepe/1d": {
+      "per_coin_pct_total": -59.1553,
+      "pooled_pct_total": -150.7441,
+      "per_coin_da": 0.3772727272727273,
+      "pooled_da": 0.3798767967145791,
+      "per_coin_beats_pooled_pnl": true,
+      "per_coin_beats_pooled_da": false
+    }
+  },
+  "failure_buckets": {
+    "promoted": 0,
+    "promoted_baseline_served": 0,
+    "salvageable_with_schema_fix": 0,
+    "insufficient_sample": 1,
+    "structurally_noisy_retire": 3,
+    "salvageable_with_better_features_or_labels": 0,
+    "unknown": 0
+  },
+  "improvement_counts": {
+    "improved": 1,
+    "regressed": 2
+  },
+  "profitable_post_fee_slices": [],
+  "worldcoin_wld_diff": {},
+  "promote": [],
+  "retire": [
+    "pepe/1d (lift=-0.048)"
+  ],
+  "observe": [
+    "bonk/1d (directional_call_regression)",
+    "floki-inu/1d (below_coinflip, lift=-0.010)",
+    "__pooled__/1d (below_coinflip, lift=-0.028)"
+  ],
+  "final_verdict_did_quant_improve": "no"
+}

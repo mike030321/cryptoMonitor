@@ -1,0 +1,85 @@
+Yes, re-propose #557 and #558, but sharpen the scope.
+
+Current state is accepted as:
+
+* honest
+* safe
+* idle
+* not trading
+* not learning from real executor outcomes
+
+That is not the final goal.
+
+I want the next work to focus on creating an honest path back to trade authority, without weakening proof standards or forcing promotions.
+
+## Re-propose #557 as:
+
+**Gate Calibration Audit — do the floors match actual economic reality?**
+
+Goal:
+Audit whether the current gate floors are scientifically/economically justified per timeframe.
+
+Rules:
+
+* do not weaken gates just to promote models
+* compare current floors against post-fee PnL, baseline lift, calibration, and sample size
+* if a gate is too strict or misaligned, prove it with historical out-of-sample evidence
+* if a gate is correct, leave it unchanged
+
+Deliverable:
+
+* recommendation per timeframe:
+
+  * keep gate
+  * adjust gate with evidence
+  * retire as trade horizon
+  * move to context/shadow only
+
+## Re-propose #558 as:
+
+**Feature Search for Real Directional Edge**
+
+Goal:
+Find whether new deterministic, real-data-only features can beat the multinomial baselines and produce at least one slice that deserves trade authority.
+
+Allowed:
+
+* price-derived features
+* volatility/regime features
+* cross-coin/BTC/ETH lead-lag features
+* liquidity/funding/OI/spread features already present in real market signals
+* no LLM/news/sentiment/social
+
+Rules:
+
+* no synthetic/generic data
+* no fake zero placeholders
+* no leakage
+* no weakening thresholds to fake promotion
+* every feature must pass walk-forward ablation
+
+Deliverable:
+
+* candidate feature list
+* walk-forward ablation results
+* promoted/not-promoted verdicts
+* whether any slice earns role=trade
+
+## Then #536 only after #557/#558
+
+Only rerun full campaign after:
+
+* gates are confirmed/adjusted with proof
+* feature candidates are validated
+* dataset coverage is fresh
+
+Do not rerun full campaign blindly.
+
+## Keep current safe state
+
+Until then:
+
+* trade role remains 0
+* quant stays disabled
+* meta-brain remains observation/replay only
+* dashboard must clearly say honest-but-idle

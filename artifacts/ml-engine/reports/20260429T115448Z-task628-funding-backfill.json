@@ -1,0 +1,93 @@
+{
+  "task": 628,
+  "generated_at": "20260429T115448Z",
+  "coin_ids": [
+    "bonk",
+    "celestia",
+    "dogwifcoin",
+    "floki-inu",
+    "injective-protocol",
+    "jupiter-exchange-solana",
+    "pepe",
+    "render-token"
+  ],
+  "lookback_days": 400,
+  "page_limit": 100,
+  "gap_fill_only": false,
+  "gap_threshold_rows": 800,
+  "results": [
+    {
+      "coin_id": "bonk",
+      "instId": "BONK-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.07
+    },
+    {
+      "coin_id": "celestia",
+      "instId": "TIA-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.06
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "instId": "WIF-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.06
+    },
+    {
+      "coin_id": "floki-inu",
+      "instId": "FLOKI-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.07
+    },
+    {
+      "coin_id": "injective-protocol",
+      "instId": "INJ-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.06
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "instId": "JUP-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.06
+    },
+    {
+      "coin_id": "pepe",
+      "instId": "PEPE-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.07
+    },
+    {
+      "coin_id": "render-token",
+      "instId": "RENDER-USDT-SWAP",
+      "status": "no_rows",
+      "existing_funding_rows": 4755,
+      "fetched_rows": 0,
+      "inserted_rows": 0,
+      "fetch_elapsed_s": 0.07
+    }
+  ],
+  "elapsed_s_total": 0.8
+}

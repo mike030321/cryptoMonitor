@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "directional_call_regression",
+  "directional_accuracy": 0.3606837606837606,
+  "baseline_directional_accuracy": 0.3487179487179487,
+  "lift": 0.011965811965811923,
+  "holdout_rows": 585,
+  "directional_call_share": 0.9507042253521126,
+  "min_directional_accuracy_applied": 0.53,
+  "coin": "dogwifcoin",
+  "timeframe": "1d",
+  "kind": "per_coin"
+}

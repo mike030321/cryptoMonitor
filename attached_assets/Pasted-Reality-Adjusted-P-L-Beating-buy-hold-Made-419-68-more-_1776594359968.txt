@@ -1,0 +1,380 @@
+Reality-Adjusted P&L
+Beating buy & hold
+Made +$419.68 more than passively holding the basket
+
+Costs modeled: 0.20% fee + 0.10% slip per side · 0.60% round-trip
+Benchmark: Equal-weight buy & hold of monitored basket (24h proxy)
+Bots made / lost
+-$134.46
+-1.034% on $13000.00 capital
+Buy & hold would've made
+-$554.14
+-4.26% · same $13000.00
+Edge vs buy & hold
++$419.68
++3.23% · 9/13 beating
+Costs paid
+$270.65
+On $45566.71 turnover · 455 closed
+Best agent (net)
+Breakout Bella
+79 trades · $44.55 costs
++$123.37
++12.337% · α +16.60%
+Worst agent (net)
+Hybrid-2-3
+118 trades · $69.55 costs
+-$90.33
+-9.033% · α -4.77%
+Total Predictions
+8669
+4542
+3045
+304
+Overall Accuracy
+59.87%
+Top Agent
+Contrarian Clara
+Score: 200.0 | 57.92% acc
+Status
+10 agents
+|
+10 coins
+760 cycles completed
+AI Budget
+GPT-PRIMARY
+GPT
+1508/100000
+Gemini
+83/14000
+Coin Signals — What to Buy / Sell / Hold
+Pepe
+$0.000004
+↓ SELL
+100% strength
+24h: -3.9%
+Bonk
+$0.000006
+↓ SELL
+100% strength
+24h: -4.7%
+dogwifhat
+$0.199631
+↓ SELL
+100% strength
+24h: -4.8%
+Sei
+$0.054959
+↓ SELL
+100% strength
+24h: -3.6%
+Celestia
+$0.39463
+↓ SELL
+100% strength
+24h: -3.9%
+Jupiter
+$0.174543
+↓ SELL
+100% strength
+24h: -5.7%
+Worldcoin
+$0.261255
+↓ SELL
+100% strength
+24h: -6.5%
+Floki
+$0.00003
+— HOLD
+0% strength
+24h: -3.7%
+Render
+$1.76
+— HOLD
+0% strength
+24h: -3.6%
+Injective
+$3.22
+— HOLD
+0% strength
+24h: -2.3%
+Paper Trading — $10000 Total Invested
+Portfolio
+$10149.52
+Net P&L
++149.52 (+1.50%)
+Trades
+455 (45% win)
+Breakout Bella
+$1167.92
+-12.22 (-1.2%)
+79 trades | 34% win rate
+0 open positions
+Pattern Pete
+$1016.71
++23.72 (+2.4%)
+65 trades | 60% win rate
+0 open positions
+Whale Watcher Wendy
+$1006.89
++10.90 (+1.1%)
+68 trades | 53% win rate
+3 open positions
+↓ Floki
++2.7680
+↓ Pepe
++0.2931
+Contrarian Clara
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Momentum Max
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Dan
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Scalper Steve
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Refined III
+$990.22
+-3.83 (-0.4%)
+69 trades | 55% win rate
+4 open positions
+↓ Pepe
++0.3057
+↓ Sei
++0.1727
+Divergence Alpha III
+$987.01
+-8.72 (-0.9%)
+57 trades | 30% win rate
+1 open position
+↓ Jupiter
++1.2693
+Hybrid-2-3
+$980.77
+-8.28 (-0.8%)
+117 trades | 43% win rate
+1 open position
+↓ Pepe
++0.6993
+Agent Evolution
+G2
+Generation
+0h 0m
+Next Evolution
+211/100
+Trades Trigger
+Trade-based trigger
+100%
+Fitness Rankings
+#1
+Pattern Pete
+OG
+0.887
+#2
+Whale Watcher Wendy
+OG
+0.679
+#3
+Divergence Refined III
+EVO
+0.512
+#4
+Contrarian Clara
+OG
+0.500
+#5
+Momentum Max
+OG
+0.500
+#6
+Divergence Dan
+OG
+0.500
+#7
+Scalper Steve
+OG
+0.500
+#8
+Hybrid-2-3
+HYB
+0.340
+Lineage
+Divergence Refined III from Divergence Dan
+Hybrid-2-3 from Divergence Dan, Breakout Bella
+Divergence Alpha III from Divergence Dan
+Recent Evolutions
+G2 (threshold)
+3d ago
+7 survived, 3 purged, 3 created
+Live Prediction Feed
+Hybrid-2-3
+Sei
+$0.054947 → $0.0541232h14s ago
+42%
+pending
+Scalper Steve
+Celestia
+$0.394996 → $0.3942065m15s ago
+50%
+pending
+Scalper Steve
+Pepe
+$0.000004 → $0.0000045m22s ago
+46%
+pending
+Scalper Steve
+Sei
+$0.05495 → $0.054845m59s ago
+48%
+pending
+Breakout Bella
+Sei
+$0.054988 → $0.0548235m6m ago
+58%
+correct
+Divergence Alpha III
+Worldcoin
+$0.260797 → $0.2600145m12m ago
+58%
+wrong
+Hybrid-2-3
+Celestia
+$0.398463 → $0.3924862h2h ago
+50%
+correct
+Breakout Bella
+Worldcoin
+$0.261223 → $0.2602832h2h ago
+41%
+wrong
+Momentum Max
+Sei
+$0.055612 → $0.0547786h6h ago
+57%
+correct
+Contrarian Clara
+Sei
+$0.055615 → $0.0547816h6h ago
+69%
+correct
+Agent Rankings
+#1
+Contrarian Clara
+499 predictions
+200.0
+57.92%
+Specialties:
+Floki 60
+Sei 57.9
+Bonk 55.7
+#2
+Momentum Max
+516 predictions
+200.0
+63.57%
+Specialties:
+Sei 61.9
+Bonk 60.2
+Pepe 59.5
+#3
+Pattern Pete
+527 predictions
+200.0
+60.34%
+Specialties:
+Render 57.7
+Worldcoin 57.1
+Floki 56.2
+#4
+Whale Watcher Wendy
+513 predictions
+200.0
+63.16%
+Specialties:
+Floki 66.2
+Worldcoin 58.5
+Sei 53.5
+#5
+Scalper Steve
+924 predictions
+200.0
+58.87%
+Specialties:
+Jupiter 59.3
+Floki 58.9
+Celestia 53
+#6
+Divergence Refined III
+G2
+EVO
+605 predictions
+200.0
+61.49%
+Specialties:
+Worldcoin 64.2
+Sei 62.1
+Floki 58.2
+#7
+Hybrid-2-3
+G2
+HYB
+1294 predictions
+200.0
+59.12%
+Specialties:
+Floki 61.9
+Bonk 52.7
+dogwifhat 52.3
+#8
+Breakout Bella
+1163 predictions
+200.0
+59.85%
+Specialties:
+Worldcoin 57.2
+Sei 54.7
+Bonk 54.4
+#9
+Divergence Alpha III
+G2
+MUT
+949 predictions
+198.3
+58.27%
+Specialties:
+Sei 55.5
+Floki 53.5
+Celestia 48.9
+#10
+Divergence Dan
+532 predictions
+195.7
+59.40%
+Specialties:
+Worldcoin 60.4
+Bonk 55.4
+Sei 54.8
+System Health
+Cycles
+760
+Last Cycle
+2m ago
+Next Cycle
+running...
+AI Mode
+gpt-primary
+GPT-4o usage
+1508/100000 (2%)
+Gemini usage
+83/14000 (1%)

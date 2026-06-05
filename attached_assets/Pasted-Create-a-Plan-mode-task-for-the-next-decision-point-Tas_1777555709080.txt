@@ -1,0 +1,265 @@
+Create a Plan-mode task for the next decision point.
+
+## Task name
+
+**Final Calibration Repair, Then Engine Redesign If Needed**
+
+## Current truth
+
+The old broad LightGBM 3-class `{UP, STABLE, DOWN}` architecture failed:
+
+* no champion models
+* zero normal quant trades
+* maximum-history retrain produced Outcome B
+* data depth is not the binding constraint
+* feature search did not solve it
+
+The only promising signal so far is the sparse/post-cost 5m candidate family:
+
+* BTC/5m C and ETH/5m C made strong positive forward-holdout PnL
+* but both failed calibration truth gates
+* Platt and isotonic improved or preserved economics but did not fix probability scale
+* the model appears directionally/rank useful but probability-untrustworthy
+
+## Goal
+
+Do one final focused calibration repair.
+
+If calibration still cannot be repaired, then write the redesign plan for a new **Sparse Post-Cost Opportunity Engine**.
+
+Do not implement engine redesign in the calibration task.
+
+---
+
+# Phase 1 — Final calibration repair
+
+## Scope
+
+Only:
+
+* BTC/5m C
+* ETH/5m C
+* same forward holdout
+* same no-leakage rules
+* same financial metrics
+
+Do not add:
+
+* coins
+* timeframes
+* new agents
+* global quant enablement
+* meta-brain authority
+* dynamic sizing
+* real money
+
+## Calibration methods to test
+
+Test only the following:
+
+1. beta calibration
+2. temperature scaling on raw scores/logits
+3. probability shrinkage toward empirical base rate
+4. simple ensemble/shrinkage combination if justified and transparent
+
+Do not start a new feature search.
+Do not retrain the whole architecture.
+Do not change fees.
+Do not change holdout.
+
+## Required metrics
+
+For each method and candidate, report:
+
+* net PnL
+* profit factor
+* trade count
+* win rate
+* max drawdown
+* average return per trade
+* cal_dev
+* overconfidence vs underconfidence direction
+* reliability table
+* Spearman raw-vs-calibrated
+* whether trade selection changed
+* whether financial edge survived
+
+## Pass condition
+
+A candidate may proceed to controlled paper-candidate planning only if:
+
+* post-fee PnL remains positive
+* profit factor remains acceptable
+* drawdown remains bounded
+* no leakage
+* calibration improves materially
+* no dangerous overconfidence is introduced
+
+If `cal_dev <= 0.20`, candidate can be considered for normal controlled paper proof.
+
+If `cal_dev > 0.20` but:
+
+* failure is clearly under-confidence,
+* financial metrics remain strong,
+* ranking remains stable,
+
+then do **not** automatically promote. Return an explicit operator decision point:
+
+> “Proceed with fixed-size diagnostic paper sandbox despite untrusted probabilities? yes/no”
+
+---
+
+# Phase 2 — If calibration fails, prepare redesign plan
+
+If final calibration repair fails to produce a clean paper candidate, write a redesign proposal for:
+
+# Sparse Post-Cost Opportunity Engine
+
+The proposed new engine should replace the broad directional engine with a rare-trade opportunity detector.
+
+## New engine principle
+
+Do not predict every candle.
+
+Ask:
+
+> “Is this one of the rare setups where a trade is worth taking after fees, slippage, spread, and risk?”
+
+## Initial scope
+
+Start tiny:
+
+* BTC only
+* 5m only
+* paper only
+* fixed-size only
+* one execution profile only
+* meta-brain shadow only
+* no dynamic sizing
+* no global quant enablement
+* no other coins
+* no other timeframes
+
+## Proposed labels
+
+Replace `{UP, STABLE, DOWN}` with:
+
+* `LONG_OPPORTUNITY`
+* `SHORT_OPPORTUNITY`
+* `NO_TRADE`
+
+Suggested starting parameters:
+
+```json
+{
+  "timeframe": "5m",
+  "horizon_candles": 12,
+  "horizon_minutes": 60,
+  "round_trip_cost_pct": 0.30,
+  "required_net_edge_pct": 0.45,
+  "gross_move_required_pct": 0.75,
+  "max_adverse_move_pct": 0.45
+}
+```
+
+If the repo’s BTC/5m distribution suggests better values, calculate and propose them.
+
+## Proposed model
+
+Use two heads:
+
+1. classifier:
+
+   * `LONG_OPPORTUNITY`
+   * `SHORT_OPPORTUNITY`
+   * `NO_TRADE`
+
+2. regressor:
+
+   * expected net return after costs
+
+Trade only when both agree:
+
+* classifier says opportunity
+* regressor says expected net return exceeds threshold
+
+## Proposed trade gate
+
+Review or calculate better values, but start from:
+
+```json
+{
+  "min_opportunity_prob": 0.65,
+  "min_expected_net_return_pct": 0.45,
+  "min_prob_gap": 0.20,
+  "max_no_trade_prob": 0.40,
+  "max_spread_bps": 8,
+  "max_trade_rate": 0.025
+}
+```
+
+## Proposed paper-execution gate
+
+```json
+{
+  "position_size_pct": 0.5,
+  "max_open_positions": 1,
+  "daily_loss_stop_pct": 1.5,
+  "total_drawdown_stop_pct": 5.0,
+  "review_after_hours": 72,
+  "review_after_closed_trades": 50
+}
+```
+
+## Calibration policy
+
+For the redesigned engine:
+
+* overconfidence blocks
+* underconfidence blocks dynamic sizing
+* fixed-size paper may be allowed only with explicit label
+* dynamic sizing disabled until calibration is trustworthy
+
+---
+
+# Required deliverables
+
+## If calibration succeeds
+
+Return:
+
+1. best calibration method
+2. before/after metrics
+3. candidate status
+4. exact paper-proof recommendation
+5. hard safety limits
+
+## If calibration fails
+
+Return:
+
+1. final calibration verdict
+2. why calibration failed
+3. whether signal remains financially interesting
+4. full redesign proposal for Sparse Post-Cost Opportunity Engine
+5. exact implementation task, but do not implement until approved
+
+## Hard rules
+
+* no quant enablement
+* no champion promotion
+* no production behavior change
+* no real money
+* no dynamic sizing
+* no meta-brain authority
+* no fee edits
+* no holdout swap
+* no gate weakening by stealth
+* no automatic rescue loop
+
+This task succeeds if it produces a clear decision:
+
+A. calibration fixed → plan controlled paper proof
+B. calibration not fixed but signal financially strong → ask operator about fixed-size sandbox
+C. calibration not fixed and signal not trustworthy → redesign engine
+D. no edge remains → freeze/rebuild smaller

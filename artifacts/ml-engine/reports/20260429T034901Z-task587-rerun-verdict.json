@@ -1,0 +1,1786 @@
+{
+  "task": 587,
+  "captured_at": "20260429T034901Z",
+  "round_trip_cost_pct": 0.3,
+  "timeframes_subset": [
+    "6h",
+    "1d"
+  ],
+  "admitted_names": [
+    "atr_pct_zscore_60",
+    "bb_pctb_extreme",
+    "drawdown_30",
+    "ema_spread_per_atr",
+    "macd_signal_cross_strength",
+    "realizedVol_log",
+    "ret1_squared",
+    "ret1_x_volZ60",
+    "ret5_minus_ret10",
+    "rsi14_centered_squared",
+    "vol_of_vol_30"
+  ],
+  "off": {
+    "per_slice": [
+      {
+        "coin": "bonk",
+        "timeframe": "1d",
+        "n_rows": 807,
+        "baseline": {
+          "directional_accuracy": 0.5021008403361344,
+          "n_trades": 592,
+          "trade_share": 0.9817578772802653,
+          "post_fee_pnl_pct_total": -65.63034061125657,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.5042016806722689,
+          "n_trades": 590,
+          "trade_share": 0.978441127694859,
+          "post_fee_pnl_pct_total": 113.50778436881251,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.0021008403361344463,
+        "pnl_delta_pct_total": 179.13812498006908,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.46
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "1d",
+        "n_rows": 875,
+        "baseline": {
+          "directional_accuracy": 0.4745098039215686,
+          "n_trades": 628,
+          "trade_share": 0.9602446483180428,
+          "post_fee_pnl_pct_total": -250.62291198750034,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.42549019607843136,
+          "n_trades": 597,
+          "trade_share": 0.9128440366972477,
+          "post_fee_pnl_pct_total": -321.4072146242791,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.04901960784313725,
+        "pnl_delta_pct_total": -70.78430263677876,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.63
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "1d",
+        "n_rows": 709,
+        "baseline": {
+          "directional_accuracy": 0.41262135922330095,
+          "n_trades": 509,
+          "trade_share": 0.9585687382297552,
+          "post_fee_pnl_pct_total": -466.4040610400976,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.42475728155339804,
+          "n_trades": 517,
+          "trade_share": 0.9736346516007532,
+          "post_fee_pnl_pct_total": -334.4145864243495,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.012135922330097082,
+        "pnl_delta_pct_total": 131.98947461574807,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 6.91
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "1d",
+        "n_rows": 1065,
+        "baseline": {
+          "directional_accuracy": 0.45695364238410596,
+          "n_trades": 689,
+          "trade_share": 0.8634085213032582,
+          "post_fee_pnl_pct_total": -317.76680807447894,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.43874172185430466,
+          "n_trades": 667,
+          "trade_share": 0.8358395989974937,
+          "post_fee_pnl_pct_total": -163.91488835214176,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.018211920529801306,
+        "pnl_delta_pct_total": 153.8519197223372,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.13
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "1d",
+        "n_rows": 846,
+        "baseline": {
+          "directional_accuracy": 0.4518201284796574,
+          "n_trades": 579,
+          "trade_share": 0.9146919431279621,
+          "post_fee_pnl_pct_total": -231.5290793320151,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.43254817987152033,
+          "n_trades": 588,
+          "trade_share": 0.9289099526066351,
+          "post_fee_pnl_pct_total": -288.77945420727275,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.01927194860813708,
+        "pnl_delta_pct_total": -57.25037487525765,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.08
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1d",
+        "n_rows": 784,
+        "baseline": {
+          "directional_accuracy": 0.44370860927152317,
+          "n_trades": 547,
+          "trade_share": 0.9302721088435374,
+          "post_fee_pnl_pct_total": -184.15653096778306,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.44370860927152317,
+          "n_trades": 549,
+          "trade_share": 0.9336734693877551,
+          "post_fee_pnl_pct_total": -229.18798194269544,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.0,
+        "pnl_delta_pct_total": -45.03145097491239,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.11
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "1d",
+        "n_rows": 1059,
+        "baseline": {
+          "directional_accuracy": 0.4570063694267516,
+          "n_trades": 699,
+          "trade_share": 0.8825757575757576,
+          "post_fee_pnl_pct_total": -389.837169781112,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.4410828025477707,
+          "n_trades": 671,
+          "trade_share": 0.8472222222222222,
+          "post_fee_pnl_pct_total": -312.52788322328195,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.015923566878980888,
+        "pnl_delta_pct_total": 77.30928655783003,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.29
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "1d",
+        "n_rows": 618,
+        "baseline": {
+          "directional_accuracy": 0.43768115942028984,
+          "n_trades": 405,
+          "trade_share": 0.8766233766233766,
+          "post_fee_pnl_pct_total": -159.13790918511083,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.45217391304347826,
+          "n_trades": 421,
+          "trade_share": 0.9112554112554112,
+          "post_fee_pnl_pct_total": -196.480421471544,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.014492753623188415,
+        "pnl_delta_pct_total": -37.34251228643316,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 6.68
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "1d",
+        "n_rows": 126,
+        "skipped_reason": "fewer than 200 rows",
+        "gate_pass": false
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "1d",
+        "n_rows": 975,
+        "baseline": {
+          "directional_accuracy": 0.4629294755877034,
+          "n_trades": 671,
+          "trade_share": 0.9204389574759945,
+          "post_fee_pnl_pct_total": -169.31130572502167,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.4394213381555154,
+          "n_trades": 647,
+          "trade_share": 0.887517146776406,
+          "post_fee_pnl_pct_total": -191.51300174270062,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.023508137432188048,
+        "pnl_delta_pct_total": -22.201696017678955,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.09
+      },
+      {
+        "coin": "bonk",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.4752808988764045,
+          "n_trades": 1044,
+          "trade_share": 0.9942857142857143,
+          "post_fee_pnl_pct_total": -209.84258402862463,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.4764044943820225,
+          "n_trades": 1045,
+          "trade_share": 0.9952380952380953,
+          "post_fee_pnl_pct_total": -254.75890212967926,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.0011235955056179692,
+        "pnl_delta_pct_total": -44.91631810105463,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.68
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.4223463687150838,
+          "n_trades": 968,
+          "trade_share": 0.9219047619047619,
+          "post_fee_pnl_pct_total": -279.1935064418857,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.42569832402234636,
+          "n_trades": 955,
+          "trade_share": 0.9095238095238095,
+          "post_fee_pnl_pct_total": -321.78106220611767,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.0033519553072625663,
+        "pnl_delta_pct_total": -42.58755576423198,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.58
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.4645669291338583,
+          "n_trades": 1047,
+          "trade_share": 0.9971428571428571,
+          "post_fee_pnl_pct_total": -276.60215407637565,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.4668166479190101,
+          "n_trades": 1050,
+          "trade_share": 1.0,
+          "post_fee_pnl_pct_total": -304.890748519769,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.002249718785151844,
+        "pnl_delta_pct_total": -28.288594443393322,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.61
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.45717592592592593,
+          "n_trades": 1016,
+          "trade_share": 0.9676190476190476,
+          "post_fee_pnl_pct_total": -266.9264058870055,
+          "n_dir_truth_rows": 864,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.44328703703703703,
+          "n_trades": 1017,
+          "trade_share": 0.9685714285714285,
+          "post_fee_pnl_pct_total": -273.9152593529152,
+          "n_dir_truth_rows": 864,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.013888888888888895,
+        "pnl_delta_pct_total": -6.988853465909699,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.53
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.4609286523216308,
+          "n_trades": 1038,
+          "trade_share": 0.9885714285714285,
+          "post_fee_pnl_pct_total": -423.5182062481265,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.47904869762174407,
+          "n_trades": 1025,
+          "trade_share": 0.9761904761904762,
+          "post_fee_pnl_pct_total": -304.5596640576655,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.01812004530011324,
+        "pnl_delta_pct_total": 118.958542190461,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.53
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.4593967517401392,
+          "n_trades": 1002,
+          "trade_share": 0.9542857142857143,
+          "post_fee_pnl_pct_total": -298.23179560965974,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.46751740139211134,
+          "n_trades": 1026,
+          "trade_share": 0.9771428571428571,
+          "post_fee_pnl_pct_total": -237.2306439388478,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.008120649651972123,
+        "pnl_delta_pct_total": 61.001151670811936,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.57
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.4582857142857143,
+          "n_trades": 983,
+          "trade_share": 0.9361904761904762,
+          "post_fee_pnl_pct_total": -289.8929457262063,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.45257142857142857,
+          "n_trades": 993,
+          "trade_share": 0.9457142857142857,
+          "post_fee_pnl_pct_total": -288.53746148949915,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.005714285714285727,
+        "pnl_delta_pct_total": 1.3554842367071274,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.61
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.4977324263038549,
+          "n_trades": 1029,
+          "trade_share": 0.98,
+          "post_fee_pnl_pct_total": -305.04059876858895,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.48639455782312924,
+          "n_trades": 1016,
+          "trade_share": 0.9676190476190476,
+          "post_fee_pnl_pct_total": -272.81108894744244,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.011337868480725655,
+        "pnl_delta_pct_total": 32.22950982114651,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.67
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "6h",
+        "n_rows": 603,
+        "baseline": {
+          "directional_accuracy": 0.5013550135501355,
+          "n_trades": 410,
+          "trade_share": 0.9111111111111111,
+          "post_fee_pnl_pct_total": -115.11398170101504,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.4959349593495935,
+          "n_trades": 409,
+          "trade_share": 0.9088888888888889,
+          "post_fee_pnl_pct_total": -116.87740678868563,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.005420054200541979,
+        "pnl_delta_pct_total": -1.7634250876705977,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 6.79
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.43148357870894677,
+          "n_trades": 912,
+          "trade_share": 0.8685714285714285,
+          "post_fee_pnl_pct_total": -269.9042396981147,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.434881087202718,
+          "n_trades": 937,
+          "trade_share": 0.8923809523809524,
+          "post_fee_pnl_pct_total": -244.0129793944285,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.0033975084937712396,
+        "pnl_delta_pct_total": 25.89126030368618,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 1.0,
+        "mean_neutral_band_delta_aug": 0.0,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 7.62
+      }
+    ],
+    "any_slice_passes_gate": false,
+    "passing_slices": [],
+    "calibration_enabled": false,
+    "admitted_names": [
+      "atr_pct_zscore_60",
+      "bb_pctb_extreme",
+      "drawdown_30",
+      "ema_spread_per_atr",
+      "macd_signal_cross_strength",
+      "realizedVol_log",
+      "ret1_squared",
+      "ret1_x_volZ60",
+      "ret5_minus_ret10",
+      "rsi14_centered_squared",
+      "vol_of_vol_30"
+    ]
+  },
+  "on": {
+    "per_slice": [
+      {
+        "coin": "bonk",
+        "timeframe": "1d",
+        "n_rows": 807,
+        "baseline": {
+          "directional_accuracy": 0.4117647058823529,
+          "n_trades": 488,
+          "trade_share": 0.8092868988391376,
+          "post_fee_pnl_pct_total": 80.34797254163601,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603,
+          "trade_share_targets_selected": [
+            0.75,
+            0.75,
+            0.75
+          ],
+          "trade_share_target_mean": 0.75
+        },
+        "augmented": {
+          "directional_accuracy": 0.37815126050420167,
+          "n_trades": 443,
+          "trade_share": 0.7346600331674958,
+          "post_fee_pnl_pct_total": 67.63367067356339,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603,
+          "trade_share_targets_selected": [
+            0.75,
+            0.625,
+            0.625
+          ],
+          "trade_share_target_mean": 0.6666666666666666
+        },
+        "da_lift": -0.03361344537815125,
+        "pnl_delta_pct_total": -12.714301868072624,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.22219552538416634,
+        "tuned_trade_share_targets_aug": [
+          0.75,
+          0.625,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.6666666666666666,
+        "elapsed_sec": 13.7
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "1d",
+        "n_rows": 875,
+        "baseline": {
+          "directional_accuracy": 0.38823529411764707,
+          "n_trades": 532,
+          "trade_share": 0.8134556574923547,
+          "post_fee_pnl_pct_total": -239.04683225790836,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654,
+          "trade_share_targets_selected": [
+            0.625,
+            0.5,
+            0.625
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "augmented": {
+          "directional_accuracy": 0.3137254901960784,
+          "n_trades": 413,
+          "trade_share": 0.6314984709480123,
+          "post_fee_pnl_pct_total": -153.84260186336377,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5
+        },
+        "da_lift": -0.07450980392156864,
+        "pnl_delta_pct_total": 85.2042303945446,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.270472014678996,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5,
+        "elapsed_sec": 13.87
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "1d",
+        "n_rows": 709,
+        "baseline": {
+          "directional_accuracy": 0.3325242718446602,
+          "n_trades": 413,
+          "trade_share": 0.7777777777777778,
+          "post_fee_pnl_pct_total": -347.0851424911313,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531,
+          "trade_share_targets_selected": [
+            0.75,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.6666666666666666
+        },
+        "augmented": {
+          "directional_accuracy": 0.3446601941747573,
+          "n_trades": 433,
+          "trade_share": 0.815442561205273,
+          "post_fee_pnl_pct_total": -419.82969302956064,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531,
+          "trade_share_targets_selected": [
+            0.5,
+            0.75,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": 0.012135922330097082,
+        "pnl_delta_pct_total": -72.74455053842934,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.2611012135221706,
+        "mean_neutral_band_delta_aug": 0.21892688936505503,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.75,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 13.44
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "1d",
+        "n_rows": 1065,
+        "baseline": {
+          "directional_accuracy": 0.3129139072847682,
+          "n_trades": 483,
+          "trade_share": 0.6052631578947368,
+          "post_fee_pnl_pct_total": -233.04102254320802,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "augmented": {
+          "directional_accuracy": 0.35596026490066224,
+          "n_trades": 549,
+          "trade_share": 0.6879699248120301,
+          "post_fee_pnl_pct_total": -51.291629625035604,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798,
+          "trade_share_targets_selected": [
+            0.625,
+            0.5,
+            0.625
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": 0.04304635761589404,
+        "pnl_delta_pct_total": 181.74939291817242,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.06792466239290094,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.5,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 15.67
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "1d",
+        "n_rows": 846,
+        "baseline": {
+          "directional_accuracy": 0.3169164882226981,
+          "n_trades": 429,
+          "trade_share": 0.6777251184834123,
+          "post_fee_pnl_pct_total": -198.51614358777948,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "augmented": {
+          "directional_accuracy": 0.3618843683083512,
+          "n_trades": 460,
+          "trade_share": 0.7266982622432859,
+          "post_fee_pnl_pct_total": -127.38396708334531,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633,
+          "trade_share_targets_selected": [
+            0.625,
+            0.75,
+            0.5
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.04496788008565311,
+        "pnl_delta_pct_total": 71.13217650443417,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.1723172736018983,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.75,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 15.47
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1d",
+        "n_rows": 784,
+        "baseline": {
+          "directional_accuracy": 0.40618101545253865,
+          "n_trades": 498,
+          "trade_share": 0.8469387755102041,
+          "post_fee_pnl_pct_total": -129.68944722137033,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.75
+          ],
+          "trade_share_target_mean": 0.6666666666666666
+        },
+        "augmented": {
+          "directional_accuracy": 0.3973509933774834,
+          "n_trades": 510,
+          "trade_share": 0.8673469387755102,
+          "post_fee_pnl_pct_total": -223.4632961078981,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588,
+          "trade_share_targets_selected": [
+            0.75,
+            0.75,
+            0.625
+          ],
+          "trade_share_target_mean": 0.7083333333333334
+        },
+        "da_lift": -0.008830022075055233,
+        "pnl_delta_pct_total": -93.77384888652776,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.09147287122525878,
+        "tuned_trade_share_targets_aug": [
+          0.75,
+          0.75,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.7083333333333334,
+        "elapsed_sec": 14.64
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "1d",
+        "n_rows": 1059,
+        "baseline": {
+          "directional_accuracy": 0.29777070063694266,
+          "n_trades": 443,
+          "trade_share": 0.5593434343434344,
+          "post_fee_pnl_pct_total": -398.2425112345623,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792,
+          "trade_share_targets_selected": [
+            0.625,
+            0.5,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5416666666666666
+        },
+        "augmented": {
+          "directional_accuracy": 0.3105095541401274,
+          "n_trades": 484,
+          "trade_share": 0.6111111111111112,
+          "post_fee_pnl_pct_total": -257.867999863476,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792,
+          "trade_share_targets_selected": [
+            0.75,
+            0.5,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.01273885350318471,
+        "pnl_delta_pct_total": 140.37451137108633,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.2771651692221451,
+        "mean_neutral_band_delta_aug": 0.11978032061024953,
+        "tuned_trade_share_targets_aug": [
+          0.75,
+          0.5,
+          0.625
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 14.2
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "1d",
+        "n_rows": 618,
+        "baseline": {
+          "directional_accuracy": 0.32753623188405795,
+          "n_trades": 297,
+          "trade_share": 0.6428571428571429,
+          "post_fee_pnl_pct_total": -15.015835043250974,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462,
+          "trade_share_targets_selected": [
+            0.75,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.6666666666666666
+        },
+        "augmented": {
+          "directional_accuracy": 0.2608695652173913,
+          "n_trades": 249,
+          "trade_share": 0.538961038961039,
+          "post_fee_pnl_pct_total": -66.55585311071948,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462,
+          "trade_share_targets_selected": [
+            0.5,
+            0.75,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": -0.06666666666666665,
+        "pnl_delta_pct_total": -51.54001806746851,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.2600210434284845,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.75,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 13.49
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "1d",
+        "n_rows": 126,
+        "skipped_reason": "fewer than 200 rows",
+        "gate_pass": false
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "1d",
+        "n_rows": 975,
+        "baseline": {
+          "directional_accuracy": 0.3182640144665461,
+          "n_trades": 463,
+          "trade_share": 0.635116598079561,
+          "post_fee_pnl_pct_total": -227.83670255576902,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729,
+          "trade_share_targets_selected": [
+            0.75,
+            0.5,
+            0.625
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.3092224231464738,
+          "n_trades": 487,
+          "trade_share": 0.6680384087791496,
+          "post_fee_pnl_pct_total": -324.8056965120843,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729,
+          "trade_share_targets_selected": [
+            0.625,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.009041591320072317,
+        "pnl_delta_pct_total": -96.96899395631527,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.11554297652026846,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.5,
+          0.75
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 14.05
+      },
+      {
+        "coin": "bonk",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.1853932584269663,
+          "n_trades": 451,
+          "trade_share": 0.42952380952380953,
+          "post_fee_pnl_pct_total": -152.8840687298403,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "augmented": {
+          "directional_accuracy": 0.22247191011235956,
+          "n_trades": 587,
+          "trade_share": 0.559047619047619,
+          "post_fee_pnl_pct_total": -233.51232204062643,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": 0.03707865168539326,
+        "pnl_delta_pct_total": -80.62825331078614,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25204350216855104,
+        "mean_neutral_band_delta_aug": 0.31649584771494127,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.5,
+          0.75
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 14.93
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.3329608938547486,
+          "n_trades": 783,
+          "trade_share": 0.7457142857142857,
+          "post_fee_pnl_pct_total": -292.67820115685515,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.75,
+            0.75,
+            0.5
+          ],
+          "trade_share_target_mean": 0.6666666666666666
+        },
+        "augmented": {
+          "directional_accuracy": 0.29720670391061454,
+          "n_trades": 713,
+          "trade_share": 0.679047619047619,
+          "post_fee_pnl_pct_total": -243.39511600373896,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.75,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": -0.03575418994413404,
+        "pnl_delta_pct_total": 49.28308515311619,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25166026360916394,
+        "mean_neutral_band_delta_aug": 0.25096358962954635,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.75,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 15.05
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.2992125984251969,
+          "n_trades": 688,
+          "trade_share": 0.6552380952380953,
+          "post_fee_pnl_pct_total": -244.87011702318148,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5
+        },
+        "augmented": {
+          "directional_accuracy": 0.3250843644544432,
+          "n_trades": 776,
+          "trade_share": 0.7390476190476191,
+          "post_fee_pnl_pct_total": -236.36826274899107,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.625,
+            0.75
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.025871766029246346,
+        "pnl_delta_pct_total": 8.501854274190407,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.31323999320699486,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.625,
+          0.75
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 14.84
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.3333333333333333,
+          "n_trades": 778,
+          "trade_share": 0.7409523809523809,
+          "post_fee_pnl_pct_total": -226.2532901187758,
+          "n_dir_truth_rows": 864,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.75,
+            0.75,
+            0.625
+          ],
+          "trade_share_target_mean": 0.7083333333333334
+        },
+        "augmented": {
+          "directional_accuracy": 0.3101851851851852,
+          "n_trades": 701,
+          "trade_share": 0.6676190476190477,
+          "post_fee_pnl_pct_total": -194.28474486847247,
+          "n_dir_truth_rows": 864,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.75,
+            0.625,
+            0.75
+          ],
+          "trade_share_target_mean": 0.7083333333333334
+        },
+        "da_lift": -0.02314814814814814,
+        "pnl_delta_pct_total": 31.968545250303322,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.2628824950170121,
+        "mean_neutral_band_delta_aug": 0.24265123195354668,
+        "tuned_trade_share_targets_aug": [
+          0.75,
+          0.625,
+          0.75
+        ],
+        "mean_tuned_trade_share_target_aug": 0.7083333333333334,
+        "elapsed_sec": 15.47
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.2627406568516421,
+          "n_trades": 631,
+          "trade_share": 0.6009523809523809,
+          "post_fee_pnl_pct_total": -236.74086082703755,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5
+        },
+        "augmented": {
+          "directional_accuracy": 0.33975084937712347,
+          "n_trades": 773,
+          "trade_share": 0.7361904761904762,
+          "post_fee_pnl_pct_total": -299.3491165171153,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.75,
+            0.625,
+            0.5
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": 0.07701019252548136,
+        "pnl_delta_pct_total": -62.608255690077755,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.37000652232688375,
+        "tuned_trade_share_targets_aug": [
+          0.75,
+          0.625,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 15.13
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.2494199535962877,
+          "n_trades": 556,
+          "trade_share": 0.5295238095238095,
+          "post_fee_pnl_pct_total": -172.7441012459044,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5
+        },
+        "augmented": {
+          "directional_accuracy": 0.23317865429234338,
+          "n_trades": 541,
+          "trade_share": 0.5152380952380953,
+          "post_fee_pnl_pct_total": -197.55904647805113,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5
+        },
+        "da_lift": -0.01624129930394433,
+        "pnl_delta_pct_total": -24.814945232146727,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.24676503092176338,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5,
+        "elapsed_sec": 15.35
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.3017142857142857,
+          "n_trades": 671,
+          "trade_share": 0.6390476190476191,
+          "post_fee_pnl_pct_total": -211.01137742510247,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.5,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5416666666666666
+        },
+        "augmented": {
+          "directional_accuracy": 0.368,
+          "n_trades": 798,
+          "trade_share": 0.76,
+          "post_fee_pnl_pct_total": -203.9200285206177,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": 0.06628571428571428,
+        "pnl_delta_pct_total": 7.091348904484761,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.30923383610519295,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.5,
+          0.75
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 15.03
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.29705215419501135,
+          "n_trades": 660,
+          "trade_share": 0.6285714285714286,
+          "post_fee_pnl_pct_total": -276.8790613516533,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "augmented": {
+          "directional_accuracy": 0.2766439909297052,
+          "n_trades": 600,
+          "trade_share": 0.5714285714285714,
+          "post_fee_pnl_pct_total": -156.00351520109194,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.5,
+            0.625,
+            0.75
+          ],
+          "trade_share_target_mean": 0.625
+        },
+        "da_lift": -0.020408163265306145,
+        "pnl_delta_pct_total": 120.87554615056138,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.22131813836580036,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.625,
+          0.75
+        ],
+        "mean_tuned_trade_share_target_aug": 0.625,
+        "elapsed_sec": 15.0
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "6h",
+        "n_rows": 603,
+        "baseline": {
+          "directional_accuracy": 0.20596205962059622,
+          "n_trades": 188,
+          "trade_share": 0.4177777777777778,
+          "post_fee_pnl_pct_total": -64.40036927995587,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450,
+          "trade_share_targets_selected": [
+            0.5,
+            0.625,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5416666666666666
+        },
+        "augmented": {
+          "directional_accuracy": 0.22493224932249323,
+          "n_trades": 226,
+          "trade_share": 0.5022222222222222,
+          "post_fee_pnl_pct_total": -118.84083626749725,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450,
+          "trade_share_targets_selected": [
+            0.5,
+            0.5,
+            0.75
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": 0.01897018970189701,
+        "pnl_delta_pct_total": -54.440466987541384,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.17773788732635465,
+        "tuned_trade_share_targets_aug": [
+          0.5,
+          0.5,
+          0.75
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 13.26
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "6h",
+        "n_rows": 1400,
+        "baseline": {
+          "directional_accuracy": 0.2944507361268403,
+          "n_trades": 650,
+          "trade_share": 0.6190476190476191,
+          "post_fee_pnl_pct_total": -185.71861920248188,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.75,
+            0.75,
+            0.625
+          ],
+          "trade_share_target_mean": 0.7083333333333334
+        },
+        "augmented": {
+          "directional_accuracy": 0.2887882219705549,
+          "n_trades": 621,
+          "trade_share": 0.5914285714285714,
+          "post_fee_pnl_pct_total": -176.50577989637702,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050,
+          "trade_share_targets_selected": [
+            0.625,
+            0.625,
+            0.5
+          ],
+          "trade_share_target_mean": 0.5833333333333334
+        },
+        "da_lift": -0.005662514156285381,
+        "pnl_delta_pct_total": 9.212839306104854,
+        "gate_pass": false,
+        "mean_calibration_inv_T_aug": 0.25,
+        "mean_neutral_band_delta_aug": 0.2442966994713569,
+        "tuned_trade_share_targets_aug": [
+          0.625,
+          0.625,
+          0.5
+        ],
+        "mean_tuned_trade_share_target_aug": 0.5833333333333334,
+        "elapsed_sec": 14.87
+      }
+    ],
+    "any_slice_passes_gate": false,
+    "passing_slices": [],
+    "calibration_enabled": true,
+    "admitted_names": [
+      "atr_pct_zscore_60",
+      "bb_pctb_extreme",
+      "drawdown_30",
+      "ema_spread_per_atr",
+      "macd_signal_cross_strength",
+      "realizedVol_log",
+      "ret1_squared",
+      "ret1_x_volZ60",
+      "ret5_minus_ret10",
+      "rsi14_centered_squared",
+      "vol_of_vol_30"
+    ]
+  }
+}

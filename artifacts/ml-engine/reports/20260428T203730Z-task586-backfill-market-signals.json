@@ -1,0 +1,43 @@
+{
+  "anti_leak_check": {
+    "future_ts_count": 0,
+    "now_ms_at_check": 1777408650358
+  },
+  "coins": [
+    "pepe"
+  ],
+  "dry_run": false,
+  "finished_at": "2026-04-28T20:37:30.358737+00:00",
+  "lookback_days": 90,
+  "now_ms": 1777408642998,
+  "per_coin": {
+    "pepe": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769644800000,
+          "elapsed_s": 0.87,
+          "latest_ms": 1777392000000,
+          "rows": 270
+        },
+        "oi": {
+          "earliest_ms": 1772211600000,
+          "elapsed_s": 6.13,
+          "latest_ms": 1777406400000,
+          "rows": 1444
+        }
+      },
+      "inst_id": "PEPE-USDT-SWAP",
+      "written": {
+        "funding": 270,
+        "oi": 1444
+      }
+    }
+  },
+  "since_ms": 1769632642998,
+  "started_at": "2026-04-28T20:37:23.039280+00:00",
+  "streams": [
+    "funding",
+    "oi"
+  ],
+  "task": 586
+}

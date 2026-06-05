@@ -1,0 +1,200 @@
+Redesign the agent/personality system into a **deterministic strategy-profile architecture**.
+
+## Goal
+
+I no longer want LLM-style personalities or character-like agents.
+
+I want agents to become **real trading profiles** with explicit, measurable behavior.
+
+The old idea of “personality” can remain only if it is translated into deterministic parameters and role definitions.
+
+## New rule
+
+Every agent must answer all of these:
+
+1. What exact market condition is this agent meant for?
+2. What exact behavior is different from the other agents?
+3. What exact signals / timeframes / families is it allowed to influence?
+4. What exact risk posture does it use?
+5. What exact abstain behavior does it use?
+6. How will we measure whether it deserves to stay alive?
+
+If an agent cannot answer those questions in code-level terms, remove or merge it.
+
+## What I want instead of personalities
+
+Replace human-style personalities with **strategy profiles**.
+
+Good examples:
+
+* momentum_high_conf
+* mean_reversion_conservative
+* breakout_fast_tf
+* volatility_defensive
+* baseline_reference
+* trend_following_swing
+* chop_regime_defender
+* panic_regime_survival
+
+Bad examples:
+
+* intuitive trader
+* aggressive guy
+* calm analyst
+* emotional personality
+* narrative character identities
+
+## Agent architecture I want
+
+Each agent should be a structured profile with fields like:
+
+* `agent_id`
+* `strategy_family`
+* `allowed_timeframes`
+* `allowed_coins`
+* `preferred_regimes`
+* `blocked_regimes`
+* `min_confidence`
+* `min_expected_edge_after_costs`
+* `abstain_bias`
+* `size_bias`
+* `max_position_bias`
+* `fallback_tolerance`
+* `pooled_model_penalty`
+* `drawdown_sensitivity`
+* `benchmark_sensitivity`
+* `meta_brain_trust_family`
+* `is_baseline_reference`
+* `is_experimental`
+
+I want this represented as deterministic config or typed code, not vague narrative labels.
+
+## What agents should do
+
+Agents should do one or more of these clearly:
+
+* specialize by strategy family
+* specialize by regime
+* specialize by timeframe
+* specialize by risk posture
+* specialize by abstain strictness
+* specialize by fallback tolerance
+* specialize by cost sensitivity
+* specialize by benchmark comparison
+
+They should NOT invent discretionary opinions.
+
+## Behavior model
+
+Define agent behavior through parameterized rules, such as:
+
+### Confidence behavior
+
+* minimum calibrated confidence required
+* whether confidence threshold rises in unstable regimes
+
+### Edge behavior
+
+* minimum expected return after costs
+* stricter EV gate for noisy or short timeframes
+
+### Abstain behavior
+
+* how quickly the agent refuses trades
+* whether it abstains more under disagreement / fallback / low trust
+
+### Fallback behavior
+
+* how much the agent trusts pooled fallback predictions
+* whether pooled fallback reduces size or forces abstain
+
+### Risk behavior
+
+* conservative / balanced / opportunistic sizing bias
+* how quickly size shrinks under drawdown
+* whether benchmark underperformance reduces aggression
+
+### Regime behavior
+
+* which regimes the agent is allowed to act in
+* which regimes should auto-suppress that agent
+
+## Recommended top-level agent set
+
+Propose a clean first-pass set of agents such as:
+
+### By family
+
+* momentum_core
+* mean_reversion_core
+* breakout_core
+* volatility_core
+* baseline_reference
+
+### By risk posture
+
+* conservative_overlay
+* balanced_overlay
+* opportunistic_overlay
+
+### By regime
+
+* trend_regime_specialist
+* chop_regime_specialist
+* panic_regime_specialist
+* compression_regime_specialist
+
+Then recommend whether these should be:
+
+* separate agents
+* overlays
+* or config dimensions combined into fewer agents
+
+I do NOT want unnecessary combinatorial explosion.
+
+## Deliverables
+
+### A. Agent inventory
+
+Audit all current agents/personality concepts and classify them as:
+
+* keep and rename
+* keep but redesign
+* merge
+* delete
+
+### B. New architecture
+
+Propose the deterministic agent schema and exact file locations.
+
+### C. New agent set
+
+Recommend the minimum viable set of real agents.
+
+### D. Behavior table
+
+For each proposed agent:
+
+* purpose
+* allowed regimes
+* strategy family
+* confidence threshold style
+* abstain style
+* fallback tolerance
+* size bias
+* failure mode
+
+### E. Migration plan
+
+Show how to migrate current agent/personality logic into the new structure without breaking the rest of the app.
+
+## Hard rules
+
+* no LLM-style personalities in live trading architecture
+* no human-like narrative labels unless purely cosmetic in UI
+* no vague “aggressive/intuitive” agent definitions without deterministic parameters
+* no agent should exist without a measurable reason
+* keep the number of agents small and useful
+* optimize for clarity, attribution, and testability
+
+I want a serious trading-agent architecture, not roleplay.

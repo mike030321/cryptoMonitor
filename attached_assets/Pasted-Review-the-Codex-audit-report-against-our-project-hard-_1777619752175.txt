@@ -1,0 +1,96 @@
+Review the Codex audit report against our project hard rules.
+
+Do **not** apply Codex suggestions automatically.
+
+Your job is to act as the firewall between Codex and the production repo.
+
+## Classify every Codex finding as one of:
+
+* `ACCEPT`
+* `REJECT`
+* `DEFER`
+* `NEEDS HUMAN DECISION`
+
+## For every finding, explain:
+
+* whether Codex is technically correct
+* whether it violates any hard rule
+* whether it risks breaking BTC/5m diagnostic sandbox
+* whether it risks deleting experiment evidence
+* whether it touches model promotion / gates / quant enablement
+* whether it should become a follow-up task
+* exact tests/proofs required before implementation
+
+## Hard rules
+
+Reject or escalate anything that violates:
+
+* no synthetic data
+* no LLM/news/sentiment/GPT features in trade path
+* no gate weakening
+* no manual SQL champion promotion
+* no manual `quant_brain_enabled` flip
+* no real-money path
+* no legacy agent resurrection
+* no deletion of experiment evidence
+* no fee/friction edits
+* no dynamic sizing in BTC/5m diagnostic sandbox
+* meta-brain shadow only unless explicitly approved
+* no global quant activation
+* no ETH activation unless separately approved
+
+## Current live diagnostic scope
+
+The only allowed diagnostic trading scope is:
+
+* `bitcoin`
+* `5m`
+* `C_post_cost`
+* beta calibration
+* fixed-size paper only
+* no dynamic sizing
+* meta-brain shadow only
+* global quant disabled
+* no ETH
+* no other coins
+* no other timeframes
+
+## Special protection
+
+Do not approve deletion of:
+
+* training reports
+* failed verdicts
+* calibration manifests
+* JSONL histories
+* proof packs
+* model artifacts
+* task reports
+* old experiment evidence
+
+unless you can prove they are not referenced and are not needed for audit history.
+
+## Output format
+
+Return a triage table with:
+
+* Codex finding title
+* Replit verdict: ACCEPT / REJECT / DEFER / NEEDS HUMAN DECISION
+* reason
+* hard-rule impact
+* BTC/5m sandbox impact
+* required tests/proofs
+* recommended follow-up task name, if any
+
+## Final output
+
+At the end, provide:
+
+1. accepted safe fixes
+2. rejected findings and why
+3. deferred findings
+4. items requiring my decision
+5. proposed follow-up tasks
+6. anything that must be checked before touching code
+
+Do not implement anything until I approve the triage.

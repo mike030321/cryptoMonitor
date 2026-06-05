@@ -1,0 +1,106 @@
+You are reviewing this repository as an external code auditor.
+
+Do **not** modify files.
+Do **not** delete files.
+Do **not** apply fixes.
+Do **not** access production secrets or database dumps.
+Produce an **audit report only**.
+
+## Project context
+
+This is a crypto quant paper-trading research system.
+
+The current broad LightGBM `{UP, STABLE, DOWN}` quant engine failed to produce champion models.
+
+The only current diagnostic trading candidate is:
+
+* coin: `bitcoin`
+* timeframe: `5m`
+* candidate: `C_post_cost`
+* calibration method: `beta`
+* mode: fixed-size paper diagnostic sandbox only
+* probabilities are under-confident / not trusted for sizing
+* dynamic sizing is disabled
+* meta-brain is shadow only
+* global quant remains disabled
+* no real-money trading
+
+## Hard rules
+
+Do not recommend anything that violates these rules:
+
+* no synthetic data in training
+* no LLM/news/sentiment/GPT features in trade path
+* no gate weakening without explicit operator decision
+* no manual SQL champion promotion
+* no manual `quant_brain_enabled` flip
+* no real-money path
+* no legacy agent resurrection
+* no deleting experiment evidence
+* no casual fee/slippage/friction edits
+* no dynamic sizing in BTC/5m diagnostic sandbox
+* meta-brain must remain shadow-only unless explicitly approved
+
+## Audit goal
+
+Find risks, bugs, dead code candidates, and simplification opportunities.
+
+Focus especially on:
+
+1. runtime safety risks
+2. model registry / promotion risks
+3. BTC/5m diagnostic sandbox escape risks
+4. paper-trading / PnL accounting risks
+5. dashboard truth problems
+6. archived/legacy agents leaking into live metrics
+7. meta-brain accidentally influencing sizing/execution
+8. dynamic sizing accidentally enabled
+9. tests missing around critical behavior
+10. dead code candidates
+11. over-complexity / simplification opportunities
+
+## Important evidence rule
+
+Do **not** mark these as safe to delete unless you can prove they are not referenced and not needed for audit history:
+
+* old reports
+* model manifests
+* JSONL histories
+* calibration artifacts
+* failed experiment reports
+* task reports
+* proof packs
+* model registry evidence
+* training verdicts
+
+These may look like clutter, but they are part of the research/audit trail.
+
+## Required output format
+
+For every finding, include:
+
+* title
+* severity: critical / high / medium / low
+* file path(s)
+* code reference if possible
+* what is wrong
+* why it matters
+* evidence
+* suggested fix
+* risk of the suggested fix
+* whether it might violate a hard rule
+* tests that should be added
+
+## Final summary
+
+At the end, include:
+
+1. top 10 highest-risk findings
+2. safe cleanup candidates
+3. unsafe cleanup candidates
+4. likely dead code needing human review
+5. places where the app could misrepresent trading state
+6. places where BTC/5m sandbox scope could leak
+7. recommended next audit/fix tasks
+
+Again: audit only. No edits.

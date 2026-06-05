@@ -1,0 +1,82 @@
+BTC=yes, ETH=no for now.
+
+Proceed with Task C only for:
+
+* bitcoin@5m
+* candidate C
+* beta calibration
+
+## Scope
+
+This is not full quant activation.
+
+This is a fixed-size diagnostic paper sandbox for BTC/5m only.
+
+## Required runtime constraints
+
+* BTC only
+* 5m only
+* candidate C only
+* calibration method: beta
+* calibration status: under_confident_documented
+* dynamic sizing: disabled
+* position sizing: fixed minimum only
+* meta-brain: shadow only
+* no ETH for now
+* no other coins
+* no other timeframes
+* no legacy agents
+* no real money
+* no global quant enablement
+
+## Why BTC only
+
+BTC has the cleaner first diagnostic profile:
+
+* holdout PnL +64.0%
+* profit factor 2.29
+* max drawdown -5.4%
+* under-confidence only
+* zero overconfident bins
+
+ETH remains on hold until BTC proves itself forward in paper mode.
+
+## Safety limits
+
+Use strict diagnostic limits:
+
+* max position size: 0.5% of paper equity
+* max open positions: 1
+* max daily loss: 1.5%
+* max total drawdown: 5.0%
+* review after 72 hours or 50 closed trades
+* auto-disable if post-fee PnL is negative after 50 closed trades
+* auto-disable if drawdown exceeds 5.0%
+* dashboard must clearly label:
+  “BTC/5m diagnostic paper sandbox — probabilities under-confident/untrusted, fixed-size only”
+
+## Required proof after implementation
+
+Before calling it active, prove:
+
+1. model artifact is production-loadable through the approved path
+2. no manual SQL champion promotion
+3. no manual global quant flag flip
+4. prediction output is non-zero for BTC/5m
+5. only BTC/5m can emit executable paper signals
+6. ETH and all other coins/timeframes are blocked
+7. dynamic sizing is impossible
+8. meta-brain cannot change size or suppress trades
+9. paper_trades rows, if any, reference BTC/5m candidate C prediction IDs
+10. dashboard/API clearly show diagnostic scope
+
+## Hard rules
+
+* no real money
+* no global brain activation
+* no dynamic sizing
+* no meta-brain authority
+* no ETH until BTC forward paper proof is reviewed
+* no rescue loop if BTC fails
+
+If BTC fails the 72h / 50-trade review, stop and report failure. Do not auto-enable ETH.

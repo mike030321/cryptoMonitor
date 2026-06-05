@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.35706214689265536,
+  "baseline_directional_accuracy": 0.39096045197740115,
+  "lift": -0.03389830508474578,
+  "holdout_rows": 885,
+  "min_directional_accuracy_applied": 0.53,
+  "served_predictor_kind": "lightgbm",
+  "coin": "floki-inu",
+  "timeframe": "1d",
+  "kind": "per_coin"
+}

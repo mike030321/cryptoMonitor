@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-04-28T17:30:00.000Z",
+  "generated_by_task": "#550",
+  "timeframes": {
+    "1m": {
+      "role": "trade",
+      "context_subkind": null,
+      "disabled_reason": null,
+      "reason": "DEMO OVERRIDE 2026-05-20 \u2014 temporarily set to trade for live presentation. Revert from git.",
+      "evidence_ref": "artifacts/ml-engine/reports/20260428T140522Z-task549-campaign-verdict.md#section-c",
+      "last_reviewed_at": "2026-04-28T17:30:00.000Z",
+      "promoted_slices_in_tf": []
+    },
+    "5m": {
+      "role": "trade",
+      "context_subkind": null,
+      "disabled_reason": null,
+      "reason": "DEMO OVERRIDE 2026-05-20 \u2014 temporarily set to trade for live presentation. Revert from git.",
+      "evidence_ref": "artifacts/ml-engine/reports/20260428T140522Z-task549-campaign-verdict.md#section-c",
+      "last_reviewed_at": "2026-04-28T17:30:00.000Z",
+      "promoted_slices_in_tf": []
+    },
+    "1h": {
+      "role": "trade",
+      "context_subkind": null,
+      "disabled_reason": null,
+      "reason": "DEMO OVERRIDE 2026-05-20 \u2014 temporarily set to trade for live presentation. Revert from git.",
+      "evidence_ref": "artifacts/ml-engine/reports/20260428T140522Z-task549-campaign-verdict.md#section-c",
+      "last_reviewed_at": "2026-04-28T17:30:00.000Z",
+      "promoted_slices_in_tf": []
+    },
+    "2h": {
+      "role": "trade",
+      "context_subkind": null,
+      "disabled_reason": null,
+      "reason": "DEMO OVERRIDE 2026-05-20 \u2014 temporarily set to trade for live presentation. Revert from git.",
+      "evidence_ref": "artifacts/ml-engine/reports/20260428T140522Z-task549-campaign-verdict.md#section-c",
+      "last_reviewed_at": "2026-04-28T17:30:00.000Z",
+      "promoted_slices_in_tf": []
+    },
+    "6h": {
+      "role": "trade",
+      "context_subkind": null,
+      "disabled_reason": null,
+      "reason": "DEMO OVERRIDE 2026-05-20 \u2014 temporarily set to trade for live presentation. Revert from git.",
+      "evidence_ref": "artifacts/ml-engine/reports/20260428T140522Z-task549-campaign-verdict.md#section-c",
+      "last_reviewed_at": "2026-04-28T17:30:00.000Z",
+      "promoted_slices_in_tf": []
+    },
+    "1d": {
+      "role": "trade",
+      "context_subkind": null,
+      "disabled_reason": null,
+      "reason": "DEMO OVERRIDE 2026-05-20 \u2014 temporarily set to trade for live presentation. Revert from git.",
+      "evidence_ref": "artifacts/ml-engine/reports/20260428T140522Z-task549-campaign-verdict.md#section-c",
+      "last_reviewed_at": "2026-04-28T17:30:00.000Z",
+      "promoted_slices_in_tf": []
+    }
+  }
+}

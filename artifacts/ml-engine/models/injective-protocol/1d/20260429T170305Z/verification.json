@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.34042553191489355,
+  "baseline_directional_accuracy": 0.37446808510638296,
+  "lift": -0.03404255319148941,
+  "holdout_rows": 705,
+  "min_directional_accuracy_applied": 0.53,
+  "served_predictor_kind": "lightgbm",
+  "coin": "injective-protocol",
+  "timeframe": "1d",
+  "kind": "per_coin"
+}

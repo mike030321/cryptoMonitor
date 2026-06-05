@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-04-24T08:29:02.639422+00:00",
+  "source_report_generated_at": "2026-04-24T08:28:54.893032+00:00",
+  "gate_constants": {
+    "MIN_HOLDOUT_ROWS": 200,
+    "MIN_DIRECTIONAL_ACCURACY": 0.5,
+    "DIRECTIONAL_SHARE_TRADEABLE_TIMEFRAMES": [
+      "1d",
+      "1h",
+      "2h",
+      "5m",
+      "6h"
+    ],
+    "CALIBRATION_BROKEN_RELIABILITY_DEV": 0.1,
+    "PREDICTION_COLLAPSE_GAP": 0.15,
+    "PREDICTION_COLLAPSE_TOP_SHARE": 0.85
+  },
+  "bucket_counts": {
+    "promoted": 0,
+    "salvageable_with_schema_fix": 0,
+    "insufficient_sample": 1,
+    "structurally_noisy_retire": 0,
+    "salvageable_with_better_features_or_labels": 0,
+    "unknown": 0
+  },
+  "slices": [
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "1h",
+      "kind": "pooled",
+      "status": "trained",
+      "bucket": "insufficient_sample",
+      "bucket_reason": "status=trained (holdout=0); not enough labeled rows to train",
+      "n_holdout": 0,
+      "directional_accuracy": null,
+      "baseline_directional_accuracy": null,
+      "brier": null,
+      "baseline_brier": null,
+      "collapse_gap": null,
+      "predicted_top_class_share": null,
+      "label_top_class_share": null,
+      "reliability_max_dev_per_class": {},
+      "per_class_accuracy": {},
+      "pnl_after_fees": {},
+      "cadence_mixed": false,
+      "contamination_flag": false,
+      "predictions_near_prior": {
+        "share_within_eps": null
+      }
+    }
+  ]
+}

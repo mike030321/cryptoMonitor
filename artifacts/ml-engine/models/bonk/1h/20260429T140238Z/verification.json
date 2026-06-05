@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.38768369489153254,
+  "baseline_directional_accuracy": 0.4009797060881735,
+  "lift": -0.013296011196640978,
+  "holdout_rows": 7145,
+  "min_directional_accuracy_applied": 0.5,
+  "served_predictor_kind": "lightgbm",
+  "coin": "bonk",
+  "timeframe": "1h",
+  "kind": "per_coin"
+}

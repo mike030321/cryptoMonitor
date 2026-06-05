@@ -1,0 +1,5453 @@
+{
+  "task": 580,
+  "captured_at": "20260428T195627Z",
+  "round_trip_cost_pct_used": 0.3,
+  "stage1_admit_rule": ">= 2 of 3 OOS folds positive in BOTH (directional_accuracy delta, post_fee_pnl_pct_total delta) vs same-fold baseline",
+  "stage2_gate": {
+    "da_lift_floor": 0.02,
+    "pnl_floor_pct_total": 0.0,
+    "trade_share_band": [
+      0.4,
+      0.85
+    ],
+    "min_trades": 30
+  },
+  "any_trade_eligible_slice": false,
+  "passing_slices": [],
+  "stage1": {
+    "per_candidate": [
+      {
+        "name": "vol_of_vol_30",
+        "bucket": "volatility_regime",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5132577028931999,
+            "da_delta": 0.0061757400818956976,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5771.353644538298,
+            "pnl_delta": 85.466153653324,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19100,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9875394240215087
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4914006558254701,
+            "da_delta": 0.001003814495081301,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5543.82180458838,
+            "pnl_delta": 154.49345666117824,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19041,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9844889095703427
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4794836956521739,
+            "da_delta": -0.006114130434782594,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5436.747024190142,
+            "pnl_delta": -216.48141690881766,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18373,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9499508815469727
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 4.1,
+        "error": null
+      },
+      {
+        "name": "realizedVol_log",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5045982412566289,
+            "da_delta": -0.0024837215546753555,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5722.706470824114,
+            "pnl_delta": 134.11332736750774,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19124,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9887803112558813
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4940105735126815,
+            "da_delta": 0.003613732182292717,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5642.204443238061,
+            "pnl_delta": 56.11081801149703,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19056,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9852644640918257
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.48410326086956523,
+            "da_delta": -0.001494565217391275,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5289.058750708033,
+            "pnl_delta": -68.79314342670841,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18433,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9530530996329042
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 3.5,
+        "error": null
+      },
+      {
+        "name": "ret1_squared",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5058736658387595,
+            "da_delta": -0.0012082969725447645,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5779.517048236206,
+            "pnl_delta": 77.30274995541549,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19088,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9869189804043225
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.49414441544535903,
+            "da_delta": 0.0037475741149702313,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5578.33786688878,
+            "pnl_delta": 119.97739436077791,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19133,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.989245643968771
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.49177989130434785,
+            "da_delta": 0.0061820652173913415,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5157.668502067783,
+            "pnl_delta": 62.597105213541,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18660,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9647898247246781
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 2.0,
+        "error": null
+      },
+      {
+        "name": "ret5_minus_ret10",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5039940927703564,
+            "da_delta": -0.0030878700409477933,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5856.623999722855,
+            "pnl_delta": 0.19579846876695228,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19101,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9875911276562742
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4934752057819715,
+            "da_delta": 0.0030783644515827158,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5552.081131847669,
+            "pnl_delta": 146.23412940188882,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19102,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9876428312910398
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4849184782608696,
+            "da_delta": -0.0006793478260869179,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5264.750076440719,
+            "pnl_delta": -44.48446915939439,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18621,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9627733829688228
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.8,
+        "error": null
+      },
+      {
+        "name": "rsi14_centered_squared",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5080888769550916,
+            "da_delta": 0.0010069141437873963,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5632.413840898229,
+            "pnl_delta": 224.40595729339293,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19091,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.987074091308619
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4890584220036137,
+            "da_delta": -0.0013384193267750866,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5710.955636327719,
+            "pnl_delta": -12.640375078161014,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19131,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.98914223669924
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.48478260869565215,
+            "da_delta": -0.000815217391304357,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5309.189052051606,
+            "pnl_delta": -88.923444770282,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18541,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9586370921875808
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.6,
+        "error": null
+      },
+      {
+        "name": "bb_pctb_extreme",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5072162180304759,
+            "da_delta": 0.00013425521917165284,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5600.910002360319,
+            "pnl_delta": 255.9097958313032,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19159,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9905899384726746
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4907314461620826,
+            "da_delta": 0.0003346048316937855,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5736.894700352987,
+            "pnl_delta": -38.57943910342874,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19103,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9876945349258053
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4826086956521739,
+            "da_delta": -0.0029891304347826053,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5337.295355824071,
+            "pnl_delta": -117.02974854274635,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18583,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9608086448477328
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.6,
+        "error": null
+      },
+      {
+        "name": "macd_hist_norm_atr",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5040612203799423,
+            "da_delta": -0.003020742431361967,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5662.582252288008,
+            "pnl_delta": 194.23754590361386,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19111,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9881081640039294
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4918691025898414,
+            "da_delta": 0.0014722612594526008,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5623.321615673762,
+            "pnl_delta": 74.99364557579611,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19082,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9866087585957293
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4802309782608696,
+            "da_delta": -0.005366847826086929,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5224.091883403537,
+            "pnl_delta": -3.8262761222131303,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18531,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9581200558399255
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.6,
+        "error": null
+      },
+      {
+        "name": "vol_zscore60_squared",
+        "bucket": "volatility_regime",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5066791971537894,
+            "da_delta": -0.0004027656575148475,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5821.000268445419,
+            "pnl_delta": 35.819529746202534,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19153,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9902797166640814
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.48992839456601756,
+            "da_delta": -0.0004684467643712442,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5619.058249018435,
+            "pnl_delta": 79.25701223112264,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19086,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9868155731347914
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4875,
+            "da_delta": 0.0019021739130434812,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5173.284794846256,
+            "pnl_delta": 46.9808124350684,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18534,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9582751667442221
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.6,
+        "error": null
+      },
+      {
+        "name": "ema_spread_per_atr",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5059407934483453,
+            "da_delta": -0.0011411693629589381,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5767.334284227405,
+            "pnl_delta": 89.4855139642168,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19157,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9904865312031436
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.49561667670481163,
+            "da_delta": 0.005219835374422832,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5580.321622634192,
+            "pnl_delta": 117.99363861536585,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19066,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9857815004394809
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.49130434782608695,
+            "da_delta": 0.0057065217391304435,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5301.585902416954,
+            "pnl_delta": -81.32029513562975,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18835,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9738379608086448
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.8,
+        "error": null
+      },
+      {
+        "name": "atr_pct_zscore_60",
+        "bucket": "volatility_regime",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5135262133315432,
+            "da_delta": 0.006444250520239003,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5452.400505119833,
+            "pnl_delta": 404.41929307178907,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19089,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9869706840390879
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4970889379642642,
+            "da_delta": 0.006692096633875377,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5461.324951342616,
+            "pnl_delta": 236.99030990694155,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19052,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9850576495527635
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4796195652173913,
+            "da_delta": -0.005978260869565211,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5459.8290785556055,
+            "pnl_delta": -239.56347127428126,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18629,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9631870120469469
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 1.6,
+        "error": null
+      },
+      {
+        "name": "drawdown_30",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5092300463180506,
+            "da_delta": 0.0021480835067463344,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5681.05067619158,
+            "pnl_delta": 175.76912200004153,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19122,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9886769039863502
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.49829351535836175,
+            "da_delta": 0.00789667402797295,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5365.050036337341,
+            "pnl_delta": 333.2652249122166,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19107,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9879013494648674
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4873641304347826,
+            "da_delta": 0.0017663043478260976,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5113.191289817519,
+            "pnl_delta": 107.07431746380553,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18588,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9610671630215604
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 3,
+        "stage1_admitted": true,
+        "elapsed_sec": 2.6,
+        "error": null
+      },
+      {
+        "name": "btc_lead_x_self_ret",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5070819628113042,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5856.819798191622,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19139,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9895558657773641
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4903968413303888,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5698.315261249558,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19098,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9874360167519777
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4855978260869565,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5220.265607281324,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18544,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9587922030918774
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 2.0,
+        "error": null
+      },
+      {
+        "name": "eth_lead_minus_btc_lead",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5070819628113042,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5856.819798191622,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19139,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9895558657773641
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4903968413303888,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5698.315261249558,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19098,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9874360167519777
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4855978260869565,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5220.265607281324,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18544,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9587922030918774
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.9,
+        "error": null
+      },
+      {
+        "name": "macd_signal_cross_strength",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5086930254413641,
+            "da_delta": 0.001611062630059834,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5692.400676418612,
+            "pnl_delta": 164.41912177300946,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19141,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9896592730468952
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.490062236498695,
+            "da_delta": -0.0003346048316937855,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5696.62075957427,
+            "pnl_delta": 1.6945016752879383,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19065,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9857297968047154
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4880434782608696,
+            "da_delta": 0.002445652173913071,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5305.350980854795,
+            "pnl_delta": -85.08537357347086,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18568,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.96003309032625
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.5,
+        "error": null
+      },
+      {
+        "name": "ret1_x_volZ60",
+        "bucket": "price_derived",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5071490904208901,
+            "da_delta": 6.712760958582642e-05,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5684.968348103103,
+            "pnl_delta": 171.8514500885185,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19142,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9897109766816607
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.49247139128689016,
+            "da_delta": 0.002074549956501359,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5650.548089903132,
+            "pnl_delta": 47.76717134642604,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19073,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9861434258828395
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4886548913043478,
+            "da_delta": 0.003057065217391297,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5232.101843357754,
+            "pnl_delta": -11.836236076429486,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18546,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9588956103614084
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 12.7,
+        "error": null
+      },
+      {
+        "name": "log_liquidations_self",
+        "bucket": "liquidity_funding_oi_spread",
+        "timeframe": "1h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5070819628113042,
+            "aug_da": 0.5070819628113042,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5856.819798191622,
+            "aug_pnl_pct_total": -5856.819798191622,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 19139,
+            "aug_n_trades": 19139,
+            "baseline_trade_share": 0.9895558657773641,
+            "aug_trade_share": 0.9895558657773641
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4903968413303888,
+            "aug_da": 0.4903968413303888,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5698.315261249558,
+            "aug_pnl_pct_total": -5698.315261249558,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 19098,
+            "aug_n_trades": 19098,
+            "baseline_trade_share": 0.9874360167519777,
+            "aug_trade_share": 0.9874360167519777
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.4855978260869565,
+            "aug_da": 0.4855978260869565,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -5220.265607281324,
+            "aug_pnl_pct_total": -5220.265607281324,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 18544,
+            "aug_n_trades": 18544,
+            "baseline_trade_share": 0.9587922030918774,
+            "aug_trade_share": 0.9587922030918774
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 6.5,
+        "error": null
+      },
+      {
+        "name": "vol_of_vol_30",
+        "bucket": "volatility_regime",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5184237461617196,
+            "da_delta": -0.0005117707267143778,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2253.0735950238686,
+            "pnl_delta": -131.03348518229723,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9596,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9967798898930093
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.48463022508038583,
+            "da_delta": 0.004501607717041778,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2826.979746732155,
+            "pnl_delta": -123.03316636945056,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9529,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.989820297081126
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.4887178818312247,
+            "da_delta": -0.010173470718664424,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2675.433572439446,
+            "pnl_delta": -244.50865978526554,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9542,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9911706658356705
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 2.0,
+        "error": null
+      },
+      {
+        "name": "realizedVol_log",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5188075742067554,
+            "da_delta": -0.00012794268167859446,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2233.132786155943,
+            "pnl_delta": -111.0926763143716,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9594,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9965721408538486
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4805144694533762,
+            "da_delta": 0.00038585209003216825,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2701.3860576987277,
+            "pnl_delta": 2.560522663976826,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9464,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9830684533084034
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.503586800573888,
+            "da_delta": 0.004695448023998905,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2316.3816983168363,
+            "pnl_delta": 114.54321433734412,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9529,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.989820297081126
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 1.4,
+        "error": null
+      },
+      {
+        "name": "ret1_squared",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5232855680655066,
+            "da_delta": 0.004350051177072656,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2191.5183165717112,
+            "pnl_delta": -69.47820673013985,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9591,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9962605172951076
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4776848874598071,
+            "da_delta": -0.002443729903536973,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2614.714931343291,
+            "pnl_delta": 89.23164901941345,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9363,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9725771268307885
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5101082561627756,
+            "da_delta": 0.011216903612886409,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2253.277232187563,
+            "pnl_delta": 177.6476804666172,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9536,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9905474187181884
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.0,
+        "error": null
+      },
+      {
+        "name": "ret5_minus_ret10",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5181678607983623,
+            "da_delta": -0.0007676560900716778,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2196.065692390375,
+            "pnl_delta": -74.02558254880341,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9572,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.994286901423081
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4794855305466238,
+            "da_delta": -0.0006430868167202619,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2861.4956584398583,
+            "pnl_delta": -157.5490780771538,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9499,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9867040614937156
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5063258119212208,
+            "da_delta": 0.007434459371331692,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2357.0900625136865,
+            "pnl_delta": 73.83485014049393,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9522,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9890931754440636
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.0,
+        "error": null
+      },
+      {
+        "name": "rsi14_centered_squared",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.518935516888434,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2254.8765173150496,
+            "pnl_delta": -132.83640747347818,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9595,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9966760153734289
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4814147909967846,
+            "da_delta": 0.0012861736334405238,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2729.6412765516484,
+            "pnl_delta": -25.694696188943908,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9449,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9815103355146982
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5039780879092214,
+            "da_delta": 0.0050867353593322395,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2357.1509304741367,
+            "pnl_delta": 73.77398218004373,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9542,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9911706658356705
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.3,
+        "error": null
+      },
+      {
+        "name": "bb_pctb_extreme",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5264841351074718,
+            "da_delta": 0.00754861821903785,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2184.808710369096,
+            "pnl_delta": -62.76860052752454,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9587,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9958450192167861
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4742122186495177,
+            "da_delta": -0.005916398713826376,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2897.168676121238,
+            "pnl_delta": -193.22209575853367,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9477,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.984418822062948
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5025433676796661,
+            "da_delta": 0.0036520151297769754,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2414.358505398464,
+            "pnl_delta": 16.566407255716513,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9496,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9863924379349746
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 2.1,
+        "error": null
+      },
+      {
+        "name": "macd_hist_norm_atr",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5099795291709315,
+            "da_delta": -0.0089559877175025,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2387.1253452782385,
+            "pnl_delta": -265.08523543666706,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9600,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9971953879713307
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.47485530546623794,
+            "da_delta": -0.005273311897106114,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2700.6377941165424,
+            "pnl_delta": 3.3087862461620716,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9477,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.984418822062948
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5060649536976654,
+            "da_delta": 0.00717360114777621,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2342.7623383174005,
+            "pnl_delta": 88.16257433677993,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9530,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9899241716007063
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.1,
+        "error": null
+      },
+      {
+        "name": "vol_zscore60_squared",
+        "bucket": "volatility_regime",
+        "timeframe": "2h",
+        "folds": [],
+        "stage1_admitted": false,
+        "error": "'volZScore60'"
+      },
+      {
+        "name": "ema_spread_per_atr",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5216223132036848,
+            "da_delta": 0.0026867963152508167,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2212.3211536854296,
+            "pnl_delta": -90.28104384385824,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9564,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9934559052664381
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4834726688102894,
+            "da_delta": 0.0033440514469453286,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2741.064203884314,
+            "pnl_delta": -37.1176235216094,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9473,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9840033239846265
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5059345245858876,
+            "da_delta": 0.007043172035998468,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2436.5602210557113,
+            "pnl_delta": -5.635308401530892,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9558,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.992832658148956
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.1,
+        "error": null
+      },
+      {
+        "name": "atr_pct_zscore_60",
+        "bucket": "volatility_regime",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5220061412487206,
+            "da_delta": 0.0030706243602866,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2077.608558512038,
+            "pnl_delta": 44.43155132953325,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9596,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9967798898930093
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4805144694533762,
+            "da_delta": 0.00038585209003216825,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2805.6220865218784,
+            "pnl_delta": -101.67550615917389,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9509,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9877428066895191
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.49667405764966743,
+            "da_delta": -0.0022172949002217113,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2266.109900595236,
+            "pnl_delta": 164.81501205894438,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9469,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9835878259063052
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.3,
+        "error": null
+      },
+      {
+        "name": "drawdown_30",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5227737973387923,
+            "da_delta": 0.003838280450358278,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2439.6815967115817,
+            "pnl_delta": -317.64148687001034,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9598,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9969876389321699
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.4757556270096463,
+            "da_delta": -0.004372990353697759,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2728.177128710949,
+            "pnl_delta": -24.23054834824461,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9461,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9827568297496624
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5004565018912221,
+            "da_delta": 0.0015651493413330053,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2425.391775535173,
+            "pnl_delta": 5.533137119007279,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9483,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.98504206918043
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.1,
+        "error": null
+      },
+      {
+        "name": "btc_lead_x_self_ret",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.518935516888434,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2122.0401098415714,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9598,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9969876389321699
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.48012861736334406,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2703.9465803627045,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9485,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9852498182195908
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.49889135254988914,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2430.9249126541804,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9460,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9826529552300821
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.4,
+        "error": null
+      },
+      {
+        "name": "eth_lead_minus_btc_lead",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.518935516888434,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2122.0401098415714,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9598,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9969876389321699
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.48012861736334406,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2703.9465803627045,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9485,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9852498182195908
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.49889135254988914,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2430.9249126541804,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9460,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9826529552300821
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.5,
+        "error": null
+      },
+      {
+        "name": "macd_signal_cross_strength",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.5213664278403275,
+            "da_delta": 0.002430910951893517,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2191.5461272743087,
+            "pnl_delta": -69.50601743273728,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9583,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9954295211384647
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.47678456591639873,
+            "da_delta": -0.0033440514469453286,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2758.2039816902516,
+            "pnl_delta": -54.257401327547086,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9468,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9834839513867248
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.5012390765618886,
+            "da_delta": 0.0023477240119994525,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2399.4788544406697,
+            "pnl_delta": 31.446058213510696,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9515,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9883660538070012
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 2.1,
+        "error": null
+      },
+      {
+        "name": "ret1_x_volZ60",
+        "bucket": "price_derived",
+        "timeframe": "2h",
+        "folds": [],
+        "stage1_admitted": false,
+        "error": "'volZScore60'"
+      },
+      {
+        "name": "log_liquidations_self",
+        "bucket": "liquidity_funding_oi_spread",
+        "timeframe": "2h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.518935516888434,
+            "aug_da": 0.518935516888434,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2122.0401098415714,
+            "aug_pnl_pct_total": -2122.0401098415714,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9598,
+            "aug_n_trades": 9598,
+            "baseline_trade_share": 0.9969876389321699,
+            "aug_trade_share": 0.9969876389321699
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.48012861736334406,
+            "aug_da": 0.48012861736334406,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2703.9465803627045,
+            "aug_pnl_pct_total": -2703.9465803627045,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9485,
+            "aug_n_trades": 9485,
+            "baseline_trade_share": 0.9852498182195908,
+            "aug_trade_share": 0.9852498182195908
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.49889135254988914,
+            "aug_da": 0.49889135254988914,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -2430.9249126541804,
+            "aug_pnl_pct_total": -2430.9249126541804,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 9460,
+            "aug_n_trades": 9460,
+            "baseline_trade_share": 0.9826529552300821,
+            "aug_trade_share": 0.9826529552300821
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 2.2,
+        "error": null
+      },
+      {
+        "name": "vol_of_vol_30",
+        "bucket": "volatility_regime",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5313390313390314,
+            "da_delta": 0.002136752136752129,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -378.95077117698406,
+            "pnl_delta": 35.39229498569307,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3267,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.989100817438692
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4890781192151055,
+            "da_delta": -0.0018511662347278635,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -850.1339597434692,
+            "pnl_delta": 135.8342954345028,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3258,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9863760217983651
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5213458755426917,
+            "da_delta": 0.01447178002894356,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -713.3049812223705,
+            "pnl_delta": -38.618417210933785,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3215,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9733575537390251
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.2,
+        "error": null
+      },
+      {
+        "name": "realizedVol_log",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5284900284900285,
+            "da_delta": -0.0007122507122507837,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -178.33362575363964,
+            "pnl_delta": 236.0094404090375,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3262,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9875870420829549
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.47500925583117365,
+            "da_delta": -0.015920029618659737,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -832.8272745065005,
+            "pnl_delta": 153.14098067147143,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3254,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9851650015137754
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5198986975397974,
+            "da_delta": 0.01302460202604927,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -629.441262515757,
+            "pnl_delta": 45.24530149567977,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3222,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9754768392370572
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 11.6,
+        "error": null
+      },
+      {
+        "name": "ret1_squared",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5249287749287749,
+            "da_delta": -0.004273504273504369,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -345.450060284226,
+            "pnl_delta": 68.8930058784511,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3265,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9884953072963972
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.493891151425398,
+            "da_delta": 0.002961865975564637,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -850.4683149455029,
+            "pnl_delta": 135.49994023246904,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3272,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9906145927944293
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5198986975397974,
+            "da_delta": 0.01302460202604927,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -583.3738256868219,
+            "pnl_delta": 91.31273832461488,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3205,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9703300030275507
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.7,
+        "error": null
+      },
+      {
+        "name": "ret5_minus_ret10",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5292022792022792,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -144.10355145700123,
+            "pnl_delta": 270.2395147056759,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3274,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9912201029367242
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4753794890781192,
+            "da_delta": -0.015549796371714164,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -904.8390594547138,
+            "pnl_delta": 81.12919572325814,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3254,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9851650015137754
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.516642547033285,
+            "da_delta": 0.00976845151953687,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -778.7648042683431,
+            "pnl_delta": -104.07824025690638,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3206,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9706327580986982
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.6,
+        "error": null
+      },
+      {
+        "name": "rsi14_centered_squared",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5324074074074074,
+            "da_delta": 0.0032051282051281937,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -345.8004379602832,
+            "pnl_delta": 68.54262820239393,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3271,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9903118377232819
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.49129951869677896,
+            "da_delta": 0.0003702332469455727,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -795.7210790858176,
+            "pnl_delta": 190.2471760921544,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3265,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9884953072963972
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5115774240231549,
+            "da_delta": 0.00470332850940669,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -748.0577826003446,
+            "pnl_delta": -73.37121858890782,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3225,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9763851044504995
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.8,
+        "error": null
+      },
+      {
+        "name": "bb_pctb_extreme",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5295584045584045,
+            "da_delta": 0.00035612535612528085,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -295.57887040166133,
+            "pnl_delta": 118.7641957610158,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3252,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9845594913714805
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.493891151425398,
+            "da_delta": 0.002961865975564637,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -849.5156261752741,
+            "pnl_delta": 136.4526290026979,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3263,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9878897971541023
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5148335745296672,
+            "da_delta": 0.00795947901591898,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -764.6924162155815,
+            "pnl_delta": -90.00585220414473,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3191,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9660914320314865
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.7,
+        "error": null
+      },
+      {
+        "name": "macd_hist_norm_atr",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.50997150997151,
+            "da_delta": -0.019230769230769273,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -564.3926018033459,
+            "pnl_delta": -150.04953564066875,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3246,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9827429609445958
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4705664568678267,
+            "da_delta": -0.020362828582006665,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -997.1828545879633,
+            "pnl_delta": -11.214599409991365,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3277,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9921283681501665
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5220694645441389,
+            "da_delta": 0.01519536903039076,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -494.1452621637871,
+            "pnl_delta": 180.54130184764966,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3214,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9730547986678777
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.8,
+        "error": null
+      },
+      {
+        "name": "vol_zscore60_squared",
+        "bucket": "volatility_regime",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5185185185185185,
+            "da_delta": -0.010683760683760757,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -493.84609925410894,
+            "pnl_delta": -79.5030330914318,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3268,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9894035725098396
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.48389485375786745,
+            "da_delta": -0.007034431691965937,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -949.7053494633974,
+            "pnl_delta": 36.26290571457457,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3264,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9881925522252498
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5065123010130246,
+            "da_delta": -0.0003617945007236001,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -659.1770367019978,
+            "pnl_delta": 15.509527309438909,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3196,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9676052073872238
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.8,
+        "error": null
+      },
+      {
+        "name": "ema_spread_per_atr",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5334757834757835,
+            "da_delta": 0.004273504273504258,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -463.27741265418763,
+            "pnl_delta": -48.934346491510496,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3260,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.98698153194066
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4931506849315068,
+            "da_delta": 0.002221399481673436,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -843.6333617481021,
+            "pnl_delta": 142.3348934298699,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3255,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9854677565849228
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5224312590448625,
+            "da_delta": 0.01555716353111436,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -738.0472005704013,
+            "pnl_delta": -63.36063655896453,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3205,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9703300030275507
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.9,
+        "error": null
+      },
+      {
+        "name": "atr_pct_zscore_60",
+        "bucket": "volatility_regime",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5213675213675214,
+            "da_delta": -0.007834757834757844,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -617.7177107772217,
+            "pnl_delta": -203.37464461454454,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3273,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9909173478655767
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.49648278415401703,
+            "da_delta": 0.005553498704183646,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -973.242206281321,
+            "pnl_delta": 12.726048896650923,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3272,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9906145927944293
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5162807525325616,
+            "da_delta": 0.00940665701881338,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -730.3538080311614,
+            "pnl_delta": -55.66724401972465,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3205,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9703300030275507
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.9,
+        "error": null
+      },
+      {
+        "name": "drawdown_30",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5146011396011396,
+            "da_delta": -0.014601139601139623,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -454.0505785627266,
+            "pnl_delta": -39.707512400049495,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3276,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9918256130790191
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4924102184376157,
+            "da_delta": 0.0014809329877822908,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -886.6262475678832,
+            "pnl_delta": 99.34200761008879,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3249,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9836512261580381
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5206222865412445,
+            "da_delta": 0.01374819102749636,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -696.3993356705619,
+            "pnl_delta": -21.71277165912511,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3197,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9679079624583712
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.7,
+        "error": null
+      },
+      {
+        "name": "btc_lead_x_self_ret",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5292022792022792,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -414.34306616267713,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3258,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9863760217983651
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4909292854498334,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -985.968255177972,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3274,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9912201029367242
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5068740955137482,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -674.6865640114368,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3198,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9682107175295186
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.9,
+        "error": null
+      },
+      {
+        "name": "eth_lead_minus_btc_lead",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5292022792022792,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -414.34306616267713,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3258,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9863760217983651
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4909292854498334,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -985.968255177972,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3274,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9912201029367242
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5068740955137482,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -674.6865640114368,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3198,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9682107175295186
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.8,
+        "error": null
+      },
+      {
+        "name": "macd_signal_cross_strength",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5188746438746439,
+            "da_delta": -0.010327635327635365,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -384.70302901503374,
+            "pnl_delta": 29.640037147643397,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3260,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.98698153194066
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4942613846723436,
+            "da_delta": 0.0033320992225102097,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -913.654440849931,
+            "pnl_delta": 72.31381432804096,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3263,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9878897971541023
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5108538350217077,
+            "da_delta": 0.00397973950795949,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -663.20378185864,
+            "pnl_delta": 11.482782152796744,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3220,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9748713290947624
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.9,
+        "error": null
+      },
+      {
+        "name": "ret1_x_volZ60",
+        "bucket": "price_derived",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5263532763532763,
+            "da_delta": -0.002849002849002913,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -408.3707341136005,
+            "pnl_delta": 5.972332049076613,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3263,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9878897971541023
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4783413550536838,
+            "da_delta": -0.012587930396149583,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -859.2893828830354,
+            "pnl_delta": 126.67887229493658,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3243,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9818346957311535
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.49746743849493485,
+            "da_delta": -0.009406657018813325,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -654.9251844282395,
+            "pnl_delta": 19.761379583197254,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3178,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9621556161065697
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 2.0,
+        "error": null
+      },
+      {
+        "name": "log_liquidations_self",
+        "bucket": "liquidity_funding_oi_spread",
+        "timeframe": "6h",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.5292022792022792,
+            "aug_da": 0.5292022792022792,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -414.34306616267713,
+            "aug_pnl_pct_total": -414.34306616267713,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3258,
+            "aug_n_trades": 3258,
+            "baseline_trade_share": 0.9863760217983651,
+            "aug_trade_share": 0.9863760217983651
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4909292854498334,
+            "aug_da": 0.4909292854498334,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -985.968255177972,
+            "aug_pnl_pct_total": -985.968255177972,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3274,
+            "aug_n_trades": 3274,
+            "baseline_trade_share": 0.9912201029367242,
+            "aug_trade_share": 0.9912201029367242
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.5068740955137482,
+            "aug_da": 0.5068740955137482,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -674.6865640114368,
+            "aug_pnl_pct_total": -674.6865640114368,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 3198,
+            "aug_n_trades": 3198,
+            "baseline_trade_share": 0.9682107175295186,
+            "aug_trade_share": 0.9682107175295186
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 1.7,
+        "error": null
+      },
+      {
+        "name": "vol_of_vol_30",
+        "bucket": "volatility_regime",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.45896464646464646,
+            "da_delta": 0.00694444444444442,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -561.399553401682,
+            "pnl_delta": 84.80707367135494,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1832,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9318413021363174
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.4986648865153538,
+            "da_delta": 0.0006675567423231055,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -527.2307158378328,
+            "pnl_delta": -32.56121551697845,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1940,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9867751780264497
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.4681881051175657,
+            "da_delta": -0.013139695712309829,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -616.5043936938089,
+            "pnl_delta": -140.4973254461438,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1903,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9679552390640895
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.8,
+        "error": null
+      },
+      {
+        "name": "realizedVol_log",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.46654040404040403,
+            "da_delta": 0.014520202020201989,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -343.38994160455957,
+            "pnl_delta": 302.81668546847743,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1825,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9282807731434385
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5093457943925234,
+            "da_delta": 0.011348464619492682,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -451.3841383950505,
+            "pnl_delta": 43.28536192580384,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1943,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9883011190233978
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.470954356846473,
+            "da_delta": -0.010373443983402508,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -749.675650915703,
+            "pnl_delta": -273.66858266803797,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1910,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9715157680569685
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 13.2,
+        "error": null
+      },
+      {
+        "name": "ret1_squared",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.4791666666666667,
+            "da_delta": 0.02714646464646464,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -333.00595041322003,
+            "pnl_delta": 313.20067665981696,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1836,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9338758901322483
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5053404539385847,
+            "da_delta": 0.007343124165554049,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -555.4716060773983,
+            "pnl_delta": -60.80210575654394,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1933,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9832146490335707
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.4612724757952974,
+            "da_delta": -0.02005532503457813,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -831.1819772457554,
+            "pnl_delta": -355.17490899809036,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1909,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9710071210579858
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.5,
+        "error": null
+      },
+      {
+        "name": "ret5_minus_ret10",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.48358585858585856,
+            "da_delta": 0.03156565656565652,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -350.30817069454486,
+            "pnl_delta": 295.89845637849214,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1849,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9404883011190234
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5093457943925234,
+            "da_delta": 0.011348464619492682,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -318.6233309926389,
+            "pnl_delta": 176.04616932821546,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1941,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9872838250254323
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.470954356846473,
+            "da_delta": -0.010373443983402508,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -716.7262949178843,
+            "pnl_delta": -240.7192266702192,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1904,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9684638860630722
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.5,
+        "error": null
+      },
+      {
+        "name": "rsi14_centered_squared",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.47664141414141414,
+            "da_delta": 0.0246212121212121,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -25.505626041063408,
+            "pnl_delta": 620.7010010319736,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1835,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9333672431332655
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5013351134846462,
+            "da_delta": 0.0033377837116155273,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -461.5987487602873,
+            "pnl_delta": 33.07075156056703,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1933,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9832146490335707
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.48409405255878285,
+            "da_delta": 0.0027662517289073207,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -440.736302921787,
+            "pnl_delta": 35.270765325878074,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1921,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9771108850457783
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 3,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.5,
+        "error": null
+      },
+      {
+        "name": "bb_pctb_extreme",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.4652777777777778,
+            "da_delta": 0.013257575757575746,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -383.0868131549918,
+            "pnl_delta": 263.1198139180452,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1817,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9242115971515769
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.507343124165554,
+            "da_delta": 0.009345794392523366,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -269.19379457911896,
+            "pnl_delta": 225.4757057417354,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1929,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9811800610376399
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.47372060857538034,
+            "da_delta": -0.0076071922544951875,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -755.3893684029558,
+            "pnl_delta": -279.38230015529075,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1916,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9745676500508647
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.5,
+        "error": null
+      },
+      {
+        "name": "macd_hist_norm_atr",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.4602272727272727,
+            "da_delta": 0.008207070707070663,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -419.91985012850796,
+            "pnl_delta": 226.28677694452904,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1838,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9348931841302136
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.4959946595460614,
+            "da_delta": -0.002002670226969261,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -488.4675413900047,
+            "pnl_delta": 6.201958930849628,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1934,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9837232960325534
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.4640387275242047,
+            "da_delta": -0.01728907330567081,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -661.1607293223879,
+            "pnl_delta": -185.15366107472278,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1906,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9694811800610377
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.6,
+        "error": null
+      },
+      {
+        "name": "vol_zscore60_squared",
+        "bucket": "volatility_regime",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.4753787878787879,
+            "da_delta": 0.023358585858585856,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -201.1284488094617,
+            "pnl_delta": 445.0781782635753,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1841,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9364191251271617
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5006675567423231,
+            "da_delta": 0.002670226969292422,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -542.2878398250359,
+            "pnl_delta": -47.61833950418156,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1937,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9852492370295015
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.4806362378976487,
+            "da_delta": -0.0006915629322268302,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -678.4662825819483,
+            "pnl_delta": -202.45921433428327,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1922,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9776195320447609
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.5,
+        "error": null
+      },
+      {
+        "name": "ema_spread_per_atr",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.47474747474747475,
+            "da_delta": 0.022727272727272707,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -109.99456433405197,
+            "pnl_delta": 536.212062738985,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1834,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9328585961342828
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5153538050734312,
+            "da_delta": 0.01735647530040052,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -154.32472350100608,
+            "pnl_delta": 340.3447768198483,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1940,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9867751780264497
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.48201936376210236,
+            "da_delta": 0.0006915629322268302,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -334.40072593652326,
+            "pnl_delta": 141.60634231114182,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1913,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9730417090539166
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 3,
+        "folds_positive_both": 3,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.5,
+        "error": null
+      },
+      {
+        "name": "atr_pct_zscore_60",
+        "bucket": "volatility_regime",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.46464646464646464,
+            "da_delta": 0.012626262626262597,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -394.90844535905677,
+            "pnl_delta": 251.29818171398023,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1838,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9348931841302136
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5146862483311081,
+            "da_delta": 0.016688918558077415,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -272.6278204646397,
+            "pnl_delta": 222.04167985621467,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1936,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9847405900305188
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.470954356846473,
+            "da_delta": -0.010373443983402508,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -584.3147749257955,
+            "pnl_delta": -108.30770667813044,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1902,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9674465920651069
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.5,
+        "error": null
+      },
+      {
+        "name": "drawdown_30",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.4633838383838384,
+            "da_delta": 0.011363636363636354,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -257.05463468064636,
+            "pnl_delta": 389.15199239239064,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1830,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.930824008138352
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.514018691588785,
+            "da_delta": 0.01602136181575431,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -148.9685552474026,
+            "pnl_delta": 345.70094507345175,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1937,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9852492370295015
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.4854771784232365,
+            "da_delta": 0.004149377593360981,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -510.6375200281799,
+            "pnl_delta": -34.63045178051482,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1906,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9694811800610377
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 3,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.7,
+        "error": null
+      },
+      {
+        "name": "btc_lead_x_self_ret",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.45202020202020204,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -646.206627073037,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1828,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9298067141403866
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.4979973297730307,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -494.66950032085435,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1934,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9837232960325534
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.48132780082987553,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -476.0070682476651,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1919,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9760935910478128
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.4,
+        "error": null
+      },
+      {
+        "name": "eth_lead_minus_btc_lead",
+        "bucket": "cross_coin_lead_lag",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.45202020202020204,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -646.206627073037,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1828,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9298067141403866
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.4979973297730307,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -494.66950032085435,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1934,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9837232960325534
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.48132780082987553,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -476.0070682476651,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1919,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9760935910478128
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.4,
+        "error": null
+      },
+      {
+        "name": "macd_signal_cross_strength",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.4753787878787879,
+            "da_delta": 0.023358585858585856,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -194.02363718737314,
+            "pnl_delta": 452.18298988566386,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1827,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9292980671414038
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.5080106809078772,
+            "da_delta": 0.010013351134846471,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -395.7820944750072,
+            "pnl_delta": 98.88740584584713,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1938,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9857578840284842
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.4778699861687414,
+            "da_delta": -0.003457814661134151,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -609.8302284275221,
+            "pnl_delta": -133.82316017985704,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1910,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9715157680569685
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 2,
+        "folds_positive_pnl": 2,
+        "folds_positive_both": 2,
+        "stage1_admitted": true,
+        "elapsed_sec": 0.4,
+        "error": null
+      },
+      {
+        "name": "ret1_x_volZ60",
+        "bucket": "price_derived",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.4772727272727273,
+            "da_delta": 0.02525252525252525,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -183.1933207576049,
+            "pnl_delta": 463.0133063154321,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1829,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9303153611393693
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.4946595460614152,
+            "da_delta": -0.003337783711615472,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -735.6967246588451,
+            "pnl_delta": -241.0272243379908,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1939,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.986266531027467
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.4785615491009682,
+            "da_delta": -0.0027662517289073207,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -673.9292837867072,
+            "pnl_delta": -197.9222155390421,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1921,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9771108850457783
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 1,
+        "folds_positive_pnl": 1,
+        "folds_positive_both": 1,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.4,
+        "error": null
+      },
+      {
+        "name": "log_liquidations_self",
+        "bucket": "liquidity_funding_oi_spread",
+        "timeframe": "1d",
+        "folds": [
+          {
+            "fold_id": 0,
+            "baseline_da": 0.45202020202020204,
+            "aug_da": 0.45202020202020204,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -646.206627073037,
+            "aug_pnl_pct_total": -646.206627073037,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1828,
+            "aug_n_trades": 1828,
+            "baseline_trade_share": 0.9298067141403866,
+            "aug_trade_share": 0.9298067141403866
+          },
+          {
+            "fold_id": 1,
+            "baseline_da": 0.4979973297730307,
+            "aug_da": 0.4979973297730307,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -494.66950032085435,
+            "aug_pnl_pct_total": -494.66950032085435,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1934,
+            "aug_n_trades": 1934,
+            "baseline_trade_share": 0.9837232960325534,
+            "aug_trade_share": 0.9837232960325534
+          },
+          {
+            "fold_id": 2,
+            "baseline_da": 0.48132780082987553,
+            "aug_da": 0.48132780082987553,
+            "da_delta": 0.0,
+            "baseline_pnl_pct_total": -476.0070682476651,
+            "aug_pnl_pct_total": -476.0070682476651,
+            "pnl_delta": 0.0,
+            "baseline_n_trades": 1919,
+            "aug_n_trades": 1919,
+            "baseline_trade_share": 0.9760935910478128,
+            "aug_trade_share": 0.9760935910478128
+          }
+        ],
+        "n_folds": 3,
+        "folds_positive_da": 0,
+        "folds_positive_pnl": 0,
+        "folds_positive_both": 0,
+        "stage1_admitted": false,
+        "elapsed_sec": 0.6,
+        "error": null
+      }
+    ],
+    "per_timeframe_baseline": {
+      "1h": {
+        "n_rows": 77364,
+        "n_features": 38,
+        "folds": [
+          {
+            "n_test": 19341,
+            "directional_accuracy": 0.5070819628113042,
+            "n_dir_truth_rows": 14897,
+            "n_trades": 19139,
+            "trade_share": 0.9895558657773641,
+            "post_fee_pnl_pct_total": -5856.819798191622,
+            "post_fee_pnl_pct_mean": -0.3060149327651195,
+            "win_rate": 0.3467265792361147,
+            "fold_id": 0,
+            "train_size": 19341,
+            "test_size": 19341
+          },
+          {
+            "n_test": 19341,
+            "directional_accuracy": 0.4903968413303888,
+            "n_dir_truth_rows": 14943,
+            "n_trades": 19098,
+            "trade_share": 0.9874360167519777,
+            "post_fee_pnl_pct_total": -5698.315261249558,
+            "post_fee_pnl_pct_mean": -0.2983723563331007,
+            "win_rate": 0.3500366530526757,
+            "fold_id": 1,
+            "train_size": 38682,
+            "test_size": 19341
+          },
+          {
+            "n_test": 19341,
+            "directional_accuracy": 0.4855978260869565,
+            "n_dir_truth_rows": 14720,
+            "n_trades": 18544,
+            "trade_share": 0.9587922030918774,
+            "post_fee_pnl_pct_total": -5220.265607281324,
+            "post_fee_pnl_pct_mean": -0.28150698917608524,
+            "win_rate": 0.34345340811044006,
+            "fold_id": 2,
+            "train_size": 58023,
+            "test_size": 19341
+          }
+        ],
+        "mean_da": 0.4943588767428832,
+        "sum_pnl_pct": -16775.400666722504
+      },
+      "2h": {
+        "n_rows": 38511,
+        "n_features": 37,
+        "folds": [
+          {
+            "n_test": 9627,
+            "directional_accuracy": 0.518935516888434,
+            "n_dir_truth_rows": 7816,
+            "n_trades": 9598,
+            "trade_share": 0.9969876389321699,
+            "post_fee_pnl_pct_total": -2122.0401098415714,
+            "post_fee_pnl_pct_mean": -0.22109190558882802,
+            "win_rate": 0.39622838091269014,
+            "fold_id": 0,
+            "train_size": 9627,
+            "test_size": 9627
+          },
+          {
+            "n_test": 9627,
+            "directional_accuracy": 0.48012861736334406,
+            "n_dir_truth_rows": 7775,
+            "n_trades": 9485,
+            "trade_share": 0.9852498182195908,
+            "post_fee_pnl_pct_total": -2703.9465803627045,
+            "post_fee_pnl_pct_mean": -0.28507607594757034,
+            "win_rate": 0.3878755930416447,
+            "fold_id": 1,
+            "train_size": 19254,
+            "test_size": 9627
+          },
+          {
+            "n_test": 9627,
+            "directional_accuracy": 0.49889135254988914,
+            "n_dir_truth_rows": 7667,
+            "n_trades": 9460,
+            "trade_share": 0.9826529552300821,
+            "post_fee_pnl_pct_total": -2430.9249126541804,
+            "post_fee_pnl_pct_mean": -0.25696880683448,
+            "win_rate": 0.38816067653276953,
+            "fold_id": 2,
+            "train_size": 28881,
+            "test_size": 9627
+          }
+        ],
+        "mean_da": 0.4993184956005557,
+        "sum_pnl_pct": -7256.911602858456
+      },
+      "6h": {
+        "n_rows": 13212,
+        "n_features": 38,
+        "folds": [
+          {
+            "n_test": 3303,
+            "directional_accuracy": 0.5292022792022792,
+            "n_dir_truth_rows": 2808,
+            "n_trades": 3258,
+            "trade_share": 0.9863760217983651,
+            "post_fee_pnl_pct_total": -414.34306616267713,
+            "post_fee_pnl_pct_mean": -0.12717712282464,
+            "win_rate": 0.449048496009822,
+            "fold_id": 0,
+            "train_size": 3303,
+            "test_size": 3303
+          },
+          {
+            "n_test": 3303,
+            "directional_accuracy": 0.4909292854498334,
+            "n_dir_truth_rows": 2701,
+            "n_trades": 3274,
+            "trade_share": 0.9912201029367242,
+            "post_fee_pnl_pct_total": -985.968255177972,
+            "post_fee_pnl_pct_mean": -0.30115096370738303,
+            "win_rate": 0.437996334758705,
+            "fold_id": 1,
+            "train_size": 6606,
+            "test_size": 3303
+          },
+          {
+            "n_test": 3303,
+            "directional_accuracy": 0.5068740955137482,
+            "n_dir_truth_rows": 2764,
+            "n_trades": 3198,
+            "trade_share": 0.9682107175295186,
+            "post_fee_pnl_pct_total": -674.6865640114368,
+            "post_fee_pnl_pct_mean": -0.21097140838381387,
+            "win_rate": 0.45716072545340836,
+            "fold_id": 2,
+            "train_size": 9909,
+            "test_size": 3303
+          }
+        ],
+        "mean_da": 0.5090018867219537,
+        "sum_pnl_pct": -2074.997885352086
+      },
+      "1d": {
+        "n_rows": 7864,
+        "n_features": 38,
+        "folds": [
+          {
+            "n_test": 1966,
+            "directional_accuracy": 0.45202020202020204,
+            "n_dir_truth_rows": 1584,
+            "n_trades": 1828,
+            "trade_share": 0.9298067141403866,
+            "post_fee_pnl_pct_total": -646.206627073037,
+            "post_fee_pnl_pct_mean": -0.3535047194053813,
+            "win_rate": 0.47155361050328226,
+            "fold_id": 0,
+            "train_size": 1966,
+            "test_size": 1966
+          },
+          {
+            "n_test": 1966,
+            "directional_accuracy": 0.4979973297730307,
+            "n_dir_truth_rows": 1498,
+            "n_trades": 1934,
+            "trade_share": 0.9837232960325534,
+            "post_fee_pnl_pct_total": -494.66950032085435,
+            "post_fee_pnl_pct_mean": -0.255775336256905,
+            "win_rate": 0.4653567735263702,
+            "fold_id": 1,
+            "train_size": 3932,
+            "test_size": 1966
+          },
+          {
+            "n_test": 1966,
+            "directional_accuracy": 0.48132780082987553,
+            "n_dir_truth_rows": 1446,
+            "n_trades": 1919,
+            "trade_share": 0.9760935910478128,
+            "post_fee_pnl_pct_total": -476.0070682476651,
+            "post_fee_pnl_pct_mean": -0.24804954051467695,
+            "win_rate": 0.46430432516935904,
+            "fold_id": 2,
+            "train_size": 5898,
+            "test_size": 1966
+          }
+        ],
+        "mean_da": 0.4771151108743694,
+        "sum_pnl_pct": -1616.8831956415563
+      }
+    }
+  },
+  "stage2": {
+    "admitted_names_for_stacking": [
+      "atr_pct_zscore_60",
+      "bb_pctb_extreme",
+      "drawdown_30",
+      "ema_spread_per_atr",
+      "macd_signal_cross_strength",
+      "realizedVol_log",
+      "ret1_squared",
+      "ret1_x_volZ60",
+      "ret5_minus_ret10",
+      "rsi14_centered_squared",
+      "vol_of_vol_30"
+    ],
+    "per_slice": [
+      {
+        "coin": "bonk",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.47761798663155763,
+          "n_trades": 6281,
+          "trade_share": 0.9742515898867691,
+          "post_fee_pnl_pct_total": -1862.450030297533,
+          "n_dir_truth_rows": 4937,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.47356694348794814,
+          "n_trades": 6252,
+          "trade_share": 0.9697533736621684,
+          "post_fee_pnl_pct_total": -1901.8279262287735,
+          "n_dir_truth_rows": 4937,
+          "n_test_rows": 6447
+        },
+        "da_lift": -0.00405104314360949,
+        "pnl_delta_pct_total": -39.37789593124057,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.47653142402545745,
+          "n_trades": 6280,
+          "trade_share": 0.9740964789824724,
+          "post_fee_pnl_pct_total": -1845.1328273839376,
+          "n_dir_truth_rows": 5028,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.478321400159109,
+          "n_trades": 6286,
+          "trade_share": 0.9750271444082519,
+          "post_fee_pnl_pct_total": -1926.6637403406803,
+          "n_dir_truth_rows": 5028,
+          "n_test_rows": 6447
+        },
+        "da_lift": 0.0017899761336515607,
+        "pnl_delta_pct_total": -81.53091295674267,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.47548143736351,
+          "n_trades": 6199,
+          "trade_share": 0.9615324957344501,
+          "post_fee_pnl_pct_total": -1865.1447408458148,
+          "n_dir_truth_rows": 5037,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.4554298193369069,
+          "n_trades": 5960,
+          "trade_share": 0.9244609896075694,
+          "post_fee_pnl_pct_total": -1855.665752982669,
+          "n_dir_truth_rows": 5037,
+          "n_test_rows": 6447
+        },
+        "da_lift": -0.020051618026603102,
+        "pnl_delta_pct_total": 9.478987863145903,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.4596072079368293,
+          "n_trades": 6178,
+          "trade_share": 0.9582751667442221,
+          "post_fee_pnl_pct_total": -1797.6524289948156,
+          "n_dir_truth_rows": 4939,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.4525207531889046,
+          "n_trades": 6006,
+          "trade_share": 0.9315960912052117,
+          "post_fee_pnl_pct_total": -1835.925556499153,
+          "n_dir_truth_rows": 4939,
+          "n_test_rows": 6447
+        },
+        "da_lift": -0.0070864547479246864,
+        "pnl_delta_pct_total": -38.27312750433725,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.48463114754098363,
+          "n_trades": 6200,
+          "trade_share": 0.9616876066387468,
+          "post_fee_pnl_pct_total": -1899.2631186826181,
+          "n_dir_truth_rows": 4880,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.48545081967213116,
+          "n_trades": 6148,
+          "trade_share": 0.953621839615325,
+          "post_fee_pnl_pct_total": -1872.1346537223308,
+          "n_dir_truth_rows": 4880,
+          "n_test_rows": 6447
+        },
+        "da_lift": 0.0008196721311475308,
+        "pnl_delta_pct_total": 27.128464960287374,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.46468552819051495,
+          "n_trades": 5875,
+          "trade_share": 0.9112765627423608,
+          "post_fee_pnl_pct_total": -1657.1314923716432,
+          "n_dir_truth_rows": 4913,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.48219010787706085,
+          "n_trades": 6114,
+          "trade_share": 0.9483480688692415,
+          "post_fee_pnl_pct_total": -1789.9043608296017,
+          "n_dir_truth_rows": 4913,
+          "n_test_rows": 6447
+        },
+        "da_lift": 0.017504579686545896,
+        "pnl_delta_pct_total": -132.77286845795857,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.4440980881130507,
+          "n_trades": 5752,
+          "trade_share": 0.8921979215138824,
+          "post_fee_pnl_pct_total": -1708.3843180168374,
+          "n_dir_truth_rows": 4812,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.4561512884455528,
+          "n_trades": 5841,
+          "trade_share": 0.9060027919962773,
+          "post_fee_pnl_pct_total": -1691.9293041270598,
+          "n_dir_truth_rows": 4812,
+          "n_test_rows": 6447
+        },
+        "da_lift": 0.012053200332502123,
+        "pnl_delta_pct_total": 16.455013889777547,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.4753221010901883,
+          "n_trades": 6164,
+          "trade_share": 0.9561036140840701,
+          "post_fee_pnl_pct_total": -1866.2525228526242,
+          "n_dir_truth_rows": 5045,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.48562933597621405,
+          "n_trades": 6156,
+          "trade_share": 0.9548627268496975,
+          "post_fee_pnl_pct_total": -1839.4968827121197,
+          "n_dir_truth_rows": 5045,
+          "n_test_rows": 6447
+        },
+        "da_lift": 0.010307234886025751,
+        "pnl_delta_pct_total": 26.75564014050451,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "1h",
+        "n_rows": 8596,
+        "baseline": {
+          "directional_accuracy": 0.44495874421412757,
+          "n_trades": 5813,
+          "trade_share": 0.9016596866759733,
+          "post_fee_pnl_pct_total": -1730.1547336352198,
+          "n_dir_truth_rows": 4969,
+          "n_test_rows": 6447
+        },
+        "augmented": {
+          "directional_accuracy": 0.4604548198832763,
+          "n_trades": 5859,
+          "trade_share": 0.9087947882736156,
+          "post_fee_pnl_pct_total": -1742.2078921984735,
+          "n_dir_truth_rows": 4969,
+          "n_test_rows": 6447
+        },
+        "da_lift": 0.015496075669148734,
+        "pnl_delta_pct_total": -12.053158563253646,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "bonk",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.47079169869331283,
+          "n_trades": 3170,
+          "trade_share": 0.9884627377611475,
+          "post_fee_pnl_pct_total": -879.8984569237153,
+          "n_dir_truth_rows": 2602,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.47156033820138354,
+          "n_trades": 3155,
+          "trade_share": 0.983785469285937,
+          "post_fee_pnl_pct_total": -887.83796121368,
+          "n_dir_truth_rows": 2602,
+          "n_test_rows": 3207
+        },
+        "da_lift": 0.000768639508070712,
+        "pnl_delta_pct_total": -7.939504289964702,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.46180422264875237,
+          "n_trades": 3164,
+          "trade_share": 0.9865918303710633,
+          "post_fee_pnl_pct_total": -999.8909635281785,
+          "n_dir_truth_rows": 2605,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.46564299424184263,
+          "n_trades": 3176,
+          "trade_share": 0.9903336451512317,
+          "post_fee_pnl_pct_total": -1019.027042727502,
+          "n_dir_truth_rows": 2605,
+          "n_test_rows": 3207
+        },
+        "da_lift": 0.003838771593090262,
+        "pnl_delta_pct_total": -19.13607919932349,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.48653773227152064,
+          "n_trades": 3189,
+          "trade_share": 0.9943872778297475,
+          "post_fee_pnl_pct_total": -913.600891707591,
+          "n_dir_truth_rows": 2637,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.48615851346226774,
+          "n_trades": 3186,
+          "trade_share": 0.9934518241347053,
+          "post_fee_pnl_pct_total": -889.364453817582,
+          "n_dir_truth_rows": 2637,
+          "n_test_rows": 3207
+        },
+        "da_lift": -0.0003792188092529014,
+        "pnl_delta_pct_total": 24.23643789000903,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.47374562427071176,
+          "n_trades": 3141,
+          "trade_share": 0.9794200187090739,
+          "post_fee_pnl_pct_total": -828.5165877858935,
+          "n_dir_truth_rows": 2571,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.45818747569039286,
+          "n_trades": 3143,
+          "trade_share": 0.9800436545057686,
+          "post_fee_pnl_pct_total": -956.4266163528335,
+          "n_dir_truth_rows": 2571,
+          "n_test_rows": 3207
+        },
+        "da_lift": -0.015558148580318898,
+        "pnl_delta_pct_total": -127.91002856694001,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.47368421052631576,
+          "n_trades": 3150,
+          "trade_share": 0.9822263797942001,
+          "post_fee_pnl_pct_total": -1040.1907433605,
+          "n_dir_truth_rows": 2527,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.481598733676296,
+          "n_trades": 3183,
+          "trade_share": 0.9925163704396632,
+          "post_fee_pnl_pct_total": -982.9417222926377,
+          "n_dir_truth_rows": 2527,
+          "n_test_rows": 3207
+        },
+        "da_lift": 0.007914523149980257,
+        "pnl_delta_pct_total": 57.24902106786226,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.5015540015540015,
+          "n_trades": 3090,
+          "trade_share": 0.9635173058933583,
+          "post_fee_pnl_pct_total": -783.3885201046413,
+          "n_dir_truth_rows": 2574,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.47863247863247865,
+          "n_trades": 3005,
+          "trade_share": 0.9370127845338322,
+          "post_fee_pnl_pct_total": -753.8515414830224,
+          "n_dir_truth_rows": 2574,
+          "n_test_rows": 3207
+        },
+        "da_lift": -0.022921522921522886,
+        "pnl_delta_pct_total": 29.536978621618914,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.4529712711530893,
+          "n_trades": 3016,
+          "trade_share": 0.9404427814156533,
+          "post_fee_pnl_pct_total": -877.6607433626998,
+          "n_dir_truth_rows": 2541,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.4490358126721763,
+          "n_trades": 2986,
+          "trade_share": 0.9310882444652323,
+          "post_fee_pnl_pct_total": -898.7855694778887,
+          "n_dir_truth_rows": 2541,
+          "n_test_rows": 3207
+        },
+        "da_lift": -0.003935458480913034,
+        "pnl_delta_pct_total": -21.124826115188853,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.45197091465748185,
+          "n_trades": 3114,
+          "trade_share": 0.971000935453695,
+          "post_fee_pnl_pct_total": -915.9504220531453,
+          "n_dir_truth_rows": 2613,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.4588595484117872,
+          "n_trades": 3126,
+          "trade_share": 0.9747427502338635,
+          "post_fee_pnl_pct_total": -988.1731644745898,
+          "n_dir_truth_rows": 2613,
+          "n_test_rows": 3207
+        },
+        "da_lift": 0.006888633754305373,
+        "pnl_delta_pct_total": -72.22274242144454,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "2h",
+        "n_rows": 4279,
+        "baseline": {
+          "directional_accuracy": 0.5005825242718447,
+          "n_trades": 3149,
+          "trade_share": 0.9819145618958528,
+          "post_fee_pnl_pct_total": -947.0885653875816,
+          "n_dir_truth_rows": 2575,
+          "n_test_rows": 3207
+        },
+        "augmented": {
+          "directional_accuracy": 0.4920388349514563,
+          "n_trades": 3166,
+          "trade_share": 0.987215466167758,
+          "post_fee_pnl_pct_total": -989.1118758098064,
+          "n_dir_truth_rows": 2575,
+          "n_test_rows": 3207
+        },
+        "da_lift": -0.008543689320388403,
+        "pnl_delta_pct_total": -42.02331042222477,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "bonk",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.45280898876404496,
+          "n_trades": 1046,
+          "trade_share": 0.9961904761904762,
+          "post_fee_pnl_pct_total": -307.0323322982466,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4617977528089887,
+          "n_trades": 1043,
+          "trade_share": 0.9933333333333333,
+          "post_fee_pnl_pct_total": -332.113066184667,
+          "n_dir_truth_rows": 890,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.008988764044943753,
+        "pnl_delta_pct_total": -25.080733886420376,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.40558659217877097,
+          "n_trades": 913,
+          "trade_share": 0.8695238095238095,
+          "post_fee_pnl_pct_total": -214.95921714940556,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4223463687150838,
+          "n_trades": 971,
+          "trade_share": 0.9247619047619048,
+          "post_fee_pnl_pct_total": -196.3822992166127,
+          "n_dir_truth_rows": 895,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.01675977653631283,
+        "pnl_delta_pct_total": 18.576917932792867,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4634420697412823,
+          "n_trades": 1046,
+          "trade_share": 0.9961904761904762,
+          "post_fee_pnl_pct_total": -269.47148594837364,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.46569178852643417,
+          "n_trades": 1050,
+          "trade_share": 1.0,
+          "post_fee_pnl_pct_total": -304.96448348200227,
+          "n_dir_truth_rows": 889,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.002249718785151844,
+        "pnl_delta_pct_total": -35.492997533628625,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4531791907514451,
+          "n_trades": 1024,
+          "trade_share": 0.9752380952380952,
+          "post_fee_pnl_pct_total": -208.1043322313741,
+          "n_dir_truth_rows": 865,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4300578034682081,
+          "n_trades": 989,
+          "trade_share": 0.9419047619047619,
+          "post_fee_pnl_pct_total": -256.55539986789245,
+          "n_dir_truth_rows": 865,
+          "n_test_rows": 1050
+        },
+        "da_lift": -0.023121387283236983,
+        "pnl_delta_pct_total": -48.45106763651836,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4552661381653454,
+          "n_trades": 1028,
+          "trade_share": 0.979047619047619,
+          "post_fee_pnl_pct_total": -414.42729011647225,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.46885617214043035,
+          "n_trades": 1039,
+          "trade_share": 0.9895238095238095,
+          "post_fee_pnl_pct_total": -288.6147054262102,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.013590033975084959,
+        "pnl_delta_pct_total": 125.81258469026204,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4385150812064965,
+          "n_trades": 968,
+          "trade_share": 0.9219047619047619,
+          "post_fee_pnl_pct_total": -278.70316844443187,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.43039443155452434,
+          "n_trades": 1002,
+          "trade_share": 0.9542857142857143,
+          "post_fee_pnl_pct_total": -363.6810017890541,
+          "n_dir_truth_rows": 862,
+          "n_test_rows": 1050
+        },
+        "da_lift": -0.008120649651972178,
+        "pnl_delta_pct_total": -84.97783334462224,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.45714285714285713,
+          "n_trades": 989,
+          "trade_share": 0.9419047619047619,
+          "post_fee_pnl_pct_total": -303.59193685851903,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4605714285714286,
+          "n_trades": 1019,
+          "trade_share": 0.9704761904761905,
+          "post_fee_pnl_pct_total": -322.1683658719936,
+          "n_dir_truth_rows": 875,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.0034285714285714475,
+        "pnl_delta_pct_total": -18.57642901347458,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.4954648526077097,
+          "n_trades": 1006,
+          "trade_share": 0.9580952380952381,
+          "post_fee_pnl_pct_total": -314.7484450526245,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.5022675736961452,
+          "n_trades": 1013,
+          "trade_share": 0.9647619047619047,
+          "post_fee_pnl_pct_total": -215.96608738964318,
+          "n_dir_truth_rows": 882,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.006802721088435437,
+        "pnl_delta_pct_total": 98.78235766298133,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "6h",
+        "n_rows": 603,
+        "baseline": {
+          "directional_accuracy": 0.5230352303523035,
+          "n_trades": 423,
+          "trade_share": 0.94,
+          "post_fee_pnl_pct_total": -126.26802201127676,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450
+        },
+        "augmented": {
+          "directional_accuracy": 0.47696476964769646,
+          "n_trades": 403,
+          "trade_share": 0.8955555555555555,
+          "post_fee_pnl_pct_total": -116.04200069176052,
+          "n_dir_truth_rows": 369,
+          "n_test_rows": 450
+        },
+        "da_lift": -0.04607046070460702,
+        "pnl_delta_pct_total": 10.226021319516235,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "6h",
+        "n_rows": 1401,
+        "baseline": {
+          "directional_accuracy": 0.40656851642129105,
+          "n_trades": 873,
+          "trade_share": 0.8314285714285714,
+          "post_fee_pnl_pct_total": -251.25227936150816,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "augmented": {
+          "directional_accuracy": 0.4292185730464326,
+          "n_trades": 943,
+          "trade_share": 0.8980952380952381,
+          "post_fee_pnl_pct_total": -337.7427225730678,
+          "n_dir_truth_rows": 883,
+          "n_test_rows": 1050
+        },
+        "da_lift": 0.02265005662514158,
+        "pnl_delta_pct_total": -86.49044321155964,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "bonk",
+        "timeframe": "1d",
+        "n_rows": 807,
+        "baseline": {
+          "directional_accuracy": 0.5021008403361344,
+          "n_trades": 592,
+          "trade_share": 0.9817578772802653,
+          "post_fee_pnl_pct_total": -65.63034061125657,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603
+        },
+        "augmented": {
+          "directional_accuracy": 0.5042016806722689,
+          "n_trades": 590,
+          "trade_share": 0.978441127694859,
+          "post_fee_pnl_pct_total": 113.50778436881251,
+          "n_dir_truth_rows": 476,
+          "n_test_rows": 603
+        },
+        "da_lift": 0.0021008403361344463,
+        "pnl_delta_pct_total": 179.13812498006908,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "celestia",
+        "timeframe": "1d",
+        "n_rows": 875,
+        "baseline": {
+          "directional_accuracy": 0.4745098039215686,
+          "n_trades": 628,
+          "trade_share": 0.9602446483180428,
+          "post_fee_pnl_pct_total": -250.62291198750034,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654
+        },
+        "augmented": {
+          "directional_accuracy": 0.42549019607843136,
+          "n_trades": 597,
+          "trade_share": 0.9128440366972477,
+          "post_fee_pnl_pct_total": -321.4072146242791,
+          "n_dir_truth_rows": 510,
+          "n_test_rows": 654
+        },
+        "da_lift": -0.04901960784313725,
+        "pnl_delta_pct_total": -70.78430263677876,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "dogwifcoin",
+        "timeframe": "1d",
+        "n_rows": 709,
+        "baseline": {
+          "directional_accuracy": 0.41262135922330095,
+          "n_trades": 509,
+          "trade_share": 0.9585687382297552,
+          "post_fee_pnl_pct_total": -466.4040610400976,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531
+        },
+        "augmented": {
+          "directional_accuracy": 0.42475728155339804,
+          "n_trades": 517,
+          "trade_share": 0.9736346516007532,
+          "post_fee_pnl_pct_total": -334.4145864243495,
+          "n_dir_truth_rows": 412,
+          "n_test_rows": 531
+        },
+        "da_lift": 0.012135922330097082,
+        "pnl_delta_pct_total": 131.98947461574807,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "floki-inu",
+        "timeframe": "1d",
+        "n_rows": 1065,
+        "baseline": {
+          "directional_accuracy": 0.45695364238410596,
+          "n_trades": 689,
+          "trade_share": 0.8634085213032582,
+          "post_fee_pnl_pct_total": -317.76680807447894,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798
+        },
+        "augmented": {
+          "directional_accuracy": 0.43874172185430466,
+          "n_trades": 667,
+          "trade_share": 0.8358395989974937,
+          "post_fee_pnl_pct_total": -163.91488835214176,
+          "n_dir_truth_rows": 604,
+          "n_test_rows": 798
+        },
+        "da_lift": -0.018211920529801306,
+        "pnl_delta_pct_total": 153.8519197223372,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "injective-protocol",
+        "timeframe": "1d",
+        "n_rows": 846,
+        "baseline": {
+          "directional_accuracy": 0.4518201284796574,
+          "n_trades": 579,
+          "trade_share": 0.9146919431279621,
+          "post_fee_pnl_pct_total": -231.5290793320151,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633
+        },
+        "augmented": {
+          "directional_accuracy": 0.43254817987152033,
+          "n_trades": 588,
+          "trade_share": 0.9289099526066351,
+          "post_fee_pnl_pct_total": -288.77945420727275,
+          "n_dir_truth_rows": 467,
+          "n_test_rows": 633
+        },
+        "da_lift": -0.01927194860813708,
+        "pnl_delta_pct_total": -57.25037487525765,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1d",
+        "n_rows": 784,
+        "baseline": {
+          "directional_accuracy": 0.44370860927152317,
+          "n_trades": 547,
+          "trade_share": 0.9302721088435374,
+          "post_fee_pnl_pct_total": -184.15653096778306,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588
+        },
+        "augmented": {
+          "directional_accuracy": 0.44370860927152317,
+          "n_trades": 549,
+          "trade_share": 0.9336734693877551,
+          "post_fee_pnl_pct_total": -229.18798194269544,
+          "n_dir_truth_rows": 453,
+          "n_test_rows": 588
+        },
+        "da_lift": 0.0,
+        "pnl_delta_pct_total": -45.03145097491239,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "pepe",
+        "timeframe": "1d",
+        "n_rows": 1059,
+        "baseline": {
+          "directional_accuracy": 0.4570063694267516,
+          "n_trades": 699,
+          "trade_share": 0.8825757575757576,
+          "post_fee_pnl_pct_total": -389.837169781112,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792
+        },
+        "augmented": {
+          "directional_accuracy": 0.4410828025477707,
+          "n_trades": 671,
+          "trade_share": 0.8472222222222222,
+          "post_fee_pnl_pct_total": -312.52788322328195,
+          "n_dir_truth_rows": 628,
+          "n_test_rows": 792
+        },
+        "da_lift": -0.015923566878980888,
+        "pnl_delta_pct_total": 77.30928655783003,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "render-token",
+        "timeframe": "1d",
+        "n_rows": 618,
+        "baseline": {
+          "directional_accuracy": 0.43768115942028984,
+          "n_trades": 405,
+          "trade_share": 0.8766233766233766,
+          "post_fee_pnl_pct_total": -159.13790918511083,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462
+        },
+        "augmented": {
+          "directional_accuracy": 0.45217391304347826,
+          "n_trades": 421,
+          "trade_share": 0.9112554112554112,
+          "post_fee_pnl_pct_total": -196.480421471544,
+          "n_dir_truth_rows": 345,
+          "n_test_rows": 462
+        },
+        "da_lift": 0.014492753623188415,
+        "pnl_delta_pct_total": -37.34251228643316,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      },
+      {
+        "coin": "sei-network",
+        "timeframe": "1d",
+        "n_rows": 126,
+        "skipped_reason": "fewer than 200 rows",
+        "gate_pass": false
+      },
+      {
+        "coin": "worldcoin-wld",
+        "timeframe": "1d",
+        "n_rows": 975,
+        "baseline": {
+          "directional_accuracy": 0.4629294755877034,
+          "n_trades": 671,
+          "trade_share": 0.9204389574759945,
+          "post_fee_pnl_pct_total": -169.31130572502167,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729
+        },
+        "augmented": {
+          "directional_accuracy": 0.4394213381555154,
+          "n_trades": 647,
+          "trade_share": 0.887517146776406,
+          "post_fee_pnl_pct_total": -191.51300174270062,
+          "n_dir_truth_rows": 553,
+          "n_test_rows": 729
+        },
+        "da_lift": -0.023508137432188048,
+        "pnl_delta_pct_total": -22.201696017678955,
+        "gate_pass": false,
+        "gate_floor_da_lift": 0.02,
+        "gate_floor_pnl_pct_total": 0.0,
+        "gate_trade_share_band": [
+          0.4,
+          0.85
+        ],
+        "gate_min_trades": 30
+      }
+    ],
+    "any_slice_passes_gate": false,
+    "passing_slices": []
+  },
+  "candidate_verdicts": [
+    {
+      "name": "vol_of_vol_30",
+      "bucket": "volatility_regime",
+      "timeframes_admitted_stage1": [
+        "1h"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "realizedVol_log",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "2h",
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "ret1_squared",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "1h",
+        "6h"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "ret5_minus_ret10",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "rsi14_centered_squared",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "6h",
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 3,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "bb_pctb_extreme",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "6h",
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "macd_hist_norm_atr",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "reject",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "vol_zscore60_squared",
+      "bucket": "volatility_regime",
+      "timeframes_admitted_stage1": [],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "reject",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": null,
+          "folds_positive_da": null,
+          "folds_positive_pnl": null,
+          "n_folds": null,
+          "stage1_admitted": false,
+          "error": "'volZScore60'"
+        },
+        "6h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "ema_spread_per_atr",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 3,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "atr_pct_zscore_60",
+      "bucket": "volatility_regime",
+      "timeframes_admitted_stage1": [
+        "1h",
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "drawdown_30",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "1h",
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 3,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "btc_lead_x_self_ret",
+      "bucket": "cross_coin_lead_lag",
+      "timeframes_admitted_stage1": [],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "reject",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "eth_lead_minus_btc_lead",
+      "bucket": "cross_coin_lead_lag",
+      "timeframes_admitted_stage1": [],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "reject",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "macd_signal_cross_strength",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "6h",
+        "1d"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 2,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "ret1_x_volZ60",
+      "bucket": "price_derived",
+      "timeframes_admitted_stage1": [
+        "1h"
+      ],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "keep_observing",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 2,
+          "folds_positive_da": 3,
+          "folds_positive_pnl": 2,
+          "n_folds": 3,
+          "stage1_admitted": true,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": null,
+          "folds_positive_da": null,
+          "folds_positive_pnl": null,
+          "n_folds": null,
+          "stage1_admitted": false,
+          "error": "'volZScore60'"
+        },
+        "6h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 3,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 1,
+          "folds_positive_da": 1,
+          "folds_positive_pnl": 1,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "log_liquidations_self",
+      "bucket": "liquidity_funding_oi_spread",
+      "timeframes_admitted_stage1": [],
+      "timeframes_evaluated": [
+        "1h",
+        "2h",
+        "6h",
+        "1d"
+      ],
+      "verdict": "reject",
+      "per_tf_summary": {
+        "1h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "2h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "6h": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        },
+        "1d": {
+          "folds_positive_both": 0,
+          "folds_positive_da": 0,
+          "folds_positive_pnl": 0,
+          "n_folds": 3,
+          "stage1_admitted": false,
+          "error": null
+        }
+      }
+    }
+  ]
+}

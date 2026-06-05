@@ -1,0 +1,96 @@
+Metadata-Version: 2.4
+Name: market-meta-brain
+Version: 0.1.0
+Summary: Production-grade adaptive meta-brain for supervising a quant engine
+Author: OpenAI
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# Market Meta-Brain
+
+A clean-room rebuild of the user's experimental Digital Organism into a finance-native adaptive supervisory brain.
+
+## Mission
+
+This package does **not** predict price and does **not** place trades.
+It sits above a quant engine and emits supervisory directives such as:
+
+- trust multipliers by strategy family
+- allocation weights
+- caution level
+- exploration budget
+- defensive mode
+- suppressed families
+- reason codes
+
+## Design principles
+
+- Quant engine remains the prediction and execution core.
+- Brain is deterministic at the interface level and bounded in adaptation speed.
+- Learning is delayed and outcome-based, not novelty-based.
+- No 2D world logic, no body simulation, no Wikipedia/text learner, no autonomous sandbox loops.
+- Outputs are explainable and easy to log, checkpoint, and shadow test.
+
+## Core runtime loop
+
+1. Quant stack emits telemetry.
+2. State estimator maps telemetry into a market meta-state.
+3. Memory recalls similar market regimes and prior supervisory outcomes.
+4. Trust model updates family trust slowly and safely.
+5. Planner scores supervisory actions.
+6. Policy engine emits a typed directive.
+7. Outcome is logged later as an episode and used for bounded learning.
+
+## Quick start
+
+```python
+from market_meta_brain.runtime.service import MarketMetaBrainService
+from market_meta_brain.domain.types import QuantSliceTelemetry, PortfolioTelemetry, TelemetryBatch
+
+service = MarketMetaBrainService()
+
+batch = TelemetryBatch(
+    slices=[
+        QuantSliceTelemetry(
+            coin="BTC",
+            timeframe="1h",
+            strategy_family="momentum",
+            edge=0.08,
+            confidence=0.72,
+            calibrated_confidence=0.69,
+            risk_score=0.31,
+            recent_accuracy=0.58,
+            pnl_state=0.02,
+            drawdown_state=0.01,
+            disagreement=0.12,
+            prediction_error=0.18,
+            regime="trend",
+            volatility=0.44,
+            correlation_shift=0.11,
+            exposure=0.24,
+            turnover=0.18,
+            slippage_bps=3.0,
+            anomaly_flags=[],
+        )
+    ],
+    portfolio=PortfolioTelemetry(
+        total_drawdown=0.03,
+        realized_vol=0.32,
+        concentration=0.28,
+        leverage=0.14,
+        liquidity_stress=0.08,
+        correlation_shift=0.11,
+        active_risk_budget=0.65,
+        kill_switch_distance=0.82,
+        anomaly_flags=[],
+    )
+)
+
+directive = service.evaluate(batch)
+print(directive)
+```
+
+## Merge guidance
+
+Your Replit quant app should call this package after raw quant signals are produced and before final execution sizing is locked.
+The execution layer should remain fully functional if the meta-brain is disabled.

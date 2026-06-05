@@ -1,0 +1,100 @@
+Good. This is the first useful candidate result.
+
+Do not enable global quant.
+
+Now create the next task:
+
+**Promote BTC/5m C and ETH/5m C into Controlled Paper Proof**
+
+## Goal
+
+Take the two promotion candidates:
+
+* BTC/5m C
+* ETH/5m C
+
+and verify whether they can become real paper-trading champions under strict runtime controls.
+
+## Required checks before any paper trading
+
+For each candidate:
+
+1. Confirm model artifacts exist.
+2. Confirm manifest is clean.
+3. Confirm no forbidden features.
+4. Confirm no synthetic rows.
+5. Confirm feature NaN share within accepted criteria.
+6. Confirm gate metrics:
+
+   * post-fee PnL
+   * trade count
+   * profit factor
+   * max drawdown
+   * average return per trade
+   * baseline comparison
+7. Confirm candidate was selected on validation and survives untouched holdout.
+8. Confirm model can be loaded by runtime.
+9. Confirm prediction output is non-zero confidence.
+10. Confirm it maps to deterministic Core agents only, not legacy agents.
+
+## Controlled paper mode
+
+If both candidates pass the above:
+
+* enable paper trading only for BTC/5m and ETH/5m
+* do not enable other coins
+* do not enable other timeframes
+* do not enable real money
+* do not enable legacy agents
+* keep meta-brain shadow/advisory only
+* dashboard must say:
+  “Controlled paper proof: BTC/5m + ETH/5m only”
+
+## Risk limits
+
+Use strict initial limits:
+
+* max position size: 0.5% paper equity per trade
+* max open positions per coin: 1
+* max daily loss: 1.5%
+* max proof-period drawdown: 5%
+* auto-disable if post-fee PnL is negative after 50 closed trades
+* review after 72 hours or 50 closed trades, whichever comes first
+
+## Required proof after enablement
+
+After one full prediction cycle, prove:
+
+* `/ml/predict` returns real non-zero outputs for BTC/5m and ETH/5m
+* `model_registry` shows champion or equivalent approved serving state through lifecycle, not manual SQL
+* `paper_trades` contains trades only if live gates fire
+* no trades occur for non-approved coins/timeframes
+* dashboard shows the limited scope clearly
+* PnL reconciliation works
+
+## Proof report
+
+Write:
+
+`artifacts/ml-engine/reports/task643-controlled-paper-proof-<timestamp>.md`
+
+Include:
+
+* candidate metrics
+* activation scope
+* first-cycle prediction payloads
+* trade/no-trade result
+* dashboard/API payloads
+* safety limit configuration
+* whether paper proof is actually running
+
+## Hard rules
+
+* no global quant enablement
+* no real money
+* no gate weakening
+* no manual champion SQL update
+* no legacy agent resurrection
+* no other timeframes
+* no other coins
+* no hiding scope on dashboard

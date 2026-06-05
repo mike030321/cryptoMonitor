@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.34923076923076923,
+  "baseline_directional_accuracy": 0.36769230769230765,
+  "lift": -0.018461538461538418,
+  "holdout_rows": 650,
+  "min_directional_accuracy_applied": 0.53,
+  "served_predictor_kind": "lightgbm",
+  "coin": "jupiter-exchange-solana",
+  "timeframe": "1d",
+  "kind": "per_coin"
+}

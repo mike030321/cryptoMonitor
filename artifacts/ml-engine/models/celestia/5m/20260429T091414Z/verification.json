@@ -1,0 +1,13 @@
+{
+  "promoted": true,
+  "reason": "lift_baseline_served",
+  "directional_accuracy": 0.6523781485116127,
+  "baseline_directional_accuracy": 0.6523781485116127,
+  "lift": 0.0,
+  "holdout_rows": 76425,
+  "min_directional_accuracy_applied": 0.5,
+  "served_predictor_kind": "baseline",
+  "coin": "celestia",
+  "timeframe": "5m",
+  "kind": "per_coin"
+}

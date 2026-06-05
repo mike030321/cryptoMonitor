@@ -1,0 +1,29 @@
+{
+  "_doc": "Single source of truth for feature columns the production trading model is forbidden from using. Mirrored by `artifacts/ml-engine/app/training/registry.py:FORBIDDEN_FEATURE_PREFIXES` (the runtime guard reads the python tuple, not this file — they MUST stay in sync). Any new ban added here MUST also be added to that tuple. Task #580 introduced this manifest as the cross-checked reference for the feature-edge search; the search refuses to admit a candidate whose name matches any prefix here.",
+  "policy": {
+    "rationale": "The Quant-Only contract (task #365) requires every trade decision to be derivable from real, deterministic, point-in-time market data. LLM/news/sentiment/social channels are excluded permanently because they (a) reduce reproducibility of the trade history, (b) introduce vendor and prompt-version coupling, (c) historically produced near-zero realized lift after fees, and (d) blur the audit trail of WHY a position opened. See `artifacts/ml-engine/app/training/registry.py` lines 928-939 for the registry-level guard.",
+    "scope": "Applied at three points: (1) `feature_edge_search` candidate admission, (2) `app/training/approved_features.py` Feature-Lab approval flow, (3) `registry.save_model` / `registry.load_model` runtime guards.",
+    "extending": "To ban a new pattern, add the prefix to `prefixes` AND to `FORBIDDEN_FEATURE_PREFIXES` in `app/training/registry.py`. Adding to only one is a contract bug."
+  },
+  "prefixes": [
+    "news_",
+    "llm_",
+    "gpt_",
+    "sentiment_",
+    "ai_"
+  ],
+  "explicitly_banned_sources": [
+    "news headlines (any vendor)",
+    "GPT / Claude / Gemini / open-source LLM completions",
+    "social media sentiment streams (Twitter/X, Reddit, Telegram)",
+    "third-party sentiment scores (LunarCrush, Santiment, etc.)",
+    "any feature whose value is produced by another model whose own inputs are not in this file's allow-list"
+  ],
+  "allowed_sources": [
+    "price-derived: returns, log-returns, rolling vol, momentum, RSI/MACD/ATR derivatives, drawdown features",
+    "volatility/regime: realized vol, vol-of-vol, regime classifiers from price-only series, jump indicators",
+    "cross-coin lead-lag: lagged returns of BTC/ETH/SOL (or other monitored majors) relative to the target coin",
+    "liquidity/funding/OI/spread: any field already present in real data we ingest (funding_rate, open_interest_z, liquidations_*_usd, bid_ask_spread_bps)",
+    "session: deterministic functions of timestamp_ms (asia/eu/us flag, hour-of-day sin/cos)"
+  ]
+}

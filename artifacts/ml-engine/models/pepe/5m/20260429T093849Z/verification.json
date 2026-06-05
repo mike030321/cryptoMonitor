@@ -1,0 +1,13 @@
+{
+  "promoted": true,
+  "reason": "lift_baseline_served",
+  "directional_accuracy": 0.5905261088907816,
+  "baseline_directional_accuracy": 0.5905261088907816,
+  "lift": 0.0,
+  "holdout_rows": 76315,
+  "min_directional_accuracy_applied": 0.5,
+  "served_predictor_kind": "baseline",
+  "coin": "pepe",
+  "timeframe": "5m",
+  "kind": "per_coin"
+}

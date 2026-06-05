@@ -1,0 +1,174 @@
+Current priority: keep the system truthful, functional, and evidence-driven while the long-running training campaign finishes.
+
+Do **not** force higher-timeframe promotion.
+Do **not** weaken gates.
+Do **not** turn quant on just because some code path can run.
+Do **not** add new architecture until the current evidence is fully captured.
+
+## Current reality
+
+The training campaign is running on real data and appears to be producing honest results:
+
+* 1m slices are promotable from prior run.
+* 1h / 1d slices are currently failing gates badly.
+* Higher-timeframe directional accuracy appears below usable thresholds.
+* This looks like a signal-quality issue, not a pipeline bug.
+* The system should remain honest about that.
+
+## What I want you to do now
+
+### 1. Let the campaign finish and capture the result
+
+When the workflow completes, write a clear campaign result report.
+
+Include:
+
+* promoted slice count by timeframe
+* rejected slice count by reason
+* directional accuracy vs baseline by slice
+* post-fee PnL by slice
+* AUC vs baseline
+* directional_call_share
+* stable share
+* watchdog pauses/resumes
+* whether any slice actually deserves trade authority
+
+Save all raw evidence.
+
+### 2. Do not weaken gates
+
+Keep:
+
+* directional accuracy floors
+* baseline comparison
+* post-fee PnL checks
+* directional-call regression checks
+* holdout row minimums
+
+If higher timeframes fail, report that they fail.
+
+### 3. Keep quant disabled unless a valid promoted slice is ready
+
+Do not flip `quant_brain_enabled=true` unless the enabled scope is explicit and backed by proof.
+
+If only 1m is promotable, say:
+
+* “1m-only trading possible”
+* and separately evaluate whether costs make that wise.
+
+Do not silently enable all horizons.
+
+### 4. Separate horizons by role
+
+After the campaign finishes, classify each timeframe into one of:
+
+* trade-authority candidate
+* shadow-only candidate
+* governance/filter-only candidate
+* retired / inactive
+
+Do this based on evidence, not hope.
+
+My current expectation:
+
+* 1m: possible trade candidate, but cost-sensitive
+* 5m: maybe, depending on evidence
+* 1h/2h/6h/1d: likely governance/filter-only unless evidence improves
+
+### 5. Make the dashboard reflect this truth
+
+Dashboard should not imply that all horizons are live or trading.
+
+Show:
+
+* which timeframes are trade-enabled
+* which are shadow-only
+* which are governance-only
+* which are disabled
+* why
+
+### 6. Protect the meta-brain from bad training signal
+
+If no real executor trades are flowing, meta-brain should say:
+
+* replaying telemetry
+* not committing trust updates
+* not enough attributed trades
+* no live learning yet
+
+Do not pretend it is learning if thresholds are not met.
+
+### 7. Prepare the next targeted fix
+
+If campaign confirms higher-timeframe failure, prepare a focused follow-up task.
+
+Most likely next task:
+**Predict-time STABLE / abstain bias for weak directional calls**
+
+Goal:
+
+* reduce bad forced directional calls
+* increase abstention when edge is weak
+* improve post-fee outcomes
+* do not weaken promotion gates
+
+Also prepare dataset refresh as hygiene:
+
+* refresh cached training parquets
+* rerun verification after fresh data
+* prove whether staleness mattered
+
+### 8. Maintain proof discipline
+
+Every claim must include:
+
+* report path
+* workflow logs
+* model metrics
+* DB/API evidence where relevant
+
+Do not say “looks better.”
+Say:
+
+* what improved
+* by how much
+* on which slice
+* against which baseline
+* whether it survived costs
+
+## Final output I want
+
+When the campaign finishes, return:
+
+### A. Campaign verdict
+
+Promoted / rejected by timeframe.
+
+### B. Trade-readiness table
+
+For each timeframe:
+
+* trade authority: yes/no
+* reason
+* best slice
+* DA
+* baseline DA
+* post-fee PnL
+* directional_call_share
+
+### C. Recommended runtime state
+
+* quant disabled
+* 1m-only shadow
+* 1m paper enabled
+* all higher TF governance-only
+  or another evidence-backed state.
+
+### D. Follow-up tasks
+
+Only tasks justified by evidence.
+
+## Hard rule
+
+The system’s job right now is not to trade.
+The system’s job right now is to tell the truth and only trade when the proof says it deserves to.

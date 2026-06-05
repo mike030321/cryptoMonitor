@@ -1,0 +1,190 @@
+{
+  "policy_version": "v3-calibrated-2026-04-22",
+  "thresholds": {
+    "min_directional_prob": 0.08,
+    "min_directional_edge": 0.05,
+    "min_expected_return_pct": 0.15
+  },
+  "cases": [
+    {
+      "label": "emit_up_strong",
+      "p_down": 0.1,
+      "p_stable": 0.35,
+      "p_up": 0.55,
+      "expected_return_pct": 1.5,
+      "expected_side": "up",
+      "expected_confidence": 0.55,
+      "expected_reason": null
+    },
+    {
+      "label": "emit_down_strong",
+      "p_down": 0.55,
+      "p_stable": 0.35,
+      "p_up": 0.1,
+      "expected_return_pct": -1.5,
+      "expected_side": "down",
+      "expected_confidence": 0.55,
+      "expected_reason": null
+    },
+    {
+      "label": "emit_up_thin_edge",
+      "p_down": 0.03,
+      "p_stable": 0.85,
+      "p_up": 0.12,
+      "expected_return_pct": 1.5,
+      "expected_side": "up",
+      "expected_confidence": 0.12,
+      "expected_reason": null
+    },
+    {
+      "label": "emit_down_thin_edge",
+      "p_down": 0.2,
+      "p_stable": 0.65,
+      "p_up": 0.07,
+      "expected_return_pct": -1.5,
+      "expected_side": "down",
+      "expected_confidence": 0.2,
+      "expected_reason": null
+    },
+    {
+      "label": "abstain_low_dir_prob_up_max",
+      "p_down": 0.05,
+      "p_stable": 0.92,
+      "p_up": 0.03,
+      "expected_return_pct": 1.5,
+      "expected_side": null,
+      "expected_confidence": 0.92,
+      "expected_reason": "abstain_low_directional_prob"
+    },
+    {
+      "label": "abstain_low_dir_prob_tie",
+      "p_down": 0.07,
+      "p_stable": 0.86,
+      "p_up": 0.07,
+      "expected_return_pct": 0.16,
+      "expected_side": null,
+      "expected_confidence": 0.86,
+      "expected_reason": "abstain_low_directional_prob"
+    },
+    {
+      "label": "abstain_no_edge_equal",
+      "p_down": 0.4,
+      "p_stable": 0.2,
+      "p_up": 0.4,
+      "expected_return_pct": 1.5,
+      "expected_side": null,
+      "expected_confidence": 0.2,
+      "expected_reason": "abstain_no_directional_edge"
+    },
+    {
+      "label": "abstain_no_edge_close",
+      "p_down": 0.3,
+      "p_stable": 0.39,
+      "p_up": 0.31,
+      "expected_return_pct": 1.5,
+      "expected_side": null,
+      "expected_confidence": 0.39,
+      "expected_reason": "abstain_no_directional_edge"
+    },
+    {
+      "label": "abstain_no_edge_just_below",
+      "p_down": 0.1,
+      "p_stable": 0.78,
+      "p_up": 0.12,
+      "expected_return_pct": 1.5,
+      "expected_side": null,
+      "expected_confidence": 0.78,
+      "expected_reason": "abstain_no_directional_edge"
+    },
+    {
+      "label": "abstain_exp_ret_tiny_pos",
+      "p_down": 0.1,
+      "p_stable": 0.35,
+      "p_up": 0.55,
+      "expected_return_pct": 0.05,
+      "expected_side": null,
+      "expected_confidence": 0.35,
+      "expected_reason": "abstain_exp_ret_below_cost"
+    },
+    {
+      "label": "abstain_exp_ret_tiny_neg",
+      "p_down": 0.55,
+      "p_stable": 0.35,
+      "p_up": 0.1,
+      "expected_return_pct": -0.05,
+      "expected_side": null,
+      "expected_confidence": 0.35,
+      "expected_reason": "abstain_exp_ret_below_cost"
+    },
+    {
+      "label": "abstain_exp_ret_zero",
+      "p_down": 0.1,
+      "p_stable": 0.35,
+      "p_up": 0.55,
+      "expected_return_pct": 0,
+      "expected_side": null,
+      "expected_confidence": 0.35,
+      "expected_reason": "abstain_exp_ret_below_cost"
+    },
+    {
+      "label": "abstain_exp_ret_just_below_floor",
+      "p_down": 0.1,
+      "p_stable": 0.35,
+      "p_up": 0.55,
+      "expected_return_pct": 0.14,
+      "expected_side": null,
+      "expected_confidence": 0.35,
+      "expected_reason": "abstain_exp_ret_below_cost"
+    },
+    {
+      "label": "abstain_disagree_up_negret",
+      "p_down": 0.1,
+      "p_stable": 0.35,
+      "p_up": 0.55,
+      "expected_return_pct": -1.5,
+      "expected_side": null,
+      "expected_confidence": 0.35,
+      "expected_reason": "abstain_exp_ret_disagrees"
+    },
+    {
+      "label": "abstain_disagree_down_posret",
+      "p_down": 0.55,
+      "p_stable": 0.35,
+      "p_up": 0.1,
+      "expected_return_pct": 1.5,
+      "expected_side": null,
+      "expected_confidence": 0.35,
+      "expected_reason": "abstain_exp_ret_disagrees"
+    },
+    {
+      "label": "boundary_dir_prob_at_threshold",
+      "p_down": 0.03,
+      "p_stable": 0.84,
+      "p_up": 0.08,
+      "expected_return_pct": 0.16,
+      "expected_side": "up",
+      "expected_confidence": 0.08,
+      "expected_reason": null
+    },
+    {
+      "label": "boundary_dir_edge_at_threshold",
+      "p_down": 0.08,
+      "p_stable": 0.79,
+      "p_up": 0.13,
+      "expected_return_pct": 0.16,
+      "expected_side": "up",
+      "expected_confidence": 0.13,
+      "expected_reason": null
+    },
+    {
+      "label": "boundary_exp_ret_at_floor",
+      "p_down": 0.1,
+      "p_stable": 0.35,
+      "p_up": 0.55,
+      "expected_return_pct": 0.15,
+      "expected_side": "up",
+      "expected_confidence": 0.55,
+      "expected_reason": null
+    }
+  ]
+}

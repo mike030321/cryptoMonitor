@@ -1,0 +1,151 @@
+{
+  "_doc": "Task #580 candidate-feature spec. Each entry is a deterministic, point-in-time, real-data-only transform of columns already present in the persisted training-frame snapshots under `artifacts/ml-engine/models/datasets/<tf>_<ts>.parquet`. The runner (`scripts/feature_edge_search/run_search.py`) walks this list, applies the named transform per row, and runs walk-forward LightGBM ablation per timeframe. Cross-checked against `shared/forbidden-features.json`: NO entry has a name beginning with any forbidden prefix; NO entry consumes a column derived from LLM/news/sentiment/social.",
+  "version": "1",
+  "checked_against_forbidden_manifest": "shared/forbidden-features.json",
+  "candidates": [
+    {
+      "name": "vol_of_vol_30",
+      "bucket": "volatility_regime",
+      "math": "rolling 30-bar standard deviation of `realizedVol`, computed strictly on rows with timestamp_ms <= row.timestamp_ms (window expanding-then-trailing).",
+      "source_columns": ["realizedVol"],
+      "max_lookback": 30,
+      "max_lookforward": 0,
+      "rationale": "Captures regime instability — high vol-of-vol periods typically have less reliable directional structure, low vol-of-vol periods are quieter and may admit predictable mean-reversion."
+    },
+    {
+      "name": "realizedVol_log",
+      "bucket": "price_derived",
+      "math": "log1p(abs(realizedVol)).",
+      "source_columns": ["realizedVol"],
+      "max_lookback": 30,
+      "max_lookforward": 0,
+      "rationale": "Tames the realizedVol heavy tail so the booster can split on the log-scale magnitude without one extreme bar dominating the leaf split."
+    },
+    {
+      "name": "ret1_squared",
+      "bucket": "price_derived",
+      "math": "ret1 * ret1.",
+      "source_columns": ["ret1"],
+      "max_lookback": 1,
+      "max_lookforward": 0,
+      "rationale": "Local volatility surrogate. Decoupling magnitude from direction lets the booster learn `large move at all` separately from `up vs down`."
+    },
+    {
+      "name": "ret5_minus_ret10",
+      "bucket": "price_derived",
+      "math": "ret5 - ret10.",
+      "source_columns": ["ret5", "ret10"],
+      "max_lookback": 10,
+      "max_lookforward": 0,
+      "rationale": "Momentum-divergence: positive when the most recent 5 bars accelerate vs the 10-bar baseline."
+    },
+    {
+      "name": "rsi14_centered_squared",
+      "bucket": "price_derived",
+      "math": "(rsi14 - 50) ** 2.",
+      "source_columns": ["rsi14"],
+      "max_lookback": 14,
+      "max_lookforward": 0,
+      "rationale": "RSI extremity magnitude (overbought OR oversold). Directionless reversal-pressure proxy."
+    },
+    {
+      "name": "bb_pctb_extreme",
+      "bucket": "price_derived",
+      "math": "abs(bbPctB - 0.5).",
+      "source_columns": ["bbPctB"],
+      "max_lookback": 20,
+      "max_lookforward": 0,
+      "rationale": "Distance from the Bollinger middle as a fraction of the band width. Magnitude-only band-edge proximity signal."
+    },
+    {
+      "name": "macd_hist_norm_atr",
+      "bucket": "price_derived",
+      "math": "macdHist / max(atr14, 1e-9).",
+      "source_columns": ["macdHist", "atr14"],
+      "max_lookback": 35,
+      "max_lookforward": 0,
+      "rationale": "ATR-normalized MACD histogram. Removes the absolute-price scale so the booster can compare a 1c MACD jiggle on PEPE vs a $50 jiggle on RNDR fairly."
+    },
+    {
+      "name": "vol_zscore60_squared",
+      "bucket": "volatility_regime",
+      "math": "volZScore60 ** 2.",
+      "source_columns": ["volZScore60"],
+      "max_lookback": 60,
+      "max_lookforward": 0,
+      "rationale": "Spike-strength magnitude. Existing volZScore60 column gives the signed deviation; the square gives the unsigned shock size."
+    },
+    {
+      "name": "ema_spread_per_atr",
+      "bucket": "price_derived",
+      "math": "emaSpreadPct / max(atrPct, 1e-9).",
+      "source_columns": ["emaSpreadPct", "atrPct"],
+      "max_lookback": 21,
+      "max_lookforward": 0,
+      "rationale": "Trend-strength normalized by realized volatility. A large EMA spread is only `meaningful trend` if it dwarfs the typical bar range."
+    },
+    {
+      "name": "atr_pct_zscore_60",
+      "bucket": "volatility_regime",
+      "math": "(atrPct - rolling_mean(atrPct, 60)) / max(rolling_std(atrPct, 60), 1e-9). Strict trailing window; first 60 rows per (coin, tf) are NaN-filled with 0.",
+      "source_columns": ["atrPct"],
+      "max_lookback": 60,
+      "max_lookforward": 0,
+      "rationale": "Volatility regime indicator computed point-in-time per coin. Independent of `volZScore60` (which uses |ret1|)."
+    },
+    {
+      "name": "drawdown_30",
+      "bucket": "price_derived",
+      "math": "(lastPrice - rolling_max(lastPrice, 30)) / rolling_max(lastPrice, 30) * 100. Strict trailing 30-bar window.",
+      "source_columns": ["lastPrice"],
+      "max_lookback": 30,
+      "max_lookforward": 0,
+      "rationale": "Local drawdown magnitude (always <= 0). Captures `how far below recent peak` independent of absolute price."
+    },
+    {
+      "name": "btc_lead_x_self_ret",
+      "bucket": "cross_coin_lead_lag",
+      "math": "btc_lead_ret_5m * sign(ret1).",
+      "source_columns": ["btc_lead_ret_5m", "ret1"],
+      "max_lookback": 1,
+      "max_lookforward": 0,
+      "rationale": "Cross-coin alignment: positive when BTC's recent move agrees with the target coin's last bar direction. Feature-lab task #517 added volZScore60 in isolation; this is the natural cross-coin sibling."
+    },
+    {
+      "name": "eth_lead_minus_btc_lead",
+      "bucket": "cross_coin_lead_lag",
+      "math": "eth_lead_ret_5m - btc_lead_ret_5m.",
+      "source_columns": ["eth_lead_ret_5m", "btc_lead_ret_5m"],
+      "max_lookback": 1,
+      "max_lookforward": 0,
+      "rationale": "BTC vs ETH dispersion: positive when ETH leads BTC, often a risk-on tell for alts."
+    },
+    {
+      "name": "macd_signal_cross_strength",
+      "bucket": "price_derived",
+      "math": "(1 if macdLine > macdSignal else -1) * abs(macdHist).",
+      "source_columns": ["macdLine", "macdSignal", "macdHist"],
+      "max_lookback": 35,
+      "max_lookforward": 0,
+      "rationale": "Signed cross-strength: combines direction (line above/below signal) with magnitude (histogram). Reduces the booster's need to find this interaction by tree splits."
+    },
+    {
+      "name": "ret1_x_volZ60",
+      "bucket": "price_derived",
+      "math": "ret1 * volZScore60.",
+      "source_columns": ["ret1", "volZScore60"],
+      "max_lookback": 60,
+      "max_lookforward": 0,
+      "rationale": "Direction × shock magnitude. A 1% move during a vol-spike episode often persists differently than the same 1% move in a quiet regime."
+    },
+    {
+      "name": "log_liquidations_self",
+      "bucket": "liquidity_funding_oi_spread",
+      "math": "log1p(liquidations_1h_usd). Falls back to 0 when source column is NaN/missing.",
+      "source_columns": ["liquidations_1h_usd"],
+      "max_lookback": 1,
+      "max_lookforward": 0,
+      "rationale": "Liquidation pressure on the target coin. Real-data-only — uses an already-ingested column. Note: column is mostly zero in current snapshots; ablation will measure whether the non-zero tail carries any lift."
+    }
+  ]
+}

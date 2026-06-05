@@ -1,0 +1,450 @@
+Create a new research task:
+
+# Calculate Best Gate Values from Real Historical Performance
+
+## Goal
+
+Do **not** hardcode guessed gate values.
+
+Use the app’s real historical data, real model outputs, real costs, and walk-forward validation to calculate the best learning/trading gate values possible.
+
+The purpose is to answer:
+
+> Are our current gates too strict, misaligned, or correctly blocking bad models?
+
+And:
+
+> Is there a sparse subset of model predictions that could trade profitably after fees?
+
+## Important
+
+This is a **research-only task**.
+
+Do not:
+
+* enable quant
+* promote champions
+* flip `quant_brain_enabled`
+* weaken live gates
+* edit fee/slippage constants
+* use synthetic data
+* use LLM/news/sentiment features
+* change production trading behavior
+
+This task only calculates and reports the best candidate gate values.
+
+---
+
+# Data sources
+
+Use only real app data:
+
+* prediction_journal / predictions
+* model_predictions
+* paper_trades
+* paper_position_marks
+* model_registry
+* model manifests / verification reports
+* cached training parquets
+* real OHLCV candles
+* real market_signals
+* shared/trading-frictions.json
+* Strategy Lab baseline snapshots where appropriate
+
+Do not invent missing values.
+
+If data is missing, mark it missing and exclude that test case.
+
+---
+
+# Study design
+
+## 1. Inventory candidate models and slices
+
+For every available model/slice:
+
+* coin
+* timeframe
+* model_version
+* model state: shadow/champion/etc.
+* training window
+* holdout window
+* number of predictions
+* number of resolved outcomes
+* current gate verdict
+* current failure reason
+
+Include both:
+
+* models that failed promotion
+* any previously promoted/passing models
+
+---
+
+## 2. Reconstruct prediction outcomes
+
+For each historical prediction row, reconstruct:
+
+* predicted direction/action
+* confidence
+* expected return
+* probabilities
+* timeframe
+* coin
+* model_version
+* fallback status
+* regime
+* spread/fee/slippage context
+* actual future return at horizon
+* post-fee return
+* whether trade would have been profitable
+* adverse excursion if available
+* favorable excursion if available
+
+Important:
+inputs must be known-at-the-time only.
+
+No future leakage.
+
+---
+
+## 3. Split chronologically
+
+Do not tune and evaluate on the same data.
+
+Use chronological splitting:
+
+* train / calibration period
+* validation period for choosing gate values
+* untouched final holdout period for proof
+
+Suggested:
+
+* 60% train/history
+* 20% validation
+* 20% final holdout
+
+Or use walk-forward folds if already available.
+
+---
+
+# Gate values to sweep
+
+Run a grid or efficient search over candidate gate values.
+
+## A. Confidence threshold
+
+Test:
+
+* 0.50
+* 0.55
+* 0.60
+* 0.65
+* 0.70
+* 0.75
+* 0.80
+
+## B. Expected edge threshold
+
+Use round-trip cost multiples:
+
+* 1.0x cost
+* 1.2x cost
+* 1.5x cost
+* 2.0x cost
+* 3.0x cost
+
+Example:
+if round-trip cost is 0.30%, test required edge:
+
+* 0.30%
+* 0.36%
+* 0.45%
+* 0.60%
+* 0.90%
+
+## C. Top-confidence bucket
+
+Test sparse trading buckets:
+
+* top 1%
+* top 2.5%
+* top 5%
+* top 10%
+* top 20%
+
+## D. Trade-rate caps
+
+Test max trade rates:
+
+* 0.25%
+* 0.5%
+* 1%
+* 2.5%
+* 5%
+* 10%
+
+## E. Directional probability gap
+
+Test minimum probability edge:
+
+`abs(P_up - P_down)`:
+
+* 0.05
+* 0.10
+* 0.15
+* 0.20
+* 0.25
+* 0.30
+
+## F. Stable / no-trade threshold
+
+Test:
+
+* require `P_stable < 0.50`
+* require `P_stable < 0.45`
+* require `P_stable < 0.40`
+* require `P_stable < 0.35`
+
+## G. Horizon-specific settings
+
+Run the optimization separately per timeframe:
+
+* 1m
+* 5m
+* 1h
+* 2h
+* 6h
+* 1d
+
+Do not assume one global setting fits every timeframe.
+
+---
+
+# Metrics to calculate
+
+For each candidate gate configuration, calculate:
+
+## Prediction quality
+
+* directional accuracy
+* directional accuracy vs baseline
+* Brier score
+* log loss
+* calibration error
+* directional_call_share
+
+## Trading quality
+
+* number of trades
+* trade rate
+* post-fee net PnL
+* average net return per trade
+* median net return per trade
+* gross PnL
+* total fees
+* fee drag
+* profit factor
+* max drawdown
+* win rate
+* average win
+* average loss
+* return/drawdown ratio
+* longest losing streak
+
+## Sparse quality
+
+* top bucket PnL
+* top bucket precision
+* top bucket drawdown
+* PnL by confidence bucket
+* PnL by expected-edge bucket
+* PnL by regime
+* PnL by family
+
+## Benchmark comparison
+
+Compare to:
+
+* Buy & Hold
+* DCA + Circuit Breaker
+* Trend Filter
+* no-trade baseline
+
+Only compare on the same time window.
+
+---
+
+# Candidate selection rules
+
+A candidate gate configuration is only valid if it passes on the **untouched final holdout**, not just validation.
+
+## Research candidate minimum
+
+* final holdout trades >= 20
+* post-fee net PnL > 0
+* profit factor > 1.10
+* max drawdown < 10%
+* average net return per trade > 1.0x round-trip cost
+
+## Paper-trading candidate minimum
+
+* final holdout trades >= 30
+* post-fee net PnL > 0
+* profit factor > 1.20
+* max drawdown < 8%
+* average net return per trade > 1.2x round-trip cost
+* baseline-adjusted return/drawdown > 0
+
+## Strong candidate
+
+* final holdout trades >= 50
+* post-fee net PnL > 0
+* profit factor > 1.30
+* max drawdown < 6%
+* average net return per trade > 1.5x round-trip cost
+* beats Strategy Lab baselines on return/drawdown
+
+---
+
+# Anti-overfit rules
+
+Do not select a gate just because it produces one amazing result.
+
+Reject configurations if:
+
+* trade count is too low to trust
+* validation works but holdout fails
+* performance comes from one coin only
+* performance comes from one lucky period only
+* fees consume most gross PnL
+* drawdown is too high
+* signal disappears after excluding one trade
+* result is not better than no-trade / baseline
+
+Add a sensitivity check:
+
+For the best gate, test nearby settings.
+If tiny threshold changes destroy the result, mark it unstable.
+
+---
+
+# Output reports
+
+Write reports under:
+
+`artifacts/ml-engine/reports/gate_optimization_<timestamp>/`
+
+Required files:
+
+## 1. `gate_optimization_summary.md`
+
+Include:
+
+* best candidate gates per timeframe
+* best candidate gates per family if available
+* whether any rejected model has sparse profitable behavior
+* whether current DA gates are too strict/misaligned
+* recommended new PnL-first gate values
+* honest conclusion
+
+## 2. `gate_optimization_results.csv`
+
+One row per gate configuration:
+
+* coin
+* timeframe
+* model_version
+* confidence_threshold
+* edge_cost_multiple
+* top_bucket
+* trade_rate_cap
+* prob_gap_threshold
+* stable_threshold
+* validation metrics
+* holdout metrics
+* pass/fail reason
+
+## 3. `best_candidates.csv`
+
+Only configurations that pass the final holdout candidate rules.
+
+## 4. `rejected_due_to_overfit.csv`
+
+Candidates that looked good on validation but failed holdout.
+
+## 5. `recommended_gate_values.json`
+
+Machine-readable recommended gates, for example:
+
+```json
+{
+  "1m": {
+    "mode": "paper_candidate",
+    "min_confidence": 0.7,
+    "min_edge_cost_multiple": 1.5,
+    "max_trade_rate": 0.025,
+    "min_prob_gap": 0.15,
+    "max_stable_prob": 0.4,
+    "min_holdout_trades": 30,
+    "min_profit_factor": 1.2,
+    "max_drawdown": 0.08
+  }
+}
+```
+
+If no valid gates exist, write:
+
+```json
+{
+  "verdict": "no_profitable_sparse_gate_found"
+}
+```
+
+---
+
+# Final decision required
+
+At the end, choose one:
+
+## A. Current gates are correct
+
+No sparse profitable subset found. Models truly lack edge.
+
+## B. Current gates are too DA-focused
+
+Sparse profitable subsets exist. Recommend a new PnL-first promotion gate.
+
+## C. Data insufficient
+
+Not enough resolved predictions/trades to calculate reliable gate values.
+
+## D. Objective mismatch
+
+Gate optimization shows the current labels are unsuitable; proceed to label re-engineering.
+
+---
+
+# Hard rules
+
+* no synthetic data
+* no future leakage
+* no production behavior changes
+* no champion promotion
+* no quant enablement
+* no fee/slippage edits
+* no handpicked lucky result
+* no single-slice cherry-picking
+* report failure honestly
+
+## Success condition
+
+The task succeeds if it produces a truthful answer:
+
+* best candidate gate values found, with proof,
+  OR
+* no gate values work, with proof,
+  OR
+* data is insufficient, with proof.
+
+The task fails only if it changes production behavior, weakens gates silently, or reports a handpicked result without holdout proof.

@@ -1,0 +1,93 @@
+Do not rerun Task #640 or any same-architecture LightGBM 3-class retrain.
+
+Accept Outcome B as the final verdict for the current architecture:
+
+* maximum honest history tested
+* expanded universe tested
+* no champions
+* data depth is not the binding constraint
+* current 3-class directional objective lacks edge
+
+Please repropose #642 as the next research task, but make it clear this is a **new label/objective research direction**, not another same-architecture retrain.
+
+## Task direction
+
+Use:
+
+**Quintile-Based / Sparse Opportunity Labels**
+
+## Goal
+
+Replace the current UP/DOWN/STABLE directional target with a label design that tries to identify rare tradeable opportunities after costs.
+
+The current model asks:
+
+“Will price go up/down/stable?”
+
+The new research should ask:
+
+“Is this candle in the top-quality subset of future post-cost opportunity?”
+
+## Requirements
+
+Compare the current 3-class label against at least one new label family:
+
+### Candidate A — quintile future-return labels
+
+Bucket future post-cost returns into quintiles, such as:
+
+* Q5 = strongest long opportunity
+* Q1 = strongest short opportunity
+* Q2–Q4 = no-trade / weak opportunity
+
+### Candidate B — sparse trade/no-trade labels
+
+Label only the strongest future opportunities as trade candidates:
+
+* long_candidate
+* short_candidate
+* no_trade
+
+### Candidate C — post-cost opportunity labels
+
+Use fees/slippage/friction in the label:
+
+* trade only if future move exceeds round-trip cost + safety margin
+
+## Evaluation
+
+Do not judge success by directional accuracy alone.
+
+Evaluate:
+
+* post-fee net PnL
+* trade count
+* average return per trade
+* max drawdown
+* precision of selected trades
+* directional_call_share
+* abstain/no-trade rate
+* comparison to baseline
+* calibration of trade probability
+
+## Hard rules
+
+* no synthetic data
+* no LLM/news/sentiment features
+* no gate weakening for existing 3-class architecture
+* no manual champion promotion
+* no manual quant flag flip
+* no real money
+* no second same-architecture retrain
+* this must be treated as a new objective/label experiment
+
+## Deliverable
+
+Return a research verdict:
+
+1. Does quintile/sparse labeling produce a model that identifies fewer but better trades?
+2. Does post-fee PnL improve versus the current 3-class model?
+3. Is there a candidate worth promoting into a new gated pipeline?
+4. If not, what exact failure mode remains?
+
+Do not implement live trading from this task unless a separate follow-up explicitly approves a new promotion gate for the new objective.

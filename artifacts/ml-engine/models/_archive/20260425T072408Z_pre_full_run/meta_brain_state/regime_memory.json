@@ -1,0 +1,5 @@
+{
+  "capacity": 64,
+  "match_threshold": 0.92,
+  "prototypes": []
+}

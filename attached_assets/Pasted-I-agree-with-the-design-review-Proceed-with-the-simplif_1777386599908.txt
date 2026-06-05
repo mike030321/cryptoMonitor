@@ -1,0 +1,74 @@
+I agree with the design review.
+
+Proceed with the simplified architecture:
+
+## Approved amendments
+
+### 1. Use 4 roles only
+
+Use:
+
+* `trade`
+* `shadow`
+* `context`
+* `disabled`
+
+Do not use the earlier 6-role schema.
+
+Use subfields instead:
+
+* `context_subkind`: `filter | regime | risk_state`
+* `disabled_reason`: `by_data | by_gate | by_operator | by_safety`
+
+### 2. Keep promotion per-slice
+
+A timeframe role is not enough to authorize trading.
+
+Runtime trade authorization must require BOTH:
+
+* the slice is promoted / model available
+* the timeframe role is `trade`
+
+### 3. Wait for the campaign verdict before seeding final role values
+
+Do not invent final evidence refs before the report exists.
+
+Wait for #549 / the campaign verdict report, then seed `shared/timeframe-roles.json` with evidence references.
+
+### 4. Meta-brain must understand roles
+
+`slice_role` must be included in the meta-brain telemetry.
+
+The meta-brain must distinguish:
+
+* trade-roled outcomes
+* shadow outcomes
+* context-only telemetry
+* disabled timeframes
+
+Trust updates should count only appropriate trade-roled outcomes.
+Context signals may be used for analysis/governance, but not as if they were trade-authority outcomes.
+
+### 5. Do not flip quant on
+
+This design does not authorize turning on `quant_brain_enabled`.
+
+That remains a separate operator decision after evidence and cost review.
+
+## Task updates
+
+Please revise the proposed tasks:
+
+* #549 remains the precondition / campaign verdict
+* #550 becomes the 4-role Horizon Role Registry + runtime gate
+* #551 dashboard card consumes the new API
+* add or include the meta-brain telemetry partitioning by role, depending on task size
+
+## Hard rules
+
+* no gate weakening
+* no global quant enablement
+* no timeframe trading unless role=`trade` AND slice is promoted
+* no role inflation beyond the 4-role enum
+* fail closed on missing/malformed `shared/timeframe-roles.json`
+* dashboard must say `TRADE-ELIGIBLE`, not `TRADING`, unless trade authority is actually enabled

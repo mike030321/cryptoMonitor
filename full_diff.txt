@@ -1,0 +1,375 @@
+diff --git a/artifacts/api-server/package.json b/artifacts/api-server/package.json
+index 42845a3..5706909 100644
+--- a/artifacts/api-server/package.json
++++ b/artifacts/api-server/package.json
+@@ -15,7 +15,6 @@
+     "@workspace/api-zod": "workspace:*",
+     "@workspace/db": "workspace:*",
+     "@workspace/integrations-openai-ai-server": "workspace:*",
+-    "cookie-parser": "^1.4.7",
+     "cors": "^2",
+     "drizzle-orm": "catalog:",
+     "express": "^5",
+@@ -23,7 +22,6 @@
+     "pino-http": "^10"
+   },
+   "devDependencies": {
+-    "@types/cookie-parser": "^1.4.10",
+     "@types/cors": "^2.8.19",
+     "@types/express": "^5.0.6",
+     "@types/node": "catalog:",
+diff --git a/artifacts/api-server/src/lib/agent-evolution.ts b/artifacts/api-server/src/lib/agent-evolution.ts
+index 977618d..f61a15e 100644
+--- a/artifacts/api-server/src/lib/agent-evolution.ts
++++ b/artifacts/api-server/src/lib/agent-evolution.ts
+@@ -68,7 +68,7 @@ function agentRowToPersonality(agent: typeof agentsTable.$inferSelect): AgentPer
+   };
+ }
+ 
+-export async function loadPersonalitiesFromDB(): Promise<void> {
++async function loadPersonalitiesFromDB(): Promise<void> {
+   const activeAgents = await db.select().from(agentsTable).where(eq(agentsTable.isActive, true));
+ 
+   const personalities: AgentPersonality[] = activeAgents.map(agent => {
+diff --git a/artifacts/api-server/src/lib/agent-specialization.ts b/artifacts/api-server/src/lib/agent-specialization.ts
+index 467a2ea..d7093ae 100644
+--- a/artifacts/api-server/src/lib/agent-specialization.ts
++++ b/artifacts/api-server/src/lib/agent-specialization.ts
+@@ -152,14 +152,6 @@ export function allocateCoinsForAgent(
+   return selected;
+ }
+ 
+-export function invalidateSpecializationCache(agentId?: number): void {
+-  if (agentId !== undefined) {
+-    specializationCache.delete(agentId);
+-  } else {
+-    specializationCache.clear();
+-  }
+-}
+-
+ export async function getAllAgentSpecializations(): Promise<AgentSpecialization[]> {
+   const agents = await db
+     .select({ id: agentsTable.id, name: agentsTable.name })
+diff --git a/artifacts/api-server/src/lib/brain-auto-revert.ts b/artifacts/api-server/src/lib/brain-auto-revert.ts
+index 631b96a..e424a55 100644
+--- a/artifacts/api-server/src/lib/brain-auto-revert.ts
++++ b/artifacts/api-server/src/lib/brain-auto-revert.ts
+@@ -110,10 +110,6 @@ export function getAutoRevertCounter(): number {
+   return consecutiveDriftCycles;
+ }
+ 
+-export function resetAutoRevertCounter(): void {
+-  consecutiveDriftCycles = 0;
+-}
+-
+ /**
+  * Called once per analysis cycle. No-op when the quant brain is OFF.
+  * Returns `true` if the flag was flipped back to LLM by this call.
+diff --git a/artifacts/api-server/src/lib/ml-client.ts b/artifacts/api-server/src/lib/ml-client.ts
+index 017a6d3..2802481 100644
+--- a/artifacts/api-server/src/lib/ml-client.ts
++++ b/artifacts/api-server/src/lib/ml-client.ts
+@@ -107,10 +107,6 @@ export async function mlHealth(timeoutMs = DEFAULT_TIMEOUT_MS): Promise<{ status
+   }
+ }
+ 
+-export function getMlFeatures(coinId: string, timeframe: TimeframeKey): Promise<MlFeaturesResponse> {
+-  return postJson<MlFeaturesResponse>("/ml/features", { coinId, timeframe });
+-}
+-
+ export function getMlPrediction(coinId: string, timeframe: TimeframeKey): Promise<MlPredictResponse> {
+   return postJson<MlPredictResponse>("/ml/predict", { coinId, timeframe });
+ }
+diff --git a/artifacts/api-server/src/lib/monitor.ts b/artifacts/api-server/src/lib/monitor.ts
+index dda0ec0..58f8184 100644
+--- a/artifacts/api-server/src/lib/monitor.ts
++++ b/artifacts/api-server/src/lib/monitor.ts
+@@ -330,7 +330,7 @@ const TIMEFRAME_SCORE_MULTIPLIERS: Record<string, number> = {
+   "1d": 1.5,
+ };
+ 
+-export async function resolvePendingPredictions(): Promise<number> {
++async function resolvePendingPredictions(): Promise<number> {
+   const now = new Date();
+   const GRACE_PERIOD_MS = 5 * 60 * 1000;
+   const pendingPredictions = await db
+@@ -1047,29 +1047,6 @@ export function startMonitoring(): void {
+   }, 5000);
+ }
+ 
+-export function stopMonitoring(): void {
+-  if (monitorInterval) {
+-    clearInterval(monitorInterval);
+-    monitorInterval = null;
+-  }
+-  if (resolutionInterval) {
+-    clearInterval(resolutionInterval);
+-    resolutionInterval = null;
+-  }
+-  if (paperTradeInterval) {
+-    clearInterval(paperTradeInterval);
+-    paperTradeInterval = null;
+-  }
+-  if (tuningSuggestionInterval) {
+-    clearInterval(tuningSuggestionInterval);
+-    tuningSuggestionInterval = null;
+-  }
+-  if (retrainInterval) {
+-    clearInterval(retrainInterval);
+-    retrainInterval = null;
+-  }
+-}
+-
+ export function getCycleCount(): number {
+   return cycleCount;
+ }
+@@ -1078,14 +1055,6 @@ export function resetCycleCount(): void {
+   cycleCount = 0;
+ }
+ 
+-export function getLatestNews(): NewsEvent[] {
+-  return latestNews;
+-}
+-
+ export function getLatestBestPick(): BestPickResult | null {
+   return latestBestPick;
+ }
+-
+-export function getLatestFearGreed(): FearGreedData | null {
+-  return latestFearGreed;
+-}
+diff --git a/artifacts/api-server/src/lib/paper-trader.ts b/artifacts/api-server/src/lib/paper-trader.ts
+index 05dd7ec..db3e3eb 100644
+--- a/artifacts/api-server/src/lib/paper-trader.ts
++++ b/artifacts/api-server/src/lib/paper-trader.ts
+@@ -183,32 +183,6 @@ export async function initializePaperPortfolios(): Promise<void> {
+   }
+ }
+ 
+-export async function resetAllTradingData(): Promise<void> {
+-  const { predictionsTable } = await import("@workspace/db");
+-
+-  await db.delete(paperPositionsTable);
+-  await db.delete(paperTradesTable);
+-  await db.delete(paperPortfoliosTable);
+-  await db.delete(predictionsTable);
+-
+-  const agents = await db.select().from(agentsTable);
+-  for (const agent of agents) {
+-    await db.insert(paperPortfoliosTable).values({
+-      agentId: agent.id,
+-      agentName: agent.name,
+-      cashBalance: INITIAL_BALANCE,
+-      totalValue: INITIAL_BALANCE,
+-      totalPnl: 0,
+-      totalPnlPercent: 0,
+-      totalTrades: 0,
+-      winningTrades: 0,
+-      losingTrades: 0,
+-    });
+-  }
+-
+-  logger.info("Reset trading data (positions/trades/portfolios/predictions). Coin insights and correlations preserved.");
+-}
+-
+ export interface QuantTradePayload {
+   probUp: number;
+   probDown: number;
+@@ -959,7 +933,7 @@ export async function getPortfolioSummaries(): Promise<PortfolioSummary[]> {
+   return results;
+ }
+ 
+-export async function removeHodlerHankIfExists(): Promise<void> {
++async function removeHodlerHankIfExists(): Promise<void> {
+   const existing = await db.select().from(agentsTable).where(eq(agentsTable.name, HODLER_AGENT_NAME));
+   if (existing.length === 0) return;
+   const hankId = existing[0].id;
+diff --git a/artifacts/api-server/src/lib/rate-limiter.ts b/artifacts/api-server/src/lib/rate-limiter.ts
+index c1d2cfb..5d3f2d7 100644
+--- a/artifacts/api-server/src/lib/rate-limiter.ts
++++ b/artifacts/api-server/src/lib/rate-limiter.ts
+@@ -56,12 +56,12 @@ export function recordApiCall(model: "gpt" | "gemini"): void {
+   budgets[model].used++;
+ }
+ 
+-export function getRemainingBudget(model: "gpt" | "gemini"): number {
++function getRemainingBudget(model: "gpt" | "gemini"): number {
+   checkReset();
+   return Math.max(0, budgets[model].dailyLimit - budgets[model].used);
+ }
+ 
+-export function getBudgetPercent(model: "gpt" | "gemini"): number {
++function getBudgetPercent(model: "gpt" | "gemini"): number {
+   checkReset();
+   return budgets[model].used / budgets[model].dailyLimit;
+ }
+@@ -157,7 +157,7 @@ export function shouldUseDualConsensus(signalStrength: number): boolean {
+   return signalStrength >= 70;
+ }
+ 
+-export function getRecommendedPredictionsPerCycle(): number {
++function getRecommendedPredictionsPerCycle(): number {
+   const mode = getModelMode();
+   switch (mode) {
+     case "dual": return 8;
+@@ -227,7 +227,3 @@ export function markModelExhausted(model: "gpt" | "gemini"): void {
+   logger.info({ model }, "Model marked as exhausted for the day");
+ }
+ 
+-export function setDailyLimit(model: "gpt" | "gemini", limit: number): void {
+-  budgets[model].dailyLimit = limit;
+-  logger.info({ model, newLimit: limit }, "API daily limit updated");
+-}
+diff --git a/artifacts/api-server/src/lib/shadow-recorder.ts b/artifacts/api-server/src/lib/shadow-recorder.ts
+index dbe81ac..f22c031 100644
+--- a/artifacts/api-server/src/lib/shadow-recorder.ts
++++ b/artifacts/api-server/src/lib/shadow-recorder.ts
+@@ -24,7 +24,7 @@ const CB_OPEN_MS = 60_000;
+ let consecutiveFailures = 0;
+ let openUntil = 0;
+ 
+-export function shadowCircuitOpen(): boolean {
++function shadowCircuitOpen(): boolean {
+   return Date.now() < openUntil;
+ }
+ 
+diff --git a/artifacts/api-server/src/lib/strategy-lab.ts b/artifacts/api-server/src/lib/strategy-lab.ts
+index 07e1972..d3f93d9 100644
+--- a/artifacts/api-server/src/lib/strategy-lab.ts
++++ b/artifacts/api-server/src/lib/strategy-lab.ts
+@@ -4,9 +4,9 @@ import { logger } from "./logger";
+ import type { CoinPrice } from "./coins";
+ import { fetchCoinPrices, isPriceDataFresh, MONITORED_COINS } from "./coins";
+ 
+-export const DCA_AGENT_NAME = "DCA + Circuit Breaker";
+-export const HODL_AGENT_NAME = "Strategy Lab Buy & Hold";
+-export const TREND_AGENT_NAME = "Trend Filter (30d basket)";
++const DCA_AGENT_NAME = "DCA + Circuit Breaker";
++const HODL_AGENT_NAME = "Strategy Lab Buy & Hold";
++const TREND_AGENT_NAME = "Trend Filter (30d basket)";
+ 
+ const TREND_LOOKBACK_MS = 30 * 24 * 60 * 60 * 1000;
+ 
+diff --git a/artifacts/api-server/src/lib/trading-constants.ts b/artifacts/api-server/src/lib/trading-constants.ts
+index 3499339..40cf3c7 100644
+--- a/artifacts/api-server/src/lib/trading-constants.ts
++++ b/artifacts/api-server/src/lib/trading-constants.ts
+@@ -78,8 +78,6 @@ function findContractPath(): string {
+ 
+ const FRICTIONS: Frictions = JSON.parse(readFileSync(findContractPath(), "utf8"));
+ 
+-export const TRADING_FRICTIONS = FRICTIONS;
+-
+ // ── Fees & slippage ────────────────────────────────────────────────────────
+ export const MAKER_FEE_PCT = FRICTIONS.fees.maker_fee_pct;
+ export const TAKER_FEE_PCT = FRICTIONS.fees.taker_fee_pct;
+@@ -139,10 +137,6 @@ export const RECENT_LOSS_BLOCK_COUNT = FRICTIONS.recent_loss_block.consecutive_l
+ // ── Timeframes ────────────────────────────────────────────────────────────
+ export const TRADEABLE_TIMEFRAMES_SET: Set<string> = new Set(FRICTIONS.tradeable_timeframes);
+ 
+-export function getTimeframeMs(timeframe: string): number | undefined {
+-  return FRICTIONS.timeframe_ms[timeframe];
+-}
+-
+ // ── ATR / SL / TP geometry ────────────────────────────────────────────────
+ function tfLookup(map: Record<string, number>, tf: string, fallback: number): number {
+   return map[tf] ?? map._default ?? fallback;
+diff --git a/artifacts/api-server/src/lib/tuning-tracker.ts b/artifacts/api-server/src/lib/tuning-tracker.ts
+index 35407d4..aef53c6 100644
+--- a/artifacts/api-server/src/lib/tuning-tracker.ts
++++ b/artifacts/api-server/src/lib/tuning-tracker.ts
+@@ -234,10 +234,6 @@ export function recordHealthyObservation(isHealthy: boolean): void {
+   }
+ }
+ 
+-export function getConsecutiveHealthyTicks(): number {
+-  return consecutiveHealthyTicks;
+-}
+-
+ // Number of consecutive refresh ticks a tighten suggestion must remain valid
+ // for the same gate before the engine auto-applies it. The monitor refreshes
+ // the tuning suggestion every 5 minutes, so 6 ticks ≈ 30 minutes of sustained
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index a29627c..e124b60 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -188,9 +188,6 @@ importers:
+       '@workspace/integrations-openai-ai-server':
+         specifier: workspace:*
+         version: link:../../lib/integrations-openai-ai-server
+-      cookie-parser:
+-        specifier: ^1.4.7
+-        version: 1.4.7
+       cors:
+         specifier: ^2
+         version: 2.8.6
+@@ -207,9 +204,6 @@ importers:
+         specifier: ^10
+         version: 10.5.0
+     devDependencies:
+-      '@types/cookie-parser':
+-        specifier: ^1.4.10
+-        version: 1.4.10(@types/express@5.0.6)
+       '@types/cors':
+         specifier: ^2.8.19
+         version: 2.8.19
+@@ -430,6 +424,8 @@ importers:
+         specifier: 'catalog:'
+         version: 3.25.76
+ 
++  artifacts/ml-engine: {}
++
+   artifacts/mockup-sandbox:
+     devDependencies:
+       '@hookform/resolvers':
+@@ -1681,11 +1677,6 @@ packages:
+   '@types/connect@3.4.38':
+     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
+ 
+-  '@types/cookie-parser@1.4.10':
+-    resolution: {integrity: sha512-B4xqkqfZ8Wek+rCOeRxsjMS9OgvzebEzzLYw7NHYuvzb7IdxOkI0ZHGgeEBX4PUM7QGVvNSK60T3OvWj3YfBRg==}
+-    peerDependencies:
+-      '@types/express': '*'
+-
+   '@types/cors@2.8.19':
+     resolution: {integrity: sha512-mFNylyeyqN93lfe/9CSxOGREz8cpzAhH+E93xJ4xWQf62V8sQ/24reV2nyzUWM6H6Xji+GGHpkbLe7pVoUEskg==}
+ 
+@@ -1889,13 +1880,6 @@ packages:
+   convert-source-map@2.0.0:
+     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
+ 
+-  cookie-parser@1.4.7:
+-    resolution: {integrity: sha512-nGUvgXnotP3BsjiLX2ypbQnWoGUPIIfHQNZkkC668ntrzGWEZVW70HDEB1qnNGMicPje6EttlIgzo51YSwNQGw==}
+-    engines: {node: '>= 0.8.0'}
+-
+-  cookie-signature@1.0.6:
+-    resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
+-
+   cookie-signature@1.2.2:
+     resolution: {integrity: sha512-D76uU73ulSXrD1UXF4KE2TMxVVwhsnCgfAyTg9k8P6KGZjlXKrOLe4dJQKI3Bxi5wjesZoFXJWElNWBjPZMbhg==}
+     engines: {node: '>=6.6.0'}
+@@ -4421,10 +4405,6 @@ snapshots:
+     dependencies:
+       '@types/node': 25.3.5
+ 
+-  '@types/cookie-parser@1.4.10(@types/express@5.0.6)':
+-    dependencies:
+-      '@types/express': 5.0.6
+-
+   '@types/cors@2.8.19':
+     dependencies:
+       '@types/node': 25.3.5
+@@ -4639,13 +4619,6 @@ snapshots:
+ 
+   convert-source-map@2.0.0: {}
+ 
+-  cookie-parser@1.4.7:
+-    dependencies:
+-      cookie: 0.7.2
+-      cookie-signature: 1.0.6
+-
+-  cookie-signature@1.0.6: {}
+-
+   cookie-signature@1.2.2: {}
+ 
+   cookie@0.7.2: {}

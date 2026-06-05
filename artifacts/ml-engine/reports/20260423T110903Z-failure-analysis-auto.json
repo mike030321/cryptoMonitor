@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-04-23T11:09:03.339373+00:00",
+  "source_report_generated_at": "2026-04-23T10:34:15.657816+00:00",
+  "gate_constants": {
+    "MIN_HOLDOUT_ROWS": 200,
+    "MIN_DIRECTIONAL_ACCURACY": 0.5,
+    "DIRECTIONAL_SHARE_TRADEABLE_TIMEFRAMES": [
+      "1d",
+      "1h",
+      "2h",
+      "5m",
+      "6h"
+    ],
+    "CALIBRATION_BROKEN_RELIABILITY_DEV": 0.1,
+    "PREDICTION_COLLAPSE_GAP": 0.15,
+    "PREDICTION_COLLAPSE_TOP_SHARE": 0.85
+  },
+  "bucket_counts": {
+    "promoted": 0,
+    "salvageable_with_schema_fix": 0,
+    "insufficient_sample": 0,
+    "structurally_noisy_retire": 2,
+    "salvageable_with_better_features_or_labels": 0,
+    "unknown": 0
+  },
+  "slices": [
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "1h",
+      "kind": "per_coin",
+      "status": "trained",
+      "bucket": "structurally_noisy_retire",
+      "bucket_reason": "calibration_broken=True (max reliability deviation 0.874 >= 0.1); prediction_collapse=True (collapse_gap=0.1685, predicted_top_class_share=0.5559)",
+      "n_holdout": 1745,
+      "directional_accuracy": 0.3927097661623109,
+      "baseline_directional_accuracy": 0.4094910591471802,
+      "brier": 0.30853969348386223,
+      "baseline_brier": 0.213483167189153,
+      "collapse_gap": 0.1685,
+      "predicted_top_class_share": 0.5559,
+      "label_top_class_share": 0.3874,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.343,
+        "STABLE": 0.0121,
+        "UP": 0.8739
+      },
+      "per_class_accuracy": {},
+      "pnl_after_fees": {
+        "n_trades": 177,
+        "net_pct_mean": -0.1947,
+        "round_trip_cost_pct": 0.3
+      },
+      "cadence_mixed": false
+    },
+    {
+      "coin_id": "__pooled__",
+      "timeframe": "1h",
+      "kind": "pooled",
+      "status": "trained",
+      "bucket": "structurally_noisy_retire",
+      "bucket_reason": "calibration_broken=True (max reliability deviation 0.657 >= 0.1); prediction_collapse=True (collapse_gap=0.2527, predicted_top_class_share=0.6401)",
+      "n_holdout": 1745,
+      "directional_accuracy": 0.3927097661623109,
+      "baseline_directional_accuracy": 0.4094910591471802,
+      "brier": 0.30853969348386223,
+      "baseline_brier": 0.213483167189153,
+      "collapse_gap": 0.2527,
+      "predicted_top_class_share": 0.6401,
+      "label_top_class_share": 0.3874,
+      "reliability_max_dev_per_class": {
+        "DOWN": 0.6566,
+        "STABLE": 0.0946,
+        "UP": 0.0388
+      },
+      "per_class_accuracy": {},
+      "pnl_after_fees": {
+        "n_trades": 316,
+        "net_pct_mean": -0.2776,
+        "round_trip_cost_pct": 0.3
+      },
+      "cadence_mixed": false
+    }
+  ]
+}

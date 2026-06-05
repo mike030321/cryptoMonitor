@@ -1,0 +1,174 @@
+Bots made / lost
+-$3.685
+-0.028% on $13000.00 capital
+Buy & hold would've made
+-$651.25
+-5.01% · same $13000.00
+Edge vs buy & hold
++$647.56
++4.98% · 12/13 beating
+Costs paid
+$152.35
+On $26261.53 turnover · 270 closed
+Best agent (net)
+Breakout Bella
+69 trades · $35.96 costs
++$135.16
++13.516% · α +18.53%
+Worst agent (net)
+Hybrid-2-3
+69 trades · $37.84 costs
+-$50.66
+-5.066% · α -0.06%
+Total Predictions
+4139
+2085
+1412
+344
+Overall Accuracy
+59.62%
+Top Agent
+Breakout Bella
+Score: 200.0 | 61.01% acc
+Status
+10 agents
+|
+10 coins
+207 cycles completed
+AI Budget
+DUAL
+GPT
+1311/100000
+Gemini
+1455/14000
+Coin Signals — What to Buy / Sell / Hold
+Pepe
+$0.000004
+↓ SELL
+100% strength
+24h: -4.7%
+Floki
+$0.000031
+↓ SELL
+100% strength
+24h: -4.1%
+Bonk
+$0.000006
+↓ SELL
+100% strength
+24h: -5.7%
+dogwifhat
+$0.206845
+↓ SELL
+100% strength
+24h: -5.7%
+Render
+$1.81
+↓ SELL
+100% strength
+24h: -5.6%
+Injective
+$3.28
+↓ SELL
+100% strength
+24h: -4.0%
+Sei
+$0.056644
+↓ SELL
+100% strength
+24h: -4.6%
+Celestia
+$0.398962
+↓ SELL
+100% strength
+24h: -1.2%
+Jupiter
+$0.180849
+↓ SELL
+100% strength
+24h: -3.3%
+Worldcoin
+$0.277022
+↓ SELL
+100% strength
+24h: -11.3%
+Paper Trading — $10000 Total Invested
+Portfolio
+$10157.45
+Net P&L
++157.45 (+1.57%)
+Trades
+270 (44% win)
+Breakout Bella
+$1171.76
+-9.68 (-1.0%)
+67 trades | 34% win rate
+2 open positions
+↓ Celestia
++0.8465
+↓ Bonk
+-0.8027
+Pattern Pete
+$1012.97
++18.12 (+1.8%)
+34 trades | 65% win rate
+3 open positions
+↓ Jupiter
+-0.2798
+↓ Worldcoin
+-0.4803
+Whale Watcher Wendy
+$1007.01
++6.52 (+0.7%)
+28 trades | 50% win rate
+4 open positions
+↓ Worldcoin
++2.0932
+↓ Celestia
+-0.1769
+Momentum Max
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Contrarian Clara
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Dan
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Scalper Steve
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Refined III
+$991.90
+-7.04 (-0.7%)
+32 trades | 53% win rate
+3 open positions
+↓ Injective
++0.4653
+↓ Celestia
+-0.1743
+Divergence Alpha III
+$989.54
+-5.63 (-0.6%)
+43 trades | 30% win rate
+3 open positions
+↓ Injective
++1.4619
+↑ Jupiter
+-1.6556
+Hybrid-2-3
+$984.27
+-7.63 (-0.8%)
+66 trades | 44% win rate
+3 open positions
+↓ Worldcoin
+-0.6891
+↓ Jupiter

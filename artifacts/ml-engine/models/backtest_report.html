@@ -1,0 +1,350 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Backtest report</title>
+<style>
+  body { font-family: ui-sans-serif, system-ui, sans-serif;
+          background: #020617; color: #e2e8f0; margin: 0; padding: 24px; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  h2 { font-size: 18px; margin: 0; }
+  h3 { font-size: 14px; margin: 16px 0 8px; color: #94a3b8; }
+  .muted { color: #94a3b8; font-size: 12px; }
+  .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px;
+           padding: 18px; margin-bottom: 18px; }
+  .card header { display: flex; align-items: center; justify-content: space-between; }
+  .badge { padding: 4px 12px; border-radius: 999px; font-weight: 600; font-size: 12px; }
+  .verdict-pass { background: #052e16; color: #86efac; border: 1px solid #14532d; }
+  .verdict-fail { background: #450a0a; color: #fca5a5; border: 1px solid #7f1d1d; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+           margin-top: 12px; }
+  .grid > div { background: #1e293b; padding: 10px 12px; border-radius: 8px; }
+  .grid label { display: block; font-size: 11px; color: #94a3b8;
+                 text-transform: uppercase; letter-spacing: 0.05em; }
+  .grid b { font-size: 16px; }
+  .chart { margin-top: 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #1e293b; }
+  th { color: #94a3b8; font-weight: 500; font-size: 11px; text-transform: uppercase; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  ul { margin: 4px 0 0 0; padding-left: 20px; font-size: 13px; }
+</style></head>
+<body>
+  <h1>Backtest report
+    <span class="badge verdict-fail" style="margin-left: 12px;">DO NOT DEPLOY</span>
+  </h1>
+  <p class="muted">Generated .
+     Runs: 5. Source: shared/trading-frictions.json.</p>
+  
+        <section class="card">
+          <header>
+            <h2>5m</h2>
+            <span class="badge verdict-fail">DO NOT DEPLOY</span>
+          </header>
+          <div class="grid">
+            <div><label>Trades</label><b>2</b></div>
+            <div><label>Win rate</label><b>0.00%</b></div>
+            <div><label>Expectancy</label><b>$-0.73</b></div>
+            <div><label>Profit factor</label><b>0.0000</b></div>
+            <div><label>Sharpe / trade</label><b>-3.3430</b></div>
+            <div><label>Max DD</label><b>0.1461%</b></div>
+            <div><label>Final P&amp;L</label><b>$-1.46</b></div>
+            <div><label>Time in market</label><b>22.2222%</b></div>
+            <div><label>Avg hold</label><b>5.0 min</b></div>
+            <div><label>MC final p05/p50/p95</label>
+              <b>$-1.46 /
+                 $-1.46 /
+                 $-1.46</b></div>
+          </div>
+          <div class="chart"><svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+      <rect width="700" height="240" fill="#0f172a"/>
+      <polygon points="30.0,30.0 350.0,100.96358598916754 670.0,210.0 670.0,210.0 350.0,139.03641401081848 30.0,30.0" fill="#3b82f6" fill-opacity="0.25"/>
+      <polyline points="30.0,30.0 350.0,100.96358598916754 670.0,210.0" fill="none" stroke="#60a5fa" stroke-width="2"/>
+      <line x1="30" y1="30.0" x2="670" y2="30.0"
+            stroke="#475569" stroke-dasharray="4 4"/>
+      <text x="30" y="20" fill="#cbd5e1" font-family="monospace" font-size="12">
+        equity: $999 – $1,000 (5/50/95th MC)
+      </text>
+    </svg></div>
+          <h3>Per-regime</h3>
+          <table>
+            <thead><tr><th>regime</th><th>trades</th><th>win</th>
+              <th>expectancy</th><th>sharpe</th><th>max DD</th></tr></thead>
+            <tbody><tr>
+          <td>bull</td>
+          <td class="num">0</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">0.0000</td>
+          <td class="num">0.0000%</td>
+        </tr>
+<tr>
+          <td>bear</td>
+          <td class="num">0</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">0.0000</td>
+          <td class="num">0.0000%</td>
+        </tr>
+<tr>
+          <td>sideways</td>
+          <td class="num">2</td>
+          <td class="num">0.00%</td>
+          <td class="num">$-0.73</td>
+          <td class="num">-3.3430</td>
+          <td class="num">0.1461%</td>
+        </tr>
+<tr>
+          <td>volatile</td>
+          <td class="num">0</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">0.0000</td>
+          <td class="num">0.0000%</td>
+        </tr></tbody>
+          </table>
+          <h3>Per-coin</h3>
+          <table>
+            <thead><tr><th>coin</th><th>OOS rows</th><th>trades</th><th>skips</th>
+              <th>win</th><th>expectancy</th><th>final P&amp;L</th></tr></thead>
+            <tbody><tr>
+          <td>bonk</td>
+          <td class="num">88</td>
+          <td class="num">1</td>
+          <td class="num">87</td>
+          <td class="num">0.00%</td>
+          <td class="num">$-0.58</td>
+          <td class="num">$-0.58</td>
+        </tr>
+<tr>
+          <td>celestia</td>
+          <td class="num">89</td>
+          <td class="num">0</td>
+          <td class="num">89</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr>
+<tr>
+          <td>dogwifcoin</td>
+          <td class="num">87</td>
+          <td class="num">0</td>
+          <td class="num">87</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr>
+<tr>
+          <td>floki-inu</td>
+          <td class="num">89</td>
+          <td class="num">0</td>
+          <td class="num">89</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr>
+<tr>
+          <td>injective-protocol</td>
+          <td class="num">87</td>
+          <td class="num">0</td>
+          <td class="num">87</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr>
+<tr>
+          <td>jupiter-exchange-solana</td>
+          <td class="num">87</td>
+          <td class="num">0</td>
+          <td class="num">87</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr>
+<tr>
+          <td>pepe</td>
+          <td class="num">88</td>
+          <td class="num">1</td>
+          <td class="num">87</td>
+          <td class="num">0.00%</td>
+          <td class="num">$-0.88</td>
+          <td class="num">$-0.88</td>
+        </tr>
+<tr>
+          <td>render-token</td>
+          <td class="num">88</td>
+          <td class="num">0</td>
+          <td class="num">88</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr>
+<tr>
+          <td>sei-network</td>
+          <td class="num">88</td>
+          <td class="num">0</td>
+          <td class="num">88</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr>
+<tr>
+          <td>worldcoin-wld</td>
+          <td class="num">89</td>
+          <td class="num">0</td>
+          <td class="num">89</td>
+          <td class="num">0.00%</td>
+          <td class="num">$0.00</td>
+          <td class="num">$0.00</td>
+        </tr></tbody>
+          </table>
+          <h3>Verdict reasons</h3>
+          <ul><li>insufficient trades: 2 &lt; 30</li><li>expectancy_usd -0.730370021895091 &lt; 0.0</li><li>sharpe_per_trade -3.3430461362416297 &lt; 0.5</li><li>no regime passes (need ≥1 regime with positive expectancy)</li></ul>
+          <p class="muted">passing regimes: none</p>
+        </section>
+        <section class="card">
+          <header>
+            <h2>1h</h2>
+            <span class="badge verdict-fail">DO NOT DEPLOY</span>
+          </header>
+          <div class="grid">
+            <div><label>Trades</label><b>0</b></div>
+            <div><label>Win rate</label><b>—</b></div>
+            <div><label>Expectancy</label><b>—</b></div>
+            <div><label>Profit factor</label><b>—</b></div>
+            <div><label>Sharpe / trade</label><b>—</b></div>
+            <div><label>Max DD</label><b>—%</b></div>
+            <div><label>Final P&amp;L</label><b>—</b></div>
+            <div><label>Time in market</label><b>—%</b></div>
+            <div><label>Avg hold</label><b>0.0 min</b></div>
+            <div><label>MC final p05/p50/p95</label>
+              <b>— /
+                 — /
+                 —</b></div>
+          </div>
+          <div class="chart"><svg viewBox="0 0 700 240" /></div>
+          <h3>Per-regime</h3>
+          <table>
+            <thead><tr><th>regime</th><th>trades</th><th>win</th>
+              <th>expectancy</th><th>sharpe</th><th>max DD</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <h3>Per-coin</h3>
+          <table>
+            <thead><tr><th>coin</th><th>OOS rows</th><th>trades</th><th>skips</th>
+              <th>win</th><th>expectancy</th><th>final P&amp;L</th></tr></thead>
+            <tbody><tr><td colspan="7" class="muted">no coins</td></tr></tbody>
+          </table>
+          <h3>Verdict reasons</h3>
+          <ul><li>no dataset snapshot</li></ul>
+          <p class="muted">passing regimes: none</p>
+        </section>
+        <section class="card">
+          <header>
+            <h2>2h</h2>
+            <span class="badge verdict-fail">DO NOT DEPLOY</span>
+          </header>
+          <div class="grid">
+            <div><label>Trades</label><b>0</b></div>
+            <div><label>Win rate</label><b>—</b></div>
+            <div><label>Expectancy</label><b>—</b></div>
+            <div><label>Profit factor</label><b>—</b></div>
+            <div><label>Sharpe / trade</label><b>—</b></div>
+            <div><label>Max DD</label><b>—%</b></div>
+            <div><label>Final P&amp;L</label><b>—</b></div>
+            <div><label>Time in market</label><b>—%</b></div>
+            <div><label>Avg hold</label><b>0.0 min</b></div>
+            <div><label>MC final p05/p50/p95</label>
+              <b>— /
+                 — /
+                 —</b></div>
+          </div>
+          <div class="chart"><svg viewBox="0 0 700 240" /></div>
+          <h3>Per-regime</h3>
+          <table>
+            <thead><tr><th>regime</th><th>trades</th><th>win</th>
+              <th>expectancy</th><th>sharpe</th><th>max DD</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <h3>Per-coin</h3>
+          <table>
+            <thead><tr><th>coin</th><th>OOS rows</th><th>trades</th><th>skips</th>
+              <th>win</th><th>expectancy</th><th>final P&amp;L</th></tr></thead>
+            <tbody><tr><td colspan="7" class="muted">no coins</td></tr></tbody>
+          </table>
+          <h3>Verdict reasons</h3>
+          <ul><li>no dataset snapshot</li></ul>
+          <p class="muted">passing regimes: none</p>
+        </section>
+        <section class="card">
+          <header>
+            <h2>6h</h2>
+            <span class="badge verdict-fail">DO NOT DEPLOY</span>
+          </header>
+          <div class="grid">
+            <div><label>Trades</label><b>0</b></div>
+            <div><label>Win rate</label><b>—</b></div>
+            <div><label>Expectancy</label><b>—</b></div>
+            <div><label>Profit factor</label><b>—</b></div>
+            <div><label>Sharpe / trade</label><b>—</b></div>
+            <div><label>Max DD</label><b>—%</b></div>
+            <div><label>Final P&amp;L</label><b>—</b></div>
+            <div><label>Time in market</label><b>—%</b></div>
+            <div><label>Avg hold</label><b>0.0 min</b></div>
+            <div><label>MC final p05/p50/p95</label>
+              <b>— /
+                 — /
+                 —</b></div>
+          </div>
+          <div class="chart"><svg viewBox="0 0 700 240" /></div>
+          <h3>Per-regime</h3>
+          <table>
+            <thead><tr><th>regime</th><th>trades</th><th>win</th>
+              <th>expectancy</th><th>sharpe</th><th>max DD</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <h3>Per-coin</h3>
+          <table>
+            <thead><tr><th>coin</th><th>OOS rows</th><th>trades</th><th>skips</th>
+              <th>win</th><th>expectancy</th><th>final P&amp;L</th></tr></thead>
+            <tbody><tr><td colspan="7" class="muted">no coins</td></tr></tbody>
+          </table>
+          <h3>Verdict reasons</h3>
+          <ul><li>no dataset snapshot</li></ul>
+          <p class="muted">passing regimes: none</p>
+        </section>
+        <section class="card">
+          <header>
+            <h2>1d</h2>
+            <span class="badge verdict-fail">DO NOT DEPLOY</span>
+          </header>
+          <div class="grid">
+            <div><label>Trades</label><b>0</b></div>
+            <div><label>Win rate</label><b>—</b></div>
+            <div><label>Expectancy</label><b>—</b></div>
+            <div><label>Profit factor</label><b>—</b></div>
+            <div><label>Sharpe / trade</label><b>—</b></div>
+            <div><label>Max DD</label><b>—%</b></div>
+            <div><label>Final P&amp;L</label><b>—</b></div>
+            <div><label>Time in market</label><b>—%</b></div>
+            <div><label>Avg hold</label><b>0.0 min</b></div>
+            <div><label>MC final p05/p50/p95</label>
+              <b>— /
+                 — /
+                 —</b></div>
+          </div>
+          <div class="chart"><svg viewBox="0 0 700 240" /></div>
+          <h3>Per-regime</h3>
+          <table>
+            <thead><tr><th>regime</th><th>trades</th><th>win</th>
+              <th>expectancy</th><th>sharpe</th><th>max DD</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <h3>Per-coin</h3>
+          <table>
+            <thead><tr><th>coin</th><th>OOS rows</th><th>trades</th><th>skips</th>
+              <th>win</th><th>expectancy</th><th>final P&amp;L</th></tr></thead>
+            <tbody><tr><td colspan="7" class="muted">no coins</td></tr></tbody>
+          </table>
+          <h3>Verdict reasons</h3>
+          <ul><li>no dataset snapshot</li></ul>
+          <p class="muted">passing regimes: none</p>
+        </section>
+</body></html>

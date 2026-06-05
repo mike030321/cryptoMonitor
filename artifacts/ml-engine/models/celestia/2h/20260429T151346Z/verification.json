@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.3938115330520394,
+  "baseline_directional_accuracy": 0.40590717299578055,
+  "lift": -0.012095639943741132,
+  "holdout_rows": 3555,
+  "min_directional_accuracy_applied": 0.5,
+  "served_predictor_kind": "lightgbm",
+  "coin": "celestia",
+  "timeframe": "2h",
+  "kind": "per_coin"
+}

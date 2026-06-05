@@ -1,0 +1,333 @@
+{
+  "task": 517,
+  "generated_at": "20260428T120024Z",
+  "feature_added": "volZScore60",
+  "purpose": "Full-fleet (coin \u00d7 tf) regression check confirming  does not push any non-target slice below the 5% verification gate floor.",
+  "harness": "scripts/diagnostic_482/run_507_focused.py + identical _diagnose_one body for non-stuck slices; ML_SKIP_OPTUNA=1, ML_LGB_NUM_BOOST_ROUND=80, _lgb_params(31, 0.1, 5), CALIBRATION_HOLDOUT_FRACTION tail.",
+  "datasets": {
+    "1d": "1d_20260423T043348Z.parquet",
+    "6h": "6h_20260423T035301Z.parquet",
+    "2h": "2h_20260425T095604Z.parquet",
+    "1h": "1h_20260425T072420Z.parquet"
+  },
+  "feature_columns_legacy_count": 35,
+  "feature_columns_current_count": 36,
+  "n_slices": 38,
+  "n_regressions_below_floor": 0,
+  "regressed_slices": [],
+  "target_slice": {
+    "coin_id": "dogwifcoin",
+    "timeframe": "1d",
+    "raw_STABLE_share_base": 0.0597,
+    "raw_STABLE_share_with_volZScore60": 0.1493,
+    "margin_above_5pct_floor_before": 0.0097,
+    "margin_above_5pct_floor_after": 0.0993,
+    "margin_above_10pct_target_after": 0.0493
+  },
+  "rows": [
+    {
+      "coin_id": "bonk",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.1045,
+      "raw_STABLE_share_with_volZScore60": 0.1343,
+      "delta": 0.0298,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.2985,
+      "raw_STABLE_share_with_volZScore60": 0.2239,
+      "delta": -0.0746,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.0597,
+      "raw_STABLE_share_with_volZScore60": 0.1493,
+      "delta": 0.0896,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "floki-inu",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.6119,
+      "raw_STABLE_share_with_volZScore60": 0.6269,
+      "delta": 0.015,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "injective-protocol",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.4925,
+      "raw_STABLE_share_with_volZScore60": 0.4478,
+      "delta": -0.0447,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.194,
+      "raw_STABLE_share_with_volZScore60": 0.1343,
+      "delta": -0.0597,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "pepe",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.5373,
+      "raw_STABLE_share_with_volZScore60": 0.403,
+      "delta": -0.1343,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "render-token",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.0597,
+      "raw_STABLE_share_with_volZScore60": 0.209,
+      "delta": 0.1493,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "sei-network",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.1045,
+      "raw_STABLE_share_with_volZScore60": 0.2388,
+      "delta": 0.1343,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "worldcoin-wld",
+      "timeframe": "1d",
+      "raw_STABLE_share_base": 0.1791,
+      "raw_STABLE_share_with_volZScore60": 0.1642,
+      "delta": -0.0149,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.2657,
+      "raw_STABLE_share_with_volZScore60": 0.2238,
+      "delta": -0.0419,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.2133,
+      "raw_STABLE_share_with_volZScore60": 0.1399,
+      "delta": -0.0734,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.3392,
+      "raw_STABLE_share_with_volZScore60": 0.3566,
+      "delta": 0.0174,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "floki-inu",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.3951,
+      "raw_STABLE_share_with_volZScore60": 0.3566,
+      "delta": -0.0385,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "injective-protocol",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.9091,
+      "raw_STABLE_share_with_volZScore60": 0.7937,
+      "delta": -0.1154,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.1573,
+      "raw_STABLE_share_with_volZScore60": 0.1049,
+      "delta": -0.0524,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "pepe",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.3287,
+      "raw_STABLE_share_with_volZScore60": 0.2552,
+      "delta": -0.0735,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "render-token",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.5839,
+      "raw_STABLE_share_with_volZScore60": 0.542,
+      "delta": -0.0419,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "sei-network",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.4691,
+      "raw_STABLE_share_with_volZScore60": 0.4568,
+      "delta": -0.0123,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "worldcoin-wld",
+      "timeframe": "6h",
+      "raw_STABLE_share_base": 0.6573,
+      "raw_STABLE_share_with_volZScore60": 0.6329,
+      "delta": -0.0244,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.2639,
+      "raw_STABLE_share_with_volZScore60": 0.4664,
+      "delta": 0.2025,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.0799,
+      "raw_STABLE_share_with_volZScore60": 0.1192,
+      "delta": 0.0393,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.0637,
+      "raw_STABLE_share_with_volZScore60": 0.0891,
+      "delta": 0.0254,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "floki-inu",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.2373,
+      "raw_STABLE_share_with_volZScore60": 0.3553,
+      "delta": 0.118,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "injective-protocol",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.0961,
+      "raw_STABLE_share_with_volZScore60": 0.1273,
+      "delta": 0.0312,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.0127,
+      "raw_STABLE_share_with_volZScore60": 0.044,
+      "delta": 0.0313,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "pepe",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.1389,
+      "raw_STABLE_share_with_volZScore60": 0.1875,
+      "delta": 0.0486,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "render-token",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.1898,
+      "raw_STABLE_share_with_volZScore60": 0.2431,
+      "delta": 0.0533,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "worldcoin-wld",
+      "timeframe": "2h",
+      "raw_STABLE_share_base": 0.1273,
+      "raw_STABLE_share_with_volZScore60": 0.1215,
+      "delta": -0.0058,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "bonk",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.6259,
+      "raw_STABLE_share_with_volZScore60": 0.6415,
+      "delta": 0.0156,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "celestia",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.1343,
+      "raw_STABLE_share_with_volZScore60": 0.1937,
+      "delta": 0.0594,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "dogwifcoin",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.6386,
+      "raw_STABLE_share_with_volZScore60": 0.8006,
+      "delta": 0.162,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "floki-inu",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.5372,
+      "raw_STABLE_share_with_volZScore60": 0.5591,
+      "delta": 0.0219,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "injective-protocol",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.23,
+      "raw_STABLE_share_with_volZScore60": 0.2092,
+      "delta": -0.0208,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "jupiter-exchange-solana",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.0963,
+      "raw_STABLE_share_with_volZScore60": 0.2478,
+      "delta": 0.1515,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "pepe",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.2582,
+      "raw_STABLE_share_with_volZScore60": 0.4974,
+      "delta": 0.2392,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "render-token",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.2427,
+      "raw_STABLE_share_with_volZScore60": 0.2841,
+      "delta": 0.0414,
+      "regressed_below_floor": false
+    },
+    {
+      "coin_id": "worldcoin-wld",
+      "timeframe": "1h",
+      "raw_STABLE_share_base": 0.2916,
+      "raw_STABLE_share_with_volZScore60": 0.1354,
+      "delta": -0.1562,
+      "regressed_below_floor": false
+    }
+  ]
+}

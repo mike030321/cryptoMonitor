@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.3725409836065574,
+  "baseline_directional_accuracy": 0.39549180327868855,
+  "lift": -0.02295081967213114,
+  "holdout_rows": 2440,
+  "min_directional_accuracy_applied": 0.53,
+  "served_predictor_kind": "lightgbm",
+  "coin": "__pooled__",
+  "timeframe": "1d",
+  "kind": "pooled"
+}

@@ -1,0 +1,258 @@
+Top Consensus Pick
+MEDIUM RISK
+sell Jupiter
+JUP @ $0.179675
+Success Rate
+85%
+Expected Move
+-0.614%
+Hold Timeframe
+6 Hours (aligned across 2 timeframes)
+Sell Jupiter (JUP) at $0.1797 as it shows an 85% success rate for a sell action. The asset is down 3.49% in the last 24 hours, with both 1-hour and 6-hour timeframes indicating a bearish trend. Multiple agents confirm a consistent downward movement, suggesting further declines in a risk-off altcoin market.
+Timeframe Alignment
+1h ↓ 60%
+6h ↓ 63%
+Agent Votes
+Breakout
+58%
+Hybrid-2-3
+63%
+Divergence
+62%
+Contrarian
+57%
+Whale
+62%
+Pattern
+58%
+Divergence
+62%
+Divergence
+61%
+Reality-Adjusted P&L
+Beating buy & hold
+Made +$659.80 more than passively holding the basket
+
+Costs modeled: 0.20% fee + 0.10% slip per side · 0.60% round-trip
+Benchmark: Equal-weight buy & hold of monitored basket (24h proxy)
+Bots made / lost
+-$61.85
+-0.476% on $13000.00 capital
+Buy & hold would've made
+-$721.65
+-5.55% · same $13000.00
+Edge vs buy & hold
++$659.80
++5.08% · 12/13 beating
+Costs paid
+$216.75
+On $37247.02 turnover · 364 closed
+Best agent (net)
+Breakout Bella
+74 trades · $40.77 costs
++$126.21
++12.621% · α +18.17%
+Worst agent (net)
+Hybrid-2-3
+97 trades · $56.17 costs
+-$74.88
+-7.488% · α -1.94%
+Total Predictions
+6163
+3272
+2063
+327
+Overall Accuracy
+61.33%
+Top Agent
+Scalper Steve
+Score: 192.4 | 58.81% acc
+Status
+10 agents
+|
+10 coins
+438 cycles completed
+AI Budget
+GPT-PRIMARY
+GPT
+3038/100000
+Gemini
+3343/14000
+Coin Signals — What to Buy / Sell / Hold
+Pepe
+$0.000004
+↓ SELL
+100% strength
+24h: -5.1%
+Floki
+$0.000031
+↓ SELL
+100% strength
+24h: -5.3%
+Bonk
+$0.000006
+↓ SELL
+100% strength
+24h: -6.3%
+Render
+$1.79
+↓ SELL
+100% strength
+24h: -5.4%
+Injective
+$3.23
+↓ SELL
+100% strength
+24h: -4.2%
+Sei
+$0.056114
+↓ SELL
+100% strength
+24h: -4.8%
+Celestia
+$0.392735
+↓ SELL
+100% strength
+24h: -8.8%
+Jupiter
+$0.179663
+↓ SELL
+100% strength
+24h: -3.5%
+Worldcoin
+$0.266284
+↓ SELL
+100% strength
+24h: -5.8%
+dogwifhat
+$0.203528
+— HOLD
+0% strength
+24h: -6.3%
+Paper Trading — $10000 Total Invested
+Portfolio
+$10148.18
+Net P&L
++148.18 (+1.48%)
+Trades
+364 (45% win)
+Breakout Bella
+$1169.75
+-12.20 (-1.2%)
+73 trades | 34% win rate
+1 open position
+↓ Celestia
++1.2627
+Pattern Pete
+$1017.58
++24.58 (+2.5%)
+50 trades | 60% win rate
+4 open positions
+↓ Jupiter
+-0.4520
+↓ Floki
+-0.3996
+Whale Watcher Wendy
+$1003.85
++11.34 (+1.1%)
+45 trades | 58% win rate
+4 open positions
+↓ Celestia
++0.8789
+↓ Floki
+-0.4365
+Scalper Steve
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Contrarian Clara
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Dan
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Momentum Max
+$1000.00
++0.00 (+0.0%)
+0 trades | 0% win rate
+0 open positions
+Divergence Refined III
+$991.75
+-2.84 (-0.3%)
+44 trades | 55% win rate
+4 open positions
+↓ Pepe
++0.0113
+↓ dogwifhat
+-0.8962
+Divergence Alpha III
+$984.45
+-8.72 (-0.9%)
+57 trades | 30% win rate
+1 open position
+↓ Jupiter
+-1.2897
+Hybrid-2-3
+$980.80
+-9.24 (-0.9%)
+95 trades | 43% win rate
+2 open positions
+↓ Render
+-0.2294
+↓ Worldcoin
+-0.2233
+Agent Evolution
+G2
+Generation
+0h 0m
+Next Evolution
+120/100
+Trades Trigger
+Trade-based trigger
+100%
+Fitness Rankings
+#1
+Pattern Pete
+OG
+0.858
+#2
+Whale Watcher Wendy
+OG
+0.821
+#3
+Divergence Refined III
+EVO
+0.565
+#4
+Contrarian Clara
+OG
+0.500
+#5
+Momentum Max
+OG
+0.500
+#6
+Divergence Dan
+OG
+0.500
+#7
+Scalper Steve
+OG
+0.500
+#8
+Breakout Bella
+OG
+0.281
+Lineage
+Divergence Refined III from Divergence Dan
+Hybrid-2-3 from Divergence Dan, Breakout Bella
+Divergence Alpha III from Divergence Dan
+Recent Evolutions
+G2 (threshold)
+2d ago
+7 survived, 3 purged, 3 created

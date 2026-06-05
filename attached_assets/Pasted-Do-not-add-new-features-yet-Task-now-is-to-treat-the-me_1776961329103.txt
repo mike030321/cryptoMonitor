@@ -1,0 +1,232 @@
+Do not add new features yet.
+
+Task now is to treat the merged Meta-Brain integration as a potentially fragile production system and aggressively validate it for bugs, silent failures, wrong assumptions, and bad wiring.
+
+## Goal
+
+Find everything that can be wrong with Task #373 in runtime behavior, integration logic, telemetry mapping, learning loop wiring, fallback safety, and rollout readiness.
+
+This is a **post-merge audit + hardening task**, not feature work.
+
+## What I want you to do
+
+### 1. Perform a full integration audit
+
+Inspect the entire Meta-Brain path end to end:
+
+#### ml-engine side
+
+* app/meta_brain.py
+* app/main.py
+* vendored market_meta_brain package wiring
+* evaluate endpoint
+* record-outcome endpoint
+* stats endpoint
+* checkpoint load/save behavior
+
+#### api-server side
+
+* src/lib/meta-brain/contract.ts
+* src/lib/meta-brain/client.ts
+* src/lib/meta-brain/fallback.ts
+* src/lib/meta-brain/adapter.ts
+* src/lib/meta-brain/index.ts
+* src/lib/monitor.ts
+* src/lib/paper-trader.ts
+* src/lib/quant-brain.ts
+* src/lib/brain-auto-revert.ts
+* src/lib/horizon-gate.ts
+* src/lib/strategy-lab.ts
+
+Check that every assumption made during Task #373 is actually true in code.
+
+### 2. Hunt for silent bugs
+
+Specifically look for:
+
+* wrong payload field mapping
+* missing or stale strategy_family mapping
+* wrong batch semantics
+* wrong one-tick-lag handling
+* incorrect directive carryover between ticks
+* stale directive reuse
+* cache mismatch bugs
+* bad tradeId ↔ tickId binding
+* lost record_outcome calls
+* learning on wrong trades
+* race conditions
+* timeout handling bugs
+* silent fallback always activating
+* directive fields being ignored downstream
+* suppress_signal not actually suppressing
+* defensive_mode not fully wired
+* caution_level not changing thresholds as intended
+* exploration_budget wired but ineffective
+* meta_state returned but unused or malformed
+* checkpoint corruption / reload issues
+* memory leak from directive cache or tick map
+* restart edge cases
+* empty batch edge cases
+* malformed batch edge cases
+* duplicate or partial slice ingestion per tick
+
+### 3. Verify sizing math rigorously
+
+I want explicit proof that sizing behavior is correct.
+
+Check:
+
+* quant multiplier and family multiplier are composed first
+* exactly one final clamp is applied
+* no hidden pre-clamp or post-clamp path reintroduces bad behavior
+* no path can exceed existing 0.5x–1.5x band
+
+Add tests for examples like:
+
+* 0.8 × 1.3 = 1.04
+* 1.4 × 1.4 = 1.96 → 1.5 final
+* 0.6 × 0.6 = 0.36 → 0.5 final
+
+Also confirm no other sizing path bypasses this.
+
+### 4. Verify no hot-path DB dependency remains
+
+I want proof that live monitor / trade shaping does not do unnecessary DB reads for meta-brain family resolution.
+
+Audit:
+
+* monitor tick path
+* directive application path
+* paper-trader path
+* any personality/family lookup path
+
+If any DB read still exists in the hot path, flag and fix it.
+
+### 5. Test fallback behavior aggressively
+
+Simulate:
+
+* ml-engine timeout
+* ml-engine 500 error
+* malformed directive
+* missing directive fields
+* invalid family keys
+* checkpoint load failure
+* empty batch
+* partial batch
+
+Confirm:
+
+* neutral directive is used
+* trading continues
+* no crash
+* logs are emitted
+* no silent undefined behavior
+
+### 6. Test learning loop correctness
+
+Audit `record_outcome(...)` carefully.
+
+Check:
+
+* it is called exactly when trades close
+* correct directive is associated with the opening tick
+* outcome metrics are computed correctly
+* no duplicate learning events
+* no learning events lost on normal flow
+* restart behavior is understood and documented
+* missing outcome sub-metrics are not silently fabricated
+
+If trade-to-tick attribution is lossy because of in-memory mapping, quantify exactly how and when it breaks.
+
+### 7. Audit telemetry quality
+
+I do not want fake confidence from TODO fields.
+
+For every input field expected by the brain, produce a table with:
+
+* field name
+* source file/function
+* exact mapping or formula
+* whether it is REAL / DERIVED / TODO / STUBBED
+* whether current implementation may bias the brain
+
+Especially inspect:
+
+* recent_accuracy
+* pnl_state
+* drawdown_state
+* correlation_shift
+* exposure
+* turnover
+* slippage_bps
+* prediction_error
+* liquidity-like signals if any
+* anomaly_flags inflation
+
+### 8. Measure runtime behavior
+
+Add or inspect metrics for:
+
+* evaluate latency p50 / p95 / p99
+* timeout rate
+* fallback activation rate
+* directive cache hit/miss
+* number of slices per tick
+* number of suppressed families
+* defensive mode frequency
+* record_outcome success/failure rate
+
+I want to know whether the integration is healthy in live runtime, not just in tests.
+
+### 9. Produce a brutally honest risk report
+
+At the end, tell me:
+
+#### A. Confirmed correct
+
+What is definitely wired correctly.
+
+#### B. Confirmed bugs
+
+Real bugs you found and fixed.
+
+#### C. Confirmed weak points
+
+Parts that work but are fragile.
+
+#### D. Missing telemetry risks
+
+Which missing/stubbed fields could materially degrade the brain.
+
+#### E. Rollout recommendation
+
+Should I keep it:
+
+* OFF
+* SHADOW
+* LEARN_ONLY
+* LIMITED LIVE
+
+Be honest. If it is not safe for live influence, say so clearly.
+
+## Deliverables
+
+I want:
+
+1. changed files
+2. new tests added
+3. bug list
+4. remaining risks
+5. rollout recommendation
+6. exact commands used to validate
+7. any follow-up tasks you recommend
+
+## Important rules
+
+* do not add new product features
+* do not redesign the architecture
+* do not hand-wave
+* do not tell me “looks good” without proving it
+* assume there may be hidden bugs and try to break the integration
+* optimize for truth, not reassurance

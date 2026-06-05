@@ -1,0 +1,200 @@
+Create a follow-up task to give the **Meta-Brain** read-only access to **Strategy Lab** as a slow benchmark signal.
+
+This is a **governance-only** integration.
+It must **not** affect the quant predictor payload or execution path directly.
+
+## Goal
+
+Let the Meta-Brain compare AI fleet performance against deterministic baseline strategies from Strategy Lab so it can judge:
+
+* are we actually adding value?
+* are we underperforming dumb baselines?
+* should governance become more cautious or defensive?
+
+This is for the **Meta-Brain only**.
+
+## Hard architecture rule
+
+### Quant brain / LightGBM
+
+Must **not** receive Strategy Lab data.
+
+Do **not** feed Strategy Lab equity, P&L, actions, alpha, or benchmark curves into:
+
+* `/ml/decide`
+* prediction features
+* trade-decision payloads
+* model training features
+* runtime predictor inputs
+
+That would create circular self-prediction / overfitting.
+
+### Meta-Brain
+
+May consume Strategy Lab data **read-only** as benchmark telemetry.
+
+## What Strategy Lab is for in this task
+
+Treat Strategy Lab as an external benchmark layer answering:
+
+* Are AI Bots outperforming Buy & Hold?
+* Are AI Bots outperforming DCA + Circuit Breaker?
+* Are AI Bots outperforming Trend Filter?
+* Is the AI worth the complexity right now?
+
+The Meta-Brain should use this only as a **slow governance signal**, not as a hard trade gate.
+
+## Desired behavior
+
+If AI Bots are materially underperforming the baselines over a sustained lookback:
+
+* raise caution
+* reduce trust / aggression
+* bias toward defensive governance
+* potentially suppress families that are failing in that regime
+
+If AI Bots are outperforming baselines:
+
+* reduce unnecessary braking
+* preserve trust where justified
+
+Do **not** create a brittle rule like:
+
+* “baseline wins → shut off trading”
+
+This should be a soft, smoothed benchmark signal inside governance.
+
+## Scope the task
+
+I want a clean implementation plan and then code changes for a new benchmark telemetry feed from Strategy Lab into the Meta-Brain.
+
+## Required constraints
+
+### 1. Read-only
+
+Meta-Brain consumes Strategy Lab snapshots only.
+It never writes back to Strategy Lab tables or modifies Strategy Lab behavior.
+
+### 2. Long lookback only
+
+Use smoothed windows such as:
+
+* 7d
+* 14d
+* optionally 30d
+
+Do not use same-tick or 1-day noisy values as direct governance triggers.
+
+### 3. Slow cadence
+
+This signal should be updated on a slow cadence, not per prediction.
+It can be recomputed once per monitor cycle if cheap, but the underlying statistics should be based on multi-day rolling windows.
+
+### 4. Governance-only boundary
+
+Keep this signal entirely out of:
+
+* quant feature generation
+* quant inference payloads
+* trade rows used by predictor logic
+* decision-engine parity path
+
+### 5. No hard bypass
+
+This should go through the normal Meta-Brain path:
+
+* telemetry assembly
+* evaluate(batch)
+* directive output
+* record_outcome learning loop
+
+No special direct shortcut from Strategy Lab to trade execution.
+
+## What I want you to design
+
+### A. Benchmark telemetry model
+
+Propose a small set of benchmark features for the Meta-Brain, for example:
+
+* rolling 7d AI return
+* rolling 7d best-baseline return
+* rolling 7d relative alpha
+* rolling 14d relative alpha
+* drawdown ratio vs best baseline
+* AI vs baseline win flag over sustained lookback
+* benchmark confidence score or benchmark pressure score
+
+Keep it compact and robust.
+Do not dump raw full equity curves into the brain unless there is a good reason.
+
+### B. Best integration point
+
+Find where Strategy Lab data already lives and identify the best place to assemble the benchmark telemetry for the Meta-Brain.
+
+Tell me:
+
+* exact files
+* exact functions
+* exact data source / table / snapshot path
+
+### C. Meta-Brain wiring plan
+
+Explain how this benchmark signal will enter the Meta-Brain without contaminating the quant path.
+
+I want the exact path:
+
+* where benchmark telemetry is read
+* where it is transformed
+* where it joins the existing Meta-Brain batch / portfolio context
+* how it influences governance outputs indirectly
+
+### D. Safety rules
+
+Add guardrails so this benchmark signal cannot:
+
+* whipsaw the brain on short noise
+* act as a hard kill switch by itself
+* leak into the quant predictor path
+
+### E. Tests
+
+Add tests that prove:
+
+* Strategy Lab data does not enter the quant decision payload
+* parity tests remain green
+* benchmark signal reaches Meta-Brain path only
+* missing Strategy Lab data falls back safely
+* read-only behavior is preserved
+
+## Deliverables
+
+I want:
+
+1. a short implementation plan
+2. exact files to change
+3. exact benchmark fields to add
+4. tests to add
+5. confirmation that quant-only parity remains intact
+6. confirmation that this is Meta-Brain-only and read-only
+
+## Important rules
+
+* do not redesign Strategy Lab
+* do not redesign Meta-Brain architecture
+* do not feed Strategy Lab into LightGBM
+* do not create a direct execution gate from Strategy Lab
+* do not turn this into feature creep
+* keep it small, clean, and governance-only
+
+## Preferred output
+
+First give me:
+
+* proposed benchmark telemetry schema
+* exact integration points
+* risk notes
+
+Then implement.
+
+Name the task something like:
+**Meta-Brain Benchmark Telemetry from Strategy Lab**

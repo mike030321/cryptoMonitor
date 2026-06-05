@@ -1,0 +1,534 @@
+{
+  "task": "task-669-b5-two-stage-gating",
+  "started_utc": "20260501T070527Z",
+  "run_id": "20260501T070527Z",
+  "coin": "bitcoin",
+  "timeframe": "5m",
+  "lookback_ms": 32832000000,
+  "lookback_days": 380.0,
+  "holdout_days": 14,
+  "holdout_start_iso": "2026-04-17T07:05:27.296145Z",
+  "round_trip_cost_pct": 0.3,
+  "margin_fraction_held_constant": 0.005,
+  "selection_rule": {
+    "max_cal_dev_holdout": 0.2,
+    "drawdown_floor_pct": -5.0,
+    "min_n_trades_holdout": 10,
+    "ten_paper_proof_must_not_trip_dd_floor": true,
+    "tie_break": "lowest holdout cal_dev; ties break by highest profit_factor then highest n_trades",
+    "calibration_status_target": "trustworthy"
+  },
+  "ds_fixed_sizing_pct": 0.005,
+  "frictions_source_file": "shared/trading-frictions.json",
+  "variants_attempted": [
+    "unconditional_beta_baseline (b4 reference, not selectable)",
+    "platt_two_stage",
+    "isotonic_two_stage"
+  ],
+  "variants": [
+    {
+      "variant": "unconditional_beta_baseline",
+      "calibration_method": "beta",
+      "tau": 0.214702239191635,
+      "holdout_metrics": {
+        "n_total_holdout": 3884,
+        "n_trades": 105,
+        "abstain_rate": 0.9729660144181257,
+        "precision": 0.8952380952380953,
+        "win_rate": 0.7904761904761904,
+        "avg_return_per_trade_pct": 0.6688033038368962,
+        "net_pnl_pct_per_trade": 0.3688033038368962,
+        "net_pnl_pct_total": 38.7243469028741,
+        "profit_factor": 6.698136193399332,
+        "max_drawdown_pct": -1.7266317483064495,
+        "cal_dev_post_calibration": 0.581910026321861,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 38,
+            "mean_predicted": 0.26019523683603374,
+            "empirical_correct_rate": 0.8421052631578947,
+            "abs_dev": 0.581910026321861
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 35,
+            "mean_predicted": 0.34683626333723033,
+            "empirical_correct_rate": 0.8857142857142857,
+            "abs_dev": 0.5388780223770553
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 16,
+            "mean_predicted": 0.454457006360639,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.545542993639361
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 8,
+            "mean_predicted": 0.5350666989217686,
+            "empirical_correct_rate": 0.875,
+            "abs_dev": 0.3399333010782314
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 7,
+            "mean_predicted": 0.6474509415283175,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.3525490584716825
+          }
+        ],
+        "share_long": 0.44761904761904764,
+        "share_short": 0.5523809523809524,
+        "tau": 0.214702239191635
+      },
+      "is_baseline": true
+    },
+    {
+      "variant": "platt_two_stage",
+      "calibration_method": "platt",
+      "tau": 0.19287425142901338,
+      "n_train_inner": 70676,
+      "n_val": 17669,
+      "n_holdout": 3884,
+      "base_rate_inner": 0.06586394249816062,
+      "diag_long": {
+        "head": "long",
+        "first_stage_tau": 0.1829737379321399,
+        "n_fired_chose_side": 558,
+        "n_pos_kept": 235,
+        "n_neg_kept": 323,
+        "empirical_rate_on_fired_subset": 0.4211469534050179,
+        "fallback_to_first_stage": false
+      },
+      "diag_short": {
+        "head": "short",
+        "first_stage_tau": 0.1829737379321399,
+        "n_fired_chose_side": 606,
+        "n_pos_kept": 228,
+        "n_neg_kept": 378,
+        "empirical_rate_on_fired_subset": 0.37623762376237624,
+        "fallback_to_first_stage": false
+      },
+      "platt_long": [
+        -7.069274865177782,
+        3.46452846789012
+      ],
+      "platt_short": [
+        -5.595850219061341,
+        2.965231623151763
+      ],
+      "iso_long_n_knots": null,
+      "iso_short_n_knots": null,
+      "val_metrics": {
+        "n_total_holdout": 17669,
+        "n_trades": 1164,
+        "abstain_rate": 0.9341219084271889,
+        "precision": 0.8831615120274914,
+        "win_rate": 0.7534364261168385,
+        "avg_return_per_trade_pct": 0.7445936113157594,
+        "net_pnl_pct_per_trade": 0.44459361131575936,
+        "net_pnl_pct_total": 517.5069635715439,
+        "profit_factor": 5.474941563412325,
+        "max_drawdown_pct": -5.39894942144723,
+        "cal_dev_post_calibration": 0.6102149157573502,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 42,
+            "mean_predicted": 0.19639586517644672,
+            "empirical_correct_rate": 0.6904761904761905,
+            "abs_dev": 0.49408032529974377
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 460,
+            "mean_predicted": 0.241958997286128,
+            "empirical_correct_rate": 0.8521739130434782,
+            "abs_dev": 0.6102149157573502
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 248,
+            "mean_predicted": 0.35144803918482265,
+            "empirical_correct_rate": 0.8588709677419355,
+            "abs_dev": 0.5074229285571128
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 119,
+            "mean_predicted": 0.4371800577804769,
+            "empirical_correct_rate": 0.8907563025210085,
+            "abs_dev": 0.45357624474053154
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 56,
+            "mean_predicted": 0.5560991450837528,
+            "empirical_correct_rate": 0.9464285714285714,
+            "abs_dev": 0.3903294263448186
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 87,
+            "mean_predicted": 0.640826853244538,
+            "empirical_correct_rate": 0.9885057471264368,
+            "abs_dev": 0.34767889388189877
+          },
+          {
+            "bin_lo": 0.7000000000000001,
+            "bin_hi": 0.8,
+            "n": 102,
+            "mean_predicted": 0.7413378635644019,
+            "empirical_correct_rate": 0.9705882352941176,
+            "abs_dev": 0.22925037172971574
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 50,
+            "mean_predicted": 0.8461674516314796,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.15383254836852045
+          }
+        ],
+        "share_long": 0.44501718213058417,
+        "share_short": 0.5549828178694158,
+        "tau": 0.19287425142901338
+      },
+      "holdout_metrics": {
+        "n_total_holdout": 3884,
+        "n_trades": 107,
+        "abstain_rate": 0.9724510813594233,
+        "precision": 0.897196261682243,
+        "win_rate": 0.8037383177570093,
+        "avg_return_per_trade_pct": 0.6723491954388531,
+        "net_pnl_pct_per_trade": 0.3723491954388531,
+        "net_pnl_pct_total": 39.84136391195728,
+        "profit_factor": 6.981202516898881,
+        "max_drawdown_pct": -1.7266317483064495,
+        "cal_dev_post_calibration": 0.8048599226042177,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 5,
+            "mean_predicted": 0.19514007739578232,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.8048599226042177
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 41,
+            "mean_predicted": 0.2504244866684962,
+            "empirical_correct_rate": 0.8292682926829268,
+            "abs_dev": 0.5788438060144305
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 28,
+            "mean_predicted": 0.34818943902215466,
+            "empirical_correct_rate": 0.8928571428571429,
+            "abs_dev": 0.5446677038349883
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 17,
+            "mean_predicted": 0.46180442064780597,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.538195579352194
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 6,
+            "mean_predicted": 0.5397692143252217,
+            "empirical_correct_rate": 0.8333333333333334,
+            "abs_dev": 0.29356411900811163
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 7,
+            "mean_predicted": 0.6323712010904844,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.3676287989095156
+          }
+        ],
+        "share_long": 0.4205607476635514,
+        "share_short": 0.5794392523364486,
+        "tau": 0.19287425142901338
+      },
+      "paper_proof_summary": {
+        "n_proofs_requested": 10,
+        "n_proofs_emitted": 10,
+        "trough_pct": -0.0016739373402852031,
+        "cum_pnl_pct": 0.03426197064719867,
+        "would_trip_drawdown": false,
+        "drawdown_floor_pct": -5.0,
+        "sizing_pct": 0.005,
+        "cost_fraction": 0.003,
+        "tau": 0.19287425142901338
+      },
+      "passed_trustworthy_gate": false,
+      "fail_reasons": [
+        "holdout.cal_dev_post_calibration=0.8049 above ceiling 0.2 (HARD gate for calibration_status='trustworthy')"
+      ],
+      "notes": [
+        "platt_two_stage_first_stage_unconditional_platt long_params=(-8.5693,3.8110) short_params=(-8.1530,3.8059)",
+        "platt_two_stage_first_stage_tau=0.182974 n_fired_chose_long=558 n_fired_chose_short=606",
+        "platt_two_stage_tau_from_val_post_calibration q=0.9341 tau=0.192874 base_rate_inner=0.065864"
+      ],
+      "is_baseline": false
+    },
+    {
+      "variant": "isotonic_two_stage",
+      "calibration_method": "isotonic",
+      "tau": 0.15,
+      "n_train_inner": 70676,
+      "n_val": 17669,
+      "n_holdout": 3884,
+      "base_rate_inner": 0.06586394249816062,
+      "diag_long": {
+        "head": "long",
+        "first_stage_tau": 0.1829737379321399,
+        "n_fired_chose_side": 558,
+        "n_pos_kept": 235,
+        "n_neg_kept": 323,
+        "empirical_rate_on_fired_subset": 0.4211469534050179,
+        "fallback_to_first_stage": false
+      },
+      "diag_short": {
+        "head": "short",
+        "first_stage_tau": 0.1829737379321399,
+        "n_fired_chose_side": 606,
+        "n_pos_kept": 228,
+        "n_neg_kept": 378,
+        "empirical_rate_on_fired_subset": 0.37623762376237624,
+        "fallback_to_first_stage": false
+      },
+      "platt_long": null,
+      "platt_short": null,
+      "iso_long_n_knots": 28,
+      "iso_short_n_knots": 26,
+      "val_metrics": {
+        "n_total_holdout": 17669,
+        "n_trades": 17669,
+        "abstain_rate": 0.0,
+        "precision": 0.5232327805761503,
+        "win_rate": 0.2351010243930047,
+        "avg_return_per_trade_pct": 0.04477954872918231,
+        "net_pnl_pct_per_trade": -0.2552204512708177,
+        "net_pnl_pct_total": -4509.490153504077,
+        "profit_factor": 0.2661295629565944,
+        "max_drawdown_pct": -4509.016909425638,
+        "cal_dev_post_calibration": 0.6287878787878789,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 16754,
+            "mean_predicted": 0.15047512156841442,
+            "empirical_correct_rate": 0.5024471767936015,
+            "abs_dev": 0.3519720552251871
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 132,
+            "mean_predicted": 0.20454545454545453,
+            "empirical_correct_rate": 0.8333333333333334,
+            "abs_dev": 0.6287878787878789
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 452,
+            "mean_predicted": 0.3739012319912495,
+            "empirical_correct_rate": 0.8805309734513275,
+            "abs_dev": 0.506629741460078
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 57,
+            "mean_predicted": 0.42105263157894735,
+            "empirical_correct_rate": 0.8596491228070176,
+            "abs_dev": 0.4385964912280702
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 52,
+            "mean_predicted": 0.5384615384615384,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.46153846153846156
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 79,
+            "mean_predicted": 0.6202531645569618,
+            "empirical_correct_rate": 0.9746835443037974,
+            "abs_dev": 0.35443037974683567
+          },
+          {
+            "bin_lo": 0.7000000000000001,
+            "bin_hi": 0.8,
+            "n": 53,
+            "mean_predicted": 0.7358490566037735,
+            "empirical_correct_rate": 0.9622641509433962,
+            "abs_dev": 0.2264150943396227
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 51,
+            "mean_predicted": 0.8627450980392155,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.1372549019607845
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 39,
+            "mean_predicted": 0.974358974358974,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.025641025641025994
+          }
+        ],
+        "share_long": 0.03146754202275171,
+        "share_short": 0.9685324579772483,
+        "tau": 0.15
+      },
+      "holdout_metrics": {
+        "n_total_holdout": 3884,
+        "n_trades": 3884,
+        "abstain_rate": 0.0,
+        "precision": 0.505664263645726,
+        "win_rate": 0.16168898043254376,
+        "avg_return_per_trade_pct": 0.012092417108704883,
+        "net_pnl_pct_per_trade": -0.28790758289129514,
+        "net_pnl_pct_total": -1118.2330519497903,
+        "profit_factor": 0.13213914597819387,
+        "max_drawdown_pct": -1117.9001294006334,
+        "cal_dev_post_calibration": 0.5789473684210527,
+        "calibration_bins": [
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 3796,
+            "mean_predicted": 0.15014242198173633,
+            "empirical_correct_rate": 0.4965753424657534,
+            "abs_dev": 0.3464329204840171
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.30000000000000004,
+            "n": 9,
+            "mean_predicted": 0.20360360360360363,
+            "empirical_correct_rate": 0.7777777777777778,
+            "abs_dev": 0.5741741741741742
+          },
+          {
+            "bin_lo": 0.30000000000000004,
+            "bin_hi": 0.4,
+            "n": 58,
+            "mean_predicted": 0.3727986839240025,
+            "empirical_correct_rate": 0.8793103448275862,
+            "abs_dev": 0.5065116609035837
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 8,
+            "mean_predicted": 0.42105263157894735,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.5789473684210527
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6000000000000001,
+            "n": 6,
+            "mean_predicted": 0.5469123318552043,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.45308766814479573
+          },
+          {
+            "bin_lo": 0.6000000000000001,
+            "bin_hi": 0.7000000000000001,
+            "n": 5,
+            "mean_predicted": 0.636027587136726,
+            "empirical_correct_rate": 1.0,
+            "abs_dev": 0.363972412863274
+          }
+        ],
+        "share_long": 0.012100926879505664,
+        "share_short": 0.9878990731204943,
+        "tau": 0.15
+      },
+      "paper_proof_summary": {
+        "n_proofs_requested": 10,
+        "n_proofs_emitted": 10,
+        "trough_pct": -0.03684366633435188,
+        "cum_pnl_pct": -0.036849637524111106,
+        "would_trip_drawdown": false,
+        "drawdown_floor_pct": -5.0,
+        "sizing_pct": 0.005,
+        "cost_fraction": 0.003,
+        "tau": 0.15
+      },
+      "passed_trustworthy_gate": false,
+      "fail_reasons": [
+        "holdout.cal_dev_post_calibration=0.5789 above ceiling 0.2 (HARD gate for calibration_status='trustworthy')",
+        "holdout.max_drawdown_pct=-1117.9001% not strictly > -5.0% (would trip DS auto-disable)"
+      ],
+      "notes": [
+        "isotonic_two_stage_first_stage_unconditional_platt long_params=(-8.5693,3.8110) short_params=(-8.1530,3.8059)",
+        "isotonic_two_stage_first_stage_tau=0.182974 n_fired_chose_long=558 n_fired_chose_short=606",
+        "isotonic_two_stage_tau_from_val_post_calibration q=0.9341 tau=0.150000 base_rate_inner=0.065864"
+      ],
+      "is_baseline": false
+    }
+  ],
+  "winner": null,
+  "registry": null,
+  "frame": {
+    "rows_total": 92253,
+    "bars_source": "candles",
+    "ingestion_quality": {
+      "row_count": 92253,
+      "span_days": 320.566,
+      "bar_gap_rate": 3.3e-05,
+      "feature_nan_share": 0.165226,
+      "core_feature_nan_share": 0.019608
+    },
+    "self_leak_columns_dropped": [
+      "btc_lead_ret_5m",
+      "btc_liquidations_1h_usd"
+    ]
+  },
+  "candidate": {
+    "n_train": 88345,
+    "n_holdout": 3884,
+    "threshold_fraction": 0.008,
+    "horizon_bars": 12,
+    "n_features": 50
+  },
+  "winner_status": "no_variant_passed_trustworthy_gate"
+}

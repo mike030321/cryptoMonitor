@@ -1,0 +1,1109 @@
+{
+  "verified_at": "20260422T223431Z",
+  "source_report": "models/report.json",
+  "source_report_started_at": null,
+  "lookback_days_env": "365",
+  "active_coins": [
+    "bonk",
+    "celestia",
+    "dogwifcoin",
+    "floki-inu",
+    "injective-protocol",
+    "jupiter-exchange-solana",
+    "pepe",
+    "render-token",
+    "sei-network",
+    "worldcoin-wld"
+  ],
+  "verification": {
+    "passed": false,
+    "min_holdout_rows": 200,
+    "min_directional_accuracy": 0.5,
+    "active_coins": [
+      "bonk",
+      "celestia",
+      "dogwifcoin",
+      "floki-inu",
+      "injective-protocol",
+      "jupiter-exchange-solana",
+      "pepe",
+      "render-token",
+      "sei-network",
+      "worldcoin-wld"
+    ],
+    "coins_with_promotion": [],
+    "coins_without_promotion": [
+      "bonk",
+      "celestia",
+      "dogwifcoin",
+      "floki-inu",
+      "injective-protocol",
+      "jupiter-exchange-solana",
+      "pepe",
+      "render-token",
+      "sei-network",
+      "worldcoin-wld"
+    ],
+    "promoted_by_coin": {
+      "bonk": 0,
+      "celestia": 0,
+      "dogwifcoin": 0,
+      "floki-inu": 0,
+      "injective-protocol": 0,
+      "jupiter-exchange-solana": 0,
+      "pepe": 0,
+      "render-token": 0,
+      "sei-network": 0,
+      "worldcoin-wld": 0
+    },
+    "counts": {
+      "slices_promoted": 0,
+      "slices_no_lift": 4,
+      "slices_below_coinflip": 41,
+      "slices_insufficient_sample": 10,
+      "slices_contract_failed": 0,
+      "slices_untrained": 11
+    },
+    "per_slice": [
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.44222222222222224,
+        "baseline_directional_accuracy": 0.4844444444444445,
+        "lift": -0.04222222222222227,
+        "holdout_rows": 1800,
+        "coin": "bonk",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.485,
+        "baseline_directional_accuracy": 0.5478571428571428,
+        "lift": -0.06285714285714283,
+        "holdout_rows": 1400,
+        "coin": "celestia",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "no_lift",
+        "directional_accuracy": 0.5178571428571429,
+        "baseline_directional_accuracy": 0.562857142857143,
+        "lift": -0.04500000000000004,
+        "holdout_rows": 1400,
+        "coin": "dogwifcoin",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4542857142857143,
+        "baseline_directional_accuracy": 0.5557142857142857,
+        "lift": -0.10142857142857142,
+        "holdout_rows": 1400,
+        "coin": "floki-inu",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "no_lift",
+        "directional_accuracy": 0.5257142857142857,
+        "baseline_directional_accuracy": 0.5828571428571429,
+        "lift": -0.05714285714285716,
+        "holdout_rows": 1400,
+        "coin": "injective-protocol",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "no_lift",
+        "directional_accuracy": 0.5064285714285715,
+        "baseline_directional_accuracy": 0.6,
+        "lift": -0.09357142857142853,
+        "holdout_rows": 1400,
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4240437158469946,
+        "baseline_directional_accuracy": 0.46229508196721314,
+        "lift": -0.038251366120218566,
+        "holdout_rows": 1830,
+        "coin": "pepe",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.49714285714285716,
+        "baseline_directional_accuracy": 0.5799999999999998,
+        "lift": -0.08285714285714268,
+        "holdout_rows": 1400,
+        "coin": "render-token",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.425,
+        "baseline_directional_accuracy": 0.5478571428571428,
+        "lift": -0.12285714285714283,
+        "holdout_rows": 1400,
+        "coin": "sei-network",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.45714285714285713,
+        "baseline_directional_accuracy": 0.562142857142857,
+        "lift": -0.10499999999999993,
+        "holdout_rows": 1400,
+        "coin": "worldcoin-wld",
+        "timeframe": "1m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "no_lift",
+        "directional_accuracy": 0.5613468013468014,
+        "baseline_directional_accuracy": 0.5747474747474748,
+        "lift": -0.013400673400673413,
+        "holdout_rows": 14850,
+        "coin": "__pooled__",
+        "timeframe": "1m",
+        "kind": "pooled"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.44183006535947716,
+        "baseline_directional_accuracy": 0.4679738562091503,
+        "lift": -0.02614379084967311,
+        "holdout_rows": 765,
+        "coin": "bonk",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.452054794520548,
+        "baseline_directional_accuracy": 0.4191780821917808,
+        "lift": 0.032876712328767155,
+        "holdout_rows": 730,
+        "coin": "celestia",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.45616438356164385,
+        "baseline_directional_accuracy": 0.46438356164383565,
+        "lift": -0.008219178082191803,
+        "holdout_rows": 730,
+        "coin": "dogwifcoin",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4575342465753424,
+        "baseline_directional_accuracy": 0.46438356164383565,
+        "lift": -0.006849315068493234,
+        "holdout_rows": 730,
+        "coin": "floki-inu",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.43424657534246575,
+        "baseline_directional_accuracy": 0.4301369863013699,
+        "lift": 0.0041095890410958735,
+        "holdout_rows": 730,
+        "coin": "injective-protocol",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4232876712328767,
+        "baseline_directional_accuracy": 0.452054794520548,
+        "lift": -0.02876712328767128,
+        "holdout_rows": 730,
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4379084967320261,
+        "baseline_directional_accuracy": 0.4718954248366013,
+        "lift": -0.03398692810457521,
+        "holdout_rows": 765,
+        "coin": "pepe",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.44520547945205474,
+        "baseline_directional_accuracy": 0.4424657534246575,
+        "lift": 0.002739726027397249,
+        "holdout_rows": 730,
+        "coin": "render-token",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.44794520547945205,
+        "baseline_directional_accuracy": 0.4342465753424657,
+        "lift": 0.013698630136986356,
+        "holdout_rows": 730,
+        "coin": "sei-network",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.46438356164383554,
+        "baseline_directional_accuracy": 0.46712328767123285,
+        "lift": -0.0027397260273973045,
+        "holdout_rows": 730,
+        "coin": "worldcoin-wld",
+        "timeframe": "5m",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4325675675675676,
+        "baseline_directional_accuracy": 0.45932432432432435,
+        "lift": -0.02675675675675676,
+        "holdout_rows": 7400,
+        "coin": "__pooled__",
+        "timeframe": "5m",
+        "kind": "pooled"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3508771929824561,
+        "baseline_directional_accuracy": 0.39824561403508774,
+        "lift": -0.047368421052631615,
+        "holdout_rows": 570,
+        "coin": "bonk",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.34385964912280703,
+        "baseline_directional_accuracy": 0.34385964912280703,
+        "lift": 0.0,
+        "holdout_rows": 570,
+        "coin": "celestia",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3684210526315789,
+        "baseline_directional_accuracy": 0.3982456140350877,
+        "lift": -0.029824561403508754,
+        "holdout_rows": 570,
+        "coin": "dogwifcoin",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.35087719298245607,
+        "baseline_directional_accuracy": 0.41578947368421043,
+        "lift": -0.06491228070175437,
+        "holdout_rows": 570,
+        "coin": "floki-inu",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.37017543859649127,
+        "baseline_directional_accuracy": 0.34035087719298246,
+        "lift": 0.02982456140350881,
+        "holdout_rows": 570,
+        "coin": "injective-protocol",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.34035087719298246,
+        "baseline_directional_accuracy": 0.35964912280701755,
+        "lift": -0.019298245614035092,
+        "holdout_rows": 570,
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3333333333333333,
+        "baseline_directional_accuracy": 0.33508771929824566,
+        "lift": -0.0017543859649123417,
+        "holdout_rows": 570,
+        "coin": "pepe",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.37719298245614036,
+        "baseline_directional_accuracy": 0.3789473684210526,
+        "lift": -0.0017543859649122306,
+        "holdout_rows": 570,
+        "coin": "render-token",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.2894736842105263,
+        "baseline_directional_accuracy": 0.33508771929824566,
+        "lift": -0.04561403508771933,
+        "holdout_rows": 570,
+        "coin": "sei-network",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4087719298245614,
+        "baseline_directional_accuracy": 0.4035087719298246,
+        "lift": 0.005263157894736803,
+        "holdout_rows": 570,
+        "coin": "worldcoin-wld",
+        "timeframe": "1h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3650877192982456,
+        "baseline_directional_accuracy": 0.3826315789473684,
+        "lift": -0.01754385964912275,
+        "holdout_rows": 5700,
+        "coin": "__pooled__",
+        "timeframe": "1h",
+        "kind": "pooled"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.34444444444444444,
+        "baseline_directional_accuracy": 0.3814814814814815,
+        "lift": -0.037037037037037035,
+        "holdout_rows": 270,
+        "coin": "bonk",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.32592592592592595,
+        "baseline_directional_accuracy": 0.37037037037037035,
+        "lift": -0.0444444444444444,
+        "holdout_rows": 270,
+        "coin": "celestia",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3666666666666667,
+        "baseline_directional_accuracy": 0.32222222222222224,
+        "lift": 0.04444444444444445,
+        "holdout_rows": 270,
+        "coin": "dogwifcoin",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.40740740740740733,
+        "baseline_directional_accuracy": 0.37777777777777777,
+        "lift": 0.02962962962962956,
+        "holdout_rows": 270,
+        "coin": "floki-inu",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3333333333333333,
+        "baseline_directional_accuracy": 0.32592592592592595,
+        "lift": 0.007407407407407363,
+        "holdout_rows": 270,
+        "coin": "injective-protocol",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3333333333333333,
+        "baseline_directional_accuracy": 0.3592592592592593,
+        "lift": -0.025925925925925963,
+        "holdout_rows": 270,
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.362962962962963,
+        "baseline_directional_accuracy": 0.3481481481481481,
+        "lift": 0.014814814814814892,
+        "holdout_rows": 270,
+        "coin": "pepe",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3407407407407407,
+        "baseline_directional_accuracy": 0.437037037037037,
+        "lift": -0.09629629629629632,
+        "holdout_rows": 270,
+        "coin": "render-token",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.4296296296296296,
+        "baseline_directional_accuracy": 0.3296296296296296,
+        "lift": 0.09999999999999998,
+        "holdout_rows": 270,
+        "coin": "sei-network",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.3851851851851852,
+        "baseline_directional_accuracy": 0.4222222222222222,
+        "lift": -0.037037037037037035,
+        "holdout_rows": 270,
+        "coin": "worldcoin-wld",
+        "timeframe": "2h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.37781885397412196,
+        "baseline_directional_accuracy": 0.3763401109057301,
+        "lift": 0.0014787430683918523,
+        "holdout_rows": 2705,
+        "coin": "__pooled__",
+        "timeframe": "2h",
+        "kind": "pooled"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.5,
+        "lift": -0.05555555555555558,
+        "holdout_rows": 36,
+        "coin": "bonk",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.33333333333333337,
+        "lift": 0.11111111111111105,
+        "holdout_rows": 36,
+        "coin": "celestia",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.3888888888888889,
+        "baseline_directional_accuracy": 0.3055555555555556,
+        "lift": 0.08333333333333331,
+        "holdout_rows": 36,
+        "coin": "dogwifcoin",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.41666666666666663,
+        "lift": 0.02777777777777779,
+        "holdout_rows": 36,
+        "coin": "floki-inu",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.3611111111111111,
+        "lift": 0.08333333333333331,
+        "holdout_rows": 36,
+        "coin": "injective-protocol",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.41666666666666663,
+        "baseline_directional_accuracy": 0.3888888888888889,
+        "lift": 0.027777777777777735,
+        "holdout_rows": 36,
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.3888888888888889,
+        "baseline_directional_accuracy": 0.4444444444444444,
+        "lift": -0.055555555555555525,
+        "holdout_rows": 36,
+        "coin": "pepe",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.3888888888888889,
+        "baseline_directional_accuracy": 0.3888888888888889,
+        "lift": 0.0,
+        "holdout_rows": 36,
+        "coin": "render-token",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.41666666666666663,
+        "baseline_directional_accuracy": 0.3888888888888889,
+        "lift": 0.027777777777777735,
+        "holdout_rows": 36,
+        "coin": "sei-network",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "insufficient_sample",
+        "directional_accuracy": 0.3611111111111111,
+        "baseline_directional_accuracy": 0.3333333333333333,
+        "lift": 0.02777777777777779,
+        "holdout_rows": 36,
+        "coin": "worldcoin-wld",
+        "timeframe": "6h",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "below_coinflip",
+        "directional_accuracy": 0.406993006993007,
+        "baseline_directional_accuracy": 0.406993006993007,
+        "lift": 0.0,
+        "holdout_rows": 715,
+        "coin": "__pooled__",
+        "timeframe": "6h",
+        "kind": "pooled"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "bonk",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "celestia",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "dogwifcoin",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "floki-inu",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "injective-protocol",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "jupiter-exchange-solana",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "pepe",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "render-token",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "sei-network",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "worldcoin-wld",
+        "timeframe": "1d",
+        "kind": "per_coin"
+      },
+      {
+        "promoted": false,
+        "reason": "untrained",
+        "directional_accuracy": null,
+        "baseline_directional_accuracy": null,
+        "lift": null,
+        "holdout_rows": 0,
+        "coin": "__pooled__",
+        "timeframe": "1d",
+        "kind": "pooled"
+      }
+    ]
+  },
+  "per_slice_metrics": {
+    "1m": {
+      "bonk": {
+        "directional_accuracy": 0.44222222222222224,
+        "baseline_directional_accuracy": 0.4844444444444445,
+        "fold_n_test_total": 1800,
+        "status": "trained"
+      },
+      "celestia": {
+        "directional_accuracy": 0.485,
+        "baseline_directional_accuracy": 0.5478571428571428,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      },
+      "dogwifcoin": {
+        "directional_accuracy": 0.5178571428571429,
+        "baseline_directional_accuracy": 0.562857142857143,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      },
+      "floki-inu": {
+        "directional_accuracy": 0.4542857142857143,
+        "baseline_directional_accuracy": 0.5557142857142857,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      },
+      "injective-protocol": {
+        "directional_accuracy": 0.5257142857142857,
+        "baseline_directional_accuracy": 0.5828571428571429,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      },
+      "jupiter-exchange-solana": {
+        "directional_accuracy": 0.5064285714285715,
+        "baseline_directional_accuracy": 0.6,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      },
+      "pepe": {
+        "directional_accuracy": 0.4240437158469946,
+        "baseline_directional_accuracy": 0.46229508196721314,
+        "fold_n_test_total": 1830,
+        "status": "trained"
+      },
+      "render-token": {
+        "directional_accuracy": 0.49714285714285716,
+        "baseline_directional_accuracy": 0.5799999999999998,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      },
+      "sei-network": {
+        "directional_accuracy": 0.425,
+        "baseline_directional_accuracy": 0.5478571428571428,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      },
+      "worldcoin-wld": {
+        "directional_accuracy": 0.45714285714285713,
+        "baseline_directional_accuracy": 0.562142857142857,
+        "fold_n_test_total": 1400,
+        "status": "trained"
+      }
+    },
+    "5m": {
+      "bonk": {
+        "directional_accuracy": 0.44183006535947716,
+        "baseline_directional_accuracy": 0.4679738562091503,
+        "fold_n_test_total": 765,
+        "status": "trained"
+      },
+      "celestia": {
+        "directional_accuracy": 0.452054794520548,
+        "baseline_directional_accuracy": 0.4191780821917808,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      },
+      "dogwifcoin": {
+        "directional_accuracy": 0.45616438356164385,
+        "baseline_directional_accuracy": 0.46438356164383565,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      },
+      "floki-inu": {
+        "directional_accuracy": 0.4575342465753424,
+        "baseline_directional_accuracy": 0.46438356164383565,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      },
+      "injective-protocol": {
+        "directional_accuracy": 0.43424657534246575,
+        "baseline_directional_accuracy": 0.4301369863013699,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      },
+      "jupiter-exchange-solana": {
+        "directional_accuracy": 0.4232876712328767,
+        "baseline_directional_accuracy": 0.452054794520548,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      },
+      "pepe": {
+        "directional_accuracy": 0.4379084967320261,
+        "baseline_directional_accuracy": 0.4718954248366013,
+        "fold_n_test_total": 765,
+        "status": "trained"
+      },
+      "render-token": {
+        "directional_accuracy": 0.44520547945205474,
+        "baseline_directional_accuracy": 0.4424657534246575,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      },
+      "sei-network": {
+        "directional_accuracy": 0.44794520547945205,
+        "baseline_directional_accuracy": 0.4342465753424657,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      },
+      "worldcoin-wld": {
+        "directional_accuracy": 0.46438356164383554,
+        "baseline_directional_accuracy": 0.46712328767123285,
+        "fold_n_test_total": 730,
+        "status": "trained"
+      }
+    },
+    "1h": {
+      "bonk": {
+        "directional_accuracy": 0.3508771929824561,
+        "baseline_directional_accuracy": 0.39824561403508774,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "celestia": {
+        "directional_accuracy": 0.34385964912280703,
+        "baseline_directional_accuracy": 0.34385964912280703,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "dogwifcoin": {
+        "directional_accuracy": 0.3684210526315789,
+        "baseline_directional_accuracy": 0.3982456140350877,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "floki-inu": {
+        "directional_accuracy": 0.35087719298245607,
+        "baseline_directional_accuracy": 0.41578947368421043,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "injective-protocol": {
+        "directional_accuracy": 0.37017543859649127,
+        "baseline_directional_accuracy": 0.34035087719298246,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "jupiter-exchange-solana": {
+        "directional_accuracy": 0.34035087719298246,
+        "baseline_directional_accuracy": 0.35964912280701755,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "pepe": {
+        "directional_accuracy": 0.3333333333333333,
+        "baseline_directional_accuracy": 0.33508771929824566,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "render-token": {
+        "directional_accuracy": 0.37719298245614036,
+        "baseline_directional_accuracy": 0.3789473684210526,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "sei-network": {
+        "directional_accuracy": 0.2894736842105263,
+        "baseline_directional_accuracy": 0.33508771929824566,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      },
+      "worldcoin-wld": {
+        "directional_accuracy": 0.4087719298245614,
+        "baseline_directional_accuracy": 0.4035087719298246,
+        "fold_n_test_total": 570,
+        "status": "trained"
+      }
+    },
+    "2h": {
+      "bonk": {
+        "directional_accuracy": 0.34444444444444444,
+        "baseline_directional_accuracy": 0.3814814814814815,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "celestia": {
+        "directional_accuracy": 0.32592592592592595,
+        "baseline_directional_accuracy": 0.37037037037037035,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "dogwifcoin": {
+        "directional_accuracy": 0.3666666666666667,
+        "baseline_directional_accuracy": 0.32222222222222224,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "floki-inu": {
+        "directional_accuracy": 0.40740740740740733,
+        "baseline_directional_accuracy": 0.37777777777777777,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "injective-protocol": {
+        "directional_accuracy": 0.3333333333333333,
+        "baseline_directional_accuracy": 0.32592592592592595,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "jupiter-exchange-solana": {
+        "directional_accuracy": 0.3333333333333333,
+        "baseline_directional_accuracy": 0.3592592592592593,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "pepe": {
+        "directional_accuracy": 0.362962962962963,
+        "baseline_directional_accuracy": 0.3481481481481481,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "render-token": {
+        "directional_accuracy": 0.3407407407407407,
+        "baseline_directional_accuracy": 0.437037037037037,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "sei-network": {
+        "directional_accuracy": 0.4296296296296296,
+        "baseline_directional_accuracy": 0.3296296296296296,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      },
+      "worldcoin-wld": {
+        "directional_accuracy": 0.3851851851851852,
+        "baseline_directional_accuracy": 0.4222222222222222,
+        "fold_n_test_total": 270,
+        "status": "trained"
+      }
+    },
+    "6h": {
+      "bonk": {
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.5,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "celestia": {
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.33333333333333337,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "dogwifcoin": {
+        "directional_accuracy": 0.3888888888888889,
+        "baseline_directional_accuracy": 0.3055555555555556,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "floki-inu": {
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.41666666666666663,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "injective-protocol": {
+        "directional_accuracy": 0.4444444444444444,
+        "baseline_directional_accuracy": 0.3611111111111111,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "jupiter-exchange-solana": {
+        "directional_accuracy": 0.41666666666666663,
+        "baseline_directional_accuracy": 0.3888888888888889,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "pepe": {
+        "directional_accuracy": 0.3888888888888889,
+        "baseline_directional_accuracy": 0.4444444444444444,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "render-token": {
+        "directional_accuracy": 0.3888888888888889,
+        "baseline_directional_accuracy": 0.3888888888888889,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "sei-network": {
+        "directional_accuracy": 0.41666666666666663,
+        "baseline_directional_accuracy": 0.3888888888888889,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      },
+      "worldcoin-wld": {
+        "directional_accuracy": 0.3611111111111111,
+        "baseline_directional_accuracy": 0.3333333333333333,
+        "fold_n_test_total": 36,
+        "status": "trained"
+      }
+    },
+    "1d": {}
+  }
+}

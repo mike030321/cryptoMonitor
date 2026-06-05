@@ -1,0 +1,208 @@
+You are merging a new module called **Market Meta Brain** into my existing quant trading platform.
+
+Read the attached source code first and understand its architecture before changing anything.
+
+## Goal
+
+Integrate this new brain as a **supervisory adaptive intelligence layer above the quant engine**.
+
+Very important:
+
+* The quant engine remains the core for prediction and execution logic.
+* The brain must **not** directly predict price candles.
+* The brain must **not** replace signal generation logic.
+* The brain must **not** directly place trades.
+* The brain must sit **above** quant and modify behavior through supervisory outputs only.
+
+## Correct architecture
+
+### Quant engine responsibilities
+
+Quant keeps handling:
+
+* price prediction
+* expected return
+* probability / confidence
+* raw signal generation
+* execution suggestions
+* risk metrics
+* model outputs by coin / timeframe / strategy family
+
+### Brain responsibilities
+
+Brain handles:
+
+* trust modulation
+* regime sensing
+* strategy-family preference shifts
+* portfolio attention shifts
+* caution / aggression adjustment
+* defensive mode switching
+* exploration budget decisions
+* suppressing weak strategy families
+* learning which environments reward which model families
+* memory of market states and outcomes
+
+So:
+
+* **Quant = reflexes / calculator / executor**
+* **Brain = strategist / adaptive governor / meta-controller**
+
+## Your task
+
+Take my current quant project and merge this new package into it cleanly.
+
+The attached brain code is already rebuilt into a finance-native package and should be treated as the new source of truth for the brain layer.
+
+## What I want you to do
+
+### 1. Inspect both codebases
+
+* inspect my quant app structure
+* inspect the attached `market_meta_brain` package
+* identify the best integration points
+* identify what payloads already exist that can feed the brain
+* identify missing fields that need to be added
+
+### 2. Create a clean integration layer
+
+Wire quant outputs into brain inputs.
+
+Brain should receive structured telemetry such as:
+
+* coin
+* timeframe
+* strategy_family
+* edge
+* confidence
+* calibrated_confidence if available
+* risk_score
+* recent_accuracy
+* pnl_state
+* drawdown_state
+* disagreement
+* prediction_error
+* regime
+* volatility
+* correlation_shift
+* exposure
+* anomaly flags
+
+If some are missing in current quant app:
+
+* find closest equivalents
+* map them carefully
+* if unavailable, stub them cleanly with TODO markers
+* do not invent fake production logic silently
+
+### 3. Preserve execution boundary
+
+Execution layer must remain controlled by quant / portfolio / execution logic.
+
+Brain must only emit supervisory outputs such as:
+
+* trust_multiplier
+* allocation_weight
+* caution_level
+* exploration_budget
+* suppress_signal
+* defensive_mode
+* suppressed_families
+* reason_codes
+
+Then quant / portfolio logic should apply those outputs deterministically.
+
+### 4. Implement merge safely
+
+I want:
+
+* minimal breakage
+* clear module boundaries
+* typed interfaces where possible
+* config-driven wiring
+* logging / observability
+* safe fallback behavior if brain fails
+
+If brain errors or returns invalid output:
+
+* fall back to neutral behavior
+* do not stop trading engine unexpectedly unless existing risk rules require it
+
+### 5. Do not reintroduce junk
+
+Do not add back:
+
+* 2D world logic
+* organism sandbox logic
+* body simulation
+* Wikipedia/text learner
+* toy reward loops
+* autonomous training loops
+* direct action/motor logic
+* experimental AGI aesthetics
+
+This merge must stay production-oriented.
+
+## Required deliverables
+
+### A. Integration audit
+
+Tell me:
+
+* where you merged the brain
+* which files were changed
+* which quant outputs feed the brain
+* which brain outputs affect execution
+* what assumptions you made
+* what is still missing or weak
+
+### B. Code changes
+
+Actually implement the merge in code.
+
+### C. Fallback safety
+
+Add a safe fallback mode:
+
+* if brain unavailable -> neutral trust, low exploration, normal risk defaults
+* no uncontrolled behavior
+
+### D. Merge notes
+
+Give me:
+
+* how to run it
+* what env/config variables were added
+* what APIs/routes/services changed
+* what replay/backtest hooks should be used to validate it
+
+## Important rules
+
+* Be brutally honest if my quant app lacks required telemetry
+* Do not pretend integration is complete if important signals are missing
+* Do not silently connect wrong fields just because names look similar
+* Prefer explicit TODO comments over fake intelligence
+* Keep architecture clean
+* Do not let the brain become another direct predictor
+
+## Implementation preference
+
+Please do the merge in this order:
+
+1. inspect current quant structure
+2. inspect attached brain package
+3. propose exact integration points
+4. implement the merge
+5. show changed files
+6. explain remaining gaps
+
+## Final outcome I want
+
+A working merged system where:
+
+* quant still generates raw trade intelligence
+* brain evaluates context and outputs supervisory directives
+* portfolio/execution layer applies those directives safely
+* the system is ready for replay / shadow-mode validation before live use
+
+Start now by first mapping my quant architecture against the attached brain package and then perform the integration.

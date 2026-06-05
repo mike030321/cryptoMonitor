@@ -1,0 +1,220 @@
+Create and execute the next recovery task based on Task #399.
+
+## Context
+
+Task #399 ran the full 1-year training campaign with the per-timeframe horizon-label fix.
+
+Result:
+
+* campaign completed
+* done criterion was **not met**
+* promoted slices = **0/44**
+* the binding gate is now **directional_call_regression**
+* directional_call_share is approximately **0.97–1.000** on every slice
+* holdout rows / coin-flip / lift are **not** the binding gates
+* only 5/44 slices show positive lift
+* mean lift is negative
+
+So the system is now telling us something important:
+
+**The horizon-label fix was real, but the main remaining blocker is stable-class collapse / directional-call collapse across the fleet.**
+
+## Goal of this task
+
+Diagnose and fix the cause of the directional-call regression after the per-tf horizon-label change.
+
+Do **not** weaken the gate.
+Do **not** turn quant on anyway.
+Do **not** just rerun the campaign repeatedly.
+
+I want an actual diagnosis and at least one concrete modeling/data fix tested end-to-end.
+
+## Task name
+
+Use something like:
+
+**Diagnose and Fix Stable-Class Collapse After Per-TF Horizon Labels**
+
+## What I want you to investigate
+
+### 1. Class distribution shift
+
+Measure how the per-tf horizon-label change changed class balance.
+
+For each timeframe and slice, show:
+
+* old label_3class distribution
+* new label_3class distribution
+* especially STABLE share before vs after
+* whether STABLE became too rare to learn
+
+### 2. Predicted class collapse
+
+Measure for every slice:
+
+* predicted class distribution
+* directional_call_share
+* stable-call share
+* calibration by class
+* whether the model is collapsing before or after calibration
+
+I want to know:
+
+* is the collapse coming from raw model scores?
+* calibration layer?
+* thresholding?
+* label distribution?
+* expected-return mapping?
+* class weighting?
+
+### 3. Threshold analysis
+
+The new multi-bar thresholds are:
+
+* 1h: 0.40%
+* 2h: 0.50%
+* 6h: 0.80%
+
+Test whether these thresholds are making the STABLE bin too narrow or too sparse.
+
+I want evidence for:
+
+* STABLE frequency under current thresholds
+* STABLE frequency under nearby alternative thresholds
+* sensitivity analysis by timeframe
+
+Do not change thresholds blindly.
+Show what happens.
+
+### 4. Coupling audit
+
+Check whether these are still semantically aligned after the horizon-label fix:
+
+* classifier target
+* regressor head target
+* class return means
+* expectedReturnPct mapping
+* calibration
+* verification metrics
+
+I want proof that the 3-class objective and the downstream expected-return logic are still pulling in the same direction.
+
+### 5. Binary-vs-3class question
+
+For the broken slices, evaluate whether 3-class is still the right framing.
+
+Specifically test whether:
+
+* STABLE should remain a class
+* or whether some slices/timeframes behave more honestly as binary directional models with abstain derived from edge/cost filters instead
+
+Do not change architecture casually.
+But I want an evidence-based answer.
+
+### 6. Feature contribution / collapse analysis
+
+Investigate whether the new horizon labels made certain features dominate or become misleading.
+
+Check:
+
+* feature importance shift
+* one-feature domination
+* monotonic collapse toward directional calls
+* whether the model is effectively learning “always directional” because of class priors
+
+### 7. Slice quality segmentation
+
+Group slices into:
+
+* structurally noisy
+* stable-class collapse
+* insufficient sample
+* maybe recoverable
+* should stay retired
+
+Do not treat all 44 slices as one problem.
+
+## What I want you to do
+
+### A. Diagnose first
+
+Do not start patching until you have a concrete diagnosis report.
+
+### B. Then implement at least one real fix
+
+Based on evidence, implement the highest-probability fix.
+
+Possible examples:
+
+* threshold adjustment by timeframe
+* better stable-band construction
+* class-weighting fix
+* calibration fix
+* label construction refinement
+* alternate abstain logic
+* verification logic addition
+* slice-specific handling
+
+But only after evidence.
+
+### C. Re-test properly
+
+I want:
+
+* offline focused verification
+* and, if feasible in the environment, a campaign-grade verification on the affected subset
+
+Do not claim success from one anecdotal slice.
+
+## Deliverables
+
+### 1. Diagnosis report
+
+For each timeframe / slice group, show:
+
+* class balance
+* stable share
+* directional_call_share
+* calibration behavior
+* likely root cause
+
+### 2. Fix implemented
+
+Explain:
+
+* what changed
+* why
+* what files changed
+
+### 3. Before/after evidence
+
+Show:
+
+* directional_call_share before vs after
+* stable-call share before vs after
+* DA / baseline / lift before vs after
+* whether any slice now clears the gate
+* if not, whether the gap narrowed materially
+
+### 4. Honest conclusion
+
+Choose one:
+
+* fix worked and at least one slice now promotes
+* fix improved but still no promotions
+* no safe fix identified yet
+
+If the answer is still “no promotion,” say that directly.
+
+## Hard rules
+
+* do not weaken the verification gate
+* do not declare victory because one metric moved slightly
+* do not call 0.49 “close enough” to 0.50
+* do not turn quant on with known-bad slices
+* do not hide slice-specific failures inside averages
+* optimize for truth, not for completing the task quickly
+
+## Most important question to answer
+
+**Why did STABLE effectively disappear after the per-timeframe horizon-label fix, and what is the safest real fix?**

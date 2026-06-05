@@ -1,0 +1,446 @@
+You are not doing feature work.
+
+You are running a full-system audit of the entire quant platform using multiple agents in parallel.
+
+Mission
+
+I want a proof-based audit of the whole app.
+
+Do not give me:
+
+“looks good”
+“tests pass”
+“seems wired correctly”
+“should work”
+“trust me”
+
+I want evidence.
+
+Time does not matter.
+
+The audit is complete only when you provide proof that each part works as intended, or clearly prove that it does not.
+
+A passing test suite is not enough by itself.
+Tests are one source of evidence, not the finish line.
+
+Architecture context
+
+Audit the platform as a layered system:
+
+api-server = orchestrator / runtime / paper trading / DB / monitor cycle
+ml-engine = ML runtime / LightGBM / regime classifier / meta-brain / training campaign
+crypto-monitor = read-only dashboard / observability
+strategy-lab = deterministic baseline scoreboard
+PostgreSQL + Drizzle schema + journals + snapshots
+shared frictions config for live/backtest parity
+
+The system includes:
+
+quant brain (prediction)
+meta-brain (governance)
+strategy lab (benchmark reality check)
+training + promotion + failure-analysis pipeline
+runtime monitor / paper trading / risk controls
+dashboard visibility
+Critical audit principle
+
+The audit must focus on the real risks:
+
+Complexity tax
+Many interacting systems may hide bugs, stale assumptions, wrong field mappings, and dead wiring.
+Governance overfitting
+The meta-brain may react to noisy or dishonest telemetry and appear intelligent while learning the wrong thing.
+Operational entropy
+As the system grows, components may drift out of sync even if local tests still pass.
+False confidence from dashboards
+I need hard PnL truth, not nice charts or self-reported health.
+Required audit style
+
+Use agents and divide the work into explicit sub-tasks.
+
+Each sub-task must return:
+
+what was checked
+how it was checked
+what evidence was gathered
+whether it is proven correct, proven broken, or still uncertain
+what exact files/functions/queries/logs support that conclusion
+
+If uncertain, say uncertain.
+Do not smooth over uncertainty.
+
+Global rule for completion
+
+A task is not “done” because:
+
+typecheck passed
+unit tests passed
+workflow is green
+endpoint returns 200
+
+A task is only “done” when you provide direct evidence that the intended behavior actually occurs end-to-end.
+
+Divide the audit into these task groups
+Task Group 1 — Runtime architecture truth audit
+
+Prove the real runtime topology matches the intended architecture.
+
+Check:
+
+service boundaries
+startup/shutdown behavior
+health endpoints
+env/config dependencies
+whether services degrade safely when one dependency fails
+which flows are synchronous vs async vs fire-and-forget
+whether any undocumented coupling exists
+
+Evidence required:
+
+boot logs
+process start traces
+endpoint health checks
+dependency maps
+exact file/function references
+Task Group 2 — Quant Brain audit
+
+Prove the LightGBM quant brain behaves as intended.
+
+Check:
+
+feature generation
+regime routing
+calibration path
+prediction output semantics
+predictor purity
+no contamination from LLM/news/sentiment/benchmark signals
+backtest/live friction parity
+slice fallback / pooled fallback logic
+journal correctness
+
+Evidence required:
+
+real input/output traces
+feature samples
+calibration evidence
+promotion gate behavior
+prediction journal examples
+parity test evidence plus direct runtime payload inspection
+Task Group 3 — Meta-Brain audit
+
+Prove the meta-brain is governance-only and works as intended.
+
+Check:
+
+no price prediction role
+no trade placement role
+batch semantics
+directive production
+directive consumption
+suppression/caution/defensive behavior
+fallback neutrality
+checkpoint persistence / rehydration
+record_outcome learning loop
+restart behavior
+latency and failure behavior
+whether real telemetry, null telemetry, and missing flags are handled honestly
+
+Evidence required:
+
+evaluate payload examples
+directive examples
+record_outcome examples
+restart proofs
+fallback proofs
+cycle stats
+exact traces showing directives shape governance but do not directly predict price
+Task Group 4 — Strategy Lab / benchmark audit
+
+Prove Strategy Lab is functioning as a truthful scoreboard.
+
+Check:
+
+baseline strategies are computed correctly
+same price feed is used
+equity / PnL / drawdown / fees / action tracking are correct
+Measurement Mode behavior is real
+strategy_snapshots are accurate
+benchmark telemetry reaching meta-brain is read-only and governance-only
+no contamination of quant predictor path
+
+Evidence required:
+
+snapshot examples
+baseline calculation walk-throughs
+DB evidence
+monitor-cycle traces
+proof benchmark fields do not reach /ml/predict, /ml/decide, predictor training, or trade rows improperly
+Task Group 5 — Monitor cycle audit
+
+Prove the heartbeat loop works exactly as intended.
+
+Check:
+
+price ingestion
+market signals polling
+strategy lab snapshot timing
+quant prediction timing
+meta-brain batch assembly timing
+trade gate ordering
+paper trade open/close sequencing
+record_outcome sequencing
+cycle stats emission
+one-tick-lag semantics
+
+Evidence required:
+
+one full monitor cycle trace
+timestamps
+logs
+DB writes
+exact order of operations
+proof no step is skipped silently
+Task Group 6 — Paper trading / PnL truth audit
+
+This is the most important section.
+
+I need hard PnL truth.
+
+Do not rely on dashboard totals alone.
+
+Prove:
+
+paper trade open/close records are correct
+fees and slippage are applied correctly
+expected-return-vs-cost gate is real
+position sizing math is correct
+portfolio equity is reconciled from underlying trades
+drawdown is computed honestly
+journal entries match portfolio state
+no phantom profit, phantom loss, duplicate close, or hidden reconciliation bug exists
+
+Evidence required:
+
+reconstruct PnL from raw paper_trades / paper_positions / journals
+compare reconstructed PnL against dashboard/API-reported PnL
+show any divergence
+explain exact formula path
+prove whether the PnL displayed is true
+
+This section must include a bottom-up reconciliation:
+
+from raw trades
+to portfolio equity
+to dashboard numbers
+
+If they differ, say so directly.
+
+Task Group 7 — Risk / safety boundary audit
+
+Prove the system’s safety boundaries are real.
+
+Check:
+
+EV-vs-cost gate
+cadence guard
+quarantine logic
+portfolio constraints
+defensive mode interactions
+size clamps
+kill-switch / revert logic
+no LLM/news/sentiment/benchmark contamination into live execution
+hard caps remain enforced under all directive combinations
+
+Evidence required:
+
+direct runtime traces
+logs
+DB effects
+property tests
+adversarial input tests
+exact examples where the guard blocks behavior
+Task Group 8 — Training campaign audit
+
+Prove the training campaign does what it claims.
+
+Check:
+
+preflight scans
+archived manifest validation
+retrain path
+walk-forward CV
+Optuna behavior
+calibration
+promotion gates
+failure-analysis categories
+watchdog pause/resume logic
+shadow/live promotion flow
+
+Evidence required:
+
+campaign logs
+report outputs
+promotion/rejection examples
+failure-analysis examples
+proof watchdog actually blocks on repeated regressions
+Task Group 9 — DB / schema / state integrity audit
+
+Prove persistent state is coherent.
+
+Check:
+
+schema and migrations
+journal integrity
+snapshot consistency
+tick/trade bindings
+hydration after restart
+orphan rows
+duplicate rows
+stale cache/state issues
+whether in-memory state can diverge from DB truth
+
+Evidence required:
+
+queries
+counts
+invariants
+restart tests
+mismatch reports
+Task Group 10 — Dashboard / observability audit
+
+Prove the dashboard tells the truth.
+
+Check:
+
+dashboard cards match raw underlying state
+cycle stats match real runtime events
+strategy lab cards match snapshot data
+brain convergence card matches actual retrain reports
+diagnostics/failure-analysis shown in UI matches source files
+no misleading aggregation or stale cache
+
+Evidence required:
+
+API response vs DB vs dashboard comparison
+screenshots optional, but DB/API proof is required
+explicit note on any misleading display
+Execution rules
+1. Use agents
+
+Split the audit across multiple agents by domain:
+
+runtime/orchestration
+quant brain
+meta-brain
+strategy lab
+monitor cycle
+paper trading + PnL
+risk/safety
+training campaign
+database/state
+dashboard truth
+2. Build a task tree
+
+Create a master audit plan with:
+
+sub-task names
+owners/agents
+evidence expected
+status
+3. Keep a proof ledger
+
+For every claim, attach evidence:
+
+log excerpt
+endpoint output
+DB query result
+code reference
+test output
+replay trace
+4. Prefer end-to-end proof over local proof
+
+Example:
+Do not just say “paper-trader.ts computes PnL this way.”
+Actually prove:
+
+a trade opened
+the close happened
+fees were applied
+the DB row matches
+the portfolio balance changed accordingly
+the dashboard/API reflects the same value
+5. Adversarial mindset
+
+Assume the app may be lying through:
+
+stale cache
+wrong mapping
+dead code
+silent fallback
+mismatched journals
+dashboard drift
+partial writes
+restart loss
+duplicated events
+wrong field semantics
+
+Try to break assumptions.
+
+Required final deliverables
+
+I want one master audit report divided into:
+
+A. Proven correct
+
+Only things backed by hard evidence.
+
+B. Proven broken
+
+Real bugs or mismatches found.
+
+C. Uncertain / insufficient evidence
+
+Anything not provable yet.
+
+D. Hard PnL truth report
+
+Bottom-up reconciliation from raw trades to reported equity/PnL/drawdown.
+
+E. Risk-ranked bug/task list
+
+Ordered by:
+
+PnL corruption risk
+execution risk
+learning/governance risk
+operational risk
+observability risk
+F. Recommended next actions
+
+Split into:
+
+must fix immediately
+safe to defer
+architectural cleanup later
+Completion bar
+
+Do not close this audit because:
+
+tests passed
+services are green
+endpoints respond
+code looks reasonable
+
+Close it only when you can say:
+
+“Here is the proof that this behavior really occurs, or here is the proof that it does not.”
+
+Most important output
+
+I care most about:
+
+hard PnL truth
+whether live/runtime behavior matches the intended architecture
+whether governance/meta-brain is learning from truthful telemetry
+whether Strategy Lab and dashboards are telling the truth
+whether the system is genuinely beating its own dumb baselines, not just sounding advanced

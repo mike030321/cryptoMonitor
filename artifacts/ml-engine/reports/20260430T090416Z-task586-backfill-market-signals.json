@@ -1,0 +1,72 @@
+{
+  "anti_leak_check": {
+    "future_ts_count": 0,
+    "now_ms_at_check": 1777539856740
+  },
+  "coins": [
+    "bitcoin",
+    "ethereum",
+    "solana"
+  ],
+  "dry_run": false,
+  "end_days_ago": 0,
+  "end_ms": 1777539807031,
+  "finished_at": "2026-04-30T09:04:16.740194+00:00",
+  "lookback_days": 365,
+  "now_ms": 1777539807031,
+  "per_coin": {
+    "bitcoin": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769616000000,
+          "elapsed_s": 0.9,
+          "latest_ms": 1777536000000,
+          "rows": 276
+        },
+        "oi": {
+          "earliest_ms": 1772359200000,
+          "elapsed_s": 23.65,
+          "latest_ms": 1777539600000,
+          "rows": 1440
+        }
+      },
+      "inst_id": "BTC-USDT-SWAP",
+      "written": {
+        "funding": 276,
+        "oi": 1440
+      }
+    },
+    "ethereum": {
+      "fetched": {
+        "funding": {
+          "earliest_ms": 1769616000000,
+          "elapsed_s": 0.95,
+          "latest_ms": 1777536000000,
+          "rows": 276
+        },
+        "oi": {
+          "earliest_ms": 1772359200000,
+          "elapsed_s": 23.81,
+          "latest_ms": 1777539600000,
+          "rows": 1440
+        }
+      },
+      "inst_id": "ETH-USDT-SWAP",
+      "written": {
+        "funding": 276,
+        "oi": 1440
+      }
+    },
+    "solana": {
+      "skipped": "not_in_okx_swap_base"
+    }
+  },
+  "since_ms": 1746003807031,
+  "started_at": "2026-04-30T09:03:27.058313+00:00",
+  "streams": [
+    "funding",
+    "mid",
+    "oi"
+  ],
+  "task": 586
+}

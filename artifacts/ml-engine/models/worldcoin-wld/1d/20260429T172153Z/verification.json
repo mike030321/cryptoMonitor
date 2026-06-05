@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.3308641975308642,
+  "baseline_directional_accuracy": 0.3703703703703704,
+  "lift": -0.03950617283950619,
+  "holdout_rows": 810,
+  "min_directional_accuracy_applied": 0.53,
+  "served_predictor_kind": "lightgbm",
+  "coin": "worldcoin-wld",
+  "timeframe": "1d",
+  "kind": "per_coin"
+}

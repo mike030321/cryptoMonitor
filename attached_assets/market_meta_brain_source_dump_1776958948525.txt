@@ -1,0 +1,1378 @@
+====================================================================================================
+market_meta_brain/src/market_meta_brain/domain/__init__.py
+----------------------------------------------------------------------------------------------------
+from .types import *
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/domain/types.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from dataclasses import dataclass, field, asdict
+from typing import Any
+
+
+@dataclass(slots=True)
+class QuantSliceTelemetry:
+    coin: str
+    timeframe: str
+    strategy_family: str
+    edge: float
+    confidence: float
+    calibrated_confidence: float
+    risk_score: float
+    recent_accuracy: float
+    pnl_state: float
+    drawdown_state: float
+    disagreement: float
+    prediction_error: float
+    regime: str
+    volatility: float
+    correlation_shift: float
+    exposure: float
+    turnover: float
+    slippage_bps: float
+    anomaly_flags: list[str] = field(default_factory=list)
+
+
+@dataclass(slots=True)
+class PortfolioTelemetry:
+    total_drawdown: float
+    realized_vol: float
+    concentration: float
+    leverage: float
+    liquidity_stress: float
+    correlation_shift: float
+    active_risk_budget: float
+    kill_switch_distance: float
+    anomaly_flags: list[str] = field(default_factory=list)
+
+
+@dataclass(slots=True)
+class TelemetryBatch:
+    slices: list[QuantSliceTelemetry]
+    portfolio: PortfolioTelemetry
+    timestamp: str | None = None
+
+
+@dataclass(slots=True)
+class FamilyState:
+    family: str
+    avg_edge: float
+    avg_confidence: float
+    avg_calibrated_confidence: float
+    avg_disagreement: float
+    avg_prediction_error: float
+    avg_accuracy: float
+    avg_pnl_state: float
+    avg_drawdown_state: float
+    avg_volatility: float
+    avg_correlation_shift: float
+    total_exposure: float
+    total_turnover: float
+    avg_risk_score: float
+    avg_slippage_bps: float
+    anomaly_count: int
+    slice_count: int
+
+
+@dataclass(slots=True)
+class MarketMetaState:
+    stress: float
+    safety: float
+    fatigue: float
+    coherence: float
+    surprise: float
+    curiosity: float
+    regime_certainty: float
+    opportunity_strength: float
+    capital_safety: float
+    model_health: float
+    risk_pressure: float
+    family_states: dict[str, FamilyState] = field(default_factory=dict)
+    dominant_regime: str = "unknown"
+
+
+@dataclass(slots=True)
+class RegimePrototype:
+    regime_id: str
+    state_vector: list[float]
+    supporting_count: int
+    average_outcome: float
+    stability_score: float
+    dominant_families: list[str]
+
+
+@dataclass(slots=True)
+class SupervisoryAction:
+    action_type: str
+    family_targets: list[str] = field(default_factory=list)
+    strength: float = 0.0
+    rationale: list[str] = field(default_factory=list)
+
+
+@dataclass(slots=True)
+class BrainDirective:
+    trust_multiplier: dict[str, float]
+    allocation_weight: dict[str, float]
+    caution_level: float
+    exploration_budget: float
+    suppress_signal: bool
+    defensive_mode: str
+    suppressed_families: list[str]
+    paused_slices: list[str]
+    reason_codes: list[str] = field(default_factory=list)
+    meta_state: MarketMetaState | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        payload = asdict(self)
+        return payload
+
+
+@dataclass(slots=True)
+class GovernanceOutcome:
+    realized_pnl: float
+    realized_drawdown: float
+    realized_stability: float
+    turnover_cost: float
+    action_churn: float
+    correct_defense: float
+    correct_suppression: float
+    missed_edge_cost: float
+
+
+@dataclass(slots=True)
+class GovernanceEpisode:
+    timestamp: str | None
+    meta_state_vector: list[float]
+    dominant_regime: str
+    family_snapshot: dict[str, float]
+    action_summary: dict[str, float]
+    reward: float
+    outcome: GovernanceOutcome
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/ingest/__init__.py
+----------------------------------------------------------------------------------------------------
+from .telemetry_adapter import TelemetryAdapter
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/ingest/telemetry_adapter.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from collections import defaultdict
+
+from market_meta_brain.domain.types import FamilyState, QuantSliceTelemetry, TelemetryBatch
+from market_meta_brain.utils.math_utils import safe_div
+
+
+class TelemetryAdapter:
+    """Aggregates slice telemetry into stable family-level features."""
+
+    def aggregate_families(self, batch: TelemetryBatch) -> dict[str, FamilyState]:
+        grouped: dict[str, list[QuantSliceTelemetry]] = defaultdict(list)
+        for item in batch.slices:
+            grouped[item.strategy_family].append(item)
+
+        families: dict[str, FamilyState] = {}
+        for family, items in grouped.items():
+            n = len(items)
+            families[family] = FamilyState(
+                family=family,
+                avg_edge=safe_div(sum(x.edge for x in items), n),
+                avg_confidence=safe_div(sum(x.confidence for x in items), n),
+                avg_calibrated_confidence=safe_div(sum(x.calibrated_confidence for x in items), n),
+                avg_disagreement=safe_div(sum(x.disagreement for x in items), n),
+                avg_prediction_error=safe_div(sum(x.prediction_error for x in items), n),
+                avg_accuracy=safe_div(sum(x.recent_accuracy for x in items), n),
+                avg_pnl_state=safe_div(sum(x.pnl_state for x in items), n),
+                avg_drawdown_state=safe_div(sum(x.drawdown_state for x in items), n),
+                avg_volatility=safe_div(sum(x.volatility for x in items), n),
+                avg_correlation_shift=safe_div(sum(x.correlation_shift for x in items), n),
+                total_exposure=sum(x.exposure for x in items),
+                total_turnover=sum(x.turnover for x in items),
+                avg_risk_score=safe_div(sum(x.risk_score for x in items), n),
+                avg_slippage_bps=safe_div(sum(x.slippage_bps for x in items), n),
+                anomaly_count=sum(len(x.anomaly_flags) for x in items),
+                slice_count=n,
+            )
+        return families
+
+    def dominant_regime(self, batch: TelemetryBatch) -> str:
+        counts: dict[str, int] = defaultdict(int)
+        for item in batch.slices:
+            counts[item.regime] += 1
+        if not counts:
+            return "unknown"
+        return max(counts.items(), key=lambda kv: kv[1])[0]
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/state/__init__.py
+----------------------------------------------------------------------------------------------------
+from .meta_state import MetaStateMapper
+from .drive_mapper import DriveMapper
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/state/meta_state.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from market_meta_brain.domain.types import MarketMetaState, PortfolioTelemetry, FamilyState
+from market_meta_brain.utils.math_utils import clamp, safe_div
+
+
+class MetaStateMapper:
+    """Maps quant and portfolio telemetry into a finance-native latent state."""
+
+    def map(
+        self,
+        family_states: dict[str, FamilyState],
+        portfolio: PortfolioTelemetry,
+        dominant_regime: str,
+    ) -> MarketMetaState:
+        n = max(1, len(family_states))
+        avg_disagreement = safe_div(sum(f.avg_disagreement for f in family_states.values()), n)
+        avg_edge = safe_div(sum(f.avg_edge for f in family_states.values()), n)
+        avg_cal_conf = safe_div(sum(f.avg_calibrated_confidence for f in family_states.values()), n)
+        avg_accuracy = safe_div(sum(f.avg_accuracy for f in family_states.values()), n)
+        avg_drawdown = safe_div(sum(f.avg_drawdown_state for f in family_states.values()), n)
+        avg_pred_error = safe_div(sum(f.avg_prediction_error for f in family_states.values()), n)
+        avg_turnover = safe_div(sum(f.total_turnover for f in family_states.values()), n)
+        avg_anomalies = safe_div(sum(f.anomaly_count for f in family_states.values()), n)
+
+        stress = clamp(
+            0.28 * portfolio.total_drawdown
+            + 0.16 * portfolio.realized_vol
+            + 0.16 * avg_disagreement
+            + 0.14 * portfolio.liquidity_stress
+            + 0.10 * portfolio.correlation_shift
+            + 0.08 * avg_pred_error
+            + 0.08 * avg_anomalies,
+            0.0,
+            1.0,
+        )
+        risk_pressure = clamp(
+            0.34 * portfolio.total_drawdown
+            + 0.20 * portfolio.leverage
+            + 0.16 * portfolio.liquidity_stress
+            + 0.15 * portfolio.concentration
+            + 0.15 * (1.0 - portfolio.kill_switch_distance),
+            0.0,
+            1.0,
+        )
+        fatigue = clamp(
+            0.36 * avg_turnover
+            + 0.24 * avg_drawdown
+            + 0.20 * portfolio.concentration
+            + 0.20 * max(0.0, avg_disagreement - 0.35),
+            0.0,
+            1.0,
+        )
+        coherence = clamp(
+            1.0 - (0.45 * avg_disagreement + 0.25 * avg_pred_error + 0.15 * portfolio.correlation_shift + 0.15 * avg_anomalies),
+            0.0,
+            1.0,
+        )
+        surprise = clamp(
+            0.40 * avg_pred_error
+            + 0.25 * portfolio.correlation_shift
+            + 0.20 * avg_disagreement
+            + 0.15 * (1.0 if portfolio.anomaly_flags else 0.0),
+            0.0,
+            1.0,
+        )
+        opportunity_strength = clamp(
+            (0.55 * max(0.0, avg_edge) + 0.25 * avg_cal_conf + 0.20 * max(0.0, avg_accuracy - 0.5)),
+            0.0,
+            1.0,
+        )
+        regime_certainty = clamp(0.55 * avg_cal_conf + 0.45 * coherence, 0.0, 1.0)
+        safety = clamp(1.0 - 0.55 * stress - 0.45 * risk_pressure, 0.0, 1.0)
+        capital_safety = clamp(
+            1.0 - (0.35 * portfolio.total_drawdown + 0.25 * portfolio.leverage + 0.20 * portfolio.liquidity_stress + 0.20 * (1.0 - portfolio.kill_switch_distance)),
+            0.0,
+            1.0,
+        )
+        model_health = clamp(0.40 * avg_accuracy + 0.35 * avg_cal_conf + 0.25 * coherence, 0.0, 1.0)
+        curiosity = clamp(safety * opportunity_strength * (1.0 - fatigue) * 0.85, 0.0, 1.0)
+
+        return MarketMetaState(
+            stress=stress,
+            safety=safety,
+            fatigue=fatigue,
+            coherence=coherence,
+            surprise=surprise,
+            curiosity=curiosity,
+            regime_certainty=regime_certainty,
+            opportunity_strength=opportunity_strength,
+            capital_safety=capital_safety,
+            model_health=model_health,
+            risk_pressure=risk_pressure,
+            family_states=family_states,
+            dominant_regime=dominant_regime,
+        )
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/state/drive_mapper.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from market_meta_brain.domain.types import MarketMetaState
+
+
+@dataclass(slots=True)
+class DriveSnapshot:
+    defend_capital: float
+    exploit_edge: float
+    probe_opportunity: float
+    reduce_churn: float
+    restore_coherence: float
+
+
+class DriveMapper:
+    """Translates meta-state into supervisory drives."""
+
+    def map(self, state: MarketMetaState) -> DriveSnapshot:
+        defend_capital = min(1.0, 0.50 * state.stress + 0.50 * state.risk_pressure)
+        exploit_edge = min(1.0, 0.55 * state.opportunity_strength + 0.45 * state.coherence)
+        probe_opportunity = min(1.0, state.curiosity)
+        reduce_churn = min(1.0, 0.65 * state.fatigue + 0.35 * state.surprise)
+        restore_coherence = min(1.0, 1.0 - state.coherence + 0.25 * state.surprise)
+        return DriveSnapshot(
+            defend_capital=defend_capital,
+            exploit_edge=exploit_edge,
+            probe_opportunity=probe_opportunity,
+            reduce_churn=reduce_churn,
+            restore_coherence=restore_coherence,
+        )
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/memory/__init__.py
+----------------------------------------------------------------------------------------------------
+from .episodic_market import EpisodicMarketMemory
+from .regime_prototypes import RegimePrototypeMemory
+from .working_context import WorkingContext
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/memory/episodic_market.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from collections import deque
+
+from market_meta_brain.domain.types import GovernanceEpisode
+
+
+class EpisodicMarketMemory:
+    def __init__(self, capacity: int = 5000):
+        self.capacity = capacity
+        self._buffer: deque[GovernanceEpisode] = deque(maxlen=capacity)
+
+    def push(self, episode: GovernanceEpisode) -> None:
+        self._buffer.append(episode)
+
+    def recent(self, n: int = 20) -> list[GovernanceEpisode]:
+        return list(self._buffer)[-n:]
+
+    def summarize_rewards(self, n: int = 50) -> dict[str, float]:
+        items = self.recent(n)
+        if not items:
+            return {"count": 0.0, "avg_reward": 0.0}
+        avg_reward = sum(x.reward for x in items) / len(items)
+        return {"count": float(len(items)), "avg_reward": float(avg_reward)}
+
+    def state_dict(self) -> dict:
+        return {
+            "capacity": self.capacity,
+            "episodes": [episode.__dict__ for episode in self._buffer],
+        }
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/memory/regime_prototypes.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from dataclasses import asdict
+
+from market_meta_brain.domain.types import MarketMetaState, RegimePrototype
+from market_meta_brain.utils.math_utils import clamp, cosine_similarity
+
+
+class RegimePrototypeMemory:
+    def __init__(self, capacity: int = 64, match_threshold: float = 0.92):
+        self.capacity = capacity
+        self.match_threshold = match_threshold
+        self.prototypes: list[RegimePrototype] = []
+
+    @staticmethod
+    def state_to_vector(state: MarketMetaState) -> list[float]:
+        return [
+            state.stress,
+            state.safety,
+            state.fatigue,
+            state.coherence,
+            state.surprise,
+            state.curiosity,
+            state.regime_certainty,
+            state.opportunity_strength,
+            state.capital_safety,
+            state.model_health,
+            state.risk_pressure,
+        ]
+
+    def recall(self, state: MarketMetaState) -> tuple[RegimePrototype | None, float]:
+        if not self.prototypes:
+            return None, 0.0
+        vector = self.state_to_vector(state)
+        scored = [(p, cosine_similarity(vector, p.state_vector)) for p in self.prototypes]
+        prototype, score = max(scored, key=lambda x: x[1])
+        return prototype, score
+
+    def update(self, state: MarketMetaState, reward: float) -> None:
+        vector = self.state_to_vector(state)
+        dominant_families = sorted(
+            state.family_states.keys(),
+            key=lambda k: state.family_states[k].avg_edge,
+            reverse=True,
+        )[:3]
+        prototype, score = self.recall(state)
+        if prototype is not None and score >= self.match_threshold:
+            alpha = 1.0 / (prototype.supporting_count + 1)
+            prototype.state_vector = [
+                (1 - alpha) * old + alpha * new
+                for old, new in zip(prototype.state_vector, vector)
+            ]
+            prototype.supporting_count += 1
+            prototype.average_outcome = (1 - alpha) * prototype.average_outcome + alpha * reward
+            prototype.stability_score = clamp(0.97 * prototype.stability_score + 0.03 * state.coherence, 0.0, 1.0)
+            prototype.dominant_families = dominant_families
+            return
+
+        self.prototypes.append(
+            RegimePrototype(
+                regime_id=state.dominant_regime,
+                state_vector=vector,
+                supporting_count=1,
+                average_outcome=reward,
+                stability_score=state.coherence,
+                dominant_families=dominant_families,
+            )
+        )
+        if len(self.prototypes) > self.capacity:
+            self.prototypes.sort(key=lambda p: (p.supporting_count, p.stability_score, p.average_outcome))
+            self.prototypes.pop(0)
+
+    def state_dict(self) -> dict:
+        return {"capacity": self.capacity, "match_threshold": self.match_threshold, "prototypes": [asdict(p) for p in self.prototypes]}
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/memory/working_context.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from collections import deque
+
+
+class WorkingContext:
+    def __init__(self, capacity: int = 256):
+        self.capacity = capacity
+        self._events: deque[dict] = deque(maxlen=capacity)
+
+    def push(self, item: dict) -> None:
+        self._events.append(item)
+
+    def recent(self, n: int = 10) -> list[dict]:
+        return list(self._events)[-n:]
+
+    def trend(self, key: str, n: int = 20) -> float:
+        values = [float(event.get(key, 0.0)) for event in self.recent(n)]
+        if len(values) < 2:
+            return 0.0
+        return values[-1] - values[0]
+
+    def state_dict(self) -> dict:
+        return {"capacity": self.capacity, "events": list(self._events)}
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/learning/__init__.py
+----------------------------------------------------------------------------------------------------
+from .trust_model import StrategyTrustModel
+from .reward_model import compute_meta_reward
+from .bounded_plasticity import BoundedPlasticityController
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/learning/reward_model.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from market_meta_brain.domain.types import GovernanceOutcome
+
+
+def compute_meta_reward(outcome: GovernanceOutcome) -> float:
+    pnl_quality = outcome.realized_pnl
+    drawdown_penalty = 1.4 * max(0.0, outcome.realized_drawdown)
+    instability_penalty = 0.9 * max(0.0, 1.0 - outcome.realized_stability)
+    churn_penalty = 0.7 * max(0.0, outcome.action_churn)
+    turnover_penalty = 0.4 * max(0.0, outcome.turnover_cost)
+    defense_bonus = 0.6 * max(0.0, outcome.correct_defense)
+    suppression_bonus = 0.5 * max(0.0, outcome.correct_suppression)
+    missed_edge_penalty = 0.9 * max(0.0, outcome.missed_edge_cost)
+    return float(
+        pnl_quality
+        - drawdown_penalty
+        - instability_penalty
+        - churn_penalty
+        - turnover_penalty
+        + defense_bonus
+        + suppression_bonus
+        - missed_edge_penalty
+    )
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/learning/bounded_plasticity.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from market_meta_brain.utils.math_utils import clamp
+
+
+class BoundedPlasticityController:
+    """Caps adaptation speed so the live supervisor cannot mutate too quickly."""
+
+    def __init__(self, max_step: float = 0.05):
+        self.max_step = max_step
+
+    def update_value(self, current: float, target: float) -> float:
+        delta = clamp(target - current, -self.max_step, self.max_step)
+        return current + delta
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/learning/trust_model.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+
+from market_meta_brain.domain.types import FamilyState, GovernanceOutcome, MarketMetaState
+from market_meta_brain.learning.bounded_plasticity import BoundedPlasticityController
+from market_meta_brain.utils.math_utils import clamp
+
+
+@dataclass(slots=True)
+class FamilyTrustState:
+    trust: float = 1.0
+    stability: float = 0.5
+    exploration_eligibility: float = 0.2
+    failure_streak: int = 0
+    recovery_score: float = 0.5
+    last_regime: str = "unknown"
+
+
+@dataclass(slots=True)
+class StrategyTrustModel:
+    learning_rate: float = 0.04
+    trust_by_family: dict[str, FamilyTrustState] = field(default_factory=dict)
+    plasticity: BoundedPlasticityController = field(default_factory=lambda: BoundedPlasticityController(max_step=0.05))
+
+    def ensure_family(self, family: str) -> FamilyTrustState:
+        if family not in self.trust_by_family:
+            self.trust_by_family[family] = FamilyTrustState()
+        return self.trust_by_family[family]
+
+    def score_family(self, family_state: FamilyState, meta_state: MarketMetaState) -> float:
+        internal = self.ensure_family(family_state.family)
+        raw = (
+            0.28 * family_state.avg_edge
+            + 0.20 * family_state.avg_calibrated_confidence
+            + 0.14 * family_state.avg_accuracy
+            - 0.16 * family_state.avg_disagreement
+            - 0.10 * family_state.avg_prediction_error
+            - 0.06 * family_state.avg_drawdown_state
+            - 0.06 * family_state.avg_risk_score
+        )
+        stabilized = 0.65 * internal.trust + 0.35 * raw
+        if meta_state.stress > 0.65:
+            stabilized -= 0.15 * family_state.avg_risk_score
+        return clamp(stabilized, 0.0, 1.5)
+
+    def produce_trust_map(self, meta_state: MarketMetaState) -> dict[str, float]:
+        return {
+            family: self.score_family(family_state, meta_state)
+            for family, family_state in meta_state.family_states.items()
+        }
+
+    def learn_from_outcome(
+        self,
+        family_outcomes: dict[str, GovernanceOutcome],
+        regime: str,
+    ) -> None:
+        for family, outcome in family_outcomes.items():
+            state = self.ensure_family(family)
+            target = clamp(
+                1.0
+                + 0.45 * outcome.realized_pnl
+                - 0.55 * outcome.realized_drawdown
+                + 0.20 * outcome.correct_suppression
+                + 0.20 * outcome.correct_defense
+                - 0.35 * outcome.missed_edge_cost,
+                0.2,
+                1.8,
+            )
+            state.trust = self.plasticity.update_value(state.trust, target)
+            state.stability = self.plasticity.update_value(state.stability, outcome.realized_stability)
+            state.exploration_eligibility = self.plasticity.update_value(
+                state.exploration_eligibility,
+                clamp(0.7 * state.stability + 0.3 * max(0.0, outcome.realized_pnl), 0.0, 1.0),
+            )
+            if outcome.realized_pnl < 0.0 or outcome.realized_drawdown > 0.0:
+                state.failure_streak += 1
+            else:
+                state.failure_streak = max(0, state.failure_streak - 1)
+            state.recovery_score = self.plasticity.update_value(
+                state.recovery_score,
+                clamp(0.5 * state.stability + 0.5 * max(0.0, outcome.realized_pnl), 0.0, 1.0),
+            )
+            state.last_regime = regime
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/planning/__init__.py
+----------------------------------------------------------------------------------------------------
+from .supervisor_planner import SupervisorPlanner
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/planning/supervisor_planner.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from market_meta_brain.domain.types import MarketMetaState, SupervisoryAction
+from market_meta_brain.state.drive_mapper import DriveSnapshot
+from market_meta_brain.utils.math_utils import clamp
+
+
+class SupervisorPlanner:
+    """Scores a small action set for supervisory portfolio control."""
+
+    def plan(
+        self,
+        meta_state: MarketMetaState,
+        drives: DriveSnapshot,
+        trust_map: dict[str, float],
+    ) -> list[SupervisoryAction]:
+        actions: list[SupervisoryAction] = []
+        low_trust = [family for family, score in trust_map.items() if score < 0.75]
+        high_trust = [family for family, score in trust_map.items() if score > 1.05]
+
+        if drives.defend_capital > 0.55:
+            actions.append(
+                SupervisoryAction(
+                    action_type="ENTER_DEFENSIVE_MODE",
+                    strength=drives.defend_capital,
+                    rationale=["RISK_PRESSURE", "CAPITAL_DEFENSE"],
+                )
+            )
+        if drives.restore_coherence > 0.45 and low_trust:
+            actions.append(
+                SupervisoryAction(
+                    action_type="SUPPRESS_FAMILY",
+                    family_targets=low_trust,
+                    strength=clamp(drives.restore_coherence, 0.0, 1.0),
+                    rationale=["LOW_COHERENCE", "MODEL_DISAGREEMENT"],
+                )
+            )
+        if drives.exploit_edge > 0.45 and high_trust:
+            actions.append(
+                SupervisoryAction(
+                    action_type="ROTATE_TRUST",
+                    family_targets=high_trust,
+                    strength=clamp(drives.exploit_edge, 0.0, 1.0),
+                    rationale=["STABLE_EDGE", "CONFIDENCE_ALIGNMENT"],
+                )
+            )
+        if drives.probe_opportunity > 0.20 and meta_state.capital_safety > 0.65:
+            actions.append(
+                SupervisoryAction(
+                    action_type="ALLOW_MICRO_EXPLORATION",
+                    family_targets=high_trust[:1] or list(trust_map.keys())[:1],
+                    strength=clamp(drives.probe_opportunity, 0.0, 0.35),
+                    rationale=["SAFE_EXPLORATION"],
+                )
+            )
+        if drives.reduce_churn > 0.40:
+            actions.append(
+                SupervisoryAction(
+                    action_type="REDUCE_RISK",
+                    strength=clamp(drives.reduce_churn, 0.0, 1.0),
+                    rationale=["OVERTRADING_RISK", "ACTION_CHURN"],
+                )
+            )
+
+        if not actions:
+            actions.append(SupervisoryAction(action_type="HOLD_POLICY", strength=0.25, rationale=["NO_OVERRIDE"]))
+        return actions
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/policy/__init__.py
+----------------------------------------------------------------------------------------------------
+from .directive_policy import DirectivePolicy
+from .safety_guardrails import SafetyGuardrails
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/policy/safety_guardrails.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from market_meta_brain.domain.types import MarketMetaState
+from market_meta_brain.utils.math_utils import clamp
+
+
+class SafetyGuardrails:
+    def max_exploration_budget(self, state: MarketMetaState) -> float:
+        if state.capital_safety < 0.4 or state.stress > 0.7:
+            return 0.0
+        if state.capital_safety < 0.6:
+            return 0.02
+        return 0.05
+
+    def defensive_mode(self, state: MarketMetaState) -> str:
+        if state.risk_pressure > 0.75 or state.capital_safety < 0.25:
+            return "hard"
+        if state.risk_pressure > 0.55 or state.stress > 0.60:
+            return "soft"
+        return "off"
+
+    def caution_level(self, state: MarketMetaState) -> float:
+        return clamp(0.45 * state.stress + 0.35 * state.risk_pressure + 0.20 * state.surprise, 0.0, 1.0)
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/policy/directive_policy.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from market_meta_brain.domain.types import BrainDirective, MarketMetaState, SupervisoryAction
+from market_meta_brain.policy.safety_guardrails import SafetyGuardrails
+from market_meta_brain.utils.math_utils import clamp, softmax_dict
+
+
+class DirectivePolicy:
+    def __init__(self) -> None:
+        self.guardrails = SafetyGuardrails()
+
+    def build(
+        self,
+        state: MarketMetaState,
+        actions: list[SupervisoryAction],
+        trust_map: dict[str, float],
+    ) -> BrainDirective:
+        defensive_mode = self.guardrails.defensive_mode(state)
+        caution_level = self.guardrails.caution_level(state)
+        max_exploration = self.guardrails.max_exploration_budget(state)
+
+        suppressed_families: list[str] = []
+        reason_codes: list[str] = []
+        exploration_budget = min(max_exploration, 0.02 + 0.03 * state.curiosity)
+
+        for action in actions:
+            reason_codes.extend(action.rationale)
+            if action.action_type == "SUPPRESS_FAMILY":
+                suppressed_families.extend(action.family_targets)
+            elif action.action_type == "REDUCE_RISK":
+                caution_level = clamp(caution_level + 0.15 * action.strength, 0.0, 1.0)
+            elif action.action_type == "ENTER_DEFENSIVE_MODE":
+                defensive_mode = "hard" if action.strength > 0.75 else max(defensive_mode, "soft")
+            elif action.action_type == "ALLOW_MICRO_EXPLORATION":
+                exploration_budget = min(max_exploration, exploration_budget + 0.02 * action.strength)
+
+        adjusted_trust = {}
+        for family, trust in trust_map.items():
+            adjusted = trust
+            if family in suppressed_families:
+                adjusted *= 0.4
+            if defensive_mode == "hard":
+                adjusted *= 0.75
+            adjusted_trust[family] = clamp(adjusted, 0.0, 1.5)
+
+        allocation_weight = softmax_dict(adjusted_trust, temperature=max(0.25, 1.0 - state.coherence * 0.4))
+
+        paused_slices: list[str] = []
+        suppress_signal = bool(suppressed_families) or defensive_mode != "off"
+        reason_codes = sorted(set(reason_codes))
+        if defensive_mode != "off":
+            reason_codes.append(f"DEFENSIVE_MODE_{defensive_mode.upper()}")
+        if suppressed_families:
+            reason_codes.append("FAMILY_SUPPRESSION_ACTIVE")
+
+        return BrainDirective(
+            trust_multiplier=adjusted_trust,
+            allocation_weight=allocation_weight,
+            caution_level=caution_level,
+            exploration_budget=exploration_budget,
+            suppress_signal=suppress_signal,
+            defensive_mode=defensive_mode,
+            suppressed_families=sorted(set(suppressed_families)),
+            paused_slices=paused_slices,
+            reason_codes=reason_codes,
+            meta_state=state,
+        )
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/runtime/__init__.py
+----------------------------------------------------------------------------------------------------
+from .service import MarketMetaBrainService
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/runtime/logging.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+
+class JsonlLogger:
+    def __init__(self, path: str | Path | None = None):
+        self.path = Path(path) if path else None
+
+    def log(self, event: dict[str, Any]) -> None:
+        if self.path is None:
+            return
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        with self.path.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(event, ensure_ascii=False) + "\n")
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/runtime/checkpointing.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+
+class Checkpointer:
+    def __init__(self, root: str | Path):
+        self.root = Path(root)
+        self.root.mkdir(parents=True, exist_ok=True)
+
+    def save_json(self, name: str, payload: dict[str, Any]) -> Path:
+        path = self.root / f"{name}.json"
+        path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+        return path
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/runtime/service.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from dataclasses import asdict
+
+from market_meta_brain.domain.types import GovernanceEpisode, GovernanceOutcome, TelemetryBatch
+from market_meta_brain.ingest.telemetry_adapter import TelemetryAdapter
+from market_meta_brain.learning.reward_model import compute_meta_reward
+from market_meta_brain.learning.trust_model import StrategyTrustModel
+from market_meta_brain.memory.episodic_market import EpisodicMarketMemory
+from market_meta_brain.memory.regime_prototypes import RegimePrototypeMemory
+from market_meta_brain.memory.working_context import WorkingContext
+from market_meta_brain.planning.supervisor_planner import SupervisorPlanner
+from market_meta_brain.policy.directive_policy import DirectivePolicy
+from market_meta_brain.runtime.logging import JsonlLogger
+from market_meta_brain.state.drive_mapper import DriveMapper
+from market_meta_brain.state.meta_state import MetaStateMapper
+
+
+class MarketMetaBrainService:
+    def __init__(self, logger: JsonlLogger | None = None):
+        self.adapter = TelemetryAdapter()
+        self.state_mapper = MetaStateMapper()
+        self.drive_mapper = DriveMapper()
+        self.trust_model = StrategyTrustModel()
+        self.episodic_memory = EpisodicMarketMemory()
+        self.regime_memory = RegimePrototypeMemory()
+        self.working_context = WorkingContext()
+        self.planner = SupervisorPlanner()
+        self.policy = DirectivePolicy()
+        self.logger = logger or JsonlLogger(None)
+
+    def evaluate(self, batch: TelemetryBatch):
+        family_states = self.adapter.aggregate_families(batch)
+        dominant_regime = self.adapter.dominant_regime(batch)
+        meta_state = self.state_mapper.map(family_states, batch.portfolio, dominant_regime)
+        trust_map = self.trust_model.produce_trust_map(meta_state)
+        drives = self.drive_mapper.map(meta_state)
+        actions = self.planner.plan(meta_state, drives, trust_map)
+        directive = self.policy.build(meta_state, actions, trust_map)
+
+        self.working_context.push(
+            {
+                "stress": meta_state.stress,
+                "coherence": meta_state.coherence,
+                "risk_pressure": meta_state.risk_pressure,
+                "caution_level": directive.caution_level,
+                "defensive_mode": directive.defensive_mode,
+            }
+        )
+        self.logger.log(
+            {
+                "type": "directive",
+                "timestamp": batch.timestamp,
+                "directive": directive.to_dict(),
+            }
+        )
+        return directive
+
+    def record_outcome(self, directive, outcome: GovernanceOutcome, timestamp: str | None = None) -> float:
+        if directive.meta_state is None:
+            raise ValueError("Directive must include meta_state to record an outcome.")
+        reward = compute_meta_reward(outcome)
+        state = directive.meta_state
+        action_summary = {
+            "caution_level": directive.caution_level,
+            "exploration_budget": directive.exploration_budget,
+            "suppressed_count": float(len(directive.suppressed_families)),
+            "defensive_hard": 1.0 if directive.defensive_mode == "hard" else 0.0,
+        }
+        family_snapshot = {family: fs.avg_edge for family, fs in state.family_states.items()}
+        episode = GovernanceEpisode(
+            timestamp=timestamp,
+            meta_state_vector=self.regime_memory.state_to_vector(state),
+            dominant_regime=state.dominant_regime,
+            family_snapshot=family_snapshot,
+            action_summary=action_summary,
+            reward=reward,
+            outcome=outcome,
+        )
+        self.episodic_memory.push(episode)
+        self.regime_memory.update(state, reward)
+        family_outcomes = {
+            family: GovernanceOutcome(
+                realized_pnl=outcome.realized_pnl,
+                realized_drawdown=outcome.realized_drawdown,
+                realized_stability=outcome.realized_stability,
+                turnover_cost=outcome.turnover_cost,
+                action_churn=outcome.action_churn,
+                correct_defense=outcome.correct_defense,
+                correct_suppression=outcome.correct_suppression,
+                missed_edge_cost=outcome.missed_edge_cost,
+            )
+            for family in state.family_states
+        }
+        self.trust_model.learn_from_outcome(family_outcomes, state.dominant_regime)
+        self.logger.log({"type": "outcome", "timestamp": timestamp, "reward": reward, "outcome": asdict(outcome)})
+        return reward
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/integration/__init__.py
+----------------------------------------------------------------------------------------------------
+from .quant_bridge import QuantBridge
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/integration/quant_bridge.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+from market_meta_brain.domain.types import PortfolioTelemetry, QuantSliceTelemetry, TelemetryBatch
+
+
+class QuantBridge:
+    """Thin adapter for merging into an existing quant platform."""
+
+    def from_payload(self, payload: dict) -> TelemetryBatch:
+        slices = [QuantSliceTelemetry(**item) for item in payload.get("slices", [])]
+        portfolio = PortfolioTelemetry(**payload["portfolio"])
+        return TelemetryBatch(slices=slices, portfolio=portfolio, timestamp=payload.get("timestamp"))
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/utils/__init__.py
+----------------------------------------------------------------------------------------------------
+from .math_utils import *
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/utils/math_utils.py
+----------------------------------------------------------------------------------------------------
+from __future__ import annotations
+
+import math
+
+
+def clamp(value: float, low: float, high: float) -> float:
+    return max(low, min(high, float(value)))
+
+
+def safe_div(numerator: float, denominator: float, default: float = 0.0) -> float:
+    if abs(denominator) < 1e-12:
+        return default
+    return numerator / denominator
+
+
+def softmax_dict(values: dict[str, float], temperature: float = 1.0) -> dict[str, float]:
+    if not values:
+        return {}
+    temperature = max(1e-6, temperature)
+    max_v = max(values.values())
+    exps = {k: math.exp((v - max_v) / temperature) for k, v in values.items()}
+    total = sum(exps.values())
+    if total <= 0.0:
+        n = len(values)
+        return {k: 1.0 / n for k in values}
+    return {k: v / total for k, v in exps.items()}
+
+
+def cosine_similarity(a: list[float], b: list[float]) -> float:
+    if len(a) != len(b) or not a:
+        return 0.0
+    dot = sum(x * y for x, y in zip(a, b))
+    na = math.sqrt(sum(x * x for x in a))
+    nb = math.sqrt(sum(y * y for y in b))
+    if na == 0.0 or nb == 0.0:
+        return 0.0
+    return dot / (na * nb)
+
+
+====================================================================================================
+market_meta_brain/src/market_meta_brain/__init__.py
+----------------------------------------------------------------------------------------------------
+"""Market Meta-Brain package."""
+
+__all__ = ["__version__"]
+__version__ = "0.1.0"
+
+
+====================================================================================================
+market_meta_brain/tests/test_service.py
+----------------------------------------------------------------------------------------------------
+from market_meta_brain.domain.types import GovernanceOutcome, PortfolioTelemetry, QuantSliceTelemetry, TelemetryBatch
+from market_meta_brain.runtime.service import MarketMetaBrainService
+
+
+def make_batch():
+    return TelemetryBatch(
+        slices=[
+            QuantSliceTelemetry(
+                coin="BTC",
+                timeframe="1h",
+                strategy_family="momentum",
+                edge=0.12,
+                confidence=0.72,
+                calibrated_confidence=0.69,
+                risk_score=0.30,
+                recent_accuracy=0.57,
+                pnl_state=0.03,
+                drawdown_state=0.01,
+                disagreement=0.12,
+                prediction_error=0.10,
+                regime="trend",
+                volatility=0.40,
+                correlation_shift=0.08,
+                exposure=0.20,
+                turnover=0.11,
+                slippage_bps=2.0,
+                anomaly_flags=[],
+            ),
+            QuantSliceTelemetry(
+                coin="ETH",
+                timeframe="4h",
+                strategy_family="mean_reversion",
+                edge=0.03,
+                confidence=0.58,
+                calibrated_confidence=0.55,
+                risk_score=0.36,
+                recent_accuracy=0.52,
+                pnl_state=0.01,
+                drawdown_state=0.02,
+                disagreement=0.20,
+                prediction_error=0.18,
+                regime="trend",
+                volatility=0.45,
+                correlation_shift=0.11,
+                exposure=0.10,
+                turnover=0.15,
+                slippage_bps=3.0,
+                anomaly_flags=[],
+            ),
+        ],
+        portfolio=PortfolioTelemetry(
+            total_drawdown=0.05,
+            realized_vol=0.30,
+            concentration=0.24,
+            leverage=0.12,
+            liquidity_stress=0.05,
+            correlation_shift=0.10,
+            active_risk_budget=0.66,
+            kill_switch_distance=0.85,
+            anomaly_flags=[],
+        ),
+        timestamp="2026-04-23T11:00:00Z",
+    )
+
+
+def test_evaluate_returns_directive():
+    service = MarketMetaBrainService()
+    directive = service.evaluate(make_batch())
+    assert directive.caution_level >= 0.0
+    assert "momentum" in directive.trust_multiplier
+    assert abs(sum(directive.allocation_weight.values()) - 1.0) < 1e-6
+
+
+def test_record_outcome_updates_memory():
+    service = MarketMetaBrainService()
+    directive = service.evaluate(make_batch())
+    reward = service.record_outcome(
+        directive,
+        GovernanceOutcome(
+            realized_pnl=0.08,
+            realized_drawdown=0.01,
+            realized_stability=0.82,
+            turnover_cost=0.01,
+            action_churn=0.04,
+            correct_defense=0.3,
+            correct_suppression=0.2,
+            missed_edge_cost=0.0,
+        ),
+        timestamp="2026-04-23T12:00:00Z",
+    )
+    assert reward > -1.0
+    assert service.episodic_memory.summarize_rewards()["count"] == 1.0
+    assert len(service.regime_memory.prototypes) == 1
+
+
+====================================================================================================
+market_meta_brain/tests/test_guardrails.py
+----------------------------------------------------------------------------------------------------
+from market_meta_brain.domain.types import MarketMetaState
+from market_meta_brain.policy.safety_guardrails import SafetyGuardrails
+
+
+def make_state(capital_safety: float, stress: float, risk_pressure: float):
+    return MarketMetaState(
+        stress=stress,
+        safety=max(0.0, 1.0 - stress),
+        fatigue=0.2,
+        coherence=0.8,
+        surprise=0.1,
+        curiosity=0.2,
+        regime_certainty=0.8,
+        opportunity_strength=0.5,
+        capital_safety=capital_safety,
+        model_health=0.7,
+        risk_pressure=risk_pressure,
+        family_states={},
+        dominant_regime="trend",
+    )
+
+
+def test_guardrails_disable_exploration_under_stress():
+    g = SafetyGuardrails()
+    assert g.max_exploration_budget(make_state(0.3, 0.8, 0.8)) == 0.0
+
+
+def test_guardrails_enable_hard_defense_when_risk_is_high():
+    g = SafetyGuardrails()
+    assert g.defensive_mode(make_state(0.2, 0.6, 0.9)) == "hard"
+
+
+====================================================================================================
+market_meta_brain/tests/test_reward.py
+----------------------------------------------------------------------------------------------------
+from market_meta_brain.domain.types import GovernanceOutcome
+from market_meta_brain.learning.reward_model import compute_meta_reward
+
+
+def test_reward_penalizes_drawdown():
+    good = GovernanceOutcome(0.1, 0.0, 0.9, 0.01, 0.02, 0.2, 0.2, 0.0)
+    bad = GovernanceOutcome(0.1, 0.2, 0.9, 0.01, 0.02, 0.2, 0.2, 0.0)
+    assert compute_meta_reward(good) > compute_meta_reward(bad)
+
+
+====================================================================================================
+market_meta_brain/pyproject.toml
+----------------------------------------------------------------------------------------------------
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "market-meta-brain"
+version = "0.1.0"
+description = "Production-grade adaptive meta-brain for supervising a quant engine"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "OpenAI"}]
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
+
+
+====================================================================================================
+market_meta_brain/README.md
+----------------------------------------------------------------------------------------------------
+# Market Meta-Brain
+
+A clean-room rebuild of the user's experimental Digital Organism into a finance-native adaptive supervisory brain.
+
+## Mission
+
+This package does **not** predict price and does **not** place trades.
+It sits above a quant engine and emits supervisory directives such as:
+
+- trust multipliers by strategy family
+- allocation weights
+- caution level
+- exploration budget
+- defensive mode
+- suppressed families
+- reason codes
+
+## Design principles
+
+- Quant engine remains the prediction and execution core.
+- Brain is deterministic at the interface level and bounded in adaptation speed.
+- Learning is delayed and outcome-based, not novelty-based.
+- No 2D world logic, no body simulation, no Wikipedia/text learner, no autonomous sandbox loops.
+- Outputs are explainable and easy to log, checkpoint, and shadow test.
+
+## Core runtime loop
+
+1. Quant stack emits telemetry.
+2. State estimator maps telemetry into a market meta-state.
+3. Memory recalls similar market regimes and prior supervisory outcomes.
+4. Trust model updates family trust slowly and safely.
+5. Planner scores supervisory actions.
+6. Policy engine emits a typed directive.
+7. Outcome is logged later as an episode and used for bounded learning.
+
+## Quick start
+
+```python
+from market_meta_brain.runtime.service import MarketMetaBrainService
+from market_meta_brain.domain.types import QuantSliceTelemetry, PortfolioTelemetry, TelemetryBatch
+
+service = MarketMetaBrainService()
+
+batch = TelemetryBatch(
+    slices=[
+        QuantSliceTelemetry(
+            coin="BTC",
+            timeframe="1h",
+            strategy_family="momentum",
+            edge=0.08,
+            confidence=0.72,
+            calibrated_confidence=0.69,
+            risk_score=0.31,
+            recent_accuracy=0.58,
+            pnl_state=0.02,
+            drawdown_state=0.01,
+            disagreement=0.12,
+            prediction_error=0.18,
+            regime="trend",
+            volatility=0.44,
+            correlation_shift=0.11,
+            exposure=0.24,
+            turnover=0.18,
+            slippage_bps=3.0,
+            anomaly_flags=[],
+        )
+    ],
+    portfolio=PortfolioTelemetry(
+        total_drawdown=0.03,
+        realized_vol=0.32,
+        concentration=0.28,
+        leverage=0.14,
+        liquidity_stress=0.08,
+        correlation_shift=0.11,
+        active_risk_budget=0.65,
+        kill_switch_distance=0.82,
+        anomaly_flags=[],
+    )
+)
+
+directive = service.evaluate(batch)
+print(directive)
+```
+
+## Merge guidance
+
+Your Replit quant app should call this package after raw quant signals are produced and before final execution sizing is locked.
+The execution layer should remain fully functional if the meta-brain is disabled.
+
+
+====================================================================================================
+market_meta_brain/examples/merge_contract.json
+----------------------------------------------------------------------------------------------------
+{
+  "timestamp": "2026-04-23T11:00:00Z",
+  "slices": [
+    {
+      "coin": "BTC",
+      "timeframe": "1h",
+      "strategy_family": "momentum",
+      "edge": 0.08,
+      "confidence": 0.72,
+      "calibrated_confidence": 0.69,
+      "risk_score": 0.31,
+      "recent_accuracy": 0.58,
+      "pnl_state": 0.02,
+      "drawdown_state": 0.01,
+      "disagreement": 0.12,
+      "prediction_error": 0.18,
+      "regime": "trend",
+      "volatility": 0.44,
+      "correlation_shift": 0.11,
+      "exposure": 0.24,
+      "turnover": 0.18,
+      "slippage_bps": 3.0,
+      "anomaly_flags": []
+    }
+  ],
+  "portfolio": {
+    "total_drawdown": 0.03,
+    "realized_vol": 0.32,
+    "concentration": 0.28,
+    "leverage": 0.14,
+    "liquidity_stress": 0.08,
+    "correlation_shift": 0.11,
+    "active_risk_budget": 0.65,
+    "kill_switch_distance": 0.82,
+    "anomaly_flags": []
+  }
+}
+
+

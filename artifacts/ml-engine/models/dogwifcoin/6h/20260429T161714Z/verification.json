@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.39913793103448275,
+  "baseline_directional_accuracy": 0.43534482758620696,
+  "lift": -0.03620689655172421,
+  "holdout_rows": 1160,
+  "min_directional_accuracy_applied": 0.5,
+  "served_predictor_kind": "lightgbm",
+  "coin": "dogwifcoin",
+  "timeframe": "6h",
+  "kind": "per_coin"
+}

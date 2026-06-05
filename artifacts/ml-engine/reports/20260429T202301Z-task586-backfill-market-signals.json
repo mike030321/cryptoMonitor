@@ -1,0 +1,37 @@
+{
+  "anti_leak_check": {
+    "future_ts_count": 0,
+    "now_ms_at_check": 1777494181096
+  },
+  "coins": [
+    "eth"
+  ],
+  "dry_run": false,
+  "end_days_ago": 60,
+  "end_ms": 1772310137370,
+  "finished_at": "2026-04-29T20:23:01.096577+00:00",
+  "lookback_days": 60,
+  "now_ms": 1777494137370,
+  "per_coin": {
+    "eth": {
+      "fetched": {
+        "mid": {
+          "earliest_ms": 1767126300000,
+          "elapsed_s": 42.66,
+          "latest_ms": 1772310000000,
+          "rows": 17280
+        }
+      },
+      "inst_id": "ETH-USDT-SWAP",
+      "written": {
+        "mid": 17280
+      }
+    }
+  },
+  "since_ms": 1767126137370,
+  "started_at": "2026-04-29T20:22:17.448301+00:00",
+  "streams": [
+    "mid"
+  ],
+  "task": 586
+}

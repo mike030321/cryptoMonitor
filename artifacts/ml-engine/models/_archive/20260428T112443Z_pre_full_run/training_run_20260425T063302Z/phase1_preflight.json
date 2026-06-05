@@ -1,0 +1,21 @@
+{
+  "phase": "preflight",
+  "status": "ok",
+  "tests": [
+    "tests/test_quantonly_enforcement.py",
+    "tests/test_real_data_contract.py",
+    "tests/test_cadence_correctness.py",
+    "tests/test_per_coin_retrain_isolation.py",
+    "tests/test_contract_fail_fast.py"
+  ],
+  "elapsed_sec": 2970.3,
+  "tail": "..............................................................           [100%]\n=============================== warnings summary ===============================\nartifacts/ml-engine/tests/test_per_coin_retrain_isolation.py::test_per_coin_retrain_does_not_perturb_other_slices\nartifacts/ml-engine/tests/test_per_coin_retrain_isolation.py::test_per_coin_retrain_does_not_perturb_other_slices\nartifacts/ml-engine/tests/test_per_coin_retrain_isolation.py::test_per_coin_retrain_does_not_perturb_other_slices\nartifacts/ml-engine/tests/test_per_coin_retrain_isolation.py::test_per_coin_retrain_does_not_perturb_other_slices\nartifacts/ml-engine/tests/test_per_coin_retrain_isolation.py::test_per_coin_retrain_does_not_perturb_other_slices\n  /home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):\n  STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT\n  \n  Increase the number of iterations to improve the convergence (max_iter=1000).\n  You might also want to scale the data as shown in:\n      https://scikit-learn.org/stable/modules/preprocessing.html\n  Please also refer to the documentation for alternative solver options:\n      https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression\n    n_iter_i = _check_optimize_result(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n62 passed, 5 warnings in 2968.78s (0:49:28)",
+  "forbidden_feature_leaks": [],
+  "round_trip_cost_pct": 0.003,
+  "frictions_ok": true,
+  "archived_model_audit": {
+    "manifests_scanned": 0,
+    "forbidden_feature_leaks": [],
+    "load_failures": []
+  }
+}

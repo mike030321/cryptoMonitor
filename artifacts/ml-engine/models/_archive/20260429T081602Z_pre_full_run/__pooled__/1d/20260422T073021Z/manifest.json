@@ -1,0 +1,50 @@
+{
+  "coin_id": "__pooled__",
+  "timeframe": "1d",
+  "version": "20260422T073021Z",
+  "feature_names": [],
+  "coin_vocab": [
+    "bonk",
+    "celestia",
+    "dogwifcoin",
+    "floki-inu",
+    "injective-protocol",
+    "jupiter-exchange-solana",
+    "pepe",
+    "render-token",
+    "sei-network",
+    "worldcoin-wld"
+  ],
+  "n_train_rows": 10,
+  "n_test_rows": 0,
+  "metrics": {
+    "auc": NaN,
+    "log_loss": NaN,
+    "brier": NaN,
+    "directional_accuracy": NaN
+  },
+  "baseline_metrics": {
+    "auc": NaN,
+    "log_loss": NaN,
+    "brier": NaN,
+    "directional_accuracy": NaN
+  },
+  "threshold_pct": 1.5,
+  "horizon_candles": 1,
+  "class_return_means_pct": [
+    -1.5,
+    1.096330389366588,
+    3.4947008742780272
+  ],
+  "fold_metrics": [],
+  "note": "Prior-only pooled fallback \u2014 emitted because no per-coin slice produced enough rows for an indicator-based fit at 1d. Built from 10 forward-return labels across 10 coins (Laplace-smoothed). Will be auto-replaced by a real LightGBM model once each coin has >= 35 candles of history.",
+  "directional_call_share": null,
+  "directional_call_share_n": null,
+  "directional_call_share_source": null,
+  "model_kind": "prior",
+  "prior_probs": [
+    0.07692307692307693,
+    0.3076923076923077,
+    0.6153846153846154
+  ]
+}

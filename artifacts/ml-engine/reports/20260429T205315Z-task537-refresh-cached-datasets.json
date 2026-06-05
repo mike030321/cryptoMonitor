@@ -1,0 +1,89 @@
+{
+  "task": 537,
+  "generated_at": "20260429T205315Z",
+  "version_stamp": "20260429T205142Z",
+  "timeframes": [
+    "6h"
+  ],
+  "coin_ids": [
+    "bonk",
+    "celestia",
+    "dogwifcoin",
+    "floki-inu"
+  ],
+  "results": [
+    {
+      "timeframe": "6h",
+      "status": "ok",
+      "elapsed_s": 91.79,
+      "lookback_days": 365,
+      "coin_ids_requested": [
+        "bonk",
+        "celestia",
+        "dogwifcoin",
+        "floki-inu"
+      ],
+      "coins_emitted": [
+        "bonk",
+        "celestia",
+        "dogwifcoin",
+        "floki-inu"
+      ],
+      "n_rows": 5584,
+      "n_columns": 62,
+      "has_volZScore60": true,
+      "output_path": "models/datasets/6h_20260429T205142Z.parquet",
+      "provenance": {
+        "bonk": {
+          "rows_real": 16066,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1396
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "celestia": {
+          "rows_real": 15341,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1396
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "dogwifcoin": {
+          "rows_real": 15343,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1396
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        },
+        "floki-inu": {
+          "rows_real": 15049,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1396
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        }
+      }
+    }
+  ],
+  "elapsed_s_total": 93.1
+}

@@ -1,0 +1,44 @@
+{
+  "task": 537,
+  "generated_at": "20260429T203953Z",
+  "version_stamp": "20260429T203929Z",
+  "timeframes": [
+    "6h"
+  ],
+  "coin_ids": [
+    "pepe"
+  ],
+  "results": [
+    {
+      "timeframe": "6h",
+      "status": "ok",
+      "elapsed_s": 24.11,
+      "lookback_days": 365,
+      "coin_ids_requested": [
+        "pepe"
+      ],
+      "coins_emitted": [
+        "pepe"
+      ],
+      "n_rows": 1396,
+      "n_columns": 62,
+      "has_volZScore60": true,
+      "output_path": "models/datasets/6h_20260429T203929Z.parquet",
+      "provenance": {
+        "pepe": {
+          "rows_real": 16042,
+          "rows_synthetic": 0,
+          "rejected_synthetic": false,
+          "bars_source": "candles",
+          "bars_native_cadence_ms": 21600000,
+          "bars_by_native_cadence": {
+            "candles:21600000ms": 1396
+          },
+          "cadence_mixed": false,
+          "cadence_mitigation": null
+        }
+      }
+    }
+  ],
+  "elapsed_s_total": 24.2
+}

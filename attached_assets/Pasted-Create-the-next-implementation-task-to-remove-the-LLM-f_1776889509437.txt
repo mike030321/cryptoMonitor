@@ -1,0 +1,186 @@
+Create the next implementation task to remove the LLM from the execution-authoritative trading path and replace it with a structured LLM sidecar.
+
+Goal
+The deterministic quant decision core must be the only component allowed to output live trade decisions. The LLM must no longer emit direct trade actions such as direction, confidence, SL, TP, or size. Instead, the LLM should only produce structured informational outputs that the quant engine may consume as optional features or operator-facing explanations.
+
+Why
+Current architecture is mostly correct, but ai-engine.ts::getAgentPrediction is still acting as a primary trade brain. That violates the intended design. The LLM should observe, classify, summarize, and explain — not directly decide trades.
+
+Required outcomes
+
+1. Remove LLM from live trade signal generation
+- Deprecate LLM-as-primary-brain mode.
+- Remove or disable any path where the LLM directly emits:
+  - direction
+  - confidence
+  - stop loss
+  - take profit
+  - position size
+  - direct trade recommendation used by live execution
+- The dashboard “Use LLM” toggle must no longer switch the fleet to LLM-generated trades.
+- If backward compatibility is needed, keep the toggle only as:
+  - “Use LLM sidecar signals”
+  - or “Use LLM explanations”
+  but never as execution authority.
+
+2. Preserve deterministic execution authority
+- Keep app/decision_engine/engine.py as the only authoritative decide() path.
+- Live trading and backtesting must continue to use the same deterministic decision engine.
+- Confirm paper-trader.ts still calls /ml/decide and adopts only the quant engine’s direction/size/SL/TP.
+- Add a parity assertion that no LLM output can override execution outputs.
+
+3. Add LLM sidecar service
+Create a separate LLM sidecar module/service that does not place trades and does not output executable orders.
+It should support these structured outputs:
+
+A. News/event classifier
+Input:
+- news headlines
+- exchange announcements
+- token/project updates
+- optional social snippets
+Output JSON:
+- asset
+- event_type
+- sentiment
+- impact_horizon_minutes
+- confidence
+- severity
+- regime_change_risk
+- event_shock_score
+- exchange_risk_flag
+- macro_risk_flag
+- narrative_momentum_score
+- explanation
+
+B. Drift/anomaly explainer
+Input:
+- drift metrics
+- calibration drift
+- prob collapse
+- feature drift
+- quarantine reason
+Output JSON:
+- model_id
+- issue_type
+- severity
+- likely_causes
+- recommended_checks
+- operator_summary
+
+C. Trade postmortem analyst
+Input:
+- prediction journal rows
+- trade journal rows
+- regime
+- model metadata
+Output JSON:
+- trade_id
+- summary
+- likely_failure_mode
+- regime_context
+- execution_impact
+- whether_abstain_would_have_been_better
+- suggestions
+
+D. Operator copilot
+Input:
+- skip reasons
+- model health
+- drift metrics
+- regime state
+- latest predictions/trades
+Output:
+- structured answer payload plus natural-language explanation for dashboard use
+
+4. Structured outputs only
+- The LLM sidecar must return validated JSON schemas, not free-form text only.
+- Add schema validation and rejection on malformed outputs.
+- Never let raw LLM prose directly affect live execution.
+- All LLM-derived fields must pass through typed adapters before entering storage or features.
+
+5. Optional feature enrichment only
+Allow the quant engine to consume LLM-derived fields only as optional non-authoritative features, such as:
+- event_shock_score
+- news_sentiment_score
+- regime_change_risk
+- macro_risk_flag
+- exchange_risk_flag
+- narrative_momentum_score
+
+Rules:
+- if LLM sidecar is unavailable, quant engine must still function normally
+- missing sidecar data must degrade gracefully
+- no direct dependency from execution to LLM availability
+- no blocking live trade loop on LLM response
+
+6. Data model changes
+Add tables or collections for:
+- llm_event_signals
+- llm_drift_explanations
+- llm_trade_postmortems
+- llm_operator_answers
+Store:
+- source text or source refs
+- generated structured fields
+- timestamps
+- schema version
+- model/provider info
+- validation status
+
+7. UI changes
+Update dashboard so:
+- there is no “LLM trades” mode
+- LLM panels show only:
+  - event/news signals
+  - drift explanations
+  - postmortems
+  - operator Q&A / copilot answers
+- execution source should always show deterministic quant engine
+- if useful, rename toggle to “Enable LLM intelligence sidecar”
+
+8. Tests
+Add tests to prove the architecture is now correct.
+
+Must include:
+- test that no LLM output can directly place or alter a trade
+- test that /ml/decide remains sole source of execution decisions
+- test that LLM sidecar failure does not break live trading
+- test that structured event signals can be ingested as optional features
+- test that malformed LLM JSON is rejected
+- test that dashboard cannot switch fleet into LLM execution mode
+- test that live/backtest parity fixtures still pass unchanged
+
+9. Migration / backwards compatibility
+- Preserve old interfaces only if needed, but route them to non-execution sidecar behavior.
+- Mark legacy LLM trading interfaces as deprecated.
+- Remove dead code paths if safe.
+- Add clear comments explaining that LLM is advisory/feature-enrichment only.
+
+10. Deliverables
+Return:
+- code changes
+- schema changes
+- new APIs/endpoints
+- updated dashboard behavior
+- tests added
+- migration notes
+- short architecture note describing final separation:
+  - quant predicts/decides/executes
+  - LLM observes/classifies/explains/advises
+
+Implementation preferences
+- keep changes minimal but architecturally clean
+- do not redesign the quant engine itself in this task
+- do not add new trading logic to the LLM
+- favor explicit boundaries and typed interfaces
+- prefer async/non-blocking sidecar workflows
+
+Acceptance criteria
+This task is complete only when all of the following are true:
+1. LLM can no longer directly emit execution-authoritative trade decisions.
+2. /ml/decide is the only live/backtest decision authority.
+3. LLM outputs are structured, validated, and advisory only.
+4. Live trading continues to work if LLM sidecar is disabled or unavailable.
+5. Dashboard no longer offers LLM as a direct trading brain.
+6. Existing parity tests still pass.

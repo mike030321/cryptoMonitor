@@ -1,0 +1,2531 @@
+{
+  "datasets": {
+    "1d": {
+      "coverage": {
+        "features": {
+          "bid_ask_spread_bps": {
+            "frac_global": 0.0046,
+            "nonzero_global": 36,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.005,
+                "nonzero": 4,
+                "rows": 807
+              },
+              "celestia": {
+                "frac": 0.0046,
+                "nonzero": 4,
+                "rows": 875
+              },
+              "dogwifcoin": {
+                "frac": 0.0056,
+                "nonzero": 4,
+                "rows": 709
+              },
+              "floki-inu": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1065
+              },
+              "injective-protocol": {
+                "frac": 0.0047,
+                "nonzero": 4,
+                "rows": 846
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0051,
+                "nonzero": 4,
+                "rows": 784
+              },
+              "pepe": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1059
+              },
+              "render-token": {
+                "frac": 0.0065,
+                "nonzero": 4,
+                "rows": 618
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 126
+              },
+              "worldcoin-wld": {
+                "frac": 0.0041,
+                "nonzero": 4,
+                "rows": 975
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 1.58982914686203,
+              "q25": 2.7529406547546387,
+              "q50": 3.03035831451416,
+              "q75": 5.510403633117676,
+              "q95": 5.782017707824707
+            }
+          },
+          "btc_lead_ret_5m": {
+            "frac_global": 0.0046,
+            "nonzero_global": 36,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.005,
+                "nonzero": 4,
+                "rows": 807
+              },
+              "celestia": {
+                "frac": 0.0046,
+                "nonzero": 4,
+                "rows": 875
+              },
+              "dogwifcoin": {
+                "frac": 0.0056,
+                "nonzero": 4,
+                "rows": 709
+              },
+              "floki-inu": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1065
+              },
+              "injective-protocol": {
+                "frac": 0.0047,
+                "nonzero": 4,
+                "rows": 846
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0051,
+                "nonzero": 4,
+                "rows": 784
+              },
+              "pepe": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1059
+              },
+              "render-token": {
+                "frac": 0.0065,
+                "nonzero": 4,
+                "rows": 618
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 126
+              },
+              "worldcoin-wld": {
+                "frac": 0.0041,
+                "nonzero": 4,
+                "rows": 975
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 0.03941760563153505,
+              "q25": 0.03941760563153505,
+              "q50": 0.05280108936200198,
+              "q75": 0.07398290600429423,
+              "q95": 0.09737790473977018
+            }
+          },
+          "eth_lead_ret_5m": {
+            "frac_global": 0.0046,
+            "nonzero_global": 36,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.005,
+                "nonzero": 4,
+                "rows": 807
+              },
+              "celestia": {
+                "frac": 0.0046,
+                "nonzero": 4,
+                "rows": 875
+              },
+              "dogwifcoin": {
+                "frac": 0.0056,
+                "nonzero": 4,
+                "rows": 709
+              },
+              "floki-inu": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1065
+              },
+              "injective-protocol": {
+                "frac": 0.0047,
+                "nonzero": 4,
+                "rows": 846
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0051,
+                "nonzero": 4,
+                "rows": 784
+              },
+              "pepe": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1059
+              },
+              "render-token": {
+                "frac": 0.0065,
+                "nonzero": 4,
+                "rows": 618
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 126
+              },
+              "worldcoin-wld": {
+                "frac": 0.0041,
+                "nonzero": 4,
+                "rows": 975
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 0.06608669536785729,
+              "q25": 0.06608669536785729,
+              "q50": 0.08734299377354399,
+              "q75": 0.10892751971164552,
+              "q95": 0.10991220230888998
+            }
+          },
+          "funding_rate": {
+            "frac_global": 0.0046,
+            "nonzero_global": 36,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.005,
+                "nonzero": 4,
+                "rows": 807
+              },
+              "celestia": {
+                "frac": 0.0046,
+                "nonzero": 4,
+                "rows": 875
+              },
+              "dogwifcoin": {
+                "frac": 0.0056,
+                "nonzero": 4,
+                "rows": 709
+              },
+              "floki-inu": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1065
+              },
+              "injective-protocol": {
+                "frac": 0.0047,
+                "nonzero": 4,
+                "rows": 846
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0051,
+                "nonzero": 4,
+                "rows": 784
+              },
+              "pepe": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1059
+              },
+              "render-token": {
+                "frac": 0.0065,
+                "nonzero": 4,
+                "rows": 618
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 126
+              },
+              "worldcoin-wld": {
+                "frac": 0.0041,
+                "nonzero": 4,
+                "rows": 975
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.00035927780118072405,
+              "q25": -0.00015931596863083541,
+              "q50": 5.002581019653007e-06,
+              "q75": 4.999999873689376e-05,
+              "q95": 8.780576899880543e-05
+            }
+          },
+          "liquidations_1h_usd": {
+            "frac_global": 0.0014,
+            "nonzero_global": 11,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0012,
+                "nonzero": 1,
+                "rows": 807
+              },
+              "celestia": {
+                "frac": 0.0011,
+                "nonzero": 1,
+                "rows": 875
+              },
+              "dogwifcoin": {
+                "frac": 0.0014,
+                "nonzero": 1,
+                "rows": 709
+              },
+              "floki-inu": {
+                "frac": 0.0009,
+                "nonzero": 1,
+                "rows": 1065
+              },
+              "injective-protocol": {
+                "frac": 0.0035,
+                "nonzero": 3,
+                "rows": 846
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 784
+              },
+              "pepe": {
+                "frac": 0.0019,
+                "nonzero": 2,
+                "rows": 1059
+              },
+              "render-token": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 618
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 126
+              },
+              "worldcoin-wld": {
+                "frac": 0.0021,
+                "nonzero": 2,
+                "rows": 975
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 13.602200150489807,
+              "q25": 122.51280212402344,
+              "q50": 419.097900390625,
+              "q75": 797.7985229492188,
+              "q95": 2400.7090454101562
+            }
+          },
+          "open_interest_z": {
+            "frac_global": 0.0046,
+            "nonzero_global": 36,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.005,
+                "nonzero": 4,
+                "rows": 807
+              },
+              "celestia": {
+                "frac": 0.0046,
+                "nonzero": 4,
+                "rows": 875
+              },
+              "dogwifcoin": {
+                "frac": 0.0056,
+                "nonzero": 4,
+                "rows": 709
+              },
+              "floki-inu": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1065
+              },
+              "injective-protocol": {
+                "frac": 0.0047,
+                "nonzero": 4,
+                "rows": 846
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0051,
+                "nonzero": 4,
+                "rows": 784
+              },
+              "pepe": {
+                "frac": 0.0038,
+                "nonzero": 4,
+                "rows": 1059
+              },
+              "render-token": {
+                "frac": 0.0065,
+                "nonzero": 4,
+                "rows": 618
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 126
+              },
+              "worldcoin-wld": {
+                "frac": 0.0041,
+                "nonzero": 4,
+                "rows": 975
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -2.028539608871378,
+              "q25": -0.9375698732271918,
+              "q50": 0.10203659660386605,
+              "q75": 1.459977700755238,
+              "q95": 2.0363019966514906
+            }
+          }
+        },
+        "rows": 7864
+      },
+      "path": "models/datasets/1d_20260428T133304Z.parquet",
+      "post_backfill": false,
+      "snapshot_ts": "20260428T133304Z"
+    },
+    "1h": {
+      "coverage": {
+        "features": {
+          "bid_ask_spread_bps": {
+            "frac_global": 0.0009,
+            "nonzero_global": 70,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "celestia": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "dogwifcoin": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "floki-inu": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "injective-protocol": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "pepe": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "render-token": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              },
+              "sei-network": {
+                "frac": 0.0018,
+                "nonzero": 7,
+                "rows": 3804
+              },
+              "worldcoin-wld": {
+                "frac": 0.0008,
+                "nonzero": 7,
+                "rows": 8589
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 1.5848021924495697,
+              "q25": 2.6407994627952576,
+              "q50": 3.0845158100128174,
+              "q75": 5.450466990470886,
+              "q95": 5.890074324607849
+            }
+          },
+          "btc_lead_ret_5m": {
+            "frac_global": 0.998,
+            "nonzero_global": 80940,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "celestia": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "dogwifcoin": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "floki-inu": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "injective-protocol": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "pepe": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "render-token": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              },
+              "sei-network": {
+                "frac": 0.9992,
+                "nonzero": 3801,
+                "rows": 3804
+              },
+              "worldcoin-wld": {
+                "frac": 0.9979,
+                "nonzero": 8571,
+                "rows": 8589
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.21555637969210845,
+              "q25": -0.06774737467425541,
+              "q50": -0.0009306286871219663,
+              "q75": 0.06713763082352965,
+              "q95": 0.20432268950014007
+            }
+          },
+          "eth_lead_ret_5m": {
+            "frac_global": 0.9989,
+            "nonzero_global": 81017,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "celestia": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "dogwifcoin": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "floki-inu": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "injective-protocol": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "pepe": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "render-token": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              },
+              "sei-network": {
+                "frac": 0.9982,
+                "nonzero": 3797,
+                "rows": 3804
+              },
+              "worldcoin-wld": {
+                "frac": 0.999,
+                "nonzero": 8580,
+                "rows": 8589
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.334881023412264,
+              "q25": -0.10978335195717073,
+              "q50": -0.00166596446830982,
+              "q75": 0.10467581921482579,
+              "q95": 0.3154874969709761
+            }
+          },
+          "funding_rate": {
+            "frac_global": 0.2504,
+            "nonzero_global": 20310,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.2362,
+                "nonzero": 2029,
+                "rows": 8589
+              },
+              "celestia": {
+                "frac": 0.2367,
+                "nonzero": 2033,
+                "rows": 8589
+              },
+              "dogwifcoin": {
+                "frac": 0.2367,
+                "nonzero": 2033,
+                "rows": 8589
+              },
+              "floki-inu": {
+                "frac": 0.2362,
+                "nonzero": 2029,
+                "rows": 8589
+              },
+              "injective-protocol": {
+                "frac": 0.2362,
+                "nonzero": 2029,
+                "rows": 8589
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.2367,
+                "nonzero": 2033,
+                "rows": 8589
+              },
+              "pepe": {
+                "frac": 0.2362,
+                "nonzero": 2029,
+                "rows": 8589
+              },
+              "render-token": {
+                "frac": 0.2367,
+                "nonzero": 2033,
+                "rows": 8589
+              },
+              "sei-network": {
+                "frac": 0.5344,
+                "nonzero": 2033,
+                "rows": 3804
+              },
+              "worldcoin-wld": {
+                "frac": 0.2362,
+                "nonzero": 2029,
+                "rows": 8589
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.00030256836907938123,
+              "q25": -6.975349242566153e-05,
+              "q50": 2.5281013222411275e-05,
+              "q75": 4.999999873689376e-05,
+              "q95": 9.999999747378752e-05
+            }
+          },
+          "liquidations_1h_usd": {
+            "frac_global": 0.0005,
+            "nonzero_global": 37,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0002,
+                "nonzero": 2,
+                "rows": 8589
+              },
+              "celestia": {
+                "frac": 0.0006,
+                "nonzero": 5,
+                "rows": 8589
+              },
+              "dogwifcoin": {
+                "frac": 0.0007,
+                "nonzero": 6,
+                "rows": 8589
+              },
+              "floki-inu": {
+                "frac": 0.0002,
+                "nonzero": 2,
+                "rows": 8589
+              },
+              "injective-protocol": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 8589
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0005,
+                "nonzero": 4,
+                "rows": 8589
+              },
+              "pepe": {
+                "frac": 0.0005,
+                "nonzero": 4,
+                "rows": 8589
+              },
+              "render-token": {
+                "frac": 0.0003,
+                "nonzero": 3,
+                "rows": 8589
+              },
+              "sei-network": {
+                "frac": 0.0016,
+                "nonzero": 6,
+                "rows": 3804
+              },
+              "worldcoin-wld": {
+                "frac": 0.0006,
+                "nonzero": 5,
+                "rows": 8589
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 23.80387935638428,
+              "q25": 433.6474914550781,
+              "q50": 2593.7177734375,
+              "q75": 16054.490234375,
+              "q95": 81539.61874999969
+            }
+          },
+          "open_interest_z": {
+            "frac_global": 0.1611,
+            "nonzero_global": 13070,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "celestia": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "dogwifcoin": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "floki-inu": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "injective-protocol": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "pepe": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "render-token": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              },
+              "sei-network": {
+                "frac": 0.3436,
+                "nonzero": 1307,
+                "rows": 3804
+              },
+              "worldcoin-wld": {
+                "frac": 0.1522,
+                "nonzero": 1307,
+                "rows": 8589
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -1.2947174180241607,
+              "q25": -0.5372743759419745,
+              "q50": -0.08451112448663639,
+              "q75": 0.5144443664684752,
+              "q95": 1.6782977698931936
+            }
+          }
+        },
+        "rows": 81105
+      },
+      "path": "models/datasets/1h_20260428T212141Z.parquet",
+      "post_backfill": true,
+      "snapshot_ts": "20260428T212141Z"
+    },
+    "1m": {
+      "coverage": {
+        "features": {
+          "bid_ask_spread_bps": {
+            "frac_global": 0.7309,
+            "nonzero_global": 37342,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.7053,
+                "nonzero": 3734,
+                "rows": 5294
+              },
+              "celestia": {
+                "frac": 0.7379,
+                "nonzero": 3735,
+                "rows": 5062
+              },
+              "dogwifcoin": {
+                "frac": 0.7378,
+                "nonzero": 3734,
+                "rows": 5061
+              },
+              "floki-inu": {
+                "frac": 0.7399,
+                "nonzero": 3732,
+                "rows": 5044
+              },
+              "injective-protocol": {
+                "frac": 0.7378,
+                "nonzero": 3734,
+                "rows": 5061
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.7379,
+                "nonzero": 3735,
+                "rows": 5062
+              },
+              "pepe": {
+                "frac": 0.711,
+                "nonzero": 3734,
+                "rows": 5252
+              },
+              "render-token": {
+                "frac": 0.7378,
+                "nonzero": 3734,
+                "rows": 5061
+              },
+              "sei-network": {
+                "frac": 0.7284,
+                "nonzero": 3735,
+                "rows": 5128
+              },
+              "worldcoin-wld": {
+                "frac": 0.7379,
+                "nonzero": 3735,
+                "rows": 5062
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 1.5816528797149658,
+              "q25": 2.6167736053466797,
+              "q50": 3.021604537963867,
+              "q75": 5.5355658531188965,
+              "q95": 5.805515289306641
+            }
+          },
+          "btc_lead_ret_5m": {
+            "frac_global": 0.7296,
+            "nonzero_global": 37272,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.704,
+                "nonzero": 3727,
+                "rows": 5294
+              },
+              "celestia": {
+                "frac": 0.7365,
+                "nonzero": 3728,
+                "rows": 5062
+              },
+              "dogwifcoin": {
+                "frac": 0.7364,
+                "nonzero": 3727,
+                "rows": 5061
+              },
+              "floki-inu": {
+                "frac": 0.7385,
+                "nonzero": 3725,
+                "rows": 5044
+              },
+              "injective-protocol": {
+                "frac": 0.7364,
+                "nonzero": 3727,
+                "rows": 5061
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.7365,
+                "nonzero": 3728,
+                "rows": 5062
+              },
+              "pepe": {
+                "frac": 0.7096,
+                "nonzero": 3727,
+                "rows": 5252
+              },
+              "render-token": {
+                "frac": 0.7364,
+                "nonzero": 3727,
+                "rows": 5061
+              },
+              "sei-network": {
+                "frac": 0.727,
+                "nonzero": 3728,
+                "rows": 5128
+              },
+              "worldcoin-wld": {
+                "frac": 0.7365,
+                "nonzero": 3728,
+                "rows": 5062
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.1743010009679595,
+              "q25": -0.0541238278444392,
+              "q50": -0.0014081461253350634,
+              "q75": 0.052810110721106564,
+              "q95": 0.15164636849036606
+            }
+          },
+          "eth_lead_ret_5m": {
+            "frac_global": 0.729,
+            "nonzero_global": 37242,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.7034,
+                "nonzero": 3724,
+                "rows": 5294
+              },
+              "celestia": {
+                "frac": 0.7359,
+                "nonzero": 3725,
+                "rows": 5062
+              },
+              "dogwifcoin": {
+                "frac": 0.7358,
+                "nonzero": 3724,
+                "rows": 5061
+              },
+              "floki-inu": {
+                "frac": 0.7379,
+                "nonzero": 3722,
+                "rows": 5044
+              },
+              "injective-protocol": {
+                "frac": 0.7358,
+                "nonzero": 3724,
+                "rows": 5061
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.7359,
+                "nonzero": 3725,
+                "rows": 5062
+              },
+              "pepe": {
+                "frac": 0.7091,
+                "nonzero": 3724,
+                "rows": 5252
+              },
+              "render-token": {
+                "frac": 0.7358,
+                "nonzero": 3724,
+                "rows": 5061
+              },
+              "sei-network": {
+                "frac": 0.7264,
+                "nonzero": 3725,
+                "rows": 5128
+              },
+              "worldcoin-wld": {
+                "frac": 0.7359,
+                "nonzero": 3725,
+                "rows": 5062
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.19789994473538777,
+              "q25": -0.06376600752224189,
+              "q50": -0.0017291196935662514,
+              "q75": 0.058340631627818634,
+              "q95": 0.17887415552414054
+            }
+          },
+          "funding_rate": {
+            "frac_global": 0.7309,
+            "nonzero_global": 37342,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.7053,
+                "nonzero": 3734,
+                "rows": 5294
+              },
+              "celestia": {
+                "frac": 0.7379,
+                "nonzero": 3735,
+                "rows": 5062
+              },
+              "dogwifcoin": {
+                "frac": 0.7378,
+                "nonzero": 3734,
+                "rows": 5061
+              },
+              "floki-inu": {
+                "frac": 0.7399,
+                "nonzero": 3732,
+                "rows": 5044
+              },
+              "injective-protocol": {
+                "frac": 0.7378,
+                "nonzero": 3734,
+                "rows": 5061
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.7379,
+                "nonzero": 3735,
+                "rows": 5062
+              },
+              "pepe": {
+                "frac": 0.711,
+                "nonzero": 3734,
+                "rows": 5252
+              },
+              "render-token": {
+                "frac": 0.7378,
+                "nonzero": 3734,
+                "rows": 5061
+              },
+              "sei-network": {
+                "frac": 0.7284,
+                "nonzero": 3735,
+                "rows": 5128
+              },
+              "worldcoin-wld": {
+                "frac": 0.7379,
+                "nonzero": 3735,
+                "rows": 5062
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.00039100397843867536,
+              "q25": -9.996039625548292e-05,
+              "q50": 1.9459417671896517e-05,
+              "q75": 4.999999873689376e-05,
+              "q95": 9.999999747378752e-05
+            }
+          },
+          "liquidations_1h_usd": {
+            "frac_global": 0.2018,
+            "nonzero_global": 10309,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0699,
+                "nonzero": 370,
+                "rows": 5294
+              },
+              "celestia": {
+                "frac": 0.2333,
+                "nonzero": 1181,
+                "rows": 5062
+              },
+              "dogwifcoin": {
+                "frac": 0.3156,
+                "nonzero": 1597,
+                "rows": 5061
+              },
+              "floki-inu": {
+                "frac": 0.0938,
+                "nonzero": 473,
+                "rows": 5044
+              },
+              "injective-protocol": {
+                "frac": 0.1571,
+                "nonzero": 795,
+                "rows": 5061
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0936,
+                "nonzero": 474,
+                "rows": 5062
+              },
+              "pepe": {
+                "frac": 0.4692,
+                "nonzero": 2464,
+                "rows": 5252
+              },
+              "render-token": {
+                "frac": 0.0346,
+                "nonzero": 175,
+                "rows": 5061
+              },
+              "sei-network": {
+                "frac": 0.1736,
+                "nonzero": 890,
+                "rows": 5128
+              },
+              "worldcoin-wld": {
+                "frac": 0.3734,
+                "nonzero": 1890,
+                "rows": 5062
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 3.380000114440918,
+              "q25": 139.39999389648438,
+              "q50": 764.5999755859375,
+              "q75": 4251.69287109375,
+              "q95": 37752.4453125
+            }
+          },
+          "open_interest_z": {
+            "frac_global": 0.7307,
+            "nonzero_global": 37331,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.7051,
+                "nonzero": 3733,
+                "rows": 5294
+              },
+              "celestia": {
+                "frac": 0.7377,
+                "nonzero": 3734,
+                "rows": 5062
+              },
+              "dogwifcoin": {
+                "frac": 0.7376,
+                "nonzero": 3733,
+                "rows": 5061
+              },
+              "floki-inu": {
+                "frac": 0.7397,
+                "nonzero": 3731,
+                "rows": 5044
+              },
+              "injective-protocol": {
+                "frac": 0.7374,
+                "nonzero": 3732,
+                "rows": 5061
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.7377,
+                "nonzero": 3734,
+                "rows": 5062
+              },
+              "pepe": {
+                "frac": 0.7108,
+                "nonzero": 3733,
+                "rows": 5252
+              },
+              "render-token": {
+                "frac": 0.7376,
+                "nonzero": 3733,
+                "rows": 5061
+              },
+              "sei-network": {
+                "frac": 0.7282,
+                "nonzero": 3734,
+                "rows": 5128
+              },
+              "worldcoin-wld": {
+                "frac": 0.7377,
+                "nonzero": 3734,
+                "rows": 5062
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -2.1742058968376545,
+              "q25": -1.2142259409228322,
+              "q50": -0.496652023431879,
+              "q75": 0.6662731763500703,
+              "q95": 2.223233350661122
+            }
+          }
+        },
+        "rows": 51087
+      },
+      "path": "models/datasets/1m_20260428T202028Z.parquet",
+      "post_backfill": false,
+      "snapshot_ts": "20260428T202028Z"
+    },
+    "2h": {
+      "coverage": {
+        "features": {
+          "bid_ask_spread_bps": {
+            "frac_global": 0.0005,
+            "nonzero_global": 20,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "celestia": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "dogwifcoin": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "floki-inu": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "injective-protocol": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "pepe": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "render-token": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              },
+              "sei-network": {
+                "frac": 0.0011,
+                "nonzero": 2,
+                "rows": 1884
+              },
+              "worldcoin-wld": {
+                "frac": 0.0005,
+                "nonzero": 2,
+                "rows": 4276
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 1.5783497631549834,
+              "q25": 2.6255257725715637,
+              "q50": 3.071413040161133,
+              "q75": 5.327412486076355,
+              "q95": 5.83883945941925
+            }
+          },
+          "btc_lead_ret_5m": {
+            "frac_global": 0.9982,
+            "nonzero_global": 40295,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "celestia": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "dogwifcoin": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "floki-inu": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "injective-protocol": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "pepe": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "render-token": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              },
+              "sei-network": {
+                "frac": 0.9995,
+                "nonzero": 1883,
+                "rows": 1884
+              },
+              "worldcoin-wld": {
+                "frac": 0.9981,
+                "nonzero": 4268,
+                "rows": 4276
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.21845689341164687,
+              "q25": -0.06914293878015583,
+              "q50": -0.0019288355192736218,
+              "q75": 0.06651598674192914,
+              "q95": 0.21050398465171194
+            }
+          },
+          "eth_lead_ret_5m": {
+            "frac_global": 0.9988,
+            "nonzero_global": 40319,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "celestia": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "dogwifcoin": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "floki-inu": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "injective-protocol": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "pepe": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "render-token": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              },
+              "sei-network": {
+                "frac": 0.9979,
+                "nonzero": 1880,
+                "rows": 1884
+              },
+              "worldcoin-wld": {
+                "frac": 0.9988,
+                "nonzero": 4271,
+                "rows": 4276
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.34264695904996717,
+              "q25": -0.11732747178549988,
+              "q50": -0.005901462236347805,
+              "q75": 0.10197212617304814,
+              "q95": 0.3088796380484534
+            }
+          },
+          "funding_rate": {
+            "frac_global": 0.2512,
+            "nonzero_global": 10140,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.2369,
+                "nonzero": 1013,
+                "rows": 4276
+              },
+              "celestia": {
+                "frac": 0.2374,
+                "nonzero": 1015,
+                "rows": 4276
+              },
+              "dogwifcoin": {
+                "frac": 0.2374,
+                "nonzero": 1015,
+                "rows": 4276
+              },
+              "floki-inu": {
+                "frac": 0.2369,
+                "nonzero": 1013,
+                "rows": 4276
+              },
+              "injective-protocol": {
+                "frac": 0.2369,
+                "nonzero": 1013,
+                "rows": 4276
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.2374,
+                "nonzero": 1015,
+                "rows": 4276
+              },
+              "pepe": {
+                "frac": 0.2369,
+                "nonzero": 1013,
+                "rows": 4276
+              },
+              "render-token": {
+                "frac": 0.2374,
+                "nonzero": 1015,
+                "rows": 4276
+              },
+              "sei-network": {
+                "frac": 0.5387,
+                "nonzero": 1015,
+                "rows": 1884
+              },
+              "worldcoin-wld": {
+                "frac": 0.2369,
+                "nonzero": 1013,
+                "rows": 4276
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.00030256836907938123,
+              "q25": -6.974742973397952e-05,
+              "q50": 2.5474180802120827e-05,
+              "q75": 4.999999873689376e-05,
+              "q95": 9.999999747378752e-05
+            }
+          },
+          "liquidations_1h_usd": {
+            "frac_global": 0.0002,
+            "nonzero_global": 10,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              },
+              "celestia": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              },
+              "dogwifcoin": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              },
+              "floki-inu": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              },
+              "injective-protocol": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 4276
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              },
+              "pepe": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              },
+              "render-token": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              },
+              "sei-network": {
+                "frac": 0.0011,
+                "nonzero": 2,
+                "rows": 1884
+              },
+              "worldcoin-wld": {
+                "frac": 0.0002,
+                "nonzero": 1,
+                "rows": 4276
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 135.23457036018374,
+              "q25": 333.7584457397461,
+              "q50": 11078.9248046875,
+              "q75": 16721.8076171875,
+              "q95": 90931.89550781238
+            }
+          },
+          "open_interest_z": {
+            "frac_global": 0.1615,
+            "nonzero_global": 6520,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "celestia": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "dogwifcoin": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "floki-inu": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "injective-protocol": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "pepe": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "render-token": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              },
+              "sei-network": {
+                "frac": 0.3461,
+                "nonzero": 652,
+                "rows": 1884
+              },
+              "worldcoin-wld": {
+                "frac": 0.1525,
+                "nonzero": 652,
+                "rows": 4276
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -1.2942208364162715,
+              "q25": -0.539653639960656,
+              "q50": -0.08452296948879852,
+              "q75": 0.5146351277249325,
+              "q95": 1.6695877260162193
+            }
+          }
+        },
+        "rows": 40368
+      },
+      "path": "models/datasets/2h_20260428T212141Z.parquet",
+      "post_backfill": true,
+      "snapshot_ts": "20260428T212141Z"
+    },
+    "5m": {
+      "coverage": {
+        "features": {
+          "bid_ask_spread_bps": {
+            "frac_global": 0.0841,
+            "nonzero_global": 15738,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "celestia": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "dogwifcoin": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "floki-inu": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18838
+              },
+              "injective-protocol": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18836
+              },
+              "pepe": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18841
+              },
+              "render-token": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18836
+              },
+              "sei-network": {
+                "frac": 0.0239,
+                "nonzero": 420,
+                "rows": 17554
+              },
+              "worldcoin-wld": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18838
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 1.6014091968536377,
+              "q25": 2.7567195892333984,
+              "q50": 3.069838762283325,
+              "q75": 5.575689792633057,
+              "q95": 5.782017707824707
+            }
+          },
+          "btc_lead_ret_5m": {
+            "frac_global": 0.0841,
+            "nonzero_global": 15728,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18837
+              },
+              "celestia": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18837
+              },
+              "dogwifcoin": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18837
+              },
+              "floki-inu": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18838
+              },
+              "injective-protocol": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18837
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18836
+              },
+              "pepe": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18841
+              },
+              "render-token": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18836
+              },
+              "sei-network": {
+                "frac": 0.0239,
+                "nonzero": 419,
+                "rows": 17554
+              },
+              "worldcoin-wld": {
+                "frac": 0.0903,
+                "nonzero": 1701,
+                "rows": 18838
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.10865463623443644,
+              "q25": 0.003867980584752038,
+              "q50": 0.03941760563153505,
+              "q75": 0.03941760563153505,
+              "q95": 0.10294537715067567
+            }
+          },
+          "eth_lead_ret_5m": {
+            "frac_global": 0.084,
+            "nonzero_global": 15718,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0902,
+                "nonzero": 1700,
+                "rows": 18837
+              },
+              "celestia": {
+                "frac": 0.0902,
+                "nonzero": 1700,
+                "rows": 18837
+              },
+              "dogwifcoin": {
+                "frac": 0.0902,
+                "nonzero": 1700,
+                "rows": 18837
+              },
+              "floki-inu": {
+                "frac": 0.0902,
+                "nonzero": 1700,
+                "rows": 18838
+              },
+              "injective-protocol": {
+                "frac": 0.0902,
+                "nonzero": 1700,
+                "rows": 18837
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0903,
+                "nonzero": 1700,
+                "rows": 18836
+              },
+              "pepe": {
+                "frac": 0.0902,
+                "nonzero": 1700,
+                "rows": 18841
+              },
+              "render-token": {
+                "frac": 0.0903,
+                "nonzero": 1700,
+                "rows": 18836
+              },
+              "sei-network": {
+                "frac": 0.0238,
+                "nonzero": 418,
+                "rows": 17554
+              },
+              "worldcoin-wld": {
+                "frac": 0.0902,
+                "nonzero": 1700,
+                "rows": 18838
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.12902640781102925,
+              "q25": -0.022850671231889053,
+              "q50": 0.06608669536785729,
+              "q75": 0.06608669536785729,
+              "q95": 0.12471132335712151
+            }
+          },
+          "funding_rate": {
+            "frac_global": 0.0841,
+            "nonzero_global": 15738,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "celestia": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "dogwifcoin": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "floki-inu": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18838
+              },
+              "injective-protocol": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18836
+              },
+              "pepe": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18841
+              },
+              "render-token": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18836
+              },
+              "sei-network": {
+                "frac": 0.0239,
+                "nonzero": 420,
+                "rows": 17554
+              },
+              "worldcoin-wld": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18838
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.0004718862473964691,
+              "q25": -0.00015931596863083541,
+              "q50": -8.140991667460185e-06,
+              "q75": 4.999999873689376e-05,
+              "q95": 9.999999747378752e-05
+            }
+          },
+          "liquidations_1h_usd": {
+            "frac_global": 0.0167,
+            "nonzero_global": 3116,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0042,
+                "nonzero": 80,
+                "rows": 18837
+              },
+              "celestia": {
+                "frac": 0.0125,
+                "nonzero": 236,
+                "rows": 18837
+              },
+              "dogwifcoin": {
+                "frac": 0.0243,
+                "nonzero": 458,
+                "rows": 18837
+              },
+              "floki-inu": {
+                "frac": 0.0053,
+                "nonzero": 99,
+                "rows": 18838
+              },
+              "injective-protocol": {
+                "frac": 0.0515,
+                "nonzero": 971,
+                "rows": 18837
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.005,
+                "nonzero": 95,
+                "rows": 18836
+              },
+              "pepe": {
+                "frac": 0.0338,
+                "nonzero": 637,
+                "rows": 18841
+              },
+              "render-token": {
+                "frac": 0.0019,
+                "nonzero": 35,
+                "rows": 18836
+              },
+              "sei-network": {
+                "frac": 0.0072,
+                "nonzero": 126,
+                "rows": 17554
+              },
+              "worldcoin-wld": {
+                "frac": 0.0201,
+                "nonzero": 379,
+                "rows": 18838
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": 4.6072001457214355,
+              "q25": 227.1768798828125,
+              "q50": 797.7985229492188,
+              "q75": 2842.966552734375,
+              "q95": 32050.90234375
+            }
+          },
+          "open_interest_z": {
+            "frac_global": 0.0841,
+            "nonzero_global": 15738,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "celestia": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "dogwifcoin": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "floki-inu": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18838
+              },
+              "injective-protocol": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18837
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18836
+              },
+              "pepe": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18841
+              },
+              "render-token": {
+                "frac": 0.0904,
+                "nonzero": 1702,
+                "rows": 18836
+              },
+              "sei-network": {
+                "frac": 0.0239,
+                "nonzero": 420,
+                "rows": 17554
+              },
+              "worldcoin-wld": {
+                "frac": 0.0903,
+                "nonzero": 1702,
+                "rows": 18838
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -2.569139675295171,
+              "q25": -1.178618424030029,
+              "q50": -0.38081053486653405,
+              "q75": 0.534578875511851,
+              "q95": 1.9710423453842474
+            }
+          }
+        },
+        "rows": 187091
+      },
+      "path": "models/datasets/5m_20260428T202028Z.parquet",
+      "post_backfill": false,
+      "snapshot_ts": "20260428T202028Z"
+    },
+    "6h": {
+      "coverage": {
+        "features": {
+          "bid_ask_spread_bps": {
+            "frac_global": 0.0,
+            "nonzero_global": 0,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "celestia": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "dogwifcoin": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "floki-inu": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "injective-protocol": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "pepe": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "render-token": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 603
+              },
+              "worldcoin-wld": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {}
+          },
+          "btc_lead_ret_5m": {
+            "frac_global": 1.0,
+            "nonzero_global": 13203,
+            "per_coin": {
+              "bonk": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "celestia": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "dogwifcoin": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "floki-inu": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "injective-protocol": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "jupiter-exchange-solana": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "pepe": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "render-token": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              },
+              "sei-network": {
+                "frac": 1.0,
+                "nonzero": 603,
+                "rows": 603
+              },
+              "worldcoin-wld": {
+                "frac": 1.0,
+                "nonzero": 1400,
+                "rows": 1400
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.22021832892870213,
+              "q25": -0.06438023395215664,
+              "q50": -0.0002682597341574272,
+              "q75": 0.0682985466069282,
+              "q95": 0.2161374645596156
+            }
+          },
+          "eth_lead_ret_5m": {
+            "frac_global": 0.9985,
+            "nonzero_global": 13183,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "celestia": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "dogwifcoin": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "floki-inu": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "injective-protocol": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "pepe": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "render-token": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              },
+              "sei-network": {
+                "frac": 0.9967,
+                "nonzero": 601,
+                "rows": 603
+              },
+              "worldcoin-wld": {
+                "frac": 0.9986,
+                "nonzero": 1398,
+                "rows": 1400
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.33662496987138135,
+              "q25": -0.10645346055517058,
+              "q50": 0.003396753552791919,
+              "q75": 0.10723307677744866,
+              "q95": 0.32813189997178327
+            }
+          },
+          "funding_rate": {
+            "frac_global": 0.2537,
+            "nonzero_global": 3350,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "celestia": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "dogwifcoin": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "floki-inu": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "injective-protocol": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "pepe": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "render-token": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              },
+              "sei-network": {
+                "frac": 0.5556,
+                "nonzero": 335,
+                "rows": 603
+              },
+              "worldcoin-wld": {
+                "frac": 0.2393,
+                "nonzero": 335,
+                "rows": 1400
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -0.00030520797008648515,
+              "q25": -7.327016464842018e-05,
+              "q50": 1.8940389054478146e-05,
+              "q75": 4.999999873689376e-05,
+              "q95": 9.999999747378752e-05
+            }
+          },
+          "liquidations_1h_usd": {
+            "frac_global": 0.0,
+            "nonzero_global": 0,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "celestia": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "dogwifcoin": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "floki-inu": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "injective-protocol": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "pepe": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "render-token": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              },
+              "sei-network": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 603
+              },
+              "worldcoin-wld": {
+                "frac": 0.0,
+                "nonzero": 0,
+                "rows": 1400
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {}
+          },
+          "open_interest_z": {
+            "frac_global": 0.1621,
+            "nonzero_global": 2140,
+            "per_coin": {
+              "bonk": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "celestia": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "dogwifcoin": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "floki-inu": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "injective-protocol": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "jupiter-exchange-solana": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "pepe": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "render-token": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              },
+              "sei-network": {
+                "frac": 0.3549,
+                "nonzero": 214,
+                "rows": 603
+              },
+              "worldcoin-wld": {
+                "frac": 0.1529,
+                "nonzero": 214,
+                "rows": 1400
+              }
+            },
+            "present": true,
+            "quantiles_nonzero": {
+              "q05": -1.3109075330393303,
+              "q25": -0.5408268597309782,
+              "q50": -0.08444621748429351,
+              "q75": 0.5136209174825364,
+              "q95": 1.6820857407998062
+            }
+          }
+        },
+        "rows": 13203
+      },
+      "path": "models/datasets/6h_20260428T212141Z.parquet",
+      "post_backfill": true,
+      "snapshot_ts": "20260428T212141Z"
+    }
+  },
+  "db_audit": {
+    "audit_at": "2026-04-28T22:16:29.954960+00:00",
+    "leak_count": 0,
+    "leak_samples": [],
+    "rows": [
+      {
+        "coin_id": "bonk",
+        "earliest": "2026-01-28T16:00:00+00:00",
+        "latest": "2026-04-28T16:00:00+00:00",
+        "n": 271,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "bonk",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "btc",
+        "earliest": "2025-04-28T21:00:00+00:00",
+        "latest": "2026-04-28T20:45:00+00:00",
+        "n": 105118,
+        "source": "okx_backfill_mid_v1"
+      },
+      {
+        "coin_id": "celestia",
+        "earliest": "2026-01-28T12:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 543,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "celestia",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "dogwifcoin",
+        "earliest": "2026-01-28T12:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 543,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "dogwifcoin",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "eth",
+        "earliest": "2025-04-28T21:05:00+00:00",
+        "latest": "2026-04-28T20:45:00+00:00",
+        "n": 105117,
+        "source": "okx_backfill_mid_v1"
+      },
+      {
+        "coin_id": "floki-inu",
+        "earliest": "2026-01-28T16:00:00+00:00",
+        "latest": "2026-04-28T16:00:00+00:00",
+        "n": 271,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "floki-inu",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "injective-protocol",
+        "earliest": "2026-01-28T16:00:00+00:00",
+        "latest": "2026-04-28T16:00:00+00:00",
+        "n": 271,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "injective-protocol",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "jupiter-exchange-solana",
+        "earliest": "2026-01-28T12:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 543,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "jupiter-exchange-solana",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "pepe",
+        "earliest": "2026-01-28T16:00:00+00:00",
+        "latest": "2026-04-28T16:00:00+00:00",
+        "n": 271,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "pepe",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "render-token",
+        "earliest": "2026-01-28T12:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 543,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "render-token",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "sei-network",
+        "earliest": "2026-01-28T12:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 543,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "sei-network",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      },
+      {
+        "coin_id": "sol",
+        "earliest": "2025-04-28T21:10:00+00:00",
+        "latest": "2026-04-28T20:50:00+00:00",
+        "n": 105117,
+        "source": "okx_backfill_mid_v1"
+      },
+      {
+        "coin_id": "worldcoin-wld",
+        "earliest": "2026-01-28T16:00:00+00:00",
+        "latest": "2026-04-28T16:00:00+00:00",
+        "n": 271,
+        "source": "okx_backfill_funding_v1"
+      },
+      {
+        "coin_id": "worldcoin-wld",
+        "earliest": "2026-02-27T17:00:00+00:00",
+        "latest": "2026-04-28T20:00:00+00:00",
+        "n": 1444,
+        "source": "okx_backfill_oi_v1"
+      }
+    ]
+  },
+  "forbidden_manifest": {
+    "bytes": 2544,
+    "path": "shared/forbidden-features.json",
+    "sha256": "ed9eafc9f6399e39b0302fc9881d4357bcb7f75194c459edec4478f2f6e9f897"
+  },
+  "generated_at": "2026-04-28T22:16:30.508496+00:00",
+  "task": 586
+}

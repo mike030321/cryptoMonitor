@@ -1,0 +1,184 @@
+Total Predictions
+2824
+1330
+1100
+228
+Overall Accuracy
+54.73%
+Top Agent
+Divergence Refined III
+Score: 200.0 | 73.68% acc
+Status
+10 agents
+|
+10 coins
+27 cycles completed
+AI Budget
+DUAL
+GPT
+2/100000
+Gemini
+4/14000
+Coin Signals — What to Buy / Sell / Hold
+Bonk
+$0.000007
+↑ BUY
+100% strength
+24h: +7.4%
+dogwifhat
+$0.222541
+↑ BUY
+100% strength
+24h: +11.5%
+Render
+$1.85
+↑ BUY
+100% strength
+24h: -2.1%
+Sei
+$0.058608
+↑ BUY
+100% strength
+24h: +4.5%
+Celestia
+$0.390531
+↑ BUY
+100% strength
+24h: +18.7%
+Worldcoin
+$0.317658
+↑ BUY
+100% strength
+24h: +5.0%
+Jupiter
+$0.179857
+↑ BUY
+65% strength
+24h: +6.7%
+Pepe
+$0.000004
+— HOLD
+0% strength
+24h: +7.1%
+Floki
+$0.000032
+— HOLD
+0% strength
+24h: +10.9%
+Injective
+$3.41
+— HOLD
+0% strength
+24h: +3.1%
+Contagion Alerts — Cross-Coin Ripple Effects
+Celestia -2.2% → Jupiter
+1m ago
+5% follow prob (3 events) | Expected: -0.7% within 2h
+Celestia -2.2% → Worldcoin
+1m ago
+33% follow prob (3 events) | Expected: -1.8% within 0.8h
+Celestia -2.2% → Render
+1m ago
+5% follow prob (3 events) | Expected: -0.6% within 2h
+Celestia -2.2% → Injective
+1m ago
+5% follow prob (3 events) | Expected: -0.7% within 2h
+Celestia -2.2% → Pepe
+1m ago
+5% follow prob (3 events) | Expected: -0.5% within 2h
+Paper Trading — $10000 Total Invested
+Portfolio
+$9920.21
+Net P&L
+-79.79 (-0.80%)
+Trades
+277 (47% win)
+Momentum Max
+$1007.39
++14.27 (+1.4%)
+28 trades | 54% win rate
+2 open positions
+↑ Worldcoin
+-0.1048
+↑ Sei
+-0.0634
+Divergence Dan
+$1001.38
++8.68 (+0.9%)
+34 trades | 47% win rate
+2 open positions
+↑ Jupiter
+-0.0067
+↓ Render
++0.0378
+Divergence Alpha III
+$1000.84
++1.48 (+0.1%)
+5 trades | 60% win rate
+2 open positions
+↑ Injective
++0.2457
+↑ dogwifhat
+-0.6065
+Hybrid-2-3
+$998.88
+-0.20 (-0.0%)
+8 trades | 38% win rate
+2 open positions
+↑ Sei
+-0.0871
+↑ Worldcoin
+-0.3982
+Divergence Refined III
+$997.61
+-2.08 (-0.2%)
+3 trades | 33% win rate
+2 open positions
+↑ Jupiter
+-0.0066
+↑ Sei
+-0.0854
+Contrarian Clara
+$997.03
++3.52 (+0.4%)
+30 trades | 50% win rate
+2 open positions
+↑ Render
+-0.0114
+↑ Worldcoin
+-0.3954
+Whale Watcher Wendy
+$994.87
++1.43 (+0.1%)
+34 trades | 53% win rate
+2 open positions
+↑ Celestia
+-0.0158
+↑ Sei
+-0.0867
+Breakout Bella
+$991.99
++0.47 (+0.0%)
+48 trades | 44% win rate
+2 open positions
+↑ dogwifhat
++0.0194
+↑ Render
+-0.2206
+Pattern Pete
+$977.74
+-14.30 (-1.4%)
+38 trades | 58% win rate
+2 open positions
+↑ Pepe
+-0.4896
+↓ Jupiter
+-0.2657
+Scalper Steve
+$952.48
+-39.33 (-3.9%)
+49 trades | 35% win rate
+2 open positions
+↑ dogwifhat
+-0.5663
+↑ Worldcoin

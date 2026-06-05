@@ -1,0 +1,86 @@
+{
+  "task": "455 — Rebuild and re-promote Meta-model on clean post-sidecar journal data",
+  "description": "Pinned column allow-list for the meta-model training dataset, extracted directly from artifacts/ml-engine/app/training/meta_dataset.py. The trainer is allowed to read ONLY these columns from prediction_journal (plus the listed top-level keys inside gates_applied JSONB). Any column whose name carries one of `forbidden_prefixes` is contamination from the pre-#444 LLM/news/sidecar era and MUST NOT enter the training frame. Generated 2026-04-24 as the input to the no-contamination contract test (artifacts/ml-engine/tests/test_meta_no_contamination.py).",
+  "source_file": "artifacts/ml-engine/app/training/meta_dataset.py",
+  "prediction_journal_columns_read": [
+    "id",
+    "created_at",
+    "coin_id",
+    "timeframe",
+    "brain",
+    "prob_up",
+    "prob_down",
+    "prob_stable",
+    "expected_return_pct",
+    "prediction_std_pct",
+    "raw_confidence",
+    "regime_label",
+    "gates_applied",
+    "realized_return_pct"
+  ],
+  "gates_applied_keys_read": [
+    "specialists"
+  ],
+  "specialists_keys_read": [
+    "kind",
+    "applicable",
+    "probUp",
+    "probDown",
+    "expectedReturnPct"
+  ],
+  "feature_columns_emitted": [
+    "base_prob_up",
+    "base_prob_down",
+    "base_prob_stable",
+    "base_expected_return_pct",
+    "base_raw_confidence",
+    "base_prediction_std_pct",
+    "spec_momentum_prob_up",
+    "spec_momentum_prob_down",
+    "spec_momentum_exp_ret",
+    "spec_momentum_applicable",
+    "spec_mean_reversion_prob_up",
+    "spec_mean_reversion_prob_down",
+    "spec_mean_reversion_exp_ret",
+    "spec_mean_reversion_applicable",
+    "spec_breakout_prob_up",
+    "spec_breakout_prob_down",
+    "spec_breakout_exp_ret",
+    "spec_breakout_applicable",
+    "spec_vol_forecaster_exp_ret",
+    "spec_vol_forecaster_applicable",
+    "regime_trending_up",
+    "regime_trending_down",
+    "regime_range_chop",
+    "regime_high_vol_breakout",
+    "regime_low_vol_compression",
+    "regime_panic_liquidation",
+    "specialist_dir_agreement",
+    "specialist_count_applicable",
+    "reliability_coin_winrate_30d",
+    "reliability_regime_winrate_30d",
+    "reliability_coin_n_30d",
+    "reliability_regime_n_30d"
+  ],
+  "label_columns_emitted": [
+    "__action__",
+    "__edge_after_costs__"
+  ],
+  "forbidden_prefixes": [
+    "news_",
+    "llm_",
+    "gpt_",
+    "sentiment_",
+    "ai_",
+    "benchmark_",
+    "alpha_",
+    "baseline_",
+    "equity_",
+    "strategy_lab_"
+  ],
+  "notes": [
+    "feature_vector JSONB on prediction_journal still contains legacy `news_*` keys from the pre-#444 era — the meta_dataset SQL deliberately does NOT read feature_vector, so those keys cannot reach the trainer.",
+    "gates_applied JSONB also carries `meta_action`, `meta_kind`, `meta_version`, `meta_abstain_reason`, etc., but the trainer only reads `specialists` from it.",
+    "If a future schema change adds a forbidden-prefix column, the contract test in test_meta_no_contamination.py will fail loudly."
+  ]
+}

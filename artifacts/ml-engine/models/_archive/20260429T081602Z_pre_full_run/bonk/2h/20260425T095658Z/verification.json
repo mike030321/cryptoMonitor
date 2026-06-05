@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "directional_call_regression",
+  "directional_accuracy": 0.40751043115438107,
+  "baseline_directional_accuracy": 0.44700973574408903,
+  "lift": -0.03949930458970796,
+  "holdout_rows": 3595,
+  "directional_call_share": 0.9791666666666666,
+  "min_directional_accuracy_applied": 0.5,
+  "coin": "bonk",
+  "timeframe": "2h",
+  "kind": "per_coin"
+}

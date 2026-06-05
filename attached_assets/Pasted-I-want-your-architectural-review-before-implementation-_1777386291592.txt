@@ -1,0 +1,220 @@
+I want your architectural review before implementation.
+
+Based on the recent training evidence, the best design may not be “make every timeframe trade.” The evidence suggests 1h / 2h / 6h / 1d are not directionally predictive enough under the current model design, even after full-quality retraining. So I want you to evaluate and either agree or disagree with the following design proposal.
+
+## Proposed design
+
+Separate each timeframe by the role it has actually earned from evidence.
+
+### Trade-authority timeframes
+
+Only timeframes with promoted slices may open trades.
+
+Current likely candidates:
+
+* `1m` — trade candidate, but cost-sensitive
+* `5m` — future trade candidate if data coverage and gates pass
+
+### Governance-only timeframes
+
+Higher timeframes should not open trades under current evidence.
+
+Current proposed classification:
+
+* `1h` — governance/filter only
+* `2h` — governance/filter only
+* `6h` — governance/filter only
+* `1d` — macro/regime context only
+
+These higher timeframes may still be useful for:
+
+* regime detection
+* risk-on / risk-off context
+* volatility state
+* suppression signals
+* sizing pressure
+* meta-brain context
+
+But they should not directly open trades unless future evidence proves they can clear the gate honestly.
+
+## Architecture principle
+
+Do not force every slice to become a trade predictor.
+
+Use each horizon for what it can prove:
+
+* fast horizons = tactical execution
+* slow horizons = context/governance/risk filtering
+
+## What I want you to do
+
+### 1. Review this design against the actual codebase
+
+Do not just agree by default.
+
+Check:
+
+* current training results
+* current promoted slices
+* current verification gates
+* current runtime routing
+* current dashboard assumptions
+* current meta-model and meta-brain inputs
+
+Tell me whether this proposed split matches the real system evidence.
+
+### 2. Confirm or challenge the classification
+
+For each timeframe, recommend one of:
+
+* `trade_authority_candidate`
+* `paper_only_candidate`
+* `shadow_only`
+* `governance_only`
+* `macro_regime_only`
+* `disabled`
+
+Timeframes:
+
+* `1m`
+* `5m`
+* `1h`
+* `2h`
+* `6h`
+* `1d`
+
+For each, give:
+
+* evidence
+* current promoted slice count
+* latest DA / baseline / post-fee PnL if available
+* reason for role
+
+### 3. If you agree, propose implementation
+
+If you agree with this direction, design a **Horizon Role Registry**.
+
+Example concept:
+
+```json
+{
+  "1m": {
+    "role": "paper_only_candidate",
+    "can_trade": true,
+    "requires_promotion": true,
+    "max_mode": "paper",
+    "notes": "cost-sensitive; only promoted slices allowed"
+  },
+  "5m": {
+    "role": "trade_authority_candidate",
+    "can_trade": false,
+    "requires_promotion": true,
+    "notes": "blocked until data coverage and promotion gates pass"
+  },
+  "1h": {
+    "role": "governance_only",
+    "can_trade": false,
+    "notes": "failed directional gates; usable for regime/context"
+  },
+  "2h": {
+    "role": "governance_only",
+    "can_trade": false
+  },
+  "6h": {
+    "role": "governance_only",
+    "can_trade": false
+  },
+  "1d": {
+    "role": "macro_regime_only",
+    "can_trade": false
+  }
+}
+```
+
+Do not implement yet until you confirm the design.
+
+### 4. Required runtime behavior if implemented
+
+If we implement this later:
+
+* non-promoted slices cannot trade
+* governance-only timeframes cannot open trades
+* higher timeframes can still feed regime/context/governance
+* dashboard must show timeframe role clearly
+* meta-brain can consume governance-only context but cannot treat those slices as trade-authority predictors
+* Strategy Lab and PnL should separate trade-authority activity from context-only signals
+
+### 5. Dashboard requirements if implemented
+
+Dashboard should show:
+
+* which timeframes are trade-enabled
+* which are paper-only
+* which are governance-only
+* which are disabled
+* why
+
+Example:
+
+```text
+1m: paper-only candidate — 7 promoted slices, cost-sensitive
+5m: blocked — data coverage insufficient / no promoted slice
+1h: governance-only — failed DA gate
+2h: governance-only — failed DA gate
+6h: governance-only — failed DA gate
+1d: macro regime only — failed DA gate
+```
+
+### 6. Hard rules
+
+* Do not weaken gates.
+* Do not turn quant on globally.
+* Do not allow higher timeframes to trade just because a model exists.
+* Do not hide failed timeframes.
+* Do not call a governance-only timeframe “live trading.”
+* Do not add new architecture unless this role split is clearly justified by evidence.
+* Do not treat this as a UI-only change; it must protect runtime behavior too if implemented.
+
+## Deliverable I want now
+
+Return a design-review report with:
+
+### A. Agree / disagree
+
+Do you agree with the horizon role split? Why or why not?
+
+### B. Evidence table
+
+For each timeframe:
+
+* current promoted count
+* latest gate status
+* latest DA
+* baseline DA
+* post-fee PnL
+* recommended role
+
+### C. Code impact map
+
+If implemented, exact files likely involved:
+
+* runtime routing
+* prediction/orchestrator
+* dashboard/API
+* meta-brain telemetry
+* tests
+
+### D. Risks
+
+What could go wrong with this design?
+
+### E. Recommendation
+
+Choose one:
+
+1. implement Horizon Role Registry now
+2. wait for current campaign/report to finish
+3. keep current architecture
+4. propose a better architecture
+
+I want your honest answer. If you disagree, say so and prove why.

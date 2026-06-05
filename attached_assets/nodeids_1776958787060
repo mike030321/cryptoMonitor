@@ -1,0 +1,7 @@
+[
+  "tests/test_guardrails.py::test_guardrails_disable_exploration_under_stress",
+  "tests/test_guardrails.py::test_guardrails_enable_hard_defense_when_risk_is_high",
+  "tests/test_reward.py::test_reward_penalizes_drawdown",
+  "tests/test_service.py::test_evaluate_returns_directive",
+  "tests/test_service.py::test_record_outcome_updates_memory"
+]

@@ -1,0 +1,76 @@
+Yes — accept **Architecture C**.
+
+Do not build a new meta-model layer.
+
+We now have a clean separation:
+
+* **Quant Brain** = per-slice price predictor
+* **Meta-model** = existing `/ml/meta/predict` stacking head
+* **Meta-Brain** = existing vendored governance layer
+
+So the next step is operational, not architectural.
+
+## What to do next
+
+### 1. Lock in the naming
+
+Update task/docs language so we stop calling the stacking head “Meta-Brain”.
+
+Use:
+
+* Quant Brain
+* Meta-model
+* Meta-Brain
+
+consistently.
+
+### 2. Create the next task
+
+Create a task named something like:
+
+**Rebuild and Re-promote Meta-model on Clean Post-Sidecar Journal Data**
+
+### 3. Make it explicitly depend on #444
+
+Do not retrain/re-promote the meta-model until Task #444 has landed and the journal/data path is confirmed clean of LLM/news sidecar contamination.
+
+### 4. Scope of the task
+
+Do NOT add endpoints.
+Do NOT redesign architecture.
+Do NOT touch the Meta-Brain architecture.
+Do NOT build another stacking layer.
+
+Only:
+
+* verify the existing meta-model dataset is clean
+* retrain `/ml/meta/predict` models on clean journal data
+* compare against incumbent and heuristic baseline
+* only promote if holdout evidence is stronger
+
+### 5. Required proof
+
+I want evidence, not “retrained successfully”.
+
+Require:
+
+* exact dataset columns used by `meta_dataset.py`
+* proof no LLM/news/sentiment/benchmark contamination is present
+* trained `meta_clf.txt` + `meta_reg.txt`
+* holdout metrics vs incumbent
+* holdout metrics vs heuristic baseline
+* live/shadow runtime evidence showing `metaKind === "lightgbm"` for a meaningful share of attempts
+* dashboard proof that `metaKind` and `metaVersion` are visible
+
+### 6. Also, once back in Build mode
+
+Restart `api-server` and `ml-engine` cleanly and capture fresh service health before doing anything else.
+
+## Output I want
+
+Return:
+
+1. the new task spec
+2. dependency on #444
+3. exact proof requirements
+4. confirmation that Architecture C is now the official model

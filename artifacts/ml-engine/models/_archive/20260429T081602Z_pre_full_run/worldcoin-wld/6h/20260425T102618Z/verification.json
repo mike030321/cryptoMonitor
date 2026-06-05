@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "directional_call_regression",
+  "directional_accuracy": 0.4408510638297872,
+  "baseline_directional_accuracy": 0.4340425531914893,
+  "lift": 0.006808510638297904,
+  "holdout_rows": 1175,
+  "directional_call_share": 0.9964664310954063,
+  "min_directional_accuracy_applied": 0.5,
+  "coin": "worldcoin-wld",
+  "timeframe": "6h",
+  "kind": "per_coin"
+}

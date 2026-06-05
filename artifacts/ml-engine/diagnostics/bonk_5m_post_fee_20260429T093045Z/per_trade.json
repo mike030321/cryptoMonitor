@@ -1,0 +1,28 @@
+[
+  {
+    "row_index": 6236,
+    "timestamp_ms": 1773805500000,
+    "timestamp_iso": "2026-03-18T03:45:00+00:00",
+    "regime": "range_chop",
+    "p_down": 0.3634497144447858,
+    "p_stable": 0.06768170288038405,
+    "p_up": 0.5688685826748301,
+    "edge": 0.2054188682300443,
+    "magnitude_pct": 0.8742412162844077,
+    "expected_return_pct": 0.8742412162844077,
+    "last_price": 6.798999947932316e-06,
+    "atr14": 6.59044917145504e-08,
+    "label_3class": 2,
+    "forward_return_pct": 1.2648919057044339,
+    "action": "long",
+    "direction": "up",
+    "confidence": 0.5688685826748301,
+    "size_multiplier": 0.14,
+    "position_size_usd": 139.86,
+    "sl_price": 6.683771362820091e-06,
+    "tp_price": 6.9803415755355675e-06,
+    "skip_reason": NaN,
+    "gross_pct": 1.2648919057044339,
+    "net_pct": 0.9648919057044338
+  }
+]

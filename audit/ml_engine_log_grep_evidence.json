@@ -1,0 +1,34 @@
+{
+  "task": 449,
+  "generated_at": "2026-04-24T12:23:21.610208+00:00",
+  "log_file": "/tmp/logs/artifactsml-engine_ML_Engine_20260424_115307_625.log",
+  "log_file_bytes": 44952,
+  "log_file_lines": 187,
+  "description": "Direct grep counts against the artifacts/ml-engine workflow log covering the period from container restart through the post-rebuild probe runs. Closes acceptance criterion 3 (ml-engine log free of `load_model_rejected_forbidden_features` warnings) unambiguously, and demonstrates that no `predict_prior_stable_emission` events were logged either.",
+  "forbidden_signals_must_be_zero": {
+    "load_model_rejected_forbidden_features": {
+      "count": "0",
+      "sample_first_3_matches": [],
+      "meaning": "Emitted by registry.load_model whenever a manifest still lists a feature with a forbidden prefix (news_, llm_, gpt_, sentiment_, ai_). MUST be 0 for task to pass."
+    },
+    "predict_prior_stable_emission": {
+      "count": "0",
+      "sample_first_3_matches": [],
+      "meaning": "Emitted by /ml/predict whenever it would have served the (0,0,1) flat prior fallback. MUST be 0 for task to pass."
+    },
+    "source_prior_in_response": {
+      "count": "0",
+      "sample_first_3_matches": [],
+      "meaning": "Counts log lines where /ml/predict serialised `source: \"prior\"` in its response payload. MUST be 0 for task to pass."
+    }
+  },
+  "positive_signals": {
+    "predict_lgb_count": {
+      "count": "61",
+      "sample_first_3_matches": [],
+      "meaning": "Each entry is one /ml/predict call that successfully served a LightGBM prediction. Should be substantially > 60 (restart probe + follow-up probe + workflow background predictions)."
+    }
+  },
+  "reproducer": "grep -cE \"load_model_rejected_forbidden_features\" /tmp/logs/artifactsml-engine_ML_Engine_20260424_115307_625.log\ngrep -cE \"predict_prior_stable_emission\" /tmp/logs/artifactsml-engine_ML_Engine_20260424_115307_625.log\ngrep -cE '\"source\"\\s*:\\s*\"prior\"' /tmp/logs/artifactsml-engine_ML_Engine_20260424_115307_625.log\ngrep -cE \"predict_lgb\" /tmp/logs/artifactsml-engine_ML_Engine_20260424_115307_625.log",
+  "acceptance_summary": "PASS \u2014 all three forbidden-signal counts are 0; positive predict_lgb count is materially greater than the 60 in-scope slot probes."
+}

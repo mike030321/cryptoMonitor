@@ -1,0 +1,13 @@
+{
+  "promoted": false,
+  "reason": "below_coinflip",
+  "directional_accuracy": 0.3738396624472574,
+  "baseline_directional_accuracy": 0.41406469760900144,
+  "lift": -0.04022503516174403,
+  "holdout_rows": 3555,
+  "min_directional_accuracy_applied": 0.5,
+  "served_predictor_kind": "lightgbm",
+  "coin": "pepe",
+  "timeframe": "2h",
+  "kind": "per_coin"
+}

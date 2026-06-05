@@ -1,0 +1,206 @@
+I want you to enforce one hard architectural rule across the entire app:
+
+TRADING DECISIONS MUST BE BASED ONLY ON THE QUANT ENGINE.
+NO LLM, NO LEGACY AI HEURISTICS, NO NARRATIVE LAYERS, NO SHADOW COMPARATORS, AND NO ADVISORY SIDECARS MAY INFLUENCE LIVE TRADE DIRECTION, TRADE ENTRY, TRADE EXIT, BOT ACTION, OR FLEET P&L.
+
+This is not a suggestion. Treat it as a system-wide invariant and audit + enforce it everywhere.
+
+Primary objective
+Make the bots and fleet rely only on quant predictions generated from real market data. Ensure:
+- every trade decision comes only from quant outputs
+- every live prediction uses only real market data inputs
+- every bot trade timestamp, entry, exit, pnl, fees, and fleet result is based on real data and actual bot actions
+- no LLM or legacy AI component can directly or indirectly influence trade execution or P&L
+
+Required rules
+1. Quant-only trade authority
+- The only allowed source of live trade direction/action is the quant engine.
+- No LLM output may determine:
+  - long / short / hold
+  - buy / sell / abstain
+  - confidence used for execution
+  - model score used for execution
+  - ranking of trade candidates
+  - position sizing decisions unless explicitly computed from quant-side structured outputs
+  - TP/SL decisions
+  - portfolio selection
+  - meta-gating of execution
+- If any non-quant source currently affects these, remove it.
+
+2. Real-data-only prediction inputs
+- Live predictions must use only real market data.
+- Audit every input to live predict and training pipelines.
+- Allow only:
+  - real OHLCV / candles from approved exchange/data sources
+  - real market signals (funding, open interest, liquidations, spread, mid, etc.) from approved sources
+  - deterministic derived technical/statistical features from those real inputs
+- Disallow as trading inputs:
+  - LLM news tags
+  - narrative sentiment text
+  - generated explanations
+  - AI summaries
+  - prompt outputs
+  - synthetic fallback prices
+  - mock rows
+  - stale cached surrogate features unless explicitly validated and labeled as safe
+- If any synthetic, advisory, or LLM-derived feature enters live prediction or training, remove it from the trade path.
+
+3. Bot behavior must come from quant outputs only
+- Audit all bots, orchestrators, monitors, ranking helpers, best-pick generators, and execution flows.
+- Ensure bots only consume structured quant outputs.
+- If any agent/utility still injects:
+  - successProbability
+  - legacy best-pick heuristic
+  - llmDirection
+  - llmConfidence
+  - generateBestPick directional influence
+  - legacy fallback reasoning affecting decision choice
+  remove it from all execution-critical paths.
+- LLM may remain only for:
+  - operator explanations
+  - dashboard narrative
+  - postmortems
+  - news summaries
+  - advisory-only displays
+- Advisory outputs must never feed back into execution.
+
+4. Fleet P&L must reflect real bot trades on real market data
+- Audit fleet equity, bot equity, realized pnl, unrealized pnl, fees, win rate, and “bots in profit”.
+- Ensure they are computed from:
+  - actual trades placed by bots
+  - actual entry/exit prices from real data
+  - actual timestamps
+  - actual open position marks from real market prices
+  - actual fee/slippage rules from shared config
+- Remove any stale, heuristic, or realized-only display that contradicts mark-to-market equity.
+- Enforce these invariants:
+  - displayedBotPnl == botTotalValue - INITIAL_BALANCE
+  - winnersCount == bots with totalValue > INITIAL_BALANCE
+  - fleetEquityDelta ~= realized + unrealized within rounding
+- Add tests for these.
+
+5. One source of truth for trading contract
+- The shared trading contract/config must be canonical everywhere.
+- Fees, round-trip cost, thresholds, and monitored coins/timeframes must come from one shared source only.
+- No local hardcoded fee constants.
+- No silent fallbacks if the contract/config is missing or malformed.
+- Fail fast on startup or training if config integrity is broken.
+
+6. Live/backtest/training parity
+- Audit that live inference, backtest, training, and dashboard-derived metrics use the same:
+  - data source rules
+  - fee model
+  - threshold logic
+  - decision logic
+  - abstain logic
+  - position accounting basis
+- If they differ, fix them.
+- Add parity tests where missing.
+
+7. Legacy / stale AI path quarantine
+- Search for any remaining legacy AI / LLM / shadow-mode influence in:
+  - ai-engine
+  - best-pick generators
+  - monitor paths
+  - routes
+  - dashboard string generators
+  - orchestration code
+  - journals
+  - sidecars
+  - imported type aliases that keep legacy modules in the graph
+- Classify each usage as:
+  - execution-critical
+  - advisory-only
+  - dead/legacy
+- For execution-critical legacy influence: remove now.
+- For advisory-only usage: isolate clearly.
+- For dead/legacy usage: quarantine or delete.
+- I do not want silent coexistence of old and new decision systems.
+
+8. Hard proofs required
+I do not want verbal reassurance. I want proof.
+
+Deliver:
+A. Trade-path proof
+- Show the exact live execution path from market data -> feature build -> quant prediction -> risk gate -> bot trade.
+- Prove no LLM/advisory module is in that path.
+
+B. Data-input proof
+- List every live prediction input source.
+- Mark each as real-market / derived-from-real / disallowed.
+- Confirm all active live inputs are allowed.
+
+C. Training-input proof
+- List every training feature source.
+- Confirm no LLM-derived or synthetic advisory features are included.
+
+D. Fleet-accounting proof
+- Show where bot totalValue is computed.
+- Show where displayed pnl is computed.
+- Show they match the intended accounting basis.
+- Prove the summary cards agree with bot rows.
+
+E. Legacy-influence proof
+- List all remaining ai-engine / legacy / llm importers.
+- State whether each is:
+  - execution path
+  - advisory only
+  - safe to keep temporarily
+  - must be removed
+- Recommend next cleanup steps.
+
+Required fixes
+Apply safe fixes immediately for any violation found, including but not limited to:
+- removing legacy/LLM-derived features from live/training trade paths
+- removing legacy successProbability or other heuristic decision values from execution-facing UI logic
+- unifying pnl displays with mark-to-market equity
+- removing local fee constants
+- adding fail-fast config loading
+- blocking wrong-cadence writes
+- isolating per-coin retrain mutation
+- removing silent fallbacks
+
+Required tests
+Add or update tests for:
+1. no LLM-derived features in live predict path
+2. no LLM-derived features in training path
+3. live/backtest decision parity
+4. displayed bot pnl equals totalValue - start balance
+5. winners count uses equity basis
+6. round-trip cost comes from shared contract everywhere
+7. wrong-cadence data write is rejected
+8. per-coin retrain mutates only requested slice
+9. legacy probability cannot leak into execution-facing best-pick probability display
+10. api-server fails fast when shared trading contract is missing or malformed
+
+Acceptance criteria
+Do not mark this complete unless all are true:
+- trading decisions are quant-only
+- prediction inputs are real-data-only
+- bots rely only on structured quant outputs
+- fleet pnl is based on real bot trades and real market prices
+- dashboard numbers do not contradict execution/accounting truth
+- no LLM/advisory component can influence trade direction or bot execution
+- all critical protections are covered by tests
+- final report clearly states what was fixed, what remains advisory-only, and what legacy code still needs quarantine
+
+Execution mode
+Do this as a deep enforcement task, not a cosmetic cleanup.
+Be aggressive about truthfulness.
+If you find legacy code influencing live decisions, remove or isolate it.
+If something is too risky to remove immediately, document it clearly and propose an ordered follow-up task.
+But do not leave hidden trade-path influence in place.
+
+Final deliverables
+1. code changes
+2. tests
+3. audit/enforcement report
+4. list of remaining advisory-only LLM uses
+5. list of remaining legacy modules to quarantine next
+6. explicit yes/no answer to this question:
+   “Can any non-quant or non-real-data input still influence live bot trade decisions or fleet P&L?”
+
+I want the answer to end in a single hard statement:
+“Trading is quant-only and based on real data”
+or
+“Trading is not yet fully quant-only” and why.

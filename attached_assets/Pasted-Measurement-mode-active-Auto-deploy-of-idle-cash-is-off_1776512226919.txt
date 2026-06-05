@@ -1,0 +1,128 @@
+Measurement mode active. Auto-deploy of idle cash is off and agent evolution is frozen. Bots only trade when the consensus engine emits a real signal. This keeps the 30–90 day comparison honest — we want to know which strategy truly wins before any real money is deployed.
+Strategy Lab
+Parallel measurement against simple, deterministic strategies. Same prices, same fees, same coins — different rules. Each portfolio starts at $1,000. The AI fleet is aggregated for an apples-to-apples comparison.
+
+Current leader
+AI Bots (aggregate)
++0.89%
++1.04% over DCA + Circuit Breaker · +5.42% over Buy & Hold (basket)
+DCA + Circuit Breaker tuning
+Adjust how aggressive the daily DCA strategy is. Changes apply on the next monitor cycle and persist across restarts.
+
+Defaults
+Saved
+Drawdown trigger
+20%
+5%
+50%
+Liquidate the basket when equity falls this far below peak. Default 20%.
+
+Resume lookback
+14 days
+1d
+30d
+After tripping, only resume buying when the basket's return over this window turns positive. Default 14 days.
+
+Per-cycle deploy
+$33.33
+$5
+$200
+USD spent each daily cycle, equally split across the basket. Default $33.33.
+
+AI Bots (aggregate)
+LEADING
+Aggregate of all live AI agents — multi-model consensus, paper trading on signals.
+
+$13116
++$115.62 (+0.89%)
+Capital
+$13000
+Cash
+$11475
+Invested
+$1641
+Trades
+251
+Fees
+$0.00
+Peak equity
+$13150
+Max drawdown
+0.45%
+Agents
+13
+DCA + Circuit Breaker
+Daily equal-slice DCA across the basket. Liquidates fully on 20% drawdown from peak; resumes when 14-day basket return is positive.
+
+$998.47
+-$1.53 (-0.15%)
+Capital
+$1000
+Cash
+$966.67
+Invested
+$31.80
+Trades
+10
+Fees
+$0.03
+Peak equity
+$1000
+Max drawdown
+0.16%
+Agents
+1
+Buy & Hold (basket)
+One-time equal-weight buy across the monitored basket. No further actions. The benchmark to beat.
+
+$954.70
+-$45.30 (-4.53%)
+Capital
+$1000
+Cash
+$10.00
+Invested
+$944.70
+Trades
+10
+Fees
+$0.99
+Peak equity
+$1001
+Max drawdown
+4.68%
+Agents
+1
+Trend Filter (30d basket)
+Equal-weight basket buy when the 30-day basket return is positive; full exit to cash when it turns negative.
+
+$978.05
+-$21.95 (-2.19%)
+Capital
+$1000
+Cash
+$978.05
+Invested
+$0.00
+Trades
+100
+Fees
+$9.83
+Peak equity
+$1001
+Max drawdown
+2.28%
+Agents
+1
+Equity curves
+Apr 17
+Apr 18
+Apr 18
+Apr 18
+$940
+$4440
+$7940
+$13170
+AI BotsDCA + BreakerBuy & HoldTrend Filter
+
+Honest accounting: All strategies pay the same simulated 0.10% fee + 0.05% slippage per side. Equity = cash + mark-to-market of holdings net of estimated exit costs. Snapshots taken every monitor cycle. DCA deploys ~$33.33 per day across the basket; lasts ~30 days unless the breaker trips.

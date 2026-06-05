@@ -1,0 +1,37 @@
+{
+  "anti_leak_check": {
+    "future_ts_count": 0,
+    "now_ms_at_check": 1777494844094
+  },
+  "coins": [
+    "sol"
+  ],
+  "dry_run": false,
+  "end_days_ago": 120,
+  "end_ms": 1767126733889,
+  "finished_at": "2026-04-29T20:34:04.094912+00:00",
+  "lookback_days": 155,
+  "now_ms": 1777494733889,
+  "per_coin": {
+    "sol": {
+      "fetched": {
+        "mid": {
+          "earliest_ms": 1753734900000,
+          "elapsed_s": 108.99,
+          "latest_ms": 1767126600000,
+          "rows": 44640
+        }
+      },
+      "inst_id": "SOL-USDT-SWAP",
+      "written": {
+        "mid": 44640
+      }
+    }
+  },
+  "since_ms": 1753734733889,
+  "started_at": "2026-04-29T20:32:13.911071+00:00",
+  "streams": [
+    "mid"
+  ],
+  "task": 586
+}

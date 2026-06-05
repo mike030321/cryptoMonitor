@@ -1,0 +1,110 @@
+{
+  "commit": false,
+  "commit_details": {
+    "backup": null,
+    "files": null,
+    "promoted": false,
+    "reason": "thresholds_not_met",
+    "requested": true,
+    "target": "/home/runner/workspace/artifacts/ml-engine/models/meta_brain_state",
+    "thresholds": {
+      "distinct_regimes": 6,
+      "min_days": 30,
+      "min_regimes": 3,
+      "min_trades": 2000,
+      "span_days": 4.2743,
+      "trades_attributed": 55
+    },
+    "thresholds_satisfied": false
+  },
+  "cycles_replayed": 996,
+  "data_window": {
+    "days_covered": 4.2743,
+    "max_ts": "2026-04-25T06:35:03.291869+00:00",
+    "min_ts": "2026-04-21T00:00:00+00:00"
+  },
+  "families_observed": {
+    "baseline": 711,
+    "breakout": 2421,
+    "mean_reversion": 356,
+    "momentum": 2519,
+    "volatility_forecaster": 1053
+  },
+  "finished_at": "2026-04-25T06:35:05.716197+00:00",
+  "forbidden_columns_seen": [],
+  "holdout_metrics": {
+    "avg_reward_proxy": 0.508366,
+    "cycle_count": 199,
+    "defensive_mode_hit_rate": 1.0,
+    "family_trust_calibration_error": {
+      "baseline": {
+        "absolute_error": 0.734754,
+        "final_trust": 0.975008,
+        "holdout_mean_trust_multiplier": 0.240254,
+        "samples": 90
+      },
+      "breakout": {
+        "absolute_error": 0.738838,
+        "final_trust": 0.984579,
+        "holdout_mean_trust_multiplier": 0.245741,
+        "samples": 161
+      },
+      "mean_reversion": {
+        "absolute_error": 0.735114,
+        "final_trust": 0.975008,
+        "holdout_mean_trust_multiplier": 0.239894,
+        "samples": 54
+      },
+      "momentum": {
+        "absolute_error": 0.739107,
+        "final_trust": 0.984579,
+        "holdout_mean_trust_multiplier": 0.245472,
+        "samples": 158
+      },
+      "volatility_forecaster": {
+        "absolute_error": 0.741917,
+        "final_trust": 0.984579,
+        "holdout_mean_trust_multiplier": 0.242662,
+        "samples": 114
+      }
+    },
+    "notes": "reward_proxy = mean(1 - caution_level); calibration = |final_trust - mean(trust_multiplier_during_holdout)|"
+  },
+  "regimes_observed": {
+    "bull": 420,
+    "panic_liquidation": 28,
+    "range_chop": 1361,
+    "trending_down": 3463,
+    "trending_up": 1734,
+    "volatile": 54
+  },
+  "row_counts": {
+    "cycles_replayed": 996,
+    "input_sources": {
+      "agents": 27,
+      "cycles_total": 996,
+      "holdout_cycles": 199,
+      "market_signals": 35505,
+      "paper_portfolios": 27,
+      "paper_position_marks": 0,
+      "paper_positions_open": 20,
+      "paper_trades_closed": 264,
+      "prediction_journal_rows": 7060,
+      "price_candles_5m": 9585,
+      "strategy_snapshots": 33276,
+      "train_cycles": 797
+    },
+    "journal_rows_consumed": 7060,
+    "outcomes_recorded": 55,
+    "outcomes_skipped_holdout": 27,
+    "outcomes_skipped_no_match": 182
+  },
+  "run_id": "replay-20260425T063503Z-68262c0c",
+  "sandbox_dir": "/home/runner/workspace/.local/cleanup/meta-brain-replay/replay-20260425T063503Z-68262c0c",
+  "started_at": "2026-04-25T06:35:03.291919+00:00",
+  "state": "pipeline_validation_only",
+  "task": "467",
+  "trades_attributed": 55,
+  "trades_skipped_holdout": 27,
+  "trades_unmatched": 182
+}

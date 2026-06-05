@@ -1,0 +1,2620 @@
+{
+  "task": "#579",
+  "generated_at": "2026-04-28T19:56:06.960248+00:00",
+  "evidence_window": {
+    "n_completed_campaign_windows": 1,
+    "windows": [
+      {
+        "started_at": "2026-04-25T06:33:02.735071+00:00",
+        "ended_at": "2026-04-25T10:44:10.052818+00:00",
+        "run_dir": "models/training_run_20260425T063302Z"
+      }
+    ],
+    "n_slices_in_corpus": 52,
+    "n_per_coin_slices_in_corpus": 36,
+    "verification_history_rows": 4,
+    "verification_history_total_slices_promoted": 0
+  },
+  "frictions": {
+    "round_trip_cost_pct": 0.3,
+    "raw": {
+      "maker_fee_pct": 0.001,
+      "taker_fee_pct": 0.001,
+      "slippage_pct": 0.0005
+    }
+  },
+  "per_timeframe": [
+    {
+      "timeframe": "5m",
+      "current_floor": {
+        "min_directional_accuracy": 0.5,
+        "max_directional_call_share": 0.95,
+        "min_holdout_rows": 200,
+        "min_pooled_coin_vocab": 2
+      },
+      "distribution": {
+        "timeframe": "5m",
+        "n_per_coin_slices": 0,
+        "n_pooled_slices": 0,
+        "n_specialist_slices": 0,
+        "note": "no per-coin slices in corpus"
+      },
+      "sweep": {
+        "timeframe": "5m",
+        "current_min_da": 0.5,
+        "current_max_dcs": 0.95,
+        "current_min_holdout_rows": 200,
+        "round_trip_cost_pct": 0.3,
+        "min_da_sweep": [
+          {
+            "candidate_min_da": 0.35,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.4,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.43,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.46,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.49,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.5,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.51,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.52,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.53,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.55,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.57,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          }
+        ],
+        "max_dcs_sweep": [
+          {
+            "candidate_max_dcs": 0.85,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.9,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.95,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          }
+        ],
+        "frontier_lift_only": {
+          "n_admitted_at_frontier": 0,
+          "summary": {
+            "n_admitted": 0,
+            "n_with_pnl": 0,
+            "post_fee_pnl_pct_total": {
+              "min": null,
+              "median": null,
+              "mean": null,
+              "max": null,
+              "n_positive": 0,
+              "share_positive": null
+            },
+            "total_n_trades": 0
+          },
+          "admitted_slices": []
+        }
+      },
+      "cost_of_floor": {
+        "timeframe": "5m",
+        "round_trip_cost_pct": 0.3,
+        "median_post_fee_pnl_pct_total": null,
+        "max_post_fee_pnl_pct_total": null,
+        "any_slice_with_positive_post_fee_pnl": false,
+        "interpretation": "No per-coin slice_done events for this timeframe in the completed campaign window on disk; cost-of-floor analysis is N/A. The audit defaults to keep_gate per the no-weakening hard rule when there is no OOS slice evidence to justify a change."
+      },
+      "gate_attribution": {
+        "timeframe": "5m",
+        "n_per_coin": 0,
+        "counts_by_failure": {
+          "below_coinflip_da": 0,
+          "no_lift_vs_baseline": 0,
+          "directional_call_regression": 0,
+          "insufficient_sample": 0,
+          "would_promote": 0
+        },
+        "per_slice": []
+      },
+      "verdict": {
+        "verdict": "keep_gate",
+        "rationale": "No per-coin slice_done events for this timeframe in any completed campaign window on disk. Without OOS slice evidence the audit cannot justify any change; the no-weakening rule defaults to keep_gate.",
+        "supporting_evidence": {
+          "n_per_coin_slices": 0,
+          "completed_campaign_windows_searched": true
+        }
+      }
+    },
+    {
+      "timeframe": "1h",
+      "current_floor": {
+        "min_directional_accuracy": 0.5,
+        "max_directional_call_share": 0.95,
+        "min_holdout_rows": 200,
+        "min_pooled_coin_vocab": 2
+      },
+      "distribution": {
+        "timeframe": "1h",
+        "n_per_coin_slices": 9,
+        "n_pooled_slices": 1,
+        "n_specialist_slices": 3,
+        "per_coin_distributions": {
+          "directional_accuracy": {
+            "n": 9,
+            "min": 0.3503,
+            "p25": 0.3656,
+            "median": 0.3748,
+            "p75": 0.3842,
+            "max": 0.392,
+            "mean": 0.3741,
+            "stdev": 0.0121
+          },
+          "baseline_directional_accuracy": {
+            "n": 9,
+            "min": 0.3696,
+            "p25": 0.3867,
+            "median": 0.3953,
+            "p75": 0.4001,
+            "max": 0.4109,
+            "mean": 0.3927,
+            "stdev": 0.0129
+          },
+          "lift_da": {
+            "n": 9,
+            "min": -0.0346,
+            "p25": -0.0284,
+            "median": -0.022,
+            "p75": -0.0102,
+            "max": 0.0053,
+            "mean": -0.0186,
+            "stdev": 0.0126
+          },
+          "post_fee_pnl_pct_total": {
+            "n": 9,
+            "min": -411.3527,
+            "p25": -400.1205,
+            "median": -389.1132,
+            "p75": -357.4323,
+            "max": -342.9836,
+            "mean": -381.4732,
+            "stdev": 23.2757
+          },
+          "n_trades": {
+            "n": 9,
+            "min": 1061,
+            "p25": 1196,
+            "median": 1240,
+            "p75": 1307,
+            "max": 1466,
+            "mean": 1247.7778,
+            "stdev": 104.2186
+          },
+          "trade_share": {
+            "n": 9,
+            "min": 0.6115,
+            "p25": 0.6893,
+            "median": 0.7147,
+            "p75": 0.7533,
+            "max": 0.845,
+            "mean": 0.7192,
+            "stdev": 0.0601
+          },
+          "dcs_from_pred_collapse": {
+            "n": 9,
+            "min": 0.7032,
+            "p25": 0.853,
+            "median": 0.8548,
+            "p75": 0.8876,
+            "max": 0.9712,
+            "mean": 0.856,
+            "stdev": 0.068
+          },
+          "brier": {
+            "n": 9,
+            "min": 0.3174,
+            "p25": 0.3256,
+            "median": 0.3346,
+            "p75": 0.3444,
+            "max": 0.3742,
+            "mean": 0.3379,
+            "stdev": 0.0157
+          },
+          "baseline_brier": {
+            "n": 9,
+            "min": 0.2152,
+            "p25": 0.2164,
+            "median": 0.2175,
+            "p75": 0.2188,
+            "max": 0.2202,
+            "mean": 0.2176,
+            "stdev": 0.0016
+          }
+        }
+      },
+      "sweep": {
+        "timeframe": "1h",
+        "current_min_da": 0.5,
+        "current_max_dcs": 0.95,
+        "current_min_holdout_rows": 200,
+        "round_trip_cost_pct": 0.3,
+        "min_da_sweep": [
+          {
+            "candidate_min_da": 0.35,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 1,
+              "n_with_pnl": 1,
+              "post_fee_pnl_pct_total": {
+                "min": -342.9836,
+                "median": -342.9836,
+                "mean": -342.9836,
+                "max": -342.9836,
+                "stdev": 0.0,
+                "n_positive": 0,
+                "share_positive": 0.0
+              },
+              "total_n_trades": 1061
+            },
+            "admitted_slices": [
+              {
+                "coin": "injective-protocol",
+                "da": 0.3748271092669433,
+                "base_da": 0.3695712309820194,
+                "lift_da": 0.005255878284923909,
+                "pnl": -342.9836,
+                "trade_share": 0.6115,
+                "n_trades": 1061
+              }
+            ],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.4,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.43,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.46,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.49,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.5,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.51,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.52,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.53,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.55,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.57,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          }
+        ],
+        "max_dcs_sweep": [
+          {
+            "candidate_max_dcs": 0.85,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.9,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.95,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          }
+        ],
+        "frontier_lift_only": {
+          "n_admitted_at_frontier": 1,
+          "summary": {
+            "n_admitted": 1,
+            "n_with_pnl": 1,
+            "post_fee_pnl_pct_total": {
+              "min": -342.9836,
+              "median": -342.9836,
+              "mean": -342.9836,
+              "max": -342.9836,
+              "stdev": 0.0,
+              "n_positive": 0,
+              "share_positive": 0.0
+            },
+            "total_n_trades": 1061
+          },
+          "admitted_slices": [
+            {
+              "coin": "injective-protocol",
+              "da": 0.3748271092669433,
+              "base_da": 0.3695712309820194,
+              "lift_da": 0.005255878284923909,
+              "dcs": 0.7032,
+              "pnl": -342.9836,
+              "trade_share": 0.6115,
+              "n_trades": 1061
+            }
+          ]
+        }
+      },
+      "cost_of_floor": {
+        "timeframe": "1h",
+        "round_trip_cost_pct": 0.3,
+        "median_post_fee_pnl_pct_total": -389.1132,
+        "max_post_fee_pnl_pct_total": -342.9836,
+        "any_slice_with_positive_post_fee_pnl": false,
+        "interpretation": "If max_post_fee_pnl_pct_total <= 0, no slice in the corpus produces post-fee positive results \u2014 relaxing the gate cannot admit a profitable slice and any reduction in the floor would merely admit losing slices into the live trader."
+      },
+      "gate_attribution": {
+        "timeframe": "1h",
+        "n_per_coin": 9,
+        "counts_by_failure": {
+          "below_coinflip_da": 9,
+          "no_lift_vs_baseline": 0,
+          "directional_call_regression": 1,
+          "insufficient_sample": 0,
+          "would_promote": 0
+        },
+        "per_slice": [
+          {
+            "coin": "bonk",
+            "da": 0.38423236514522824,
+            "base_da": 0.40401106500691564,
+            "dcs": 0.8599,
+            "pnl": -383.3987,
+            "n_trades": 1241,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "celestia",
+            "da": 0.3850622406639004,
+            "base_da": 0.3952973720608576,
+            "dcs": 0.853,
+            "pnl": -411.3527,
+            "n_trades": 1315,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "dogwifcoin",
+            "da": 0.3919778699861688,
+            "base_da": 0.3951590594744122,
+            "dcs": 0.8542,
+            "pnl": -390.5659,
+            "n_trades": 1240,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "floki-inu",
+            "da": 0.3796680497925311,
+            "base_da": 0.41092669432918394,
+            "dcs": 0.8548,
+            "pnl": -405.7949,
+            "n_trades": 1307,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "injective-protocol",
+            "da": 0.3748271092669433,
+            "base_da": 0.3695712309820194,
+            "dcs": 0.7032,
+            "pnl": -342.9836,
+            "n_trades": 1061,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "jupiter-exchange-solana",
+            "da": 0.37053941908713695,
+            "base_da": 0.3988934993084371,
+            "dcs": 0.9043,
+            "pnl": -389.1132,
+            "n_trades": 1191,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "pepe",
+            "da": 0.3503457814661134,
+            "base_da": 0.37372060857538036,
+            "dcs": 0.9712,
+            "pnl": -400.1205,
+            "n_trades": 1466,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "render-token",
+            "da": 0.3647302904564315,
+            "base_da": 0.38672199170124477,
+            "dcs": 0.8876,
+            "pnl": -352.4971,
+            "n_trades": 1196,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "worldcoin-wld",
+            "da": 0.3655601659751037,
+            "base_da": 0.4001383125864454,
+            "dcs": 0.8156,
+            "pnl": -357.4323,
+            "n_trades": 1213,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          }
+        ]
+      },
+      "verdict": {
+        "verdict": "keep_gate",
+        "rationale": "Every per-coin slice in the corpus has post-fee PnL <= 0 (max=-342.9836, n=9). No relaxation of the directional-accuracy floor can admit a profitable slice; the no-weakening hard rule rejects every `is_relaxation_vs_current=true` candidate by definition. Tightening would not change the (already zero) admitted set, so no `adjust_gate` upward is justified either.",
+        "supporting_evidence": {
+          "n_per_coin_slices": 9,
+          "max_post_fee_pnl_pct_total": -342.9836,
+          "median_post_fee_pnl_pct_total": -389.1132,
+          "share_admitted_under_current_gate": 0.0,
+          "any_tighter_floor_admits_profitable_population": false,
+          "round_trip_cost_pct": 0.3
+        }
+      }
+    },
+    {
+      "timeframe": "2h",
+      "current_floor": {
+        "min_directional_accuracy": 0.5,
+        "max_directional_call_share": 0.95,
+        "min_holdout_rows": 200,
+        "min_pooled_coin_vocab": 2
+      },
+      "distribution": {
+        "timeframe": "2h",
+        "n_per_coin_slices": 9,
+        "n_pooled_slices": 1,
+        "n_specialist_slices": 3,
+        "per_coin_distributions": {
+          "directional_accuracy": {
+            "n": 9,
+            "min": 0.375,
+            "p25": 0.3905,
+            "median": 0.3925,
+            "p75": 0.4075,
+            "max": 0.4083,
+            "mean": 0.3943,
+            "stdev": 0.0112
+          },
+          "baseline_directional_accuracy": {
+            "n": 9,
+            "min": 0.4025,
+            "p25": 0.4095,
+            "median": 0.4136,
+            "p75": 0.4256,
+            "max": 0.447,
+            "mean": 0.4186,
+            "stdev": 0.0151
+          },
+          "lift_da": {
+            "n": 9,
+            "min": -0.0487,
+            "p25": -0.0353,
+            "median": -0.0178,
+            "p75": -0.012,
+            "max": -0.0053,
+            "mean": -0.0242,
+            "stdev": 0.0144
+          },
+          "post_fee_pnl_pct_total": {
+            "n": 9,
+            "min": -268.4372,
+            "p25": -246.2883,
+            "median": -216.7874,
+            "p75": -211.3121,
+            "max": -201.2608,
+            "mean": -227.5993,
+            "stdev": 21.4559
+          },
+          "n_trades": {
+            "n": 9,
+            "min": 608,
+            "p25": 725,
+            "median": 737,
+            "p75": 780,
+            "max": 801,
+            "mean": 735.7778,
+            "stdev": 54.3278
+          },
+          "trade_share": {
+            "n": 9,
+            "min": 0.7037,
+            "p25": 0.8391,
+            "median": 0.853,
+            "p75": 0.9028,
+            "max": 0.9271,
+            "mean": 0.8516,
+            "stdev": 0.0629
+          },
+          "dcs_from_pred_collapse": {
+            "n": 9,
+            "min": 0.8935,
+            "p25": 0.9514,
+            "median": 0.9711,
+            "p75": 0.978,
+            "max": 0.9942,
+            "mean": 0.9598,
+            "stdev": 0.0283
+          },
+          "brier": {
+            "n": 9,
+            "min": 0.3206,
+            "p25": 0.3371,
+            "median": 0.3461,
+            "p75": 0.3497,
+            "max": 0.3574,
+            "mean": 0.3421,
+            "stdev": 0.0112
+          },
+          "baseline_brier": {
+            "n": 9,
+            "min": 0.2101,
+            "p25": 0.2135,
+            "median": 0.2143,
+            "p75": 0.2167,
+            "max": 0.2191,
+            "mean": 0.2149,
+            "stdev": 0.0026
+          }
+        }
+      },
+      "sweep": {
+        "timeframe": "2h",
+        "current_min_da": 0.5,
+        "current_max_dcs": 0.95,
+        "current_min_holdout_rows": 200,
+        "round_trip_cost_pct": 0.3,
+        "min_da_sweep": [
+          {
+            "candidate_min_da": 0.35,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.4,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.43,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.46,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.49,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.5,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.51,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.52,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.53,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.55,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.57,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          }
+        ],
+        "max_dcs_sweep": [
+          {
+            "candidate_max_dcs": 0.85,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.9,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.95,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          }
+        ],
+        "frontier_lift_only": {
+          "n_admitted_at_frontier": 0,
+          "summary": {
+            "n_admitted": 0,
+            "n_with_pnl": 0,
+            "post_fee_pnl_pct_total": {
+              "min": null,
+              "median": null,
+              "mean": null,
+              "max": null,
+              "n_positive": 0,
+              "share_positive": null
+            },
+            "total_n_trades": 0
+          },
+          "admitted_slices": []
+        }
+      },
+      "cost_of_floor": {
+        "timeframe": "2h",
+        "round_trip_cost_pct": 0.3,
+        "median_post_fee_pnl_pct_total": -216.7874,
+        "max_post_fee_pnl_pct_total": -201.2608,
+        "any_slice_with_positive_post_fee_pnl": false,
+        "interpretation": "If max_post_fee_pnl_pct_total <= 0, no slice in the corpus produces post-fee positive results \u2014 relaxing the gate cannot admit a profitable slice and any reduction in the floor would merely admit losing slices into the live trader."
+      },
+      "gate_attribution": {
+        "timeframe": "2h",
+        "n_per_coin": 9,
+        "counts_by_failure": {
+          "below_coinflip_da": 9,
+          "no_lift_vs_baseline": 0,
+          "directional_call_regression": 7,
+          "insufficient_sample": 0,
+          "would_promote": 0
+        },
+        "per_slice": [
+          {
+            "coin": "bonk",
+            "da": 0.40751043115438107,
+            "base_da": 0.44700973574408903,
+            "dcs": 0.9792,
+            "pnl": -246.2883,
+            "n_trades": 748,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "celestia",
+            "da": 0.39415855354659246,
+            "base_da": 0.403616133518776,
+            "dcs": 0.9711,
+            "pnl": -252.5837,
+            "n_trades": 801,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "dogwifcoin",
+            "da": 0.40778859527121,
+            "base_da": 0.4255910987482615,
+            "dcs": 0.9537,
+            "pnl": -216.7874,
+            "n_trades": 608,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "floki-inu",
+            "da": 0.39248956884561886,
+            "base_da": 0.4411682892906815,
+            "dcs": 0.9942,
+            "pnl": -201.2608,
+            "n_trades": 731,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "injective-protocol",
+            "da": 0.3905424200278164,
+            "base_da": 0.4025034770514604,
+            "dcs": 0.9769,
+            "pnl": -216.5456,
+            "n_trades": 788,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "jupiter-exchange-solana",
+            "da": 0.40834492350486784,
+            "base_da": 0.4136300417246175,
+            "dcs": 0.978,
+            "pnl": -210.3951,
+            "n_trades": 780,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "pepe",
+            "da": 0.3808066759388039,
+            "base_da": 0.41390820584144644,
+            "dcs": 0.9398,
+            "pnl": -211.3121,
+            "n_trades": 704,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "render-token",
+            "da": 0.3749652294853964,
+            "base_da": 0.41029207232267034,
+            "dcs": 0.9514,
+            "pnl": -268.4372,
+            "n_trades": 725,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "worldcoin-wld",
+            "da": 0.3924895688456189,
+            "base_da": 0.4094575799721836,
+            "dcs": 0.8935,
+            "pnl": -224.7836,
+            "n_trades": 737,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          }
+        ]
+      },
+      "verdict": {
+        "verdict": "keep_gate",
+        "rationale": "Every per-coin slice in the corpus has post-fee PnL <= 0 (max=-201.2608, n=9). No relaxation of the directional-accuracy floor can admit a profitable slice; the no-weakening hard rule rejects every `is_relaxation_vs_current=true` candidate by definition. Tightening would not change the (already zero) admitted set, so no `adjust_gate` upward is justified either.",
+        "supporting_evidence": {
+          "n_per_coin_slices": 9,
+          "max_post_fee_pnl_pct_total": -201.2608,
+          "median_post_fee_pnl_pct_total": -216.7874,
+          "share_admitted_under_current_gate": 0.0,
+          "any_tighter_floor_admits_profitable_population": false,
+          "round_trip_cost_pct": 0.3
+        }
+      }
+    },
+    {
+      "timeframe": "6h",
+      "current_floor": {
+        "min_directional_accuracy": 0.5,
+        "max_directional_call_share": 0.95,
+        "min_holdout_rows": 200,
+        "min_pooled_coin_vocab": 2
+      },
+      "distribution": {
+        "timeframe": "6h",
+        "n_per_coin_slices": 9,
+        "n_pooled_slices": 1,
+        "n_specialist_slices": 3,
+        "per_coin_distributions": {
+          "directional_accuracy": {
+            "n": 9,
+            "min": 0.3949,
+            "p25": 0.417,
+            "median": 0.423,
+            "p75": 0.4323,
+            "max": 0.4409,
+            "mean": 0.4222,
+            "stdev": 0.0146
+          },
+          "baseline_directional_accuracy": {
+            "n": 9,
+            "min": 0.4085,
+            "p25": 0.4162,
+            "median": 0.434,
+            "p75": 0.4426,
+            "max": 0.4528,
+            "mean": 0.4304,
+            "stdev": 0.0155
+          },
+          "lift_da": {
+            "n": 9,
+            "min": -0.0545,
+            "p25": -0.0196,
+            "median": -0.0102,
+            "p75": 0.0068,
+            "max": 0.0323,
+            "mean": -0.0081,
+            "stdev": 0.0257
+          },
+          "post_fee_pnl_pct_total": {
+            "n": 9,
+            "min": -121.9813,
+            "p25": -105.6594,
+            "median": -88.399,
+            "p75": -25.8294,
+            "max": -20.6529,
+            "mean": -76.1412,
+            "stdev": 38.907
+          },
+          "n_trades": {
+            "n": 9,
+            "min": 178,
+            "p25": 246,
+            "median": 261,
+            "p75": 274,
+            "max": 281,
+            "mean": 251.8889,
+            "stdev": 31.5716
+          },
+          "trade_share": {
+            "n": 9,
+            "min": 0.629,
+            "p25": 0.8693,
+            "median": 0.9223,
+            "p75": 0.9682,
+            "max": 0.9929,
+            "mean": 0.8901,
+            "stdev": 0.1115
+          },
+          "dcs_from_pred_collapse": {
+            "n": 9,
+            "min": 0.6784,
+            "p25": 0.9293,
+            "median": 0.9682,
+            "p75": 0.9894,
+            "max": 0.9965,
+            "mean": 0.9278,
+            "stdev": 0.0982
+          },
+          "brier": {
+            "n": 9,
+            "min": 0.3279,
+            "p25": 0.3416,
+            "median": 0.348,
+            "p75": 0.3545,
+            "max": 0.366,
+            "mean": 0.3478,
+            "stdev": 0.0107
+          },
+          "baseline_brier": {
+            "n": 9,
+            "min": 0.2097,
+            "p25": 0.2119,
+            "median": 0.2187,
+            "p75": 0.2215,
+            "max": 0.2259,
+            "mean": 0.2177,
+            "stdev": 0.0052
+          }
+        }
+      },
+      "sweep": {
+        "timeframe": "6h",
+        "current_min_da": 0.5,
+        "current_max_dcs": 0.95,
+        "current_min_holdout_rows": 200,
+        "round_trip_cost_pct": 0.3,
+        "min_da_sweep": [
+          {
+            "candidate_min_da": 0.35,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.4,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.43,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.46,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.49,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.5,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.51,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.52,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.53,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.55,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.57,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          }
+        ],
+        "max_dcs_sweep": [
+          {
+            "candidate_max_dcs": 0.85,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.9,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.95,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          }
+        ],
+        "frontier_lift_only": {
+          "n_admitted_at_frontier": 4,
+          "summary": {
+            "n_admitted": 4,
+            "n_with_pnl": 4,
+            "post_fee_pnl_pct_total": {
+              "min": -121.9813,
+              "median": -104.5385,
+              "mean": -89.2219,
+              "max": -25.8294,
+              "stdev": 37.2944,
+              "n_positive": 0,
+              "share_positive": 0.0
+            },
+            "total_n_trades": 1102
+          },
+          "admitted_slices": [
+            {
+              "coin": "celestia",
+              "da": 0.42042553191489357,
+              "base_da": 0.41617021276595745,
+              "lift_da": 0.004255319148936121,
+              "dcs": 0.9965,
+              "pnl": -121.9813,
+              "trade_share": 0.9929,
+              "n_trades": 281
+            },
+            {
+              "coin": "injective-protocol",
+              "da": 0.4323404255319148,
+              "base_da": 0.41191489361702127,
+              "lift_da": 0.020425531914893547,
+              "dcs": 0.9894,
+              "pnl": -103.4176,
+              "trade_share": 0.9823,
+              "n_trades": 278
+            },
+            {
+              "coin": "render-token",
+              "da": 0.4408510638297872,
+              "base_da": 0.4085106382978723,
+              "lift_da": 0.03234042553191491,
+              "dcs": 0.9823,
+              "pnl": -105.6594,
+              "trade_share": 0.9505,
+              "n_trades": 269
+            },
+            {
+              "coin": "worldcoin-wld",
+              "da": 0.4408510638297872,
+              "base_da": 0.4340425531914893,
+              "lift_da": 0.006808510638297904,
+              "dcs": 0.9965,
+              "pnl": -25.8294,
+              "trade_share": 0.9682,
+              "n_trades": 274
+            }
+          ]
+        }
+      },
+      "cost_of_floor": {
+        "timeframe": "6h",
+        "round_trip_cost_pct": 0.3,
+        "median_post_fee_pnl_pct_total": -88.399,
+        "max_post_fee_pnl_pct_total": -20.6529,
+        "any_slice_with_positive_post_fee_pnl": false,
+        "interpretation": "If max_post_fee_pnl_pct_total <= 0, no slice in the corpus produces post-fee positive results \u2014 relaxing the gate cannot admit a profitable slice and any reduction in the floor would merely admit losing slices into the live trader."
+      },
+      "gate_attribution": {
+        "timeframe": "6h",
+        "n_per_coin": 9,
+        "counts_by_failure": {
+          "below_coinflip_da": 9,
+          "no_lift_vs_baseline": 0,
+          "directional_call_regression": 6,
+          "insufficient_sample": 0,
+          "would_promote": 0
+        },
+        "per_slice": [
+          {
+            "coin": "bonk",
+            "da": 0.4170212765957446,
+            "base_da": 0.45276595744680853,
+            "dcs": 0.9576,
+            "pnl": -25.731,
+            "n_trades": 261,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "celestia",
+            "da": 0.42042553191489357,
+            "base_da": 0.41617021276595745,
+            "dcs": 0.9965,
+            "pnl": -121.9813,
+            "n_trades": 281,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "dogwifcoin",
+            "da": 0.42297872340425535,
+            "base_da": 0.4425531914893616,
+            "dcs": 0.8516,
+            "pnl": -116.1896,
+            "n_trades": 220,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "floki-inu",
+            "da": 0.39489361702127657,
+            "base_da": 0.4493617021276596,
+            "dcs": 0.9682,
+            "pnl": -88.399,
+            "n_trades": 260,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "injective-protocol",
+            "da": 0.4323404255319148,
+            "base_da": 0.41191489361702127,
+            "dcs": 0.9894,
+            "pnl": -103.4176,
+            "n_trades": 278,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "jupiter-exchange-solana",
+            "da": 0.4042553191489362,
+            "base_da": 0.4212765957446809,
+            "dcs": 0.9293,
+            "pnl": -77.4109,
+            "n_trades": 246,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "pepe",
+            "da": 0.42638297872340425,
+            "base_da": 0.4365957446808511,
+            "dcs": 0.6784,
+            "pnl": -20.6529,
+            "n_trades": 178,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "render-token",
+            "da": 0.4408510638297872,
+            "base_da": 0.4085106382978723,
+            "dcs": 0.9823,
+            "pnl": -105.6594,
+            "n_trades": 269,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "worldcoin-wld",
+            "da": 0.4408510638297872,
+            "base_da": 0.4340425531914893,
+            "dcs": 0.9965,
+            "pnl": -25.8294,
+            "n_trades": 274,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          }
+        ]
+      },
+      "verdict": {
+        "verdict": "keep_gate",
+        "rationale": "Every per-coin slice in the corpus has post-fee PnL <= 0 (max=-20.6529, n=9). No relaxation of the directional-accuracy floor can admit a profitable slice; the no-weakening hard rule rejects every `is_relaxation_vs_current=true` candidate by definition. Tightening would not change the (already zero) admitted set, so no `adjust_gate` upward is justified either.",
+        "supporting_evidence": {
+          "n_per_coin_slices": 9,
+          "max_post_fee_pnl_pct_total": -20.6529,
+          "median_post_fee_pnl_pct_total": -88.399,
+          "share_admitted_under_current_gate": 0.0,
+          "any_tighter_floor_admits_profitable_population": false,
+          "round_trip_cost_pct": 0.3
+        }
+      }
+    },
+    {
+      "timeframe": "1d",
+      "current_floor": {
+        "min_directional_accuracy": 0.53,
+        "max_directional_call_share": 0.95,
+        "min_holdout_rows": 200,
+        "min_pooled_coin_vocab": 2
+      },
+      "distribution": {
+        "timeframe": "1d",
+        "n_per_coin_slices": 9,
+        "n_pooled_slices": 1,
+        "n_specialist_slices": 3,
+        "per_coin_distributions": {
+          "directional_accuracy": {
+            "n": 9,
+            "min": 0.3412,
+            "p25": 0.3492,
+            "median": 0.3607,
+            "p75": 0.3773,
+            "max": 0.4313,
+            "mean": 0.3675,
+            "stdev": 0.0263
+          },
+          "baseline_directional_accuracy": {
+            "n": 9,
+            "min": 0.3487,
+            "p25": 0.3643,
+            "median": 0.3751,
+            "p75": 0.3925,
+            "max": 0.425,
+            "mean": 0.3807,
+            "stdev": 0.0224
+          },
+          "lift_da": {
+            "n": 9,
+            "min": -0.0477,
+            "p25": -0.0216,
+            "median": -0.0185,
+            "p75": -0.0102,
+            "max": 0.0388,
+            "mean": -0.0132,
+            "stdev": 0.0241
+          },
+          "post_fee_pnl_pct_total": {
+            "n": 9,
+            "min": -119.995,
+            "p25": -78.4588,
+            "median": -59.7573,
+            "p75": -51.0347,
+            "max": 10.9345,
+            "mean": -62.2554,
+            "stdev": 38.281
+          },
+          "n_trades": {
+            "n": 9,
+            "min": 101,
+            "p25": 130,
+            "median": 153,
+            "p75": 163,
+            "max": 179,
+            "mean": 146.4444,
+            "stdev": 24.1758
+          },
+          "trade_share": {
+            "n": 9,
+            "min": 0.7516,
+            "p25": 0.8066,
+            "median": 0.858,
+            "p75": 0.9155,
+            "max": 0.9503,
+            "mean": 0.8544,
+            "stdev": 0.0677
+          },
+          "dcs_from_pred_collapse": {
+            "n": 9,
+            "min": 0.7834,
+            "p25": 0.8455,
+            "median": 0.9112,
+            "p75": 0.9507,
+            "max": 1.0,
+            "mean": 0.8943,
+            "stdev": 0.0695
+          },
+          "brier": {
+            "n": 9,
+            "min": 0.3145,
+            "p25": 0.3512,
+            "median": 0.3634,
+            "p75": 0.3663,
+            "max": 0.3824,
+            "mean": 0.3592,
+            "stdev": 0.019
+          },
+          "baseline_brier": {
+            "n": 9,
+            "min": 0.2182,
+            "p25": 0.2219,
+            "median": 0.2311,
+            "p75": 0.2406,
+            "max": 0.2505,
+            "mean": 0.2325,
+            "stdev": 0.0107
+          }
+        }
+      },
+      "sweep": {
+        "timeframe": "1d",
+        "current_min_da": 0.53,
+        "current_max_dcs": 0.95,
+        "current_min_holdout_rows": 200,
+        "round_trip_cost_pct": 0.3,
+        "min_da_sweep": [
+          {
+            "candidate_min_da": 0.35,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.4,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.43,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.46,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.5,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.52,
+            "is_relaxation_vs_current": true,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.53,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.54,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.55,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          },
+          {
+            "candidate_min_da": 0.57,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            },
+            "admitted_slices": [],
+            "evidence_supports_change": false
+          }
+        ],
+        "max_dcs_sweep": [
+          {
+            "candidate_max_dcs": 0.85,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.9,
+            "is_relaxation_vs_current": false,
+            "is_current": false,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          },
+          {
+            "candidate_max_dcs": 0.95,
+            "is_relaxation_vs_current": false,
+            "is_current": true,
+            "summary": {
+              "n_admitted": 0,
+              "n_with_pnl": 0,
+              "post_fee_pnl_pct_total": {
+                "min": null,
+                "median": null,
+                "mean": null,
+                "max": null,
+                "n_positive": 0,
+                "share_positive": null
+              },
+              "total_n_trades": 0
+            }
+          }
+        ],
+        "frontier_lift_only": {
+          "n_admitted_at_frontier": 2,
+          "summary": {
+            "n_admitted": 2,
+            "n_with_pnl": 2,
+            "post_fee_pnl_pct_total": {
+              "min": -115.6358,
+              "median": -71.3378,
+              "mean": -71.3378,
+              "max": -27.0398,
+              "stdev": 44.298,
+              "n_positive": 0,
+              "share_positive": 0.0
+            },
+            "total_n_trades": 283
+          },
+          "admitted_slices": [
+            {
+              "coin": "bonk",
+              "da": 0.43134328358208956,
+              "base_da": 0.3925373134328359,
+              "lift_da": 0.03880597014925369,
+              "dcs": 1.0,
+              "pnl": -115.6358,
+              "trade_share": 0.9503,
+              "n_trades": 153
+            },
+            {
+              "coin": "dogwifcoin",
+              "da": 0.3606837606837606,
+              "base_da": 0.3487179487179487,
+              "lift_da": 0.011965811965811923,
+              "dcs": 0.9507,
+              "pnl": -27.0398,
+              "trade_share": 0.9155,
+              "n_trades": 130
+            }
+          ]
+        }
+      },
+      "cost_of_floor": {
+        "timeframe": "1d",
+        "round_trip_cost_pct": 0.3,
+        "median_post_fee_pnl_pct_total": -59.7573,
+        "max_post_fee_pnl_pct_total": 10.9345,
+        "any_slice_with_positive_post_fee_pnl": true,
+        "interpretation": "Some slice has post-fee positive results \u2014 floor change candidates must be re-checked against this admitted slice."
+      },
+      "gate_attribution": {
+        "timeframe": "1d",
+        "n_per_coin": 9,
+        "counts_by_failure": {
+          "below_coinflip_da": 9,
+          "no_lift_vs_baseline": 0,
+          "directional_call_regression": 3,
+          "insufficient_sample": 0,
+          "would_promote": 0
+        },
+        "per_slice": [
+          {
+            "coin": "bonk",
+            "da": 0.43134328358208956,
+            "base_da": 0.3925373134328359,
+            "dcs": 1.0,
+            "pnl": -115.6358,
+            "n_trades": 153,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "celestia",
+            "da": 0.38482758620689655,
+            "base_da": 0.4041379310344827,
+            "dcs": 0.9543,
+            "pnl": 10.9345,
+            "n_trades": 158,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "dogwifcoin",
+            "da": 0.3606837606837606,
+            "base_da": 0.3487179487179487,
+            "dcs": 0.9507,
+            "pnl": -27.0398,
+            "n_trades": 130,
+            "fails": [
+              "directional_call_regression",
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "floki-inu",
+            "da": 0.36497175141242943,
+            "base_da": 0.3751412429378531,
+            "dcs": 0.8028,
+            "pnl": -119.995,
+            "n_trades": 163,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "injective-protocol",
+            "da": 0.3485714285714286,
+            "base_da": 0.3642857142857143,
+            "dcs": 0.9112,
+            "pnl": -59.7573,
+            "n_trades": 145,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "jupiter-exchange-solana",
+            "da": 0.34923076923076923,
+            "base_da": 0.36769230769230765,
+            "dcs": 0.7834,
+            "pnl": -51.0347,
+            "n_trades": 118,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "pepe",
+            "da": 0.3772727272727273,
+            "base_da": 0.425,
+            "dcs": 0.8679,
+            "pnl": -59.1553,
+            "n_trades": 171,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "render-token",
+            "da": 0.3411764705882353,
+            "base_da": 0.3627450980392157,
+            "dcs": 0.8455,
+            "pnl": -60.1563,
+            "n_trades": 101,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          },
+          {
+            "coin": "worldcoin-wld",
+            "da": 0.34938271604938265,
+            "base_da": 0.38641975308641974,
+            "dcs": 0.9333,
+            "pnl": -78.4588,
+            "n_trades": 179,
+            "fails": [
+              "below_coinflip_da"
+            ]
+          }
+        ]
+      },
+      "verdict": {
+        "verdict": "keep_gate",
+        "rationale": "Some per-coin slices show post-fee positive PnL (max=10.9345, median=-59.7573) but no counterfactual tightening of the directional-accuracy floor produces a clearly profitable admitted cohort (>=60% share_positive over >=3 slices). The no-weakening hard rule rejects every relaxation candidate by definition; without a tightening winner the gate stays put.",
+        "supporting_evidence": {
+          "n_per_coin_slices": 9,
+          "max_post_fee_pnl_pct_total": 10.9345,
+          "median_post_fee_pnl_pct_total": -59.7573,
+          "round_trip_cost_pct": 0.3
+        }
+      }
+    }
+  ]
+}
