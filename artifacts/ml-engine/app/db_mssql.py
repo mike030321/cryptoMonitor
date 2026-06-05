@@ -1,7 +1,8 @@
 """
 MSSQL-backed drop-in replacement for db.py's asyncpg interface.
 Activated when MSSQL_HOST env var is set.
-Translates PostgreSQL SQL to T-SQL and wraps pyodbc in asyncio executor threads.
+Uses pymssql on Linux/Render (no ODBC driver required),
+pyodbc on Windows (local dev with ODBC Driver 18 installed).
 """
 from __future__ import annotations
 
@@ -11,53 +12,73 @@ import hashlib
 import logging
 import os
 import re
+import sys
+import struct
+import threading
 from datetime import datetime, timedelta, timezone
 from typing import Any, AsyncIterator, Optional
 
-import struct
-import threading
-import pyodbc
-
 logger = logging.getLogger("ml-engine.db.mssql")
 
-# ── DATETIMEOFFSET converter (pyodbc type -155) ───────────────────────────────
+# Auto-detect driver: pymssql on Linux (Render), pyodbc on Windows (local)
+_USE_PYMSSQL: bool = sys.platform != "win32" or os.environ.get("MSSQL_USE_PYMSSQL") == "1"
+
+if _USE_PYMSSQL:
+    import pymssql as _db_driver  # type: ignore
+else:
+    import pyodbc as _db_driver  # type: ignore
+
+def _conn_params() -> dict:
+    return {
+        "host": os.environ.get("MSSQL_HOST", "sql6034.site4now.net"),
+        "database": os.environ.get("MSSQL_DB", "db_aca32a_cryptoai"),
+        "user": os.environ.get("MSSQL_USER", "db_aca32a_cryptoai_admin"),
+        "password": os.environ.get("MSSQL_PASSWORD", "Ciyvi.123"),
+    }
+
+# ── DATETIMEOFFSET converter for pyodbc (Windows only) ───────────────────────
 
 def _handle_datetimeoffset(raw: bytes) -> datetime:
-    """Convert MSSQL DATETIMEOFFSET binary to Python datetime with tzinfo."""
     tup = struct.unpack("<6hI2h", raw)
     yr, mo, dy, hr, mn, sc, ns, tz_h, tz_m = tup
     tz = timezone(timedelta(hours=tz_h, minutes=tz_m))
     return datetime(yr, mo, dy, hr, mn, sc, ns // 1000, tzinfo=tz)
 
-# ── connection pool (thread-local per-thread connection) ─────────────────────
-
-def _conn_str() -> str:
-    host = os.environ.get("MSSQL_HOST", "sql6034.site4now.net")
-    db   = os.environ.get("MSSQL_DB",   "db_aca32a_cryptoai")
-    user = os.environ.get("MSSQL_USER", "db_aca32a_cryptoai_admin")
-    pwd  = os.environ.get("MSSQL_PASSWORD", "Ciyvi.123")
-    return (
-        f"DRIVER={{ODBC Driver 18 for SQL Server}};"
-        f"SERVER={host};DATABASE={db};UID={user};PWD={pwd};"
-        f"TrustServerCertificate=yes;Encrypt=yes;"
-    )
+# ── thread-local connection pool ──────────────────────────────────────────────
 
 _local = threading.local()
 
-def _get_conn() -> pyodbc.Connection:
-    """Return a per-thread pyodbc connection (avoids 'connection busy' errors)."""
+def _get_conn():
+    """Return a per-thread connection. pymssql on Linux, pyodbc on Windows."""
     conn = getattr(_local, "conn", None)
-    if conn is None:
-        conn = pyodbc.connect(_conn_str(), autocommit=True)
-        conn.add_output_converter(-155, _handle_datetimeoffset)
-        _local.conn = conn
+    try:
+        if conn is not None:
+            if _USE_PYMSSQL:
+                conn.cursor().execute("SELECT 1")
+            else:
+                conn.execute("SELECT 1")
+            return conn
+    except Exception:
+        pass
+
+    p = _conn_params()
+    if _USE_PYMSSQL:
+        conn = _db_driver.connect(
+            server=p["host"], user=p["user"],
+            password=p["password"], database=p["database"],
+            tds_version="7.4", autocommit=True,
+        )
     else:
-        try:
-            conn.execute("SELECT 1")
-        except Exception:
-            conn = pyodbc.connect(_conn_str(), autocommit=True)
-            conn.add_output_converter(-155, _handle_datetimeoffset)
-            _local.conn = conn
+        conn_str = (
+            f"DRIVER={{ODBC Driver 18 for SQL Server}};"
+            f"SERVER={p['host']};DATABASE={p['database']};"
+            f"UID={p['user']};PWD={p['password']};"
+            f"TrustServerCertificate=yes;Encrypt=yes;"
+        )
+        conn = _db_driver.connect(conn_str, autocommit=True)
+        conn.add_output_converter(-155, _handle_datetimeoffset)
+
+    _local.conn = conn
     return conn
 
 async def _run(fn, *args):
@@ -68,8 +89,9 @@ async def _run(fn, *args):
 
 def _translate(sql: str) -> str:
     s = sql.strip()
-    # $1,$2... → ? placeholders
-    s = re.sub(r'\$\d+', '?', s)
+    # $1,$2... → ? (pyodbc) or %s (pymssql)
+    placeholder = "%s" if _USE_PYMSSQL else "?"
+    s = re.sub(r'\$\d+', placeholder, s)
     # double-quoted identifiers → square brackets
     s = re.sub(r'"(\w+)"', r'[\1]', s)
     # Quote unquoted MSSQL reserved words used as column names
@@ -115,16 +137,24 @@ class _Row(dict):
 def _rows_from_cursor(cursor) -> list[_Row]:
     if cursor.description is None:
         return []
+    rows = cursor.fetchall()
+    if not rows:
+        return []
+    # pymssql with as_dict=True returns dicts; pyodbc returns tuples
+    if isinstance(rows[0], dict):
+        return [_Row({k.lower(): v for k, v in r.items()}) for r in rows]
     cols = [d[0].lower() for d in cursor.description]
-    return [_Row(zip(cols, row)) for row in cursor.fetchall()]
+    return [_Row(zip(cols, row)) for row in rows]
 
 def _one_from_cursor(cursor) -> Optional[_Row]:
     if cursor.description is None:
         return None
-    cols = [d[0].lower() for d in cursor.description]
     row = cursor.fetchone()
     if row is None:
         return None
+    if isinstance(row, dict):
+        return _Row({k.lower(): v for k, v in row.items()})
+    cols = [d[0].lower() for d in cursor.description]
     return _Row(zip(cols, row))
 
 # ── Pool-like object ──────────────────────────────────────────────────────────
@@ -137,7 +167,11 @@ class _MssqlPool:
         sql = _translate(query)
         def _do():
             conn = _get_conn()
-            cur = conn.execute(sql, list(args))
+            if _USE_PYMSSQL:
+                cur = conn.cursor(as_dict=True)
+                cur.execute(sql, list(args) if args else None)
+            else:
+                cur = conn.execute(sql, list(args))
             return _rows_from_cursor(cur)
         try:
             return await _run(_do)
@@ -219,7 +253,11 @@ class _MssqlPool:
         sql = _translate(query)
         def _do():
             conn = _get_conn()
-            cur = conn.execute(sql, list(args))
+            if _USE_PYMSSQL:
+                cur = conn.cursor(as_dict=True)
+                cur.execute(sql, list(args) if args else None)
+            else:
+                cur = conn.execute(sql, list(args))
             return _one_from_cursor(cur)
         try:
             return await _run(_do)
@@ -231,9 +269,13 @@ class _MssqlPool:
         sql = _translate(query)
         def _do():
             conn = _get_conn()
-            cur = conn.execute(sql, list(args))
+            if _USE_PYMSSQL:
+                cur = conn.cursor()
+                cur.execute(sql, list(args) if args else None)
+            else:
+                cur = conn.execute(sql, list(args))
             row = cur.fetchone()
-            return row[0] if row else None
+            return (row[0] if isinstance(row, (list, tuple)) else next(iter(row.values()))) if row else None
         try:
             return await _run(_do)
         except Exception as exc:
@@ -244,7 +286,11 @@ class _MssqlPool:
         sql = _translate(query)
         def _do():
             conn = _get_conn()
-            conn.execute(sql, list(args))
+            if _USE_PYMSSQL:
+                cur = conn.cursor()
+                cur.execute(sql, list(args) if args else None)
+            else:
+                conn.execute(sql, list(args))
         try:
             await _run(_do)
         except Exception as exc:
