@@ -19,7 +19,7 @@ function sendResponse($status, $message) {
 }
 
 // Log incoming POST
-file_put_contents("full_post_debug.txt", date('c') . " | POST: " . print_r($_POST, true) . "\n", FILE_APPEND);
+file_put_contents(__DIR__ . "/full_post_debug.txt", date('c') . " | POST: " . print_r($_POST, true) . "\n", FILE_APPEND);
 
 // Sanitize input - matching JavaScript form data names
 $name       = $_POST['name'] ?? '';
@@ -68,9 +68,9 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 
 if (curl_errno($ch)) {
-    file_put_contents("keitaro_postback_log.txt", date('c') . " | ERROR: " . curl_error($ch) . "\n", FILE_APPEND);
+    file_put_contents(__DIR__ . "/keitaro_postback_log.txt", date('c') . " | ERROR: " . curl_error($ch) . "\n", FILE_APPEND);
 } else {
-    file_put_contents("keitaro_postback_log.txt", date('c') . " | SUCCESS | Response: $response\n", FILE_APPEND);
+    file_put_contents(__DIR__ . "/keitaro_postback_log.txt", date('c') . " | SUCCESS | Response: $response\n", FILE_APPEND);
 }
 
 curl_close($ch);
@@ -133,7 +133,7 @@ $fb_curl_error = curl_error($ch);
 curl_close($ch);
 
 file_put_contents(
-  'fb_capi_log.txt',
+  __DIR__ . '/fb_capi_log.txt',
   date('c') .
   " | Pixel: $pixel_id" .
   " | Token: " . ($access_token ? "YES" : "NO") .
@@ -183,7 +183,7 @@ $apiResponse = curl_exec($apiCh);
 $apiData = json_decode($apiResponse, true);
 
 // Log API request and response for debugging
-file_put_contents('crm_api_log.txt', date('c') . " | Request: $apiPayload | Response: $apiResponse\n", FILE_APPEND);
+file_put_contents(__DIR__ . '/crm_api_log.txt', date('c') . " | Request: $apiPayload | Response: $apiResponse\n", FILE_APPEND);
 
 if (curl_errno($apiCh)) {
     sendResponse('error', 'CRM connection error: ' . curl_error($apiCh));
